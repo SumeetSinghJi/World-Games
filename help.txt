@@ -1,0 +1,319 @@
+
+Shoushiling 手勢令 - HELP GUIDE
+
+Name: Shoushiling 手勢令
+main source file: main.cpp
+Author: Sumeet Singh
+Website: www.sumeet-singh.com
+Created: 26th September 2023
+Version: 0.1
+Description: Players travel the world exploring the historical and regional variations of the traditional rock paper scissors game.
+Location: https://github.com/SumeetSinghJi/Shoushiling
+Developer: AgniSamooh
+Publisher: AgniSamooh
+
+
+
+_________________________________________________________________________________________________________________
+
+                                    GAME INSTALLATION & SETUP INSTRUCTIONS
+
+_________________________________________________________________________________________________________________
+
+
+
+PURPOSE
+
+This game is a C++ learning project game in which Players travel the world playing different traditional hand games.
+Inspiration taken from here:  https://wrpsa.com/rock-paper-scissors-a-global-game-with-local-flavors/
+
+
+
+LICENSE
+
+Main source code is open source excluding the third party libraries which have their own licensing.
+
+
+
+HELP GUIDE
+
+Found in game by clicking on "Help" (Book) option in main menu or read help.txt file
+
+
+
+INSTALLATION REQUIREMENTS
+
+* Supported OS: Windows 10+ (untested on older or different Operating Systems)
+* Processor: at least 7th gen Intel Core i3 or AMD equivalent
+* RAM: 4 GB RAM
+* Graphics: Either CPU's dedicated GPU, or an HD capable GPU
+* Storage: 5 GB available space
+
+
+
+INSTALLATION INSTRUCTIONS
+
+1. Download zipped game folder from GitHub here:
+https://github.com/SumeetSinghJi/Shoushiling/archive/refs/heads/main.zip
+
+2. Unzip to computers user directory in new folder
+For Windows: c:\users\username\Shoushiling
+For MacOS: default download folder
+For Linux: /home/username/Shoushiling
+
+3. Run below file to start game
+For Windows: main.exe
+For Linux: main
+For MacOS: copy over this file main.bin to applications folder and accept default priviliges
+
+
+
+ACCESSIBILITY - LANGUAGES
+
+Game supports several languages with full language support below.
+Language can be changed from the Settings - Language (World) option in the main menu.
+1. ENGLISH
+2. 日本語 (JAPANESE)
+
+
+
+ACESSIBILITY - INPUT
+
+Game supports using several key input methods to play game
+1. Mouse (Preferred)
+2. Keyboard
+3. Gamepad
+4. Touch
+
+Keybindings for Keyboard and Gamepad use default Arrow or D-Pad directional keys with ENTER or A to select.
+
+
+_________________________________________________________________________________________________________________
+
+                                    GAME PROGRAMMING ENVIRONMENT & LOGIC
+
+_________________________________________________________________________________________________________________
+
+
+ENVIRONMENT
+
+C++ game was built on a Windows 11 Operating System desktop environment using Visual Studio code as the IDE.
+Game is written in c++ however uses a C programming language library framework 
+called SDL2, along with 3 associated SDL2 libraries to create a interactive GUI Window
+
+all 3 Frameworks are downloaded from GitHub
+SDL2 (https://github.com/libsdl-org/SDL)- Used for creating a Window and rendering buttons and key inputs
+SDL2_image (https://github.com/libsdl-org/SDL_image) - Library for adding non images JPG/PNG etc., to a SDL2 Applicaiton
+SDL2_Mixer (https://github.com/libsdl-org/SDL_mixer) - Library for adding sound/music to a SDL2 application
+SDL2_TTF (https://github.com/libsdl-org/SDL_ttf) - Library for rendering text/font to SDL2 Window
+
+uses headers below
+#include <SDL.h>                          // SDL Requirement
+#include <SDL_image.h>                    // SDL Requirement
+#include <SDL_ttf.h>                      // SDL Requirement
+#include <SDL_mixer.h>                    // SDL Requirement
+#include "headers/sdl_loads.h"            // SDL Textures, Sounds, Animations to load
+#include "headers/sdl_renders.h"          // SDL Rect/Buttons to render to screen/scene/GUI
+#include "headers/sdl_texts.h"            // SDL Text to Render  to screen/scene/GUI
+#include "headers/sdl_mouse_handles.h"    // SDL Mouse and Touch keypresses
+#include "headers/sdl_keyboard_handles.h" // SDL Keyboard keypresses
+#include "headers/sdl_gamepad_handles.h"  // SDL Gamepad controller keypresses
+
+
+
+FILES
+
+The below files are contained in the downloaded game directory
+
+./vscode - used by Visual Studio (IDE) for the development environment for coding
+./assets - contains subdirectories of various assets e.g. images, sounds, fonts
+./headers - contains c++ header files that attach to source file on build
+./src - contains all the third party libraries e.g. SDL2
+main.cpp - main source code
+main.exe - .exe for game
+help.txt - Contains all information about game such as requirements, installation, play guide etc.,
+Credits.txt - Contains the Credits for the game
+CMAKElists-draft.txt - Used for CMAKE, currently Unused due to building with VSCode currently
+Various DLL's that third party library DLL compiles with .exe on build {
+    libcurl-x64.dll - libcurl
+    libzip.dll - libzip
+    SDL2_image.dll - SDL2 Image
+    SDL2_mixer.dll - SDL2 Mixer
+    SDL2_TTF.dll - SDL2 TTF/Font
+    SDL2.dll - SDL2
+}
+shoushiling_save.txt - in game save file
+Shoushiling.code-workspace - used by Visual Studio (IDE) for the development environment for coding
+windows_create_shortcut.bat - Used for CMAKE, currently Unused due to building with VSCode currently
+windows_create_shortcut.ps1 - Used for CMAKE, currently Unused due to building with VSCode currently
+
+
+
+GAME NAVIGATION
+
+Game menu and navigation is based on SDL Game design best practice "scenes".
+There are scenes for all different menu options e.g. Settings, or Credits, and a
+central hub "scene 6" for in game world map which interconnects with other in game
+scenes e.g. "scene 30 = Beijing" where different maps/levels/scenes can be accessed
+which all have slight variations of the named function start_spr_game() function depending on regional variations.
+
+headers SDL_renders and SDL_texts will load the HUD depending on regional variation of game.
+Navigating through scene is dependent on handle_events() button clicks in GAME LOGIC
+
+
+
+GAME WORKFLOW
+
+1. start_sdl();
+    triggers sdl_loads.h which initialises all the assets (textures/graphics, sounds, music, animations)
+2. run_sdl() triggers all the below - In the Main Menu, Settings, or World map regions clicking on any option does the following
+    handle_events();
+        Loads the sdl_gamepad_handles.h - for gamepad/controller clicks to change variables/call functions etc.,
+        Loads the sdl_keyboard_handles.h - for keyboard clicks to change variables/call functions etc.,
+        Loads the sdl_mouse_handles.h - for mouse and touch clicks to change variables/call functions etc.,
+    update();
+        Calls core game logic depending on scene e.g. if scene x, play song x
+    draw();
+        calls sdl_texts.h - for displaying text on screen
+        calls sdl_renders.h - for displaying buttons on screen
+2. The scene wether main menu, settings or world map regions then displays
+    the text, buttons, which show the variables such as lives, timers, rules, and settings options
+    the handle_events(); then loads all the listening events for key input to take action to above variables
+3. An Tutorial round explains the rules when game is started.
+    Different scenes (levels/maps) have different regional variation themed opponent avatars and rules for game
+    with each opponent having their own ai_logic.h functions for different random personality functions that change game
+4. Completeing the game requires defeating all scenes (which are unlocked when defeated) a final scene
+    is the end round of the game to signify the boss.
+5. The credits scene will then play to signfy game completion.
+6. exit_sdl() on quit clears all the pointers and quits the application and window.
+
+
+
+Rock Paper Scissors - Games
+
+On input option e.g. R = Rock, or mouse click Closed hand rock sign = Rock
+Will trigger the main start_spr_game(int choice[e.g. Rock Paper Scissors]) which will go through
+logic in function to reduce players life. First player to lose all life, the round_over = true
+and calls reset_rount_variables() to reset all global variables for next level (scene).
+
+To add interest in an single player game experience there are A.I. logic functions to make each
+regional opponent (different scene country) have more variety e.g. more lives or power etc.,
+
+
+
+SAVING AND LOADING/CONTINUE
+
+A save game text file shoushiling_save.txt is created on SDL Quit and on main menu Continue button loaded.
+uses header below
+#include "headers/savegame.h"             // For save/continue functions
+
+
+
+UPDATING GAME
+
+There is an in game option to update game. It will contact a repository hosting game depending on which platform
+game was downloaded and installed from, which will check the latest version string then download and replace the
+existing game directory while retaining save game files.
+
+Uses both headers below
+#include "headers/game_update_1.h"        // For downloading latest game update
+#include "headers/game_update_2.h"        // For downloading latest game update
+
+
+
+MULTIPLAYER
+
+FUTURE DEVELOPMENT - There is future scope to add an multiplayer mode however the time taken for author
+to learn C++ web development will take precious time spent elsewhere. Regardless the files and scenes
+are in game but not useable.
+Uses header below
+#include "headers/multiplayer.h"          // FUTURE DEVELOPMENT - For Multiplayer
+
+
+
+SCENES
+
+scene 1 = Title
+scene 2 = Settings
+scene 3 = Credits
+scene 4 = Achievements
+scene 5 = Help
+scene 6 = World map
+scene 7 = Tutorial
+scene 8 = multiplayer lobby - TBD
+scene 9 = Leaderboard - TBD
+scene 10 = keybindings - TBD
+scene 11 = _____UNUSED_____
+scene 12 = _____UNUSED_____
+scene 13 = _____UNUSED_____
+scene 14 = _____UNUSED_____
+scene 15 = _____UNUSED_____
+scene 16 = _____UNUSED_____
+scene 17 = _____UNUSED_____
+scene 18 = _____UNUSED_____
+scene 19 = _____UNUSED_____
+scene 20 - beijing - shoushiling (traditional 手勢令), frog 蛙, snake 蛇, centipede 蜈蜙
+scene 21 = london - rock paper scissors
+scene 22 = paris - pierre (stone), papier (paper), ciseaux (scissors)
+scene 23 = berlin - Schere (scissors), Stein (stone), Papier (paper), Puits (well)
+scene 24 = delhi
+scene 25 = singapore
+scene 26 = hawaii -
+scene 27 = tokyo - Sansukumi-ken (三すくみ拳) frog 蛙, snake 蛇, slug 蛞蝓
+scene 28 = seoul
+scene 29 = shanghai - shoushiling (simplified: 手势令), frog 蛙, snake 蛇, centipede 蜈蜙
+scene 30 - Cape Town
+scene 31 - Rio De Janero
+scene 32 - Rome
+scene 33 - Hanoi
+scene 34 - Barcelona
+scene 35 - Kenya
+scene 36 - Moscow
+scene 37 - Athens
+scene 38 - Manilla
+scene 39 - Tehran
+scene 40 - Tel Aviv
+scene 41 - Cairo
+scene 42 - Bogota
+scene 43 - Istanbul
+scene 44 - Stolkholm
+scene 45 - Mexico city
+scene 46 - Bangkok
+scene 47 - Kathmandu
+scene 48 - Vancouver
+scene 49 - New York
+scene 50 - Moon - (The 31st level) all hands are available to you and opponent, create your own game
+
+
+
+_________________________________________________________________________________________________________________
+
+                                    USER GAME GUIDE & RULES SECTION
+                                    
+_________________________________________________________________________________________________________________
+
+
+
+OBJECTIVE
+
+1. By completing all 30 regional variations will unlock the last scene 51
+which contains the final boss and challange of the game.
+
+
+
+UNLOCKABLE ACHIEVEMENTS
+
+When playing the game if certain criteria considered challenges are met the player is
+awarded a reward known as an achievement. This can integrate into any gaming platform
+such as Steam.
+
+1. Won first game
+2. Lost a game
+3. Won with same hand
+4. Called out a bluff
+5. Cheated a round
+6. Learnt secret of kitsune-ken
+7. Visited the Han Palace
+8. Won the game
+9. Found the hidden level
+10. Never lost a game

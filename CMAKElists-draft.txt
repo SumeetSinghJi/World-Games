@@ -1,0 +1,66 @@
+cmake_minimum_required(VERSION 3.0)
+
+project(SDL_ENGINE)
+
+# Set paths to SDL2 and SDL2_image (for non-standard location)
+set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};${CMAKE_SOURCE_DIR}/src/SDL2/x86_64-w64-mingw32;${CMAKE_SOURCE_DIR}/src/SDL2_image/x86_64-w64-mingw32;${CMAKE_SOURCE_DIR}/src/SDL2_Mixer/x86_64-w64-mingw32;${CMAKE_SOURCE_DIR}/src/SDL2_TTF/x86_64-w64-mingw32")
+
+# find_package looks in /cmake folder to learn to set variables for /bin, /include/SDL2 and /lib
+find_package(SDL2 REQUIRED) # This works but the remainder don't
+find_package(SDL2_image REQUIRED)
+find_package(SDL2_Mixer REQUIRED)
+find_package(SDL2_TTF REQUIRED)
+
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}) 
+
+# Add the main.cpp here
+set(SOURCES
+    main.cpp
+)
+
+set(HEADERS
+    headers/help.h
+    headers/savegame.h
+    headers/sdl_loads.h
+    headers/sdl_renders.h
+    headers/sdl_texts.h
+)
+
+# Create the .exe
+add_executable(SDL_ENGINE ${SOURCES})
+
+# Change the .exe or .bin name
+set_target_properties(SDL_ENGINE PROPERTIES OUTPUT_NAME "main")
+
+# Link libraries based on the operating system
+if(WIN32)
+    # Add the -mwindows flag
+    # target_link_options(Shoushiling PRIVATE -mwindows) # untested
+
+    # Use windres to include the icon in the executable
+    add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/icon_res.o
+    
+        COMMAND windres "${CMAKE_SOURCE_DIR}/images/icons/icon.rc" "${CMAKE_BINARY_DIR}/icon_res.o"
+        COMMAND ${CMAKE_COMMAND} -E echo "Including icon in the executable..."
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        DEPENDS "${CMAKE_SOURCE_DIR}/images/icons/icon.rc") 
+
+    add_custom_target(BuildIcon ALL DEPENDS ${CMAKE_BINARY_DIR}/icon_res.o)
+
+    # Link the icon object to the executable
+    add_dependencies(SDL_ENGINE BuildIcon)
+    target_sources(SDL_ENGINE PRIVATE ${CMAKE_BINARY_DIR}/icon_res.o)
+
+    # After the build, execute the batch script to create the shortcut
+    add_custom_command(TARGET SDL_ENGINE POST_BUILD
+    COMMAND "${CMAKE_BINARY_DIR}/windows_create_shortcut.bat"
+    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    COMMENT "Creating shortcut on desktop"
+    )
+
+else()
+    # Commands for other operating systems
+    # ...
+endif()
