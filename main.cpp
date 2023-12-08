@@ -120,7 +120,7 @@ SDL_Texture *returnToAvailableGamesTexture = nullptr;      // Multiplayer button
 
 // HUD buttons
 SDL_Texture *helpTexture = nullptr;      // In game - view rules from help
-SDL_Texture *swapTexture = nullptr;      // In game - swap icons from hands to abstract images
+SDL_Texture *restartTexture = nullptr;      // In game - swap icons from hands to abstract images
 SDL_Texture *skipTexture = nullptr;      // In game - skips Mentor explaining rules
 SDL_Texture *heartTexture = nullptr;     // In game - lives
 SDL_Texture *timerTexture = nullptr;     // In game - timer box
@@ -887,7 +887,7 @@ void exit_SDL()
 
     // HUD buttons
     SDL_DestroyTexture(helpTexture);
-    SDL_DestroyTexture(swapTexture);
+    SDL_DestroyTexture(restartTexture);
     SDL_DestroyTexture(skipTexture);
     SDL_DestroyTexture(heartTexture);
     SDL_DestroyTexture(timerTexture);

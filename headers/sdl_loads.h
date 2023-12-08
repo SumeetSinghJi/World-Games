@@ -90,7 +90,7 @@ extern SDL_Texture *returnToAvailableGamesTexture;      // Multiplayer buttons
 
 // HUD buttons
 extern SDL_Texture *helpTexture;      // In game - view rules from help
-extern SDL_Texture *swapTexture;      // In game - swap icons from hands to abstract images
+extern SDL_Texture *restartTexture;      // In game - swap icons from hands to abstract images
 extern SDL_Texture *skipTexture;      // In game - skips Mentor explaining rules
 extern SDL_Texture *heartTexture;     // In game - lives
 extern SDL_Texture *timerTexture;     // In game - timer box
@@ -310,7 +310,7 @@ void load_textures()
 
     // HUD buttons
     helpTexture = load_texture("assets/graphics/buttons/settings/book-button.png", "Help Button");
-    swapTexture = load_texture("assets/graphics/buttons/settings/swap-button.png", "Swap Button");
+    restartTexture = load_texture("assets/graphics/buttons/settings/restart-button.png", "Restart Button");
     skipTexture = load_texture("assets/graphics/buttons/settings/skip-button.png", "Skip Button");
     heartTexture = load_texture("assets/graphics/buttons/settings/heart-button.png", "Heart Button");
     timerTexture = load_texture("assets/graphics/buttons/settings/timer-button.png", "Timer Button");
