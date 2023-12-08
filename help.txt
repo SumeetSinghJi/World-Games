@@ -1,13 +1,13 @@
 
-Shoushiling 手勢令 - HELP GUIDE
+World Games - HELP GUIDE
 
-Name: Shoushiling 手勢令
+Name: World Games
 main source file: main.cpp
 Author: Sumeet Singh
 Website: www.sumeet-singh.com
 Created: 26th September 2023
 Version: 0.1
-Description: Players travel the world exploring the historical and regional variations of the traditional rock paper scissors game.
+Description: This game is a C++ learning project game in which Players travel the world playing different traditional games.
 Location: https://github.com/SumeetSinghJi/Shoushiling
 Developer: AgniSamooh
 Publisher: AgniSamooh
@@ -16,7 +16,7 @@ Publisher: AgniSamooh
 
 _________________________________________________________________________________________________________________
 
-                                    GAME INSTALLATION & SETUP INSTRUCTIONS
+                                    INSTALLATION & SETUP INSTRUCTIONS
 
 _________________________________________________________________________________________________________________
 
@@ -24,8 +24,7 @@ ________________________________________________________________________________
 
 PURPOSE
 
-This game is a C++ learning project game in which Players travel the world playing different traditional hand games.
-Inspiration taken from here:  https://wrpsa.com/rock-paper-scissors-a-global-game-with-local-flavors/
+This game is a C++ learning project game in which Players travel the world playing different traditional games.
 
 
 
@@ -162,45 +161,6 @@ Navigating through scene is dependent on handle_events() button clicks in GAME L
 
 
 
-GAME WORKFLOW
-
-1. start_sdl();
-    triggers sdl_loads.h which initialises all the assets (textures/graphics, sounds, music, animations)
-2. run_sdl() triggers all the below - In the Main Menu, Settings, or World map regions clicking on any option does the following
-    handle_events();
-        Loads the sdl_gamepad_handles.h - for gamepad/controller clicks to change variables/call functions etc.,
-        Loads the sdl_keyboard_handles.h - for keyboard clicks to change variables/call functions etc.,
-        Loads the sdl_mouse_handles.h - for mouse and touch clicks to change variables/call functions etc.,
-    update();
-        Calls core game logic depending on scene e.g. if scene x, play song x
-    draw();
-        calls sdl_texts.h - for displaying text on screen
-        calls sdl_renders.h - for displaying buttons on screen
-2. The scene wether main menu, settings or world map regions then displays
-    the text, buttons, which show the variables such as lives, timers, rules, and settings options
-    the handle_events(); then loads all the listening events for key input to take action to above variables
-3. An Tutorial round explains the rules when game is started.
-    Different scenes (levels/maps) have different regional variation themed opponent avatars and rules for game
-    with each opponent having their own ai_logic.h functions for different random personality functions that change game
-4. Completeing the game requires defeating all scenes (which are unlocked when defeated) a final scene
-    is the end round of the game to signify the boss.
-5. The credits scene will then play to signfy game completion.
-6. exit_sdl() on quit clears all the pointers and quits the application and window.
-
-
-
-Rock Paper Scissors - Games
-
-On input option e.g. R = Rock, or mouse click Closed hand rock sign = Rock
-Will trigger the main start_spr_game(int choice[e.g. Rock Paper Scissors]) which will go through
-logic in function to reduce players life. First player to lose all life, the round_over = true
-and calls reset_rount_variables() to reset all global variables for next level (scene).
-
-To add interest in an single player game experience there are A.I. logic functions to make each
-regional opponent (different scene country) have more variety e.g. more lives or power etc.,
-
-
-
 SAVING AND LOADING/CONTINUE
 
 A save game text file shoushiling_save.txt is created on SDL Quit and on main menu Continue button loaded.
@@ -253,18 +213,18 @@ scene 17 = _____UNUSED_____
 scene 18 = _____UNUSED_____
 scene 19 = _____UNUSED_____
 scene 20 - beijing - shoushiling (traditional 手勢令), frog 蛙, snake 蛇, centipede 蜈蜙
-scene 21 = london - rock paper scissors
-scene 22 = paris - pierre (stone), papier (paper), ciseaux (scissors)
-scene 23 = berlin - Schere (scissors), Stein (stone), Papier (paper), Puits (well)
+scene 21 = london - Scissors Paper Rock
+scene 22 = paris
+scene 23 = berlin
 scene 24 = delhi
 scene 25 = singapore
 scene 26 = hawaii -
-scene 27 = tokyo - Sansukumi-ken (三すくみ拳) frog 蛙, snake 蛇, slug 蛞蝓
+scene 27 = tokyo
 scene 28 = seoul
-scene 29 = shanghai - shoushiling (simplified: 手势令), frog 蛙, snake 蛇, centipede 蜈蜙
+scene 29 = shanghai
 scene 30 - Cape Town
 scene 31 - Rio De Janero
-scene 32 - Rome
+scene 32 - Rome - Tic Tac Toe
 scene 33 - Hanoi
 scene 34 - Barcelona
 scene 35 - Kenya
@@ -282,13 +242,13 @@ scene 46 - Bangkok
 scene 47 - Kathmandu
 scene 48 - Vancouver
 scene 49 - New York
-scene 50 - Moon - (The 31st level) all hands are available to you and opponent, create your own game
+scene 50 - Moon - Astronaught game
 
 
 
 _________________________________________________________________________________________________________________
 
-                                    USER GAME GUIDE & RULES SECTION
+                                    USER GAME GUIDE
                                     
 _________________________________________________________________________________________________________________
 
@@ -296,24 +256,12 @@ ________________________________________________________________________________
 
 OBJECTIVE
 
-1. By completing all 30 regional variations will unlock the last scene 51
-which contains the final boss and challange of the game.
+1. Win the game by winning all games around the world while having fun.
 
 
 
 UNLOCKABLE ACHIEVEMENTS
 
-When playing the game if certain criteria considered challenges are met the player is
-awarded a reward known as an achievement. This can integrate into any gaming platform
-such as Steam.
+Completing a traditional game from a scene unlocks that achievement.
 
-1. Won first game
-2. Lost a game
-3. Won with same hand
-4. Called out a bluff
-5. Cheated a round
-6. Learnt secret of kitsune-ken
-7. Visited the Han Palace
-8. Won the game
-9. Found the hidden level
-10. Never lost a game
+12 (scene 32): Won Tic Tac Toe
