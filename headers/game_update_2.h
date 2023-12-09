@@ -8,7 +8,7 @@
 
 extern std::string os_version;
 
-// Getting filepath to existing non updated folder "Shoushiling"
+// Getting filepath to existing non updated folder "world-games"
 std::string get_existing_game_folder_path()
 {
     std::string filepath_separator = "";
@@ -19,22 +19,22 @@ std::string get_existing_game_folder_path()
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE");
-        existing_game_directory_path = std::string(home_directory) + filepath_separator + "Shoushiling";
+        existing_game_directory_path = std::string(home_directory) + filepath_separator + "world-games";
     }
     else if (os_version == "linux" || os_version == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME");
-        existing_game_directory_path = std::string(home_directory) + filepath_separator + "Shoushiling";
+        existing_game_directory_path = std::string(home_directory) + filepath_separator + "world-games";
     }
     else
     {
-        std::cout << "Error: filepath to 'Shoushiling' under users Home directory not found! " << std::endl;
+        std::cout << "Error: filepath to 'world-games' under users Home directory not found! " << std::endl;
     }
     return existing_game_directory_path;
 }
 
-// Getting filepath to unzipped folder "Shoushiling-master"
+// Getting filepath to unzipped folder "world-games-master"
 std::string get_unzipped_game_destination_path()
 {
     std::string filepath_separator = "";
@@ -45,30 +45,30 @@ std::string get_unzipped_game_destination_path()
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE");
-        unzipped_game_destination_path = std::string(home_directory) + filepath_separator + "Shoushiling-master";
+        unzipped_game_destination_path = std::string(home_directory) + filepath_separator + "world-games-master";
     }
     else if (os_version == "linux" || os_version == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME");
-        unzipped_game_destination_path = std::string(home_directory) + filepath_separator + "Shoushiling-master";
+        unzipped_game_destination_path = std::string(home_directory) + filepath_separator + "world-games-master";
     }
     else
     {
-        std::cout << "Error: filepath to 'Shoushiling-master' unzipped updated game folder under users Home directory not found! " << std::endl;
+        std::cout << "Error: filepath to 'world-games-master' unzipped updated game folder under users Home directory not found! " << std::endl;
     }
     return unzipped_game_destination_path;
 }
 
-// Copy save from original game directory "Shoushiling" to unzipped folder "Shoushiling-master"
+// Copy save from original game directory "world-games" to unzipped folder "world-games-master"
 void copy_save_to_extracted_folder()
 {
     std::cout << "STARTING - copy save from original directory to unzipped new updated game folder" << std::endl;
 
     std::filesystem::path sourceDirectory = get_existing_game_folder_path();
-    std::filesystem::path sourcePath = sourceDirectory / "shoushiling_save.txt";
+    std::filesystem::path sourcePath = sourceDirectory / "world-games_save.txt";
     std::filesystem::path destinationDirectory = get_unzipped_game_destination_path();
-    std::filesystem::path destinationPath = destinationDirectory / "shoushiling_save.txt"; // Include the filename
+    std::filesystem::path destinationPath = destinationDirectory / "world-games_save.txt"; // Include the filename
 
     try
     {
@@ -102,7 +102,7 @@ void copy_save_to_extracted_folder()
     std::cin.get();
 }
 
-// Close existing Shoushiling executable
+// Close existing world-games executable
 void exit_game()
 {
     std::cout << "STARTING - Close game" << std::endl;
@@ -227,21 +227,21 @@ void delete_original_game_folder()
     }
 }
 
-// Rename unzipped new updated game folder "Shoushiling-master" to "Shoushiling"
+// Rename unzipped new updated game folder "world-games-master" to "world-games"
 void rename_extracted_folder()
 {
-    std::string shoushiling_master_folder_path_old_name = get_unzipped_game_destination_path();
-    std::string shoushiling_master_folder_path_new_name = get_existing_game_folder_path();
+    std::string world-games_master_folder_path_old_name = get_unzipped_game_destination_path();
+    std::string world-games_master_folder_path_new_name = get_existing_game_folder_path();
 
-    std::cout << "STARTING - rename unzipped folder to Shoushiling" << std::endl;
+    std::cout << "STARTING - rename unzipped folder to world-games" << std::endl;
     try
     {
-        rename(shoushiling_master_folder_path_old_name.c_str(), shoushiling_master_folder_path_new_name.c_str());
-        std::cout << "Unzipped folder sucessfully rename from 'Shoushiling-master' to 'shoushiling'." << std::endl;
+        rename(world-games_master_folder_path_old_name.c_str(), world-games_master_folder_path_new_name.c_str());
+        std::cout << "Unzipped folder sucessfully rename from 'world-games-master' to 'world-games'." << std::endl;
     }
     catch (const std::filesystem::filesystem_error &e)
     {
-        std::cerr << "Error renaming Unzipped folder from 'Shoushiling-master' to 'shoushiling': " << e.what() << std::endl;
+        std::cerr << "Error renaming Unzipped folder from 'world-games-master' to 'world-games': " << e.what() << std::endl;
     }
 }
 
@@ -277,12 +277,12 @@ void game_start()
 
     if (os_version == "Windows")
     {
-        start_command = "start \"\" \"" + new_game_directory_path + "\\shoushiling.exe\"";
+        start_command = "start \"\" \"" + new_game_directory_path + "\\world-games.exe\"";
         system(start_command.c_str());
     }
     else
     {
-        start_command = "chmod +x \"" + new_game_directory_path + "/shoushiling.bin\"";
+        start_command = "chmod +x \"" + new_game_directory_path + "/world-games.bin\"";
         system(start_command.c_str());
     }
 }

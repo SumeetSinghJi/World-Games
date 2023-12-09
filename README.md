@@ -1,6 +1,6 @@
-# Shoushiling 手勢令
+# World Games
 
-* Name: Shoushiling 手勢令
+* Name: World Games
 * Author: Sumeet Singh
 * Author contact: www.sumeet-singh.com
 * Creation Date: 26th September 2023

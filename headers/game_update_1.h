@@ -14,7 +14,7 @@
 #include "headers/game_update_2.h"
 
 /*
-This header is used for Curl of GitHub repo of Shoushiling game directory
+This header is used for Curl of GitHub repo of world-games game directory
 and downloading and extracting the folder.
 
 The folder will then replace the existing game folder and start the new version
@@ -78,13 +78,13 @@ std::string set_curl_executable_or_bin_path()
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
-        curl_path = std::string(home_directory) + filepath_separator + "Shoushiling" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
+        curl_path = std::string(home_directory) + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
     }
     else if (os_version == "linux" || os_version == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
-        // curl_path = std::string(home_directory) + filepath_separator + "Shoushiling" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl";
+        // curl_path = std::string(home_directory) + filepath_separator + "world-games" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl";
     }
     else
     {
@@ -104,13 +104,13 @@ std::string save_path_for_zip()
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
-        save_path = std::string(home_directory) + filepath_separator + "shoushiling_updates.zip";
+        save_path = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
     }
     else if (os_version == "linux" || os_version == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
-        save_path = std::string(home_directory) + filepath_separator + "shoushiling_updates.zip";
+        save_path = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
     }
     else
     {
@@ -127,7 +127,7 @@ size_t cout_curl_response_to_terminal(void *contents, size_t size, size_t nmemb,
     return total_size;
 }
 
-// Start Curl to Shoushiling Github to check for updates
+// Start Curl to world-games Github to check for updates
 void start_curl()
 {
     std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
@@ -139,7 +139,7 @@ void start_curl()
 
     if (curl)
     {
-        curl_easy_setopt(curl, CURLOPT_URL, "https://github.com/SumeetSinghJi/Shoushiling");
+        curl_easy_setopt(curl, CURLOPT_URL, "https://github.com/SumeetSinghJi/world-games");
 
         // Important. Read on first.
         curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); // Disable SSL certificate verification
@@ -157,7 +157,7 @@ void start_curl()
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, cout_curl_response_to_terminal);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
-        std::cout << "Curl sucessfully initialised/configured, now curling https://github.com/SumeetSinghJi/Shoushiling" << std::endl;
+        std::cout << "Curl sucessfully initialised/configured, now curling https://github.com/SumeetSinghJi/world-games" << std::endl;
 
         // Perform the request
         res = curl_easy_perform(curl);
@@ -217,7 +217,7 @@ void start_curl()
         else
         {
             std::cout << "Error: curl failed: " << curl_easy_strerror(res) << std::endl;
-            std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/Shoushiling." << std::endl;
+            std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/world-games." << std::endl;
         }
 
         curl_easy_cleanup(curl);
@@ -225,7 +225,7 @@ void start_curl()
     else
     {
         std::cout << "Error: Failed to initialize curl." << std::endl;
-        std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/Shoushiling." << std::endl;
+        std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/world-games." << std::endl;
     }
 
     curl_global_cleanup();
@@ -260,12 +260,12 @@ int XferInfoCallback(void *clientp, curl_off_t dltotal, curl_off_t dlnow, curl_o
 // download update file from start_curl() prompt
 void download_file()
 {
-    std::cout << "Attempting to download updates for Shoushiling." << std::endl;
+    std::cout << "Attempting to download updates for world-games." << std::endl;
     std::cout << "Press ENTER key to continue..." << std::endl;
 
     CURL *curl;
     CURLcode res;
-    std::string download_link = "https://github.com/SumeetSinghJi/Shoushiling/archive/refs/heads/master.zip";
+    std::string download_link = "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip";
     std::string save_path = save_path_for_zip();
     std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
     FILE *file = fopen(save_path.c_str(), "wb");

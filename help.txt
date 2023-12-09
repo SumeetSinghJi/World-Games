@@ -8,7 +8,7 @@ Website: www.sumeet-singh.com
 Created: 26th September 2023
 Version: 0.1
 Description: This game is a C++ learning project game in which Players travel the world playing different traditional games.
-Location: https://github.com/SumeetSinghJi/Shoushiling
+Location: https://github.com/SumeetSinghJi/world-games
 Developer: AgniSamooh
 Publisher: AgniSamooh
 
@@ -53,12 +53,12 @@ INSTALLATION REQUIREMENTS
 INSTALLATION INSTRUCTIONS
 
 1. Download zipped game folder from GitHub here:
-https://github.com/SumeetSinghJi/Shoushiling/archive/refs/heads/main.zip
+https://github.com/SumeetSinghJi/world-games/archive/refs/heads/main.zip
 
 2. Unzip to computers user directory in new folder
-For Windows: c:\users\username\Shoushiling
+For Windows: c:\users\username\world-games
 For MacOS: default download folder
-For Linux: /home/username/Shoushiling
+For Linux: /home/username/world-games
 
 3. Run below file to start game
 For Windows: main.exe
@@ -141,8 +141,8 @@ Various DLL's that third party library DLL compiles with .exe on build {
     SDL2_TTF.dll - SDL2 TTF/Font
     SDL2.dll - SDL2
 }
-shoushiling_save.txt - in game save file
-Shoushiling.code-workspace - used by Visual Studio (IDE) for the development environment for coding
+world-games_save.txt - in game save file
+world-games.code-workspace - used by Visual Studio (IDE) for the development environment for coding
 windows_create_shortcut.bat - Used for CMAKE, currently Unused due to building with VSCode currently
 windows_create_shortcut.ps1 - Used for CMAKE, currently Unused due to building with VSCode currently
 
@@ -163,7 +163,7 @@ Navigating through scene is dependent on handle_events() button clicks in GAME L
 
 SAVING AND LOADING/CONTINUE
 
-A save game text file shoushiling_save.txt is created on SDL Quit and on main menu Continue button loaded.
+A save game text file world-games_save.txt is created on SDL Quit and on main menu Continue button loaded.
 uses header below
 #include "headers/savegame.h"             // For save/continue functions
 

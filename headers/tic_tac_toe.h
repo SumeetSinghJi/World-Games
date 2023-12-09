@@ -88,6 +88,10 @@ void tic_tac_toe_draw_grid_text_positions()
 }
 void tic_tac_toe_draw_choose_x_or_o_first_popup()
 {
+    SDL_SetRenderDrawColor(renderer, 128, 128, 128, 255); // RGB value for Grey
+    SDL_Rect tic_tac_toe_text_area_rect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.76), (windowWidth / 3), (windowHeight / 5)};
+    SDL_RenderFillRect(renderer, &tic_tac_toe_text_area_rect);
+    
     if (tic_tac_toe_player_choose_x_or_o == false)
     {
         render_text("Select Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.75));
