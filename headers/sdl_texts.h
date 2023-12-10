@@ -16,8 +16,8 @@ void text_for_HUD_scene_1() // Main menu
 {
     if (language == "English")
     {
-        render_text("Shoushiling 手勢令", (windowWidth * 0.35), (windowHeight * 0.05));
-        render_text("ROCK PAPER SCISSSORS", (windowWidth * 0.33), (windowHeight * 0.1));
+        render_text("World Games", (windowWidth * 0.35), (windowHeight * 0.05));
+        render_text("Sumeet Singh", (windowWidth * 0.33), (windowHeight * 0.1));
 
         render_text("Continue", (windowWidth * 0.45), (windowHeight * 0.25));
         render_text("New game", (windowWidth * 0.45), (windowHeight * 0.35));
@@ -32,8 +32,8 @@ void text_for_HUD_scene_1() // Main menu
     }
     else if (language == "日本語")
     {
-        render_text("Shoushiling 手勢令", (windowWidth * 0.35), (windowHeight * 0.1));
-        render_text("じゃんけん", (windowWidth * 0.33), (windowHeight * 0.2));
+        render_text("World Games", (windowWidth * 0.35), (windowHeight * 0.1));
+        render_text("Sumeet Singh", (windowWidth * 0.33), (windowHeight * 0.2));
 
         // render_text("続く", (windowWidth * 0.45), (windowHeight * 0.25));
         render_text("新しいゲーム", (windowWidth * 0.45), (windowHeight * 0.35));

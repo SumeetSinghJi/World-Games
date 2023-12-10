@@ -1,14 +1,14 @@
 /*
-    Name: Shoushiling 手勢令 | World Hand Games | World Hand Sports
+    Name: World Games | World Hand Games | World Hand Sports
     Purpose: main.cpp
     Author: Sumeet Singh
     Website: www.sumeet-singh.com
     Created: 26th September 2023
     Version: 0.1
-    Description: Players travel the world playing different traditional hand games.
+    Description: Players travel the world playing different traditional games.
     License: Main source code is open source excluding the third party libraries which have their own licensing.
     Game and Programming logic: Read in help_scene.h file or view in game help menu.
-    Location: https://github.com/SumeetSinghJi/Shoushiling
+    Location: https://github.com/SumeetSinghJi/World-Games
 */
 
 #include <iostream>                       // Core logic

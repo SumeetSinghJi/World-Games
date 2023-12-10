@@ -230,13 +230,13 @@ void delete_original_game_folder()
 // Rename unzipped new updated game folder "world-games-master" to "world-games"
 void rename_extracted_folder()
 {
-    std::string world-games_master_folder_path_old_name = get_unzipped_game_destination_path();
-    std::string world-games_master_folder_path_new_name = get_existing_game_folder_path();
+    std::string worldgames_master_folder_path_old_name = get_unzipped_game_destination_path();
+    std::string worldgames_master_folder_path_new_name = get_existing_game_folder_path();
 
     std::cout << "STARTING - rename unzipped folder to world-games" << std::endl;
     try
     {
-        rename(world-games_master_folder_path_old_name.c_str(), world-games_master_folder_path_new_name.c_str());
+        rename(worldgames_master_folder_path_old_name.c_str(), worldgames_master_folder_path_new_name.c_str());
         std::cout << "Unzipped folder sucessfully rename from 'world-games-master' to 'world-games'." << std::endl;
     }
     catch (const std::filesystem::filesystem_error &e)
