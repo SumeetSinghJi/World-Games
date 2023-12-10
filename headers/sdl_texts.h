@@ -16,8 +16,7 @@ void text_for_HUD_scene_1() // Main menu
 {
     if (language == "English")
     {
-        render_text("World Games", (windowWidth * 0.35), (windowHeight * 0.05));
-        render_text("Sumeet Singh", (windowWidth * 0.33), (windowHeight * 0.1));
+        render_text("WORLD GAMES", (windowWidth * 0.35), (windowHeight * 0.05));
 
         render_text("Continue", (windowWidth * 0.45), (windowHeight * 0.25));
         render_text("New game", (windowWidth * 0.45), (windowHeight * 0.35));
@@ -32,10 +31,9 @@ void text_for_HUD_scene_1() // Main menu
     }
     else if (language == "日本語")
     {
-        render_text("World Games", (windowWidth * 0.35), (windowHeight * 0.1));
-        render_text("Sumeet Singh", (windowWidth * 0.33), (windowHeight * 0.2));
+        render_text("WORLD GAMES", (windowWidth * 0.35), (windowHeight * 0.05));
 
-        // render_text("続く", (windowWidth * 0.45), (windowHeight * 0.25));
+        render_text("続く", (windowWidth * 0.45), (windowHeight * 0.25));
         render_text("新しいゲーム", (windowWidth * 0.45), (windowHeight * 0.35));
         render_text("設定", (windowWidth * 0.45), (windowHeight * 0.45));
         render_text("業績", (windowWidth * 0.45), (windowHeight * 0.55));
@@ -88,41 +86,6 @@ void text_for_HUD_scene_2() // Settings
         render_text("メインメニュー", (windowWidth * 0.8), (windowHeight * 0.4));
     }
 }
-void text_for_HUD_scene_3() // Credits
-{
-    if (language == "English")
-    {
-        render_text("Credits", (windowWidth * 0.3), (windowHeight * 0.1));
-
-        render_text("Author: Sumeet Singh", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("Playtester: You", (windowWidth * 0.3), (windowHeight * 0.1));
-
-        render_text("SOUND", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("Sound effects (SFX) by Pixabay from pixabay.com", (windowWidth * 0.3), (windowHeight * 0.1));
-
-        render_text("Music taken by AlexiAction from pixabay.com", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("Fail Sound Effect by UNIVERSFIELD from pixabay.com", (windowWidth * 0.3), (windowHeight * 0.1));
-
-        render_text("IMAGES", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("Scissor image icon By Author: Gulraiz from Freepik.com", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("save button by Nick Frost and Greg Lapin taken from icon-icons.com", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("load button by Nick Frost and Greg Lapin taken from icon-icons.com", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("star button by Gianni Polito taken from icon-icons.com", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("coin button by iconpacks taken from icon-icons.com", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("restart button by Radhika Paghdal taken from icon-icons.com", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("All button images otherwise forgotten to be attributed taken from icon-icons.com", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("England map icon by Bart Kowalski from icon-icons.com", (windowWidth * 0.3), (windowHeight * 0.1));
-
-        render_text("ANIMATIONS", (windowWidth * 0.3), (windowHeight * 0.1));
-        render_text("Fireworks animation by @haenaillust taken from giphy.com", (windowWidth * 0.3), (windowHeight * 0.1));
-
-        render_text("\"Dedicated to planet Earth and all her inhabitants...\"", (windowWidth * 0.3), (windowHeight * 0.1));
-    }
-    else if (language == "日本語")
-    {
-        render_text("点数", (windowWidth * 0.3), (windowHeight * 0.1));
-    }
-}
 void text_for_HUD_scene_4() // Achievements
 {
     if (language == "English")
@@ -156,17 +119,6 @@ void text_for_HUD_scene_4() // Achievements
         render_text("8. 試合に勝った", (windowWidth * 0.5), (windowHeight * 0.4));
         render_text("9. 隠しレベルを発見", (windowWidth * 0.5), (windowHeight * 0.5));
         render_text("10. 試合に負けることはありません", (windowWidth * 0.5), (windowHeight * 0.6));
-    }
-}
-void text_for_HUD_scene_5() // Help
-{
-    if (language == "English")
-    {
-        render_text("Help", (windowWidth * 0.45), (windowHeight * 0.1));
-    }
-    else if (language == "日本語")
-    {
-        render_text("手伝う", (windowWidth * 0.4), (windowHeight * 0.1));
     }
 }
 void text_for_HUD_scene_6() // World map

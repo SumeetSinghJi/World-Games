@@ -780,7 +780,6 @@ void draw()
     else if (game_won == true) // credits
     {
         std::cout << "You won the game!" << std::endl;
-        text_for_HUD_scene_3();
         render_buttons_scene_3();
         credits_file_read(); // render txt output of credits.txt to screen
     }
@@ -791,7 +790,6 @@ void draw()
     }
     else if (scene == 5) // help
     {
-        text_for_HUD_scene_5();
         render_buttons_scene_5();
         help_guide_file_read(); // render txt output of help.txt to screen
     }

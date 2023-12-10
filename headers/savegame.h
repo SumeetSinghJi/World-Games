@@ -20,7 +20,7 @@ void new_game();
 
 void save_game()
 {
-  std::ofstream savefile_object("shoushiling_save.txt");
+  std::ofstream savefile_object("world-games_save.txt");
 
   if (savefile_object.is_open())
   {
@@ -56,7 +56,7 @@ void save_game()
 
 void load_game()
 {
-  std::ifstream savefile_object("shoushiling_save.txt");
+  std::ifstream savefile_object("world-games_save.txt");
 
   if (savefile_object.is_open())
   {
@@ -106,7 +106,7 @@ void load_game()
 void does_save_file_exist()
 {
   std::cout << "Checking to see if any saves exist" << std::endl;
-  std::string filename = "shoushiling_save.txt";
+  std::string filename = "world-games_save.txt";
   if (std::ifstream(filename))
   {
     std::cout << "Save file exists" << filename << "Do you want to delete it? (y/n)";
