@@ -41,7 +41,7 @@ Country buttons
 * Paris map icon by Oleksandr Yershov from icon-icons.com
 * Delhi map icon by Jemis Mali from icon-icons.com
 * Singapore map icon by Icons-Land from icon-icons.com
-Rome colosseum map icon by Iconka from from icon-icons.com
+* Rome colosseum map icon by Iconka from from icon-icons.com
 
 Game buttons
 

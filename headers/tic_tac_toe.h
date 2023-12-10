@@ -29,9 +29,9 @@ bool tic_tac_toe_draw_game = false;
 bool tic_tac_toe_game_over = false;
 bool tic_tac_toe_player_opponent_game = false;
 bool tic_tac_toe_opponentsTurn = false;
+bool tic_tac_toe_showPopup = true;
 
 // FUNCTION PROTOTYPES
-void tic_tac_toe_draw_grid(SDL_Rect &tic_tac_toe_rect);
 SDL_Texture *load_texture(const char *path, const char *name);
 void render_text(const std::string &text, int x, int y);
 
@@ -45,15 +45,19 @@ void tic_tac_toe_load_textures()
 
 void tic_tac_toe_draw_field()
 {
-    SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255); // RGB value for play area: light grey
+    // Play area - border
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB value: Black
+    SDL_Rect borderRect = {(windowWidth / 4) - 2, (windowHeight / 4) - 2, (windowWidth / 2) + 4, (windowHeight / 2) + 4};
+    SDL_RenderFillRect(renderer, &borderRect);
+
+    // Play area
+    SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255); // RGB value: light grey
     SDL_Rect tic_tac_toe_rect = {(windowWidth / 4), (windowHeight / 4), (windowWidth / 2), (windowHeight / 2)};
     SDL_RenderFillRect(renderer, &tic_tac_toe_rect);
 
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB value for grid lines: black
-    tic_tac_toe_draw_grid(tic_tac_toe_rect);
-}
-void tic_tac_toe_draw_grid(SDL_Rect &tic_tac_toe_rect)
-{
+    // Grid lines
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB value: Black
+
     // Calculate the number of squares inside the Tic Tac Toe rectangle
     int innertic_tac_toe_COLUMNS = tic_tac_toe_COLUMNS;
     int innertic_tac_toe_ROWS = tic_tac_toe_ROWS;
@@ -74,43 +78,41 @@ void tic_tac_toe_draw_grid(SDL_Rect &tic_tac_toe_rect)
         SDL_RenderDrawLine(renderer, tic_tac_toe_rect.x, tic_tac_toe_rect.y + i * squareHeight, tic_tac_toe_rect.x + tic_tac_toe_rect.w, tic_tac_toe_rect.y + i * squareHeight);
     }
 }
-void tic_tac_toe_draw_grid_text_positions()
+void tic_tac_toe_draw_choose_x_or_o_popup_window()
 {
-    render_text("1", static_cast<int>(windowWidth * 0.3), static_cast<int>(windowHeight * 0.3));
-    render_text("2", static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.3));
-    render_text("3", static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.3));
-    render_text("4", static_cast<int>(windowWidth * 0.3), static_cast<int>(windowHeight * 0.5));
-    render_text("5", static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.5));
-    render_text("6", static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.5));
-    render_text("7", static_cast<int>(windowWidth * 0.3), static_cast<int>(windowHeight * 0.7));
-    render_text("8", static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.7));
-    render_text("9", static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7));
-}
-void tic_tac_toe_draw_choose_x_or_o_first_popup()
-{
-    SDL_SetRenderDrawColor(renderer, 128, 128, 128, 255); // RGB value for Grey
-    SDL_Rect tic_tac_toe_text_area_rect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.76), (windowWidth / 3), (windowHeight / 5)};
-    SDL_RenderFillRect(renderer, &tic_tac_toe_text_area_rect);
-    
+    // Draw popup black border
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_Rect borderRect = {(windowWidth / 3) - 2, (windowHeight / 3) - 2, (windowWidth / 3) + 4, (windowHeight / 3) + 4};
+    SDL_RenderFillRect(renderer, &borderRect);
+
+    // draw popup
+    SDL_SetRenderDrawColor(renderer, 144, 238, 144, 255); // Popup color lime green
+    SDL_Rect popupRect = {(windowWidth / 3), (windowHeight / 3), (windowWidth / 3), (windowHeight / 3)};
+    SDL_RenderFillRect(renderer, &popupRect);
+
+    // Draw a close button
+    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.35), (windowWidth / 20), (windowHeight / 20)};
+    SDL_RenderCopy(renderer, tic_tac_toe_position_X_texture, nullptr, &closeButtonRect);
+
+    // Render text and buttons for player to pick choice
     if (tic_tac_toe_player_choose_x_or_o == false)
     {
-        render_text("Select Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.75));
+        render_text("Select Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.4));
 
-        SDL_Rect tic_tac_toe_X_rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8), (windowWidth / 10), (windowHeight / 10)};
-        SDL_Rect tic_tac_toe_O_rect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.8), (windowWidth / 10), (windowHeight / 10)};
-
+        SDL_Rect tic_tac_toe_X_rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
+        SDL_Rect tic_tac_toe_O_rect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
         SDL_RenderCopy(renderer, tic_tac_toe_position_X_texture, nullptr, &tic_tac_toe_X_rect);
         SDL_RenderCopy(renderer, tic_tac_toe_position_O_texture, nullptr, &tic_tac_toe_O_rect);
     }
-    else
+    else // after picking choice advise player what they choose
     {
         if (tic_tac_toe_player_choice == 0)
         {
-            render_text("You choose: 0", static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.75));
+            render_text("You choose: 0", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.4));
         }
         else
         {
-            render_text("You choose: X", static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.75));
+            render_text("You choose: X", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.4));
         }
     }
 }
@@ -186,14 +188,15 @@ void tic_tac_toe_new_game_reset_variables()
     tic_tac_toe_game_over = false;
     tic_tac_toe_player_opponent_game = false;
     tic_tac_toe_opponentsTurn = false;
+    tic_tac_toe_showPopup = true;
 }
 
 void tic_tac_toe_mouse_handle(int mouseX, int mouseY)
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
-    SDL_Rect tic_tac_toe_X_rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8), (windowWidth / 10), (windowHeight / 10)};
-    SDL_Rect tic_tac_toe_O_rect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.8), (windowWidth / 10), (windowHeight / 10)};
+    SDL_Rect tic_tac_toe_X_rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
+    SDL_Rect tic_tac_toe_O_rect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
 
     SDL_Rect tic_tac_toe_position_1_rect = {static_cast<int>(windowWidth * 0.25), static_cast<int>(windowHeight * 0.25), (windowWidth / 8), (windowHeight / 8)};
     SDL_Rect tic_tac_toe_position_2_rect = {static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.25), (windowWidth / 8), (windowHeight / 8)};
@@ -209,6 +212,8 @@ void tic_tac_toe_mouse_handle(int mouseX, int mouseY)
     SDL_Rect restartRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
     SDL_Rect settingsRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.5), rectWidth, rectHeight};
     SDL_Rect worldMapRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
+
+    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.35), (windowWidth / 20), (windowHeight / 20)};
 
     // Settings Buttons
     if (SDL_PointInRect(&mousePosition, &helpRect))
@@ -237,20 +242,8 @@ void tic_tac_toe_mouse_handle(int mouseX, int mouseY)
     // Choose X or O to start
     if (!tic_tac_toe_game_over)
     {
-        if (SDL_PointInRect(&mousePosition, &tic_tac_toe_X_rect))
-        {
-            tic_tac_toe_player_choice = 1;
-            tic_tac_toe_opponent_choice = 0;
-            tic_tac_toe_player_choose_x_or_o = true;
-        }
-        else if (SDL_PointInRect(&mousePosition, &tic_tac_toe_O_rect))
-        {
-            tic_tac_toe_player_choice = 0;
-            tic_tac_toe_opponent_choice = 1;
-            tic_tac_toe_player_choose_x_or_o = true;
-        }
-
-        if (tic_tac_toe_player_choose_x_or_o)
+        // After choosing X or O, drawing on grid
+        if (!tic_tac_toe_showPopup)
         {
             if (SDL_PointInRect(&mousePosition, &tic_tac_toe_position_1_rect))
             {
@@ -406,6 +399,36 @@ void tic_tac_toe_mouse_handle(int mouseX, int mouseY)
                 SDL_Delay(1000);
             }
         }
+        else
+        {
+            // Popup clicks
+            if (SDL_PointInRect(&mousePosition, &closeButtonRect))
+            {
+                if (tic_tac_toe_player_choose_x_or_o)
+                {
+                    std::cout << "You clicked Close Popup window" << std::endl;
+                    tic_tac_toe_showPopup = false;
+                }
+                else
+                {
+                    std::cout << "Erro: Cannot close popup without choosing X or O." << std::endl;
+                }
+            }
+            else if (SDL_PointInRect(&mousePosition, &tic_tac_toe_X_rect))
+            {
+                std::cout << "You choose X" << std::endl;
+                tic_tac_toe_player_choice = 1;
+                tic_tac_toe_opponent_choice = 0;
+                tic_tac_toe_player_choose_x_or_o = true;
+            }
+            else if (SDL_PointInRect(&mousePosition, &tic_tac_toe_O_rect))
+            {
+                std::cout << "You choose O" << std::endl;
+                tic_tac_toe_player_choice = 0;
+                tic_tac_toe_opponent_choice = 1;
+                tic_tac_toe_player_choose_x_or_o = true;
+            }
+        }
     }
 }
 
@@ -489,8 +512,6 @@ void tic_tac_toe_update_ai_logic()
     }
 
     std::vector<int> positionsTaken = {0, 9};
-
-    
 
     while (tic_tac_toe_opponentsTurn)
     {
@@ -628,9 +649,15 @@ void tic_tac_toe_SDL_draw()
     SDL_RenderCopy(renderer, romeDayBackgroundTexture, NULL, NULL);
     render_text("Ancient Rome - Tic Tac Toe", static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.1));
     tic_tac_toe_draw_field();
-    // tic_tac_toe_draw_grid_text_positions(); - for debugging only
     tic_tac_toe_draw_X_or_O();
-    tic_tac_toe_draw_choose_x_or_o_first_popup();
+    if (tic_tac_toe_showPopup)
+    {
+        tic_tac_toe_draw_choose_x_or_o_popup_window();
+    }
+    else
+    {
+        tic_tac_toe_draw_X_or_O();
+    }
     tic_tac_toe_draw_settings_buttons();
 
     if (tic_tac_toe_player_won_game)
