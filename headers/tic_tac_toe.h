@@ -45,13 +45,9 @@ void tic_tac_toe_load_textures()
 
 void tic_tac_toe_draw_field()
 {
-    // Play area - border
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB value: Black
-    SDL_Rect borderRect = {(windowWidth / 4) - 2, (windowHeight / 4) - 2, (windowWidth / 2) + 4, (windowHeight / 2) + 4};
-    SDL_RenderFillRect(renderer, &borderRect);
-
     // Play area
-    SDL_SetRenderDrawColor(renderer, 100, 100, 100, 255); // RGB value: light grey
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND); // Set the blend mode to enable transparency
+    SDL_SetRenderDrawColor(renderer, 100, 100, 100, 64); // RGB value: light grey, last digit (Alpha value = 256 / 4) (75% transparency)
     SDL_Rect tic_tac_toe_rect = {(windowWidth / 4), (windowHeight / 4), (windowWidth / 2), (windowHeight / 2)};
     SDL_RenderFillRect(renderer, &tic_tac_toe_rect);
 
