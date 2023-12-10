@@ -19,9 +19,9 @@ bool tic_tac_toe_opponent_won_game = false;
 bool tic_tac_toe_player_won_game = false;
 bool tic_tac_toe_draw_game = false;
 bool tic_tac_toe_game_over = false;
-bool tic_tac_toe_player_opponent_game = false;
 bool tic_tac_toe_opponentsTurn = false;
 bool tic_tac_toe_showPopup = true;
+bool tic_tac_toe_all_positions_available = true;
 
 // FUNCTION PROTOTYPES
 SDL_Texture *load_texture(const char *path, const char *name);
@@ -39,7 +39,7 @@ void tic_tac_toe_draw_field()
 {
     // Play area
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND); // Set the blend mode to enable transparency
-    SDL_SetRenderDrawColor(renderer, 100, 100, 100, 64); // RGB value: light grey, last digit (Alpha value = 256 / 4) (75% transparency)
+    SDL_SetRenderDrawColor(renderer, 100, 100, 100, 64);       // RGB value: light grey, last digit (Alpha value = 256 / 4) (75% transparency)
     SDL_Rect tic_tac_toe_rect = {(windowWidth / 4), (windowHeight / 4), (windowWidth / 2), (windowHeight / 2)};
     SDL_RenderFillRect(renderer, &tic_tac_toe_rect);
 
@@ -102,7 +102,10 @@ void tic_tac_toe_draw_choose_x_or_o_popup_window()
         {
             render_text("You choose: X", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.4));
         }
-        render_text("Press top right close ""X"" button to start", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.5));
+        render_text("Press top right close "
+                    "X"
+                    " button to start",
+                    static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.5));
     }
 }
 void tic_tac_toe_draw_X_or_O()
@@ -154,61 +157,35 @@ void tic_tac_toe_new_game_reset_variables()
     tic_tac_toe_player_choose_x_or_o = false;
     tic_tac_toe_opponent_won_game = false;
     tic_tac_toe_player_won_game = false;
+    tic_tac_toe_draw_game = false;
     tic_tac_toe_game_over = false;
-    tic_tac_toe_player_opponent_game = false;
     tic_tac_toe_opponentsTurn = false;
     tic_tac_toe_showPopup = true;
+    tic_tac_toe_all_positions_available = true;
 }
 
 void tic_tac_toe_is_position_taken(int index)
 {
     int gridPosition = index + 1;
-    if (!tic_tac_toe_opponentsTurn)
+    std::string competitor = tic_tac_toe_opponentsTurn ? "Opponent" : "Player";
+
+    if (tic_tac_toe_positions[index] == 2)
     {
-        if (tic_tac_toe_positions[index] == 2)
+        int choice = (competitor == "Player") ? tic_tac_toe_player_choice : tic_tac_toe_opponent_choice;
+        tic_tac_toe_positions[index] = choice;
+
+        if (!tic_tac_toe_game_over)
         {
-            if (tic_tac_toe_player_choice == 0)
+            tic_tac_toe_opponentsTurn = !tic_tac_toe_opponentsTurn;
+            if (tic_tac_toe_opponentsTurn)
             {
-                tic_tac_toe_positions[index] = 0;
+                SDL_Delay(1000);
             }
-            else if (tic_tac_toe_player_choice == 1)
-            {
-                tic_tac_toe_positions[index] = 1;
-            }
-            
-            if (!tic_tac_toe_game_over)
-            {
-                tic_tac_toe_opponentsTurn = true;
-            }
-            SDL_Delay(1000);
-        }
-        else
-        {
-            std::cout << "Position: " << gridPosition << " is taken. try again." << std::endl;
         }
     }
-    else if (tic_tac_toe_opponentsTurn)
+    else
     {
-        if (tic_tac_toe_positions[index] == 2)
-        {
-            if (tic_tac_toe_opponent_choice == 0)
-            {
-                tic_tac_toe_positions[index] = 0;
-            }
-            else if (tic_tac_toe_opponent_choice == 1)
-            {
-                tic_tac_toe_positions[index] = 1;
-            }
-            
-            if (!tic_tac_toe_game_over)
-            {
-                tic_tac_toe_opponentsTurn = false;
-            }
-        }
-        else
-        {
-            std::cout << "Position: " << gridPosition << " is taken. try again." << std::endl;
-        }
+        std::cout << competitor<< ", Position: " << gridPosition << " is taken. Try again." << std::endl;
     }
 }
 
@@ -278,7 +255,7 @@ void tic_tac_toe_mouse_handle(int mouseX, int mouseY)
             }
         }
         else // Popup clicks
-        {   
+        {
             if (SDL_PointInRect(&mousePosition, &closeButtonRect))
             {
                 if (tic_tac_toe_player_choose_x_or_o)
@@ -359,28 +336,24 @@ void tic_tac_toe_update_winning_logic()
     }
 
     // Draw condition
-    if (tic_tac_toe_player_choose_x_or_o) // If game has started
+    if (!tic_tac_toe_showPopup) // If game has started
     {
-        bool isBoardFull = true;
         for (int i = 0; i < tic_tac_toe_positions.size(); ++i)
         {
             if (tic_tac_toe_positions[i] == 2) // Check for any empty position
             {
-                isBoardFull = false;
+                tic_tac_toe_all_positions_available = false; // no empty positions
                 break;
             }
         }
 
-        if (isBoardFull)
+        if (tic_tac_toe_all_positions_available && !tic_tac_toe_player_won_game && !tic_tac_toe_opponent_won_game)
         {
-            if (!tic_tac_toe_player_won_game && !tic_tac_toe_opponent_won_game)
-            {
-                std::cout << "It's a Draw." << std::endl;
-                tic_tac_toe_game_over = true;
-                tic_tac_toe_draw_game = true;
-                tic_tac_toe_opponentsTurn = false;
-                Mix_PlayChannel(-1, loseGameSound, 0);
-            }
+            std::cout << "It's a Draw." << std::endl;
+            tic_tac_toe_game_over = true;
+            tic_tac_toe_draw_game = true;
+            tic_tac_toe_opponentsTurn = false;
+            Mix_PlayChannel(-1, loseGameSound, 0);
         }
     }
 }
