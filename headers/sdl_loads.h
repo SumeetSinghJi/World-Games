@@ -252,7 +252,6 @@ void load_sound()
 
 void load_textures()
 {
-    
     // Splash screen
     splashScreenTexture = load_texture("assets/graphics/AgniSamooh/AgniSamooh-HD-logo.png", "Developer Splash screen");
 
@@ -312,9 +311,11 @@ void load_textures()
     helpTexture = load_texture("assets/graphics/buttons/settings/book-button.png", "Help Button");
     restartTexture = load_texture("assets/graphics/buttons/settings/restart-button.png", "Restart Button");
     skipTexture = load_texture("assets/graphics/buttons/settings/skip-button.png", "Skip Button");
-    heartTexture = load_texture("assets/graphics/buttons/settings/heart-button.png", "Heart Button");
-    timerTexture = load_texture("assets/graphics/buttons/settings/timer-button.png", "Timer Button");
-    frequencyTexture = load_texture("assets/graphics/buttons/settings/frequency-button.png", "Frequency Button");
+
+    // HUD textures
+    heartTexture = load_texture("assets/graphics/HUD/settings/heart.png", "Heart");
+    timerTexture = load_texture("assets/graphics/HUD/settings/timer.png", "Timer");
+    frequencyTexture = load_texture("assets/graphics/HUD/settings/frequency.png", "Frequency");
 
     // Backgrounds
     // scenes 20 - 29

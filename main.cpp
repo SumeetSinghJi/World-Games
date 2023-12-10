@@ -35,6 +35,11 @@
 
 /*
     TO DO
+    * fix save/load header
+    * fix update header
+    * Fix reading readme and credits
+    * Fix mouse scroll up/down options
+    * Fix Keyboard main menu selection
 
     
 
