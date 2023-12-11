@@ -15,9 +15,7 @@ int tic_tac_toe_player_choice = 3;
 int tic_tac_toe_opponent_choice = 3;
 std::vector<int> tic_tac_toe_positions = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 bool tic_tac_toe_player_choose_x_or_o = false;
-bool tic_tac_toe_opponent_won_game = false;
-bool tic_tac_toe_player_won_game = false;
-bool tic_tac_toe_draw_game = false;
+int tic_tac_toe_winner = 0; // 1 = player, 2 = opponent, 3 = Draw
 bool tic_tac_toe_game_over = false;
 bool tic_tac_toe_opponentsTurn = false;
 bool tic_tac_toe_showPopup = true;
@@ -155,9 +153,7 @@ void tic_tac_toe_new_game_reset_variables()
     tic_tac_toe_opponent_choice = 3;
     tic_tac_toe_positions = {2, 2, 2, 2, 2, 2, 2, 2, 2};
     tic_tac_toe_player_choose_x_or_o = false;
-    tic_tac_toe_opponent_won_game = false;
-    tic_tac_toe_player_won_game = false;
-    tic_tac_toe_draw_game = false;
+    tic_tac_toe_winner = 0;
     tic_tac_toe_game_over = false;
     tic_tac_toe_opponentsTurn = false;
     tic_tac_toe_showPopup = true;
@@ -309,7 +305,7 @@ void tic_tac_toe_update_winning_logic()
         {
             std::cout << "Player wins" << std::endl;
             tic_tac_toe_game_over = true;
-            tic_tac_toe_player_won_game = true;
+            tic_tac_toe_winner = 1;
             tic_tac_toe_opponentsTurn = false;
             Mix_PlayChannel(-1, winGameSound, 0);
         }
@@ -329,7 +325,7 @@ void tic_tac_toe_update_winning_logic()
         {
             std::cout << "Opponent wins" << std::endl;
             tic_tac_toe_game_over = true;
-            tic_tac_toe_opponent_won_game = true;
+            tic_tac_toe_winner = 2;
             tic_tac_toe_opponentsTurn = false;
             Mix_PlayChannel(-1, loseGameSound, 0);
         }
@@ -347,11 +343,11 @@ void tic_tac_toe_update_winning_logic()
             }
         }
 
-        if (tic_tac_toe_all_positions_available && !tic_tac_toe_player_won_game && !tic_tac_toe_opponent_won_game)
+        if (tic_tac_toe_all_positions_available && tic_tac_toe_winner != 0 && tic_tac_toe_winner != 1)
         {
             std::cout << "It's a Draw." << std::endl;
             tic_tac_toe_game_over = true;
-            tic_tac_toe_draw_game = true;
+            tic_tac_toe_winner = 3;
             tic_tac_toe_opponentsTurn = false;
             Mix_PlayChannel(-1, loseGameSound, 0);
         }
@@ -385,15 +381,15 @@ void tic_tac_toe_SDL_draw()
     }
     tic_tac_toe_draw_settings_buttons();
 
-    if (tic_tac_toe_player_won_game)
+    if (tic_tac_toe_winner == 1)
     {
         render_text("player wins", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8));
     }
-    else if (tic_tac_toe_opponent_won_game)
+    else if (tic_tac_toe_winner == 2)
     {
         render_text("Opponent wins", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8));
     }
-    else if (tic_tac_toe_draw_game)
+    else if (tic_tac_toe_winner == 3)
     {
         render_text("It's a Draw.", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8));
     }
