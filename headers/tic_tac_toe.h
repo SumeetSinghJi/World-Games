@@ -219,6 +219,7 @@ void tic_tac_toe_update_winning_logic()
     {
         if (!tic_tac_toe_game_over)
         {
+            toggle_countdown();
             std::cout << "Player wins" << std::endl;
             tic_tac_toe_game_over = true;
             tic_tac_toe_winner = 1;
@@ -239,6 +240,7 @@ void tic_tac_toe_update_winning_logic()
     {
         if (!tic_tac_toe_game_over)
         {
+            toggle_countdown();
             std::cout << "Opponent wins" << std::endl;
             tic_tac_toe_game_over = true;
             tic_tac_toe_winner = 2;
@@ -261,6 +263,7 @@ void tic_tac_toe_update_winning_logic()
 
         if (tic_tac_toe_all_positions_available && tic_tac_toe_winner != 0 && tic_tac_toe_winner != 1)
         {
+            toggle_countdown();
             std::cout << "It's a Draw." << std::endl;
             tic_tac_toe_game_over = true;
             tic_tac_toe_winner = 3;
