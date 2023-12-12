@@ -7,6 +7,7 @@
 SDL_Texture *tic_tac_toe_position_X_texture = nullptr;
 SDL_Texture *tic_tac_toe_position_O_texture = nullptr;
 SDL_Texture *tic_tac_toe_position_line_texture = nullptr;
+SDL_Texture *tic_tac_toe_starting_player_texture;
 
 // main.cpp - Global variables
 extern bool timerRunning;
@@ -40,6 +41,7 @@ void tic_tac_toe_load_textures()
     tic_tac_toe_position_X_texture = load_texture("assets/graphics/games/tic_tac_toe/buttons/tic_tac_toe_X_texture.png", "Tic Tac Toe X image");
     tic_tac_toe_position_O_texture = load_texture("assets/graphics/games/tic_tac_toe/buttons/tic_tac_toe_O_texture.png", "Tic Tac Toe O image");
     tic_tac_toe_position_line_texture = load_texture("assets/graphics/games/tic_tac_toe/tic_tac_toe_line_texture.png", "Tic Tac Toe Line image");
+    tic_tac_toe_starting_player_texture = load_texture("assets/graphics/games/tic_tac_toe/tic_tac_toe_line_texture.png", "Tic Tac Toe Line image");
     romeDayBackgroundTexture = load_texture("assets/graphics/backgrounds/rome-day.jpg", "Rome Day Background");
 }
 void tic_tac_toe_draw_field()
@@ -75,48 +77,92 @@ void tic_tac_toe_draw_field()
 }
 void tic_tac_toe_draw_setup_game_popup_window()
 {
+    // DONT FORGET TO UPDATE mouse handles rects within world-games.cpp
+
     // Draw popup black border
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_Rect borderRect = {(windowWidth / 3) - 2, (windowHeight / 3) - 2, (windowWidth / 3) + 4, (windowHeight / 3) + 4};
+    SDL_Rect borderRect = {(windowWidth / 4) - 2, (windowHeight / 4) - 2, (windowWidth / 2) + 4, (windowHeight / 2) + 4};
     SDL_RenderFillRect(renderer, &borderRect);
 
     // draw popup
     SDL_SetRenderDrawColor(renderer, 144, 238, 144, 255); // Popup color lime green
-    SDL_Rect popupRect = {(windowWidth / 3), (windowHeight / 3), (windowWidth / 3), (windowHeight / 3)};
+    SDL_Rect popupRect = {(windowWidth / 4), (windowHeight / 4), (windowWidth / 2), (windowHeight / 2)};
     SDL_RenderFillRect(renderer, &popupRect);
 
     // Draw a close button
-    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.35), (windowWidth / 22), (windowHeight / 22)};
+    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.69), static_cast<int>(windowHeight * 0.28), (windowWidth / 22), (windowHeight / 22)};
     SDL_RenderCopy(renderer, tic_tac_toe_position_X_texture, nullptr, &closeButtonRect);
 
     // Render text and buttons for player to pick choice
     if (tic_tac_toe_player_choose_x_or_o == false)
     {
-        render_text("Select Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.4));
+        render_text("Select Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.26));
 
-        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        SDL_RenderFillRect(renderer, &borderRect);
-        
-        SDL_Rect XborderRect = {static_cast<int>(windowWidth * 0.4) - 2, static_cast<int>(windowHeight * 0.5) - 2, (windowWidth / 10) + 4, (windowHeight / 10) + 4};
-        SDL_Rect OborderRect = {static_cast<int>(windowWidth * 0.4) - 2, static_cast<int>(windowHeight * 0.5) - 2, (windowWidth / 10) + 4, (windowHeight / 10) + 4};
-        SDL_Rect tic_tac_toe_X_rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
-        SDL_Rect tic_tac_toe_O_rect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
+        // X button
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
+        SDL_Rect XborderLineRect = {static_cast<int>(windowWidth * 0.32) - 4, static_cast<int>(windowHeight * 0.34) - 4, (windowWidth / 18) + 8, (windowHeight / 18) + 8};
+        SDL_RenderFillRect(renderer, &XborderLineRect);
+
+        SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255); // RGB: Light grey
+        SDL_Rect XborderRect = {static_cast<int>(windowWidth * 0.32) - 2, static_cast<int>(windowHeight * 0.34) - 2, (windowWidth / 18) + 4, (windowHeight / 18) + 4};
+        SDL_RenderFillRect(renderer, &XborderRect);
+
+        SDL_Rect tic_tac_toe_X_rect = {static_cast<int>(windowWidth * 0.32), static_cast<int>(windowHeight * 0.34), (windowWidth / 18), (windowHeight / 18)};
+        SDL_RenderCopy(renderer, tic_tac_toe_position_X_texture, nullptr, &tic_tac_toe_X_rect);
+
+        // O button
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
+        SDL_Rect OborderLineRect = {static_cast<int>(windowWidth * 0.42) - 4, static_cast<int>(windowHeight * 0.34) - 4, (windowWidth / 18) + 8, (windowHeight / 18) + 8};
+        SDL_RenderFillRect(renderer, &OborderLineRect);
+
+        SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255); // RGB: Light grey
+        SDL_Rect OborderRect = {static_cast<int>(windowWidth * 0.42) - 2, static_cast<int>(windowHeight * 0.34) - 2, (windowWidth / 18) + 4, (windowHeight / 18) + 4};
+        SDL_RenderFillRect(renderer, &OborderRect);
+
+        SDL_Rect tic_tac_toe_O_rect = {static_cast<int>(windowWidth * 0.42), static_cast<int>(windowHeight * 0.34), (windowWidth / 18), (windowHeight / 18)};
+        SDL_RenderCopy(renderer, tic_tac_toe_position_O_texture, nullptr, &tic_tac_toe_O_rect);
     }
     else // after picking choice advise player what they choose
     {
         if (tic_tac_toe_player_choice == 0)
         {
             render_text("You choose: 0", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.4));
+            // highlight selected rect, and in if condition dont hide, so player can repick.
         }
         else
         {
             render_text("You choose: X", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.4));
+            // highlight selected rect, and in if condition dont hide, so player can repick.
         }
-        render_text("Press top right close "
-                    "X"
-                    " button to start",
-                    static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.5));
     }
+
+    render_text("Starting player", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.44));
+
+    // player starts first
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
+    SDL_Rect startingPlayerBorderLineRect = {static_cast<int>(windowWidth * 0.32) - 4, static_cast<int>(windowHeight * 0.54) - 4, (windowWidth / 18) + 8, (windowHeight / 18) + 8};
+    SDL_RenderFillRect(renderer, &startingPlayerBorderLineRect);
+
+    SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255); // RGB: Light grey
+    SDL_Rect startingPlayerBorderRect = {static_cast<int>(windowWidth * 0.32) - 2, static_cast<int>(windowHeight * 0.54) - 2, (windowWidth / 18) + 4, (windowHeight / 18) + 4};
+    SDL_RenderFillRect(renderer, &startingPlayerBorderRect);
+
+    SDL_Rect tic_tac_toe_player_start_first_rect = {static_cast<int>(windowWidth * 0.32), static_cast<int>(windowHeight * 0.54), (windowWidth / 18), (windowHeight / 18)};
+    SDL_RenderCopy(renderer, tic_tac_toe_starting_player_texture, nullptr, &tic_tac_toe_player_start_first_rect);
+
+    // Opponent starts first
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
+    SDL_Rect startingOpponentBorderLineRect = {static_cast<int>(windowWidth * 0.42) - 4, static_cast<int>(windowHeight * 0.54) - 4, (windowWidth / 18) + 8, (windowHeight / 18) + 8};
+    SDL_RenderFillRect(renderer, &startingOpponentBorderLineRect);
+
+    SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255); // RGB: Light grey
+    SDL_Rect startingOpponentBorderRect = {static_cast<int>(windowWidth * 0.42) - 2, static_cast<int>(windowHeight * 0.54) - 2, (windowWidth / 18) + 4, (windowHeight / 18) + 4};
+    SDL_RenderFillRect(renderer, &startingOpponentBorderRect);
+
+    SDL_Rect tic_tac_toe_opponent_start_first_rect = {static_cast<int>(windowWidth * 0.42), static_cast<int>(windowHeight * 0.54), (windowWidth / 18), (windowHeight / 18)};
+    SDL_RenderCopy(renderer, tic_tac_toe_starting_player_texture, nullptr, &tic_tac_toe_opponent_start_first_rect);
+    
+
 }
 void tic_tac_toe_draw_X_or_O()
 {
@@ -447,6 +493,7 @@ void tic_tac_toe_SDL_cleanup()
     SDL_DestroyTexture(tic_tac_toe_position_X_texture);
     SDL_DestroyTexture(tic_tac_toe_position_O_texture);
     SDL_DestroyTexture(tic_tac_toe_position_line_texture);
+    SDL_DestroyTexture(tic_tac_toe_starting_player_texture);
 }
 
 #endif
