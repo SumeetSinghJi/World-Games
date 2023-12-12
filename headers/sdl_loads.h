@@ -307,15 +307,15 @@ void load_textures()
     refreshAvailableGamesTexture = load_texture("assets/graphics/models/opponents/scene_7_opponent_plain_pose.png", "Refresh Available Games");
     returnToAvailableGamesTexture = load_texture("assets/graphics/models/opponents/scene_7_opponent_plain_pose.png", "Return to Available Games");
 
-    // HUD buttons
+    // Generic - Shared between Main menu + In Game
     helpTexture = load_texture("assets/graphics/buttons/settings/book-button.png", "Help Button");
     restartTexture = load_texture("assets/graphics/buttons/settings/restart-button.png", "Restart Button");
     skipTexture = load_texture("assets/graphics/buttons/settings/skip-button.png", "Skip Button");
 
     // HUD textures
-    heartTexture = load_texture("assets/graphics/HUD/settings/heart.png", "Heart");
-    timerTexture = load_texture("assets/graphics/HUD/settings/timer.png", "Timer");
-    frequencyTexture = load_texture("assets/graphics/HUD/settings/frequency.png", "Frequency");
+    heartTexture = load_texture("assets/graphics/HUD/heart.png", "Heart");
+    timerTexture = load_texture("assets/graphics/HUD/timer.png", "Timer");
+    frequencyTexture = load_texture("assets/graphics/HUD/frequency.png", "Frequency");
 
     // Backgrounds
     // scenes 20 - 29

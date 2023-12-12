@@ -1,5 +1,5 @@
 /*
-    Name: World Games | World Hand Games | World Hand Sports
+    Name: World Games
     Purpose: main.cpp
     Author: Sumeet Singh
     Website: www.sumeet-singh.com
@@ -13,9 +13,11 @@
 
 #include <iostream>                       // Core logic
 #include <cstdlib>                        // Core logic
-#include <ctime>                          // Core logic - for srand and time for Chrono
+#include <ctime>                          // Core logic - for srand
 #include <vector>                         // Core logic - for variables unlockedscenes/achievements
 #include <string>                         // Core logic
+#include <thread>                         // Core logic - for timer
+#include <chrono>                         // Core logic - for timer
 #include <fstream>                        // multiplatform method for for file open read write objects
 #include <SDL.h>                          // SDL Requirement
 #include <SDL_image.h>                    // SDL Requirement
@@ -41,7 +43,7 @@
     * Fix mouse scroll up/down options
     * Fix Keyboard main menu selection
 
-    
+
 
 */
 
@@ -101,7 +103,6 @@ Mix_Chunk *winGameSound = nullptr;
 Mix_Chunk *loseGameSound = nullptr;
 Mix_Chunk *drawGameSound = nullptr;
 
-
 // scene 6 - world map
 SDL_Texture *worldMapTexture = nullptr;  // scene 6
 SDL_Texture *saveTexture = nullptr;      // save button on world map
@@ -116,7 +117,7 @@ SDL_Texture *shanghaiTexture = nullptr;  // scene 29
 SDL_Texture *singaporeTexture = nullptr; // scene 25
 SDL_Texture *tokyoTexture = nullptr;     // scene 27
 
-SDL_Texture *romeTexture = nullptr;     // scene 32
+SDL_Texture *romeTexture = nullptr; // scene 32
 
 // scene 8 - multiplayer
 SDL_Texture *joinAvailableGameTexture = nullptr;           // Multiplayer buttons
@@ -127,7 +128,7 @@ SDL_Texture *returnToAvailableGamesTexture = nullptr;      // Multiplayer button
 
 // HUD buttons
 SDL_Texture *helpTexture = nullptr;      // In game - view rules from help
-SDL_Texture *restartTexture = nullptr;      // In game - swap icons from hands to abstract images
+SDL_Texture *restartTexture = nullptr;   // In game - swap icons from hands to abstract images
 SDL_Texture *skipTexture = nullptr;      // In game - skips Mentor explaining rules
 SDL_Texture *heartTexture = nullptr;     // In game - lives
 SDL_Texture *timerTexture = nullptr;     // In game - timer box
@@ -231,7 +232,7 @@ std::string os_version = "";                                          // Custom 
 int lastScene = 1;                                                    // Settings - return to last game scene
 bool isNight = NULL;                                                  // for background cosmetics
 
-// README SCROLL VARIABLES
+// README MOUSE SCROLL VARIABLES
 int scrollY = 0;      // Current scroll position
 int scrollSpeed = 20; // Speed of scrollin
 
@@ -240,6 +241,11 @@ int frameCount = 0;            // for FPS HUD display toggle
 int timerFPS, lastFrame, fps;  // for FPS HUD display toggle
 bool fps_condition = NULL;     // for FPS HUD display toggle
 int lastTime = SDL_GetTicks(); // for FPS HUD display toggle
+
+// HUD - Timer variables
+bool timerRunning = false;
+bool countdownStarted = false;
+int countdownSeconds = 10; // Initial countdown time
 
 // GAME VARIABLES
 bool game_started = NULL;                     // Toggle to prevent "continuing to game" if game hasn't begun
@@ -250,6 +256,13 @@ int selectedOption = 0;                       // For Keyboard arrow key or Gamep
 int menuTotalOptions = 7;                     // For Keyboard arrow key or Gamepad d-pad selection
 int SettingsTotalOptions = 10;                // For Keyboard arrow key or Gamepad d-pad selection
 int GameTotalOptions = 10;                    // For Keyboard arrow key or Gamepad d-pad selection
+
+/*
+_________________________________________________________________________________________________
+
+                                        Main Functions
+_________________________________________________________________________________________________
+*/
 
 // GAME LOGIC
 void is_scene_unlocked(int target)
@@ -312,6 +325,13 @@ void render_fps()
 }
 
 // MAIN MENU & SETTINGS FUNCTIONS
+void play_developer_splash_screen()
+{
+    // Display the splash screen for 2 seconds
+    SDL_RenderCopy(renderer, splashScreenTexture, NULL, NULL);
+    SDL_RenderPresent(renderer);
+    SDL_Delay(1000);
+}
 void change_resolution(int newWindowWidth, int newWindowHeight)
 {
     // Update the window size
@@ -546,11 +566,92 @@ void credits_file_read()
         startY += textHeight;
     }
 }
-void play_developer_splash_screen() {
-    // Display the splash screen for 2 seconds
-    SDL_RenderCopy(renderer, splashScreenTexture, NULL, NULL);
-    SDL_RenderPresent(renderer);
-    SDL_Delay(1000);
+
+// main.cpp HUD Functions
+void draw_timer()
+{
+    /* draw_timer() is placed in standard draw()
+    countdownSeconds can be any value from rect, but default value is global variable, countdownSeconds = 120;
+
+    Calculate minutes and seconds
+        if countdownSeconds = 75;
+            75 seconds / 60 = 1 minute
+            75 seconds / 60 = remainder 15 seconds
+        render_text(1:15)
+    */
+    SDL_Rect timerRect = {static_cast<int>(windowWidth * 0.05), static_cast<int>(windowHeight * 0.05), (windowWidth / 4), (windowHeight / 8)};
+    SDL_RenderCopy(renderer, timerTexture, nullptr, &timerRect);
+
+    int minutes = countdownSeconds / 60;
+    int seconds = countdownSeconds % 60;
+
+    // Convert minutes and seconds to a string in the format mm:ss
+    std::string timerText = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
+
+    render_text(timerText, timerRect.x + 150, timerRect.y + 30);
+}
+void toggle_countdown()
+{
+    // toggle_countdown() started whenever the popup for game start variable is closed
+    if (!countdownStarted)
+    {
+        countdownStarted = true;
+        std::thread countdownThread([]()
+                                    {
+            timerRunning = true;
+            for (; countdownSeconds > 0 && timerRunning; --countdownSeconds) {
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+            }
+            timerRunning = false;
+            if (countdownSeconds <= 0) {
+                if(!tic_tac_toe_showPopup) {
+                    tic_tac_toe_game_over = true;
+                    tic_tac_toe_winner = 3; // draw
+                }
+                
+            } });
+        countdownThread.detach(); // Detach the thread to let it run independently
+    }
+    else
+    {
+        countdownStarted = false;
+        timerRunning = false; // Stop the countdown when toggled off
+    }
+}
+void draw_win_frequency(std::vector<int> winners)
+{
+    SDL_Rect frequencyRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.3), (windowWidth / 6), (windowHeight / 6)};
+    SDL_RenderCopy(renderer, frequencyTexture, nullptr, &frequencyRect);
+
+    std::string winnerString = "";
+
+    for (const auto &winner : winners)
+    {
+        if (winner == 1)
+        {
+            winnerString = "Player";
+        }
+        else if (winner == 2)
+        {
+            winnerString = "Opponent";
+        }
+        else if (winner == 3)
+        {
+            winnerString = "Draw";
+        }
+        std::string renderWinner = "The Winner is: " + winnerString;
+        int yOffSet = 40; // include a space of 40 y for Render text height location
+        render_text(renderWinner, static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.3) + yOffSet);
+        yOffSet += 40; // add a space for next winner
+    }
+}
+void draw_lives(bool game_uses_lives)
+{
+    if (game_uses_lives)
+    {
+        SDL_Rect heartRect = {(windowWidth / 1), (windowHeight / 1), (windowWidth / 1), (windowHeight / 1)};
+        SDL_RenderCopy(renderer, heartTexture, nullptr, &heartRect);
+    }
 }
 
 // SDL CODE FUNCTIONS
@@ -722,7 +823,6 @@ void update()
         lastTime = currentTime;
     }
 
-
     if (scene == 1) // menu
     {
         songTitle = "assets/sounds/music/Time - AlexiAction.mp3";
@@ -754,10 +854,10 @@ void update()
     else if (scene == 9) // leaderboard
     {
     }
-    else if (scene == 32) {
+    else if (scene == 32)
+    {
         tic_tac_toe_SDL_update();
     }
-
 }
 void draw()
 {
@@ -814,7 +914,8 @@ void draw()
         text_for_HUD_scene_9();
         render_buttons_scene_9();
     }
-    else if (scene == 32) {
+    else if (scene == 32)
+    {
         tic_tac_toe_SDL_draw();
     }
 
@@ -881,7 +982,7 @@ void exit_SDL()
     SDL_DestroyTexture(singaporeTexture); // scene 25
     SDL_DestroyTexture(tokyoTexture);     // scene 27
 
-    SDL_DestroyTexture(romeTexture);     // scene 32
+    SDL_DestroyTexture(romeTexture); // scene 32
 
     // scene 8 - multiplayer
     SDL_DestroyTexture(joinAvailableGameTexture);
