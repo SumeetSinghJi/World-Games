@@ -21,8 +21,9 @@ int tic_tac_toe_player_choice = 3;
 int tic_tac_toe_opponent_choice = 3;
 std::vector<int> tic_tac_toe_positions = {2, 2, 2, 2, 2, 2, 2, 2, 2};
 bool tic_tac_toe_player_choose_x_or_o = false;
-int tic_tac_toe_winner = 0; // 1 = player, 2 = opponent, 3 = Draw
-std::vector<int> tic_tac_toe_winner_history; // store values for draw_win_frequency
+int tic_tac_toe_winner = 0;                  // 1 = player, 2 = opponent, 3 = Draw
+std::vector<int> tic_tac_toe_winner_history; // store values for draw_win_frequency who won
+std::vector<int> tic_tac_toe_winner_choice_history; // store values for draw_win_frequency choice
 bool tic_tac_toe_game_over = false;
 bool tic_tac_toe_opponentsTurn = false;
 bool tic_tac_toe_showPopup = true;
@@ -161,8 +162,6 @@ void tic_tac_toe_draw_setup_game_popup_window()
 
     SDL_Rect tic_tac_toe_opponent_start_first_rect = {static_cast<int>(windowWidth * 0.42), static_cast<int>(windowHeight * 0.54), (windowWidth / 18), (windowHeight / 18)};
     SDL_RenderCopy(renderer, tic_tac_toe_starting_player_texture, nullptr, &tic_tac_toe_opponent_start_first_rect);
-    
-
 }
 void tic_tac_toe_draw_X_or_O()
 {
@@ -216,12 +215,11 @@ void tic_tac_toe_update_new_game_reset_variables()
     tic_tac_toe_game_over = false;
     tic_tac_toe_opponentsTurn = false;
     tic_tac_toe_showPopup = true;
-    tic_tac_toe_all_positions_available = true;
-    
+
     // Restart timer - generic function
     timerRunning = false;
     countdownStarted = false;
-    countdownSeconds = 10;
+    countdownSeconds = 20;
 }
 void tic_tac_toe_update_is_position_taken(int index)
 {
@@ -233,14 +231,7 @@ void tic_tac_toe_update_is_position_taken(int index)
         int choice = (competitor == "Player") ? tic_tac_toe_player_choice : tic_tac_toe_opponent_choice;
         tic_tac_toe_positions[index] = choice;
 
-        if (!tic_tac_toe_game_over)
-        {
-            tic_tac_toe_opponentsTurn = !tic_tac_toe_opponentsTurn;
-            if (tic_tac_toe_opponentsTurn)
-            {
-                SDL_Delay(1000);
-            }
-        }
+        tic_tac_toe_opponentsTurn = !tic_tac_toe_opponentsTurn;
     }
     else
     {
@@ -299,32 +290,46 @@ void tic_tac_toe_update_winning_logic()
     }
 
     // Draw condition
-    if (!tic_tac_toe_showPopup) // If game has started
+    if (!tic_tac_toe_showPopup && !tic_tac_toe_game_over) // If game has started and not over (to not keep cout "it's a draw")
     {
+        bool tic_tac_toe_all_positions_used = true;
         for (int i = 0; i < tic_tac_toe_positions.size(); ++i)
         {
+
             if (tic_tac_toe_positions[i] == 2) // Check for any empty position
             {
-                tic_tac_toe_all_positions_available = false; // no empty positions
+                tic_tac_toe_all_positions_used = false; // no empty positions
                 break;
             }
         }
 
-        if (tic_tac_toe_all_positions_available && tic_tac_toe_winner != 0 && tic_tac_toe_winner != 1)
+        if (tic_tac_toe_all_positions_used && tic_tac_toe_winner != 1 && tic_tac_toe_winner != 2)
         {
             toggle_countdown();
             std::cout << "It's a Draw." << std::endl;
+            tic_tac_toe_opponentsTurn = false;
             tic_tac_toe_game_over = true;
             tic_tac_toe_winner = 3;
-            tic_tac_toe_opponentsTurn = false;
             Mix_PlayChannel(-1, loseGameSound, 0);
         }
     }
 
-    if (tic_tac_toe_game_over)
+    if (tic_tac_toe_game_over) // Add winner and combination to Frequency rect
     {
-        // add winner to winner array to output in winners
         tic_tac_toe_winner_history.push_back(tic_tac_toe_winner);
+
+        if (tic_tac_toe_winner == 1)
+        {
+            tic_tac_toe_winner_choice_history.push_back(tic_tac_toe_player_choice);
+        }
+        else if (tic_tac_toe_winner == 2)
+        {
+            tic_tac_toe_winner_choice_history.push_back(tic_tac_toe_opponent_choice);
+        }
+        else if (tic_tac_toe_winner == 3)
+        {
+            tic_tac_toe_winner_choice_history.push_back(2); // Draw
+        }
     }
 }
 void tic_tac_toe_update_ai_logic()
@@ -343,8 +348,8 @@ void tic_tac_toe_mouse_handle(int mouseX, int mouseY)
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
-    SDL_Rect tic_tac_toe_X_rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
-    SDL_Rect tic_tac_toe_O_rect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
+    SDL_Rect tic_tac_toe_X_rect = {static_cast<int>(windowWidth * 0.32), static_cast<int>(windowHeight * 0.34), (windowWidth / 18), (windowHeight / 18)};
+    SDL_Rect tic_tac_toe_O_rect = {static_cast<int>(windowWidth * 0.42), static_cast<int>(windowHeight * 0.34), (windowWidth / 18), (windowHeight / 18)};
 
     std::vector<SDL_Rect> positionRects = {
         {static_cast<int>(windowWidth * 0.25), static_cast<int>(windowHeight * 0.25), (windowWidth / 8), (windowHeight / 8)},
@@ -357,14 +362,14 @@ void tic_tac_toe_mouse_handle(int mouseX, int mouseY)
         {static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.6), (windowWidth / 8), (windowHeight / 8)},
         {static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.6), (windowWidth / 8), (windowHeight / 8)}};
 
-    SDL_Rect helpRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.3), rectWidth, rectHeight};
-    SDL_Rect restartRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
-    SDL_Rect settingsRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.5), rectWidth, rectHeight};
-    SDL_Rect worldMapRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
+    SDL_Rect helpRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.3), (windowWidth / 8), (windowHeight / 8)};
+    SDL_Rect restartRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.4), (windowWidth / 8), (windowHeight / 8)};
+    SDL_Rect settingsRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.5), (windowWidth / 8), (windowHeight / 8)};
+    SDL_Rect worldMapRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.6), (windowWidth / 8), (windowHeight / 8)};
+
     SDL_Rect timerRect = {static_cast<int>(windowWidth * 0.05), static_cast<int>(windowHeight * 0.05), (windowWidth / 4), (windowHeight / 8)};
 
-
-    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.35), (windowWidth / 20), (windowHeight / 20)};
+    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.69), static_cast<int>(windowHeight * 0.28), (windowWidth / 22), (windowHeight / 22)};
 
     // Settings Buttons
     if (SDL_PointInRect(&mousePosition, &helpRect))
