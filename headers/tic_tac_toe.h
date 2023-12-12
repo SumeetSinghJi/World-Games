@@ -73,7 +73,7 @@ void tic_tac_toe_draw_field()
         SDL_RenderDrawLine(renderer, tic_tac_toe_rect.x, tic_tac_toe_rect.y + i * squareHeight, tic_tac_toe_rect.x + tic_tac_toe_rect.w, tic_tac_toe_rect.y + i * squareHeight);
     }
 }
-void tic_tac_toe_draw_choose_x_or_o_popup_window()
+void tic_tac_toe_draw_setup_game_popup_window()
 {
     // Draw popup black border
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -94,10 +94,13 @@ void tic_tac_toe_draw_choose_x_or_o_popup_window()
     {
         render_text("Select Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.4));
 
+        SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+        SDL_RenderFillRect(renderer, &borderRect);
+        
+        SDL_Rect XborderRect = {static_cast<int>(windowWidth * 0.4) - 2, static_cast<int>(windowHeight * 0.5) - 2, (windowWidth / 10) + 4, (windowHeight / 10) + 4};
+        SDL_Rect OborderRect = {static_cast<int>(windowWidth * 0.4) - 2, static_cast<int>(windowHeight * 0.5) - 2, (windowWidth / 10) + 4, (windowHeight / 10) + 4};
         SDL_Rect tic_tac_toe_X_rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
         SDL_Rect tic_tac_toe_O_rect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
-        SDL_RenderCopy(renderer, tic_tac_toe_position_X_texture, nullptr, &tic_tac_toe_X_rect);
-        SDL_RenderCopy(renderer, tic_tac_toe_position_O_texture, nullptr, &tic_tac_toe_O_rect);
     }
     else // after picking choice advise player what they choose
     {
@@ -410,7 +413,7 @@ void tic_tac_toe_SDL_draw()
 
     if (tic_tac_toe_showPopup)
     {
-        tic_tac_toe_draw_choose_x_or_o_popup_window();
+        tic_tac_toe_draw_setup_game_popup_window();
     }
     else
     {
@@ -438,7 +441,7 @@ void tic_tac_toe_SDL_update()
     songTitle = "assets/sounds/music/Old Rome - PianoAmor.mp3";
     load_music(songTitle);
 }
-void tic_tac_toe_cleanup()
+void tic_tac_toe_SDL_cleanup()
 {
     // tic_tac_toe_textures
     SDL_DestroyTexture(tic_tac_toe_position_X_texture);

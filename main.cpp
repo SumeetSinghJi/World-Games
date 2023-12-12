@@ -654,6 +654,13 @@ void draw_lives(bool game_uses_lives)
     }
 }
 
+/*
+_________________________________________________________________________________________________
+
+                                        MAIN SDL Functions
+_________________________________________________________________________________________________
+*/
+
 // SDL CODE FUNCTIONS
 void start_SDL()
 {
@@ -1096,7 +1103,7 @@ void exit_SDL()
     SDL_DestroyWindow(window);
 
     // Games
-    tic_tac_toe_cleanup();
+    tic_tac_toe_SDL_cleanup();
 
     // Quit SDL subsystems
     Mix_Quit();
