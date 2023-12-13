@@ -571,28 +571,6 @@ void credits_file_read()
 }
 
 // main.cpp HUD Functions
-void draw_timer()
-{
-    /* draw_timer() is placed in standard draw()
-    countdownSeconds can be any value from rect, but default value is global variable, countdownSeconds = 120;
-
-    Calculate minutes and seconds
-        if countdownSeconds = 75;
-            75 seconds / 60 = 1 minute
-            75 seconds / 60 = remainder 15 seconds
-        render_text(1:15)
-    */
-    SDL_Rect timerRect = {static_cast<int>(windowWidth * 0.05), static_cast<int>(windowHeight * 0.05), (windowWidth / 4), (windowHeight / 8)};
-    SDL_RenderCopy(renderer, timerTexture, nullptr, &timerRect);
-
-    int minutes = countdownSeconds / 60;
-    int seconds = countdownSeconds % 60;
-
-    // Convert minutes and seconds to a string in the format mm:ss
-    std::string timerText = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
-
-    render_text(timerText, timerRect.x + 150, timerRect.y + 30);
-}
 void toggle_countdown()
 {
     // toggle_countdown() started whenever the popup for game start variable is closed
@@ -621,15 +599,44 @@ void toggle_countdown()
         timerRunning = false; // Stop the countdown when toggled off
     }
 }
-void draw_win_frequency(std::vector<int> winners)
+
+void draw_timer()
+{
+    /* draw_timer() is placed in standard draw()
+    countdownSeconds can be any value from rect, but default value is global variable, countdownSeconds = 120;
+
+    Calculate minutes and seconds
+        if countdownSeconds = 75;
+            75 seconds / 60 = 1 minute
+            75 seconds / 60 = remainder 15 seconds
+        render_text(1:15)
+    */
+    SDL_Rect timerRect = {static_cast<int>(windowWidth * 0.05), static_cast<int>(windowHeight * 0.05), (windowWidth / 4), (windowHeight / 8)};
+    SDL_RenderCopy(renderer, timerTexture, nullptr, &timerRect);
+
+    int minutes = countdownSeconds / 60;
+    int seconds = countdownSeconds % 60;
+
+    // If minutes or seconds < 10, it will add an 0 e.g. 120 seconds = 2. As 2 < 10, final output: 02:00
+    std::string timerText = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
+
+    render_text(timerText, timerRect.x + 150, timerRect.y + 30);
+}
+void draw_win_frequency(const std::vector<int> &winners, const std::vector<int> &winnersChoice)
 {
     SDL_Rect frequencyRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.3), (windowWidth / 6), (windowHeight / 6)};
     SDL_RenderCopy(renderer, frequencyTexture, nullptr, &frequencyRect);
 
-    std::string winnerString = "";
+    int frequencyRectyOffSet = 0; // Initialize offset for vertical spacing
 
-    for (const auto &winner : winners)
+    for (size_t i = 0; i < winners.size(); ++i)
     {
+        std::string winnerString = "";
+        std::string winnerChoiceString = "";
+
+        int winner = winners[i];
+        int winnerChoice = winnersChoice[i];
+
         if (winner == 1)
         {
             winnerString = "Player";
@@ -642,17 +649,38 @@ void draw_win_frequency(std::vector<int> winners)
         {
             winnerString = "Draw";
         }
-        std::string renderWinner = "The Winner is: " + winnerString;
-        int yOffSet = 40; // include a space of 40 y for Render text height location
-        render_text(renderWinner, static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.3) + yOffSet);
-        yOffSet += 40; // add a space for next winner
+
+        if (winnerChoice == 0)
+        {
+            winnerChoiceString = "O";
+        }
+        else if (winnerChoice == 1)
+        {
+            winnerChoiceString = "X";
+        }
+        else if (winnerChoice == 2)
+        {
+            winnerChoiceString = "";
+        }
+
+        // Render winner and their choice at appropriate positions
+        render_text(winnerString, static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet);
+        render_text(winnerChoiceString, static_cast<int>(windowWidth * 0.92), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet);
+
+        frequencyRectyOffSet += 40; // Move to the next vertical position for next winner
     }
 }
-void draw_lives(bool game_uses_lives)
+void draw_lives(int lives)
 {
-    if (game_uses_lives)
+    int initialHeartX = static_cast<int>(windowWidth * 0.37); // Initial x-position for the first heart
+    int heartWidth = windowWidth / 26;                        // Width of each heart
+    int xHeartSpacing = 5;                                    // Adjust this value for spacing between hearts
+
+    SDL_Rect heartRect = {initialHeartX, static_cast<int>(windowHeight * 0.15), heartWidth, heartWidth};
+
+    for (int i = 0; i < lives; i++)
     {
-        SDL_Rect heartRect = {(windowWidth / 1), (windowHeight / 1), (windowWidth / 1), (windowHeight / 1)};
+        heartRect.x = initialHeartX + (heartWidth + xHeartSpacing) * i;
         SDL_RenderCopy(renderer, heartTexture, nullptr, &heartRect);
     }
 }
