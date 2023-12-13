@@ -16,7 +16,6 @@ extern std::string songTitle;
 extern std::string currentSong;
 
 // for Sound effects (SFX)
-// In Game
 extern Mix_Chunk *winRoundSound;
 extern Mix_Chunk *loseRoundSound;
 extern Mix_Chunk *winGameSound;
@@ -53,10 +52,13 @@ extern SDL_Texture *resolutionFullScreenTexture;
 extern SDL_Texture *returnGameTexture;
 extern SDL_Texture *returnTitleTexture;
 
-// help buttons
 // Uses return to title button from settings
 extern SDL_Texture *forwardTexture;
 extern SDL_Texture *backwardTexture;
+
+// Popup textures
+extern SDL_Texture *humanTexture;
+extern SDL_Texture *computerTexture;
 
 // scene 6 - world map
 extern SDL_Texture *worldMapTexture;  // scene 6
@@ -316,6 +318,10 @@ void load_textures()
     heartTexture = load_texture("assets/graphics/HUD/heart.png", "Heart");
     timerTexture = load_texture("assets/graphics/HUD/timer.png", "Timer");
     frequencyTexture = load_texture("assets/graphics/HUD/frequency.png", "Frequency");
+
+    // Popup buttons
+    humanTexture = load_texture("assets/graphics/HUD/human-button.png", "Human");
+    computerTexture = load_texture("assets/graphics/HUD/computer-button.png", "Computer"); 
 
     // Backgrounds
     // scenes 20 - 29

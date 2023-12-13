@@ -14,7 +14,7 @@
 #include <iostream>                       // Core logic
 #include <cstdlib>                        // Core logic
 #include <ctime>                          // Core logic - for srand
-#include <vector>                         // Core logic - for variables unlockedscenes/achievements
+#include <vector>                         // Core logic
 #include <string>                         // Core logic
 #include <thread>                         // Core logic - for timer
 #include <chrono>                         // Core logic - for timer
@@ -88,6 +88,10 @@ SDL_Texture *returnTitleTexture = nullptr;
 SDL_Texture *forwardTexture = nullptr;
 SDL_Texture *backwardTexture = nullptr;
 
+// Popup textures
+SDL_Texture *humanTexture = nullptr;
+SDL_Texture *computerTexture = nullptr;
+
 // animations
 SDL_Texture *fireworksAnimationTexture = nullptr;
 SDL_Surface *fireworksAnimationSurface = nullptr;
@@ -96,7 +100,6 @@ SDL_Surface *fireworksAnimationSurface = nullptr;
 Mix_Music *music = nullptr;
 
 // for Sound effects (SFX)
-// In Game
 Mix_Chunk *winRoundSound = nullptr;
 Mix_Chunk *loseRoundSound = nullptr;
 Mix_Chunk *winGameSound = nullptr;
@@ -1005,6 +1008,10 @@ void exit_SDL()
     SDL_DestroyTexture(heartTexture);
     SDL_DestroyTexture(timerTexture);
     SDL_DestroyTexture(frequencyTexture);
+
+    // Popup textures
+    SDL_DestroyTexture(humanTexture);
+    SDL_DestroyTexture(computerTexture);
 
     // backgrounds
     SDL_DestroyTexture(tutorialBackgroundTexture);

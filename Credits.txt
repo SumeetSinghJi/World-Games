@@ -26,7 +26,10 @@ Settings buttons
 * restart button by Radhika Paghdal taken from icon-icons.com
 * Font, size icon by Ant design from icon-icons.com
 * book icon by ChrisL21 (Chris) from icon-icons.com
-* All button images otherwise forgotten to be attributed taken from icon-icons.com
+* Human button by Bryn Taylor from  icon-icons.com
+* Computer button by Vexels from icon-icons.com
+* All button images otherwise with missing attributions taken from respective
+authors fromicon-icons.com
 
 
 Country buttons
