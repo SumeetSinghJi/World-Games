@@ -26,8 +26,6 @@ extern int menuTotalOptions;
 extern bool quit_event_loop;
 extern int rectWidth;
 extern int rectHeight;
-extern int menulogoWidth;
-extern int menulogoHeight;
 // README SCROLL VARIABLES
 extern int scrollY;
 extern int scrollSpeed;
@@ -49,7 +47,7 @@ void handle_keyboard_scene_1(SDL_Event event)
     SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
     SDL_Rect menuUpdateGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
     SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.85), rectWidth, rectHeight};
-    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.73), menulogoWidth, menulogoHeight};
+    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
 
     // Highlight the selected option for keyboard arrow key and gamepad d pad key input
     SDL_Rect selectedRect = {

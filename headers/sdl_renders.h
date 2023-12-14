@@ -70,8 +70,6 @@ extern int textWidth, textHeight;
 extern int fontSize;
 extern int rectWidth;
 extern int rectHeight;
-extern int menulogoWidth;
-extern int menulogoHeight;
 extern int worldmapRegionWidth;
 extern int worldmapRegionHeight;
 extern int selectedOption;    // For keyboard arrow key and gamepad d pad key option select 
@@ -137,7 +135,7 @@ void render_buttons_scene_1() // Main menu
     SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
     SDL_Rect menuUpdateGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
     SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.85), rectWidth, rectHeight};
-    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.73), menulogoWidth, menulogoHeight};
+    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
 
     // Highlight the selected option for keyboard arrow key and gamepad d pad key input
     SDL_Rect selectedRect = {

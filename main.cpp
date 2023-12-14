@@ -37,6 +37,7 @@
 
 /*
     TO DO
+    * MouseRect for leave full screen, what will happen?
     * fix save/load header
     * fix update header
     * Fix reading readme and credits
@@ -211,16 +212,10 @@ SDL_Event event;                          // event loop object initialise
 bool quit_event_loop = NULL;    // for run_SDL Event loop
 int windowWidth = 1366;         // for Window resolution
 int windowHeight = 768;         // for Window resolution
-int rectWidth = 50;             // default button Rect width/height
-int rectHeight = 50;            // default button width/height
-int menulogoWidth = 330;        // Main menu Developer logo button size
-int menulogoHeight = 130;       // Main menu Developer logo button size
-int handWidth = 150;            // Rock paper scissors button size
-int handHeight = 150;           // Rock paper scissors button size
-int worldmapRegionWidth = 100;  // World Map scenes button size
-int worldmapRegionHeight = 100; // World Map scenes button size
-int avatarInGameWidth = 300;    // World Map scenes button size
-int avatarInGameHeight = 300;   // World Map scenes button size
+int rectWidth = (windowWidth / 18);             // default button Rect width/height
+int rectHeight = (windowHeight / 18);            // default button width/height
+int worldmapRegionWidth = (windowWidth / 18);  // World Map scenes button size
+int worldmapRegionHeight = (windowWidth / 18); // World Map scenes button size
 int textWidth = 0;              // for font
 int textHeight = 0;             // for font
 int fontSize = 36;              // for font
@@ -343,42 +338,24 @@ void change_resolution(int newWindowWidth, int newWindowHeight)
 
     if (windowWidth == 800)
     {
-        rectWidth = 50;
-        rectHeight = 50;
-        menulogoWidth = 200;
-        menulogoHeight = 100;
-        worldmapRegionWidth = 50;
-        worldmapRegionHeight = 50;
-        avatarInGameWidth = 150;
-        avatarInGameHeight = 150;
-        handWidth = 100;
-        handHeight = 100;
+        int rectWidth = (windowWidth / 18);             // default button Rect width/height
+        int rectHeight = (windowHeight / 18);            // default button width/height
+        int worldmapRegionWidth = (windowWidth / 18);  // World Map scenes button size
+        int worldmapRegionHeight = (windowWidth / 18); // World Map scenes button size
     }
     else if (windowWidth == 1366)
     {
-        rectWidth = 50;
-        rectHeight = 50;
-        menulogoWidth = 330;
-        menulogoHeight = 130;
-        worldmapRegionWidth = 100;
-        worldmapRegionHeight = 100;
-        avatarInGameWidth = 300;
-        avatarInGameHeight = 300;
-        handWidth = 200;
-        handHeight = 200;
+        int rectWidth = (windowWidth / 18);             // default button Rect width/height
+        int rectHeight = (windowHeight / 18);            // default button width/height
+        int worldmapRegionWidth = (windowWidth / 18);  // World Map scenes button size
+        int worldmapRegionHeight = (windowWidth / 18); // World Map scenes button size
     }
     else if (windowWidth == 1920)
     {
-        rectWidth = 150;
-        rectHeight = 150;
-        menulogoWidth = 400;
-        menulogoHeight = 200;
-        worldmapRegionWidth = 150;
-        worldmapRegionHeight = 150;
-        avatarInGameWidth = 600;
-        avatarInGameHeight = 600;
-        handWidth = 300;
-        handHeight = 300;
+        int rectWidth = (windowWidth / 18);             // default button Rect width/height
+        int rectHeight = (windowHeight / 18);            // default button width/height
+        int worldmapRegionWidth = (windowWidth / 18);  // World Map scenes button size
+        int worldmapRegionHeight = (windowWidth / 18); // World Map scenes button size
     }
 }
 void new_game()

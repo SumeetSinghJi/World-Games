@@ -14,7 +14,8 @@
                 "-I./src/curl/include", // libcurl
                 "-I./src/libzip", // libzib
                 "-g",
-                "${file}",
+                // "${file}", // uncomment for only building main.cpp
+                "${fileDirname}/*.cpp", // uncomment for combining all .cpp files
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
 				"-L./src/SDL2/x86_64-w64-mingw32/lib", // SDL2 lib folder
