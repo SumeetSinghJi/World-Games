@@ -133,7 +133,12 @@ SDL_Texture *returnToAvailableGamesTexture = nullptr;      // Multiplayer button
 SDL_Texture *helpTexture = nullptr;      // In game - view rules from help
 SDL_Texture *restartTexture = nullptr;   // In game - swap icons from hands to abstract images
 SDL_Texture *skipTexture = nullptr;      // In game - skips Mentor explaining rules
-SDL_Texture *heartTexture = nullptr;     // In game - lives
+SDL_Texture *heartTexture = nullptr;     // In game - Rounds
+SDL_Texture *hearts2Texture = nullptr;     // In game - Rounds
+SDL_Texture *hearts3Texture = nullptr;     // In game - Rounds
+SDL_Texture *hearts4Texture = nullptr;     // In game - Rounds
+SDL_Texture *hearts5Texture = nullptr;     // In game - Rounds
+SDL_Texture *hearts10Texture = nullptr;     // In game - Rounds
 SDL_Texture *timerTexture = nullptr;     // In game - timer box
 SDL_Texture *frequencyTexture = nullptr; // In game - frequency box
 
@@ -1014,6 +1019,11 @@ void exit_SDL()
     SDL_DestroyTexture(restartTexture);
     SDL_DestroyTexture(skipTexture);
     SDL_DestroyTexture(heartTexture);
+    SDL_DestroyTexture(hearts2Texture);
+    SDL_DestroyTexture(hearts3Texture);
+    SDL_DestroyTexture(hearts4Texture);
+    SDL_DestroyTexture(hearts5Texture);
+    SDL_DestroyTexture(hearts10Texture);
     SDL_DestroyTexture(timerTexture);
     SDL_DestroyTexture(frequencyTexture);
 

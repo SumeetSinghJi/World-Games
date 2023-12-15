@@ -251,14 +251,21 @@ void ttt_draw_setup_game_popup_window()
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &heartRounds3ButtonRect);
 
     SDL_Rect heartRounds3Rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.72), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, heartTexture, nullptr, &heartRounds3Rect);
+    SDL_RenderCopy(renderer, hearts3Texture, nullptr, &heartRounds3Rect);
 
     // 5 Rounds
     SDL_Rect heartRounds5ButtonRect = {static_cast<int>(windowWidth * 0.46) - buttonXOffset, static_cast<int>(windowHeight * 0.72) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &heartRounds5ButtonRect);
 
     SDL_Rect heartRounds5Rect = {static_cast<int>(windowWidth * 0.46), static_cast<int>(windowHeight * 0.72), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, heartTexture, nullptr, &heartRounds5Rect);
+    SDL_RenderCopy(renderer, hearts5Texture, nullptr, &heartRounds5Rect);
+
+    // 10 Rounds
+    SDL_Rect heartRounds10ButtonRect = {static_cast<int>(windowWidth * 0.56) - buttonXOffset, static_cast<int>(windowHeight * 0.72) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_RenderCopy(renderer, buttonTexture, nullptr, &heartRounds10ButtonRect);
+
+    SDL_Rect heartRounds10Rect = {static_cast<int>(windowWidth * 0.56), static_cast<int>(windowHeight * 0.72), rectWidth, rectHeight};
+    SDL_RenderCopy(renderer, hearts10Texture, nullptr, &heartRounds10Rect);
 
     /*
 
@@ -623,6 +630,7 @@ void ttt_mouse_handle(int mouseX, int mouseY)
     SDL_Rect heartRounds1Rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.72), rectWidth, rectHeight};
     SDL_Rect heartRounds3Rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.72), rectWidth, rectHeight};
     SDL_Rect heartRounds5Rect = {static_cast<int>(windowWidth * 0.46), static_cast<int>(windowHeight * 0.72), rectWidth, rectHeight};
+    SDL_Rect heartRounds10Rect = {static_cast<int>(windowWidth * 0.56) - buttonXOffset, static_cast<int>(windowHeight * 0.72) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_Rect seconds10Rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
     SDL_Rect seconds30Rect = {static_cast<int>(windowWidth * 0.31), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
     SDL_Rect seconds60Rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
@@ -735,6 +743,12 @@ void ttt_mouse_handle(int mouseX, int mouseY)
                 ttt_choose_rounds = true;
                 ttt_rounds = 5;
             }
+            else if (SDL_PointInRect(&mousePosition, &heartRounds10Rect))
+            {
+                std::cout << "You choose: Play 10 rounds" << std::endl;
+                ttt_choose_rounds = true;
+                ttt_rounds = 10;
+            }
             else if (SDL_PointInRect(&mousePosition, &seconds10Rect))
             {
                 std::cout << "You choose: 10 second timer" << std::endl;
@@ -779,6 +793,7 @@ void ttt_mouse_handle(int mouseX, int mouseY)
             }
         }
     }
+    
     // Settings - Buttons
     if (SDL_PointInRect(&mousePosition, &helpRect))
     {

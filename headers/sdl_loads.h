@@ -95,7 +95,12 @@ extern SDL_Texture *returnToAvailableGamesTexture;      // Multiplayer buttons
 extern SDL_Texture *helpTexture;      // In game - view rules from help
 extern SDL_Texture *restartTexture;      // In game - swap icons from hands to abstract images
 extern SDL_Texture *skipTexture;      // In game - skips Mentor explaining rules
-extern SDL_Texture *heartTexture;     // In game - lives
+extern SDL_Texture *heartTexture;     // In game - Rounds
+extern SDL_Texture *hearts2Texture;     // In game - Rounds
+extern SDL_Texture *hearts3Texture;     // In game - Rounds
+extern SDL_Texture *hearts4Texture;     // In game - Rounds
+extern SDL_Texture *hearts5Texture;     // In game - Rounds
+extern SDL_Texture *hearts10Texture;     // In game - Rounds
 extern SDL_Texture *timerTexture;     // In game - timer box
 extern SDL_Texture *frequencyTexture; // In game - frequency box
 
@@ -317,6 +322,11 @@ void load_textures()
 
     // HUD textures
     heartTexture = load_texture("assets/graphics/HUD/heart.png", "Heart");
+    hearts2Texture = load_texture("assets/graphics/HUD/2hearts.png", "2 Hearts");
+    hearts3Texture = load_texture("assets/graphics/HUD/3hearts.png", "3 Hearts");
+    hearts4Texture = load_texture("assets/graphics/HUD/4hearts.png", "4 Hearts");
+    hearts5Texture = load_texture("assets/graphics/HUD/5hearts.png", "5 Hearts");
+    hearts10Texture = load_texture("assets/graphics/HUD/10hearts.png", "10 Hearts");
     timerTexture = load_texture("assets/graphics/HUD/timer.png", "Timer");
     frequencyTexture = load_texture("assets/graphics/HUD/frequency.png", "Frequency");
 
