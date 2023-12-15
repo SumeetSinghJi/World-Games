@@ -9,10 +9,10 @@
 the world playing different traditional games
 
 
- LICENSE
-* This is a hobby project only for author to learn programming and game design and publishing.
-* Much of the images, sounds and music are not owned or licensed by me.
-* The list of full attribution is below;
+LICENSE
+his software is open source however the third party libraries, images, and sounds
+use their own respective licensing.
+The full list of attribution to graphics and sounds are in the credits.txt file.
 
 
 INSTALLATION REQUIREMENTS
@@ -32,5 +32,4 @@ linux and MacOS use HOME for the home directory
 
 HELP GUIDE
 * Read help_guide.txt file or in game slect Book (help) icon option in main menu or read 
-
 
