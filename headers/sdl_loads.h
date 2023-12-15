@@ -295,18 +295,17 @@ void load_textures()
     backwardTexture = load_texture("assets/graphics/buttons/settings/back-button.png", "Back Button");
 
     // Scene 6 buttons
-    beijingTexture = load_texture("assets/graphics/buttons/scenes/beijing-button.png", "Beijing Button");
-    berlinTexture = load_texture("assets/graphics/buttons/scenes/berlin-button.png", "Berlin Button");
-    delhiTexture = load_texture("assets/graphics/buttons/scenes/delhi-button.png", "Delhi Button");
-    hawaiiTexture = load_texture("assets/graphics/buttons/scenes/hawaii-button.png", "Hawaii Button");
-    singaporeTexture = load_texture("assets/graphics/buttons/scenes/singapore-button.png", "Singapore Button");
-    londonTexture = load_texture("assets/graphics/buttons/scenes/london-button.png", "London Button");
-    parisTexture = load_texture("assets/graphics/buttons/scenes/paris-button.png", "Paris Button");
-    seoulTexture = load_texture("assets/graphics/buttons/scenes/seoul-button.png", "Seoul Button");
-    shanghaiTexture = load_texture("assets/graphics/buttons/scenes/shanghai-button.png", "Shanghai Button");
-    tokyoTexture = load_texture("assets/graphics/buttons/scenes/tokyo-button.png", "Tokyo Button");
-
-    romeTexture = load_texture("assets/graphics/buttons/scenes/rome-button.png", "Rome Button");
+    beijingTexture = load_texture("assets/graphics/buttons/countries/beijing-button.png", "Beijing Button");
+    berlinTexture = load_texture("assets/graphics/buttons/countries/berlin-button.png", "Berlin Button");
+    delhiTexture = load_texture("assets/graphics/buttons/countries/delhi-button.png", "Delhi Button");
+    hawaiiTexture = load_texture("assets/graphics/buttons/countries/hawaii-button.png", "Hawaii Button");
+    singaporeTexture = load_texture("assets/graphics/buttons/countries/singapore-button.png", "Singapore Button");
+    londonTexture = load_texture("assets/graphics/buttons/countries/london-button.png", "London Button");
+    parisTexture = load_texture("assets/graphics/buttons/countries/paris-button.png", "Paris Button");
+    seoulTexture = load_texture("assets/graphics/buttons/countries/seoul-button.png", "Seoul Button");
+    shanghaiTexture = load_texture("assets/graphics/buttons/countries/shanghai-button.png", "Shanghai Button");
+    tokyoTexture = load_texture("assets/graphics/buttons/countries/tokyo-button.png", "Tokyo Button");
+    romeTexture = load_texture("assets/graphics/buttons/countries/rome-button.png", "Rome Button");
 
     // Scene 8 - Multiplayer
     joinAvailableGameTexture = load_texture("assets/graphics/models/opponents/scene_7_opponent_plain_pose.png", "Join Available Game");

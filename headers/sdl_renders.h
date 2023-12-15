@@ -128,13 +128,13 @@ void render_fireworks_animation()
 
 void render_buttons_scene_1() // Main menu
 {
-    SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
-    SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
-    SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
-    SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
-    SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
-    SDL_Rect menuUpdateGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
-    SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.85), rectWidth, rectHeight};
+    // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
+    SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
+    SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
+    SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
+    SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
+    SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
+    SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
     SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
 
     // Highlight the selected option for keyboard arrow key and gamepad d pad key input
@@ -149,12 +149,12 @@ void render_buttons_scene_1() // Main menu
     SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255); // Yellow color (adjust as needed)
     SDL_RenderFillRect(renderer, &selectedRect);
 
-    SDL_RenderCopy(renderer, menuLoadGameTexture, nullptr, &menuLoadGameRect);
+    // SDL_RenderCopy(renderer, menuLoadGameTexture, nullptr, &menuLoadGameRect);
     SDL_RenderCopy(renderer, menuNewGameTexture, nullptr, &menuNewGameRect);
     SDL_RenderCopy(renderer, menuSettingsTexture, nullptr, &menuSettingsRect);
     SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &menuAchievementsRect);
     SDL_RenderCopy(renderer, menuHelpTexture, nullptr, &menuHelpRect);
-    SDL_RenderCopy(renderer, menuUpdateGameTexture, nullptr, &menuUpdateGameRect);
+    SDL_RenderCopy(renderer, menuUpdateGameTexture, nullptr, &menuGameUpdateRect);
     SDL_RenderCopy(renderer, menuQuitTexture, nullptr, &menuQuitRect);
     SDL_RenderCopy(renderer, AgniSamoohLogoTexture, nullptr, &AgniSamoohLogoRect); // for social media open browser link
     SDL_RenderDrawRect(renderer, &selectedRect); // for keyboard input

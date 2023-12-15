@@ -10,9 +10,11 @@ the world playing different traditional games
 
 
 LICENSE
-his software is open source however the third party libraries, images, and sounds
+This software is open source however the third party libraries, images, and sounds
 use their own respective licensing.
 The full list of attribution to graphics and sounds are in the credits.txt file.
+For the portion of code, and graphics that are by author are free to use subject
+to the 
 
 
 INSTALLATION REQUIREMENTS

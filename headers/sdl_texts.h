@@ -18,13 +18,13 @@ void text_for_HUD_scene_1() // Main menu
     {
         render_text("WORLD GAMES", (windowWidth * 0.35), (windowHeight * 0.05));
 
-        render_text("Continue", (windowWidth * 0.45), (windowHeight * 0.25));
-        render_text("New game", (windowWidth * 0.45), (windowHeight * 0.35));
-        render_text("Settings", (windowWidth * 0.45), (windowHeight * 0.45));
-        render_text("Achievements", (windowWidth * 0.45), (windowHeight * 0.55));
-        render_text("Help", (windowWidth * 0.45), (windowHeight * 0.65));
-        render_text("Update", (windowWidth * 0.45), (windowHeight * 0.75));
-        render_text("Exit", (windowWidth * 0.45), (windowHeight * 0.85));
+        // render_text("Continue", (windowWidth * 0.45), (windowHeight * 0.25));
+        render_text("Start game", (windowWidth * 0.45), (windowHeight * 0.25));
+        render_text("Settings", (windowWidth * 0.45), (windowHeight * 0.35));
+        render_text("Achievements", (windowWidth * 0.45), (windowHeight * 0.45));
+        render_text("Help", (windowWidth * 0.45), (windowHeight * 0.55));
+        render_text("Update", (windowWidth * 0.45), (windowHeight * 0.65));
+        render_text("Exit", (windowWidth * 0.45), (windowHeight * 0.75));
 
         render_text("version: 0.1", (windowWidth * 0.05), (windowHeight * 0.9));
         render_text("@AgniSamooh.com", (windowWidth * 0.7), (windowHeight * 0.9));
@@ -33,13 +33,13 @@ void text_for_HUD_scene_1() // Main menu
     {
         render_text("WORLD GAMES", (windowWidth * 0.35), (windowHeight * 0.05));
 
-        render_text("続く", (windowWidth * 0.45), (windowHeight * 0.25));
-        render_text("新しいゲーム", (windowWidth * 0.45), (windowHeight * 0.35));
-        render_text("設定", (windowWidth * 0.45), (windowHeight * 0.45));
-        render_text("業績", (windowWidth * 0.45), (windowHeight * 0.55));
-        render_text("助け", (windowWidth * 0.45), (windowHeight * 0.65));
-        render_text("更新", (windowWidth * 0.45), (windowHeight * 0.75));
-        render_text("出口", (windowWidth * 0.45), (windowHeight * 0.85));
+        // render_text("続く", (windowWidth * 0.45), (windowHeight * 0.25));
+        render_text("新しいゲーム", (windowWidth * 0.45), (windowHeight * 0.25));
+        render_text("設定", (windowWidth * 0.45), (windowHeight * 0.35));
+        render_text("業績", (windowWidth * 0.45), (windowHeight * 0.45));
+        render_text("助け", (windowWidth * 0.45), (windowHeight * 0.55));
+        render_text("更新", (windowWidth * 0.45), (windowHeight * 0.65));
+        render_text("出口", (windowWidth * 0.45), (windowHeight * 0.75));
 
         render_text("バージョン: 1.0", (windowWidth * 0.05), (windowHeight * 0.9));
         render_text("@AgniSamooh.com", (windowWidth * 0.7), (windowHeight * 0.9));

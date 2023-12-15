@@ -24,7 +24,7 @@
 #include <SDL_ttf.h>                      // SDL Requirement
 #include <SDL_mixer.h>                    // SDL Requirement
 #include "headers/multiplayer.h"          // FUTURE DEVELOPMENT - For Multiplayer
-#include "headers/savegame.h"             // For save/continue functions
+// #include "headers/savegame.h"             // For save/continue functions
 #include "headers/sdl_loads.h"            // SDL Textures, Sounds, Animations to load
 #include "headers/sdl_renders.h"          // SDL Rect/Buttons to render to screen/scene/GUI
 #include "headers/sdl_texts.h"            // SDL Text to Render  to screen/scene/GUI
@@ -37,6 +37,7 @@
 
 /*
     TO DO
+    * ttt on return to world map, reset_game_variables() - IMPORTANT
     * MouseRect for leave full screen, what will happen?
     * CMAKE test that libzip and curl is working
     * fix save/load header
@@ -259,7 +260,7 @@ bool game_won = NULL;                         // Game variable - display credits
 std::vector<int> unlockedScenes(30, 0);       // unlocked scenes if in game mode
 std::vector<int> unlockedAchievements(10, 0); // unlocked scenes if in game mode
 int selectedOption = 0;                       // For Keyboard arrow key or Gamepad d-pad selection
-int menuTotalOptions = 7;                     // For Keyboard arrow key or Gamepad d-pad selection
+int menuTotalOptions = 6;                     // For Keyboard arrow key or Gamepad d-pad selection
 int SettingsTotalOptions = 10;                // For Keyboard arrow key or Gamepad d-pad selection
 int GameTotalOptions = 10;                    // For Keyboard arrow key or Gamepad d-pad selection
 
@@ -746,7 +747,7 @@ void handle_events()
     {
         if (event.type == SDL_QUIT)
         {
-            save_game();
+            // save_game();
             std::cout << "Game Quiting. Goodbye" << std::endl;
             quit_event_loop = true;
         }

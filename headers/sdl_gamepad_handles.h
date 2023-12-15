@@ -40,14 +40,14 @@ void render_fps();
 
 void handle_gamepad_scene_1(int button)
 {
-    SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
-    SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
-    SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
-    SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
-    SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
-    SDL_Rect menuUpdateGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
-    SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.85), rectWidth, rectHeight};
-    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
+    // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
+    SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
+    SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
+    SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
+    SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
+    SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
+    SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
+    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.85), (windowWidth) / 6, (windowHeight) / 6};
 
     // Highlight the selected option for keyboard arrow key and gamepad d pad key input
     SDL_Rect selectedRect = {
@@ -74,14 +74,16 @@ void handle_gamepad_scene_1(int button)
         break;
     case SDL_CONTROLLER_BUTTON_A:
         std::cout << "You pressed controller button: A" << std::endl;
+        /*
         if (SDL_PointInRect(&selectedPoint, &menuLoadGameRect))
         {
             std::cout << "You clicked Load Game" << std::endl;
             load_game();
         }
-        else if (SDL_PointInRect(&selectedPoint, &menuNewGameRect))
+        */
+        if (SDL_PointInRect(&selectedPoint, &menuNewGameRect))
         {
-            std::cout << "You clicked New Game" << std::endl;
+            std::cout << "You clicked Start Game" << std::endl;
             new_game();
         }
         else if (SDL_PointInRect(&selectedPoint, &menuSettingsRect))
@@ -99,7 +101,7 @@ void handle_gamepad_scene_1(int button)
             std::cout << "You clicked Help" << std::endl;
             scene = 5;
         }
-        else if (SDL_PointInRect(&selectedPoint, &menuUpdateGameRect))
+        else if (SDL_PointInRect(&selectedPoint, &menuGameUpdateRect))
         {
             std::cout << "You clicked Update game" << std::endl;
             start_game_update_1();
@@ -107,7 +109,7 @@ void handle_gamepad_scene_1(int button)
         else if (SDL_PointInRect(&selectedPoint, &menuQuitRect))
         {
             std::cout << "You clicked Quit game" << std::endl;
-            save_game();
+            // save_game();
             exit_SDL();
             exit(0);
         }

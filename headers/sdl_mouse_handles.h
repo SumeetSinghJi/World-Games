@@ -34,25 +34,26 @@ void render_fps();
 
 void handle_click_scene_1(int mouseX, int mouseY) // main menu
 {
-    SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
-    SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
-    SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
-    SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
-    SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
-    SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
-    SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.85), rectWidth, rectHeight};
+    // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
+    SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
+    SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
+    SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
+    SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
+    SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
+    SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
     SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
 
     SDL_Point mousePosition = {mouseX, mouseY};
-
+    /*
     if (SDL_PointInRect(&mousePosition, &menuLoadGameRect))
     {
         std::cout << "You clicked Load Game" << std::endl;
         load_game();
     }
-    else if (SDL_PointInRect(&mousePosition, &menuNewGameRect))
+    */
+    if (SDL_PointInRect(&mousePosition, &menuNewGameRect))
     {
-        std::cout << "You clicked New Game" << std::endl;
+        std::cout << "You clicked Start Game" << std::endl;
         new_game();
     }
     else if (SDL_PointInRect(&mousePosition, &menuSettingsRect))
@@ -78,7 +79,7 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     else if (SDL_PointInRect(&mousePosition, &menuQuitRect))
     {
         std::cout << "You clicked Quit game" << std::endl;
-        save_game();
+        // save_game();
         exit_SDL();
         exit(0);
     }
