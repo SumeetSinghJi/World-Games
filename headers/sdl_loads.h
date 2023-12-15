@@ -320,8 +320,8 @@ void load_textures()
     frequencyTexture = load_texture("assets/graphics/HUD/frequency.png", "Frequency");
 
     // Popup buttons
-    humanTexture = load_texture("assets/graphics/HUD/human-button.png", "Human");
-    computerTexture = load_texture("assets/graphics/HUD/computer-button.png", "Computer"); 
+    humanTexture = load_texture("assets/graphics/buttons/settings/human-button.png", "Human");
+    computerTexture = load_texture("assets/graphics/buttons/settings/computer-button.png", "Computer"); 
 
     // Backgrounds
     // scenes 20 - 29

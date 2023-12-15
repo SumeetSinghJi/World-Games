@@ -38,14 +38,12 @@
 /*
     TO DO
     * MouseRect for leave full screen, what will happen?
+    * CMAKE test that libzip and curl is working
     * fix save/load header
     * fix update header
     * Fix reading readme and credits
     * Fix mouse scroll up/down options
     * Fix Keyboard main menu selection
-
-
-
 */
 
 SDL_Window *window = nullptr;
