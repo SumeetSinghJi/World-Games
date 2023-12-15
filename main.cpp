@@ -11,19 +11,19 @@
     Location: https://github.com/SumeetSinghJi/World-Games
 */
 
-#include <iostream>                       // Core logic
-#include <cstdlib>                        // Core logic
-#include <ctime>                          // Core logic - for srand
-#include <vector>                         // Core logic
-#include <string>                         // Core logic
-#include <thread>                         // Core logic - for timer
-#include <chrono>                         // Core logic - for timer
-#include <fstream>                        // multiplatform method for for file open read write objects
-#include <SDL.h>                          // SDL Requirement
-#include <SDL_image.h>                    // SDL Requirement
-#include <SDL_ttf.h>                      // SDL Requirement
-#include <SDL_mixer.h>                    // SDL Requirement
-#include "headers/multiplayer.h"          // FUTURE DEVELOPMENT - For Multiplayer
+#include <iostream>              // Core logic
+#include <cstdlib>               // Core logic
+#include <ctime>                 // Core logic - for srand
+#include <vector>                // Core logic
+#include <string>                // Core logic
+#include <thread>                // Core logic - for timer
+#include <chrono>                // Core logic - for timer
+#include <fstream>               // multiplatform method for for file open read write objects
+#include <SDL.h>                 // SDL Requirement
+#include <SDL_image.h>           // SDL Requirement
+#include <SDL_ttf.h>             // SDL Requirement
+#include <SDL_mixer.h>           // SDL Requirement
+#include "headers/multiplayer.h" // FUTURE DEVELOPMENT - For Multiplayer
 // #include "headers/savegame.h"             // For save/continue functions
 #include "headers/sdl_loads.h"            // SDL Textures, Sounds, Animations to load
 #include "headers/sdl_renders.h"          // SDL Rect/Buttons to render to screen/scene/GUI
@@ -37,10 +37,7 @@
 
 /*
     TO DO
-    * ttt on return to world map, reset_game_variables() - IMPORTANT
-    * MouseRect for leave full screen, what will happen?
-    * CMAKE test that libzip and curl is working
-    * fix save/load header
+    * Circle button texture for HUD buttons
     * fix update header
     * Fix reading readme and credits
     * Fix mouse scroll up/down options
@@ -91,7 +88,7 @@ SDL_Texture *backwardTexture = nullptr;
 // Popup textures
 SDL_Texture *humanTexture = nullptr;
 SDL_Texture *computerTexture = nullptr;
-SDL_Texture *buttonTexture = nullptr;    // Popup - button texture
+SDL_Texture *buttonTexture = nullptr; // Popup - button texture
 
 // animations
 SDL_Texture *fireworksAnimationTexture = nullptr;
@@ -135,11 +132,11 @@ SDL_Texture *helpTexture = nullptr;      // In game - view rules from help
 SDL_Texture *restartTexture = nullptr;   // In game - swap icons from hands to abstract images
 SDL_Texture *skipTexture = nullptr;      // In game - skips Mentor explaining rules
 SDL_Texture *heartTexture = nullptr;     // In game - Rounds
-SDL_Texture *hearts2Texture = nullptr;     // In game - Rounds
-SDL_Texture *hearts3Texture = nullptr;     // In game - Rounds
-SDL_Texture *hearts4Texture = nullptr;     // In game - Rounds
-SDL_Texture *hearts5Texture = nullptr;     // In game - Rounds
-SDL_Texture *hearts10Texture = nullptr;     // In game - Rounds
+SDL_Texture *hearts2Texture = nullptr;   // In game - Rounds
+SDL_Texture *hearts3Texture = nullptr;   // In game - Rounds
+SDL_Texture *hearts4Texture = nullptr;   // In game - Rounds
+SDL_Texture *hearts5Texture = nullptr;   // In game - Rounds
+SDL_Texture *hearts10Texture = nullptr;  // In game - Rounds
 SDL_Texture *timerTexture = nullptr;     // In game - timer box
 SDL_Texture *frequencyTexture = nullptr; // In game - frequency box
 
@@ -214,21 +211,21 @@ SDL_GameController *controller = nullptr; // gamepad object initialise
 SDL_Event event;                          // event loop object initialise
 
 // GLOBAL VARIABLES
-bool quit_event_loop = NULL;    // for run_SDL Event loop
-int windowWidth = 1366;         // for Window resolution
-int windowHeight = 768;         // for Window resolution
-int rectWidth = (windowWidth / 22);   // Button - The image width inside button itself
-int rectHeight = (windowHeight / 22); // Button - The image height inside button itself
-int buttonWidth = ((windowWidth / 10)); // Button - The literal button width
-int buttonHeight = ((windowHeight / 12));// Button - The literal button height
-int buttonXOffset = 25; // Button - X Offset e.g. (windowWidth / 10) - 10) = ((windowWidth / 10) - buttonXOffset) - higher number box goes left
-int buttonYOffset = 14;// Button - Y Offset e.g. (windowWidth / 10) - 15) = ((windowWidth / 10) - buttonXOffset) - higher number box goes up
+bool quit_event_loop = NULL;                   // for run_SDL Event loop
+int windowWidth = 1366;                        // for Window resolution
+int windowHeight = 768;                        // for Window resolution
+int rectWidth = (windowWidth / 22);            // Button - The image width inside button itself
+int rectHeight = (windowHeight / 22);          // Button - The image height inside button itself
+int buttonWidth = ((windowWidth / 10));        // Button - The literal button width
+int buttonHeight = ((windowHeight / 12));      // Button - The literal button height
+int buttonXOffset = 25;                        // Button - X Offset e.g. (windowWidth / 10) - 10) = ((windowWidth / 10) - buttonXOffset) - higher number box goes left
+int buttonYOffset = 14;                        // Button - Y Offset e.g. (windowWidth / 10) - 15) = ((windowWidth / 10) - buttonXOffset) - higher number box goes up
 int worldmapRegionWidth = (windowWidth / 18);  // World Map scenes button size
 int worldmapRegionHeight = (windowWidth / 18); // World Map scenes button size
-int textWidth = 0;              // for font
-int textHeight = 0;             // for font
-int fontSize = 36;              // for font
-int scene = 1;                  // for scene to display
+int textWidth = 0;                             // for font
+int textHeight = 0;                            // for font
+int fontSize = 36;                             // for font
+int scene = 1;                                 // for scene to display
 
 // SETTINGS VARIABLES
 bool isMusicPlaying = NULL;                                           // for music
@@ -344,28 +341,7 @@ void change_resolution(int newWindowWidth, int newWindowHeight)
     // Update the window size
     windowWidth = newWindowWidth;
     windowHeight = newWindowHeight;
-
-    if (windowWidth == 800)
-    {
-        int rectWidth = (windowWidth / 18);             // default button Rect width/height
-        int rectHeight = (windowHeight / 18);            // default button width/height
-        int worldmapRegionWidth = (windowWidth / 18);  // World Map scenes button size
-        int worldmapRegionHeight = (windowWidth / 18); // World Map scenes button size
-    }
-    else if (windowWidth == 1366)
-    {
-        int rectWidth = (windowWidth / 18);             // default button Rect width/height
-        int rectHeight = (windowHeight / 18);            // default button width/height
-        int worldmapRegionWidth = (windowWidth / 18);  // World Map scenes button size
-        int worldmapRegionHeight = (windowWidth / 18); // World Map scenes button size
-    }
-    else if (windowWidth == 1920)
-    {
-        int rectWidth = (windowWidth / 18);             // default button Rect width/height
-        int rectHeight = (windowHeight / 18);            // default button width/height
-        int worldmapRegionWidth = (windowWidth / 18);  // World Map scenes button size
-        int worldmapRegionHeight = (windowWidth / 18); // World Map scenes button size
-    }
+    SDL_SetWindowSize(window, windowWidth, windowHeight);
 }
 void new_game()
 {

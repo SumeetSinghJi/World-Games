@@ -41,7 +41,7 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
     SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
     SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
-    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
+    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.73), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
 
     SDL_Point mousePosition = {mouseX, mouseY};
     /*

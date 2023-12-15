@@ -135,7 +135,7 @@ void render_buttons_scene_1() // Main menu
     SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
     SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
     SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
-    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
+    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.73), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
 
     // Highlight the selected option for keyboard arrow key and gamepad d pad key input
     SDL_Rect selectedRect = {

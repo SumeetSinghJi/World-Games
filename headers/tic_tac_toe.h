@@ -930,7 +930,7 @@ void ttt_SDL_draw()
 void ttt_SDL_update()
 {
     ttt_update_winning_logic();
-    if (!ttt_play_against_human)
+    if (!ttt_play_against_human && ttt_choose_human_or_computer)
     {
         ttt_update_ai_logic();
     }
