@@ -4,9 +4,9 @@
 #include <iostream>
 
 // Tic Tac Toe - Textures
-SDL_Texture *ttt_position_X_texture = nullptr;
-SDL_Texture *ttt_position_O_texture = nullptr;
-SDL_Texture *ttt_position_line_texture = nullptr;
+SDL_Texture *xTexture = nullptr;
+SDL_Texture *oTexture = nullptr;
+SDL_Texture *lineTexture = nullptr;
 
 // main.cpp - Global variables
 extern bool timerRunning;
@@ -51,9 +51,9 @@ void exit_SDL();                                                                
 // Tic Tac Toe - Draws
 void ttt_load_textures()
 {
-    ttt_position_X_texture = load_texture("assets/graphics/games/tic_tac_toe/buttons/tic_tac_toe_X_texture.png", "Tic Tac Toe X image");
-    ttt_position_O_texture = load_texture("assets/graphics/games/tic_tac_toe/buttons/tic_tac_toe_O_texture.png", "Tic Tac Toe O image");
-    ttt_position_line_texture = load_texture("assets/graphics/games/tic_tac_toe/tic_tac_toe_line_texture.png", "Tic Tac Toe Line image");
+    xTexture = load_texture("assets/graphics/buttons/popup/x.png", "Tic Tac Toe X image");
+    oTexture = load_texture("assets/graphics/buttons/popup/o.png", "Tic Tac Toe O image");
+    lineTexture = load_texture("assets/graphics/hud/line.png", "Tic Tac Toe Line image");
     romeDayBackgroundTexture = load_texture("assets/graphics/backgrounds/rome-day.jpg", "Rome Day Background");
 }
 void ttt_draw_field()
@@ -112,7 +112,7 @@ void ttt_draw_setup_game_popup_window()
 
     // close button
     SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.68), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_X_texture, nullptr, &closeButtonRect);
+    SDL_RenderCopy(renderer, xTexture, nullptr, &closeButtonRect);
 
     /*
 
@@ -142,14 +142,14 @@ void ttt_draw_setup_game_popup_window()
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &ttt_XbuttonRect);
 
     SDL_Rect ttt_X_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_X_texture, nullptr, &ttt_X_rect);
+    SDL_RenderCopy(renderer, xTexture, nullptr, &ttt_X_rect);
 
     // Button - for choose O
     SDL_Rect ttt_ObuttonRect = {static_cast<int>(windowWidth * 0.36) - buttonXOffset, static_cast<int>(windowHeight * 0.26) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &ttt_ObuttonRect);
 
     SDL_Rect ttt_O_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &ttt_O_rect);
+    SDL_RenderCopy(renderer, oTexture, nullptr, &ttt_O_rect);
 
     /*
 
@@ -178,14 +178,14 @@ void ttt_draw_setup_game_popup_window()
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &ttt_player_start_first_button_Rect);
 
     SDL_Rect ttt_player_start_first_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_X_texture, nullptr, &ttt_player_start_first_rect);
+    SDL_RenderCopy(renderer, xTexture, nullptr, &ttt_player_start_first_rect);
 
     // Opponent starts first
     SDL_Rect ttt_opponent_start_first_button_Rect = {static_cast<int>(windowWidth * 0.36) - buttonXOffset, static_cast<int>(windowHeight * 0.40) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &ttt_opponent_start_first_button_Rect);
 
     SDL_Rect ttt_opponent_start_first_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &ttt_opponent_start_first_rect);
+    SDL_RenderCopy(renderer, oTexture, nullptr, &ttt_opponent_start_first_rect);
 
     /*
 
@@ -289,49 +289,49 @@ void ttt_draw_setup_game_popup_window()
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds10ButtonRect);
 
     SDL_Rect seconds10Rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &seconds10Rect);
+    SDL_RenderCopy(renderer, oTexture, nullptr, &seconds10Rect);
 
     // 30 seconds
     SDL_Rect seconds30ButtonRect = {static_cast<int>(windowWidth * 0.31) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds30ButtonRect);
 
     SDL_Rect seconds30Rect = {static_cast<int>(windowWidth * 0.31), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &seconds30Rect);
+    SDL_RenderCopy(renderer, oTexture, nullptr, &seconds30Rect);
 
     // 1 minute
     SDL_Rect seconds60ButtonRect = {static_cast<int>(windowWidth * 0.36) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds60ButtonRect);
 
     SDL_Rect seconds60Rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &seconds60Rect);
+    SDL_RenderCopy(renderer, oTexture, nullptr, &seconds60Rect);
 
     // 5 minute
     SDL_Rect seconds300ButtonRect = {static_cast<int>(windowWidth * 0.41) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds300ButtonRect);
 
     SDL_Rect seconds300Rect = {static_cast<int>(windowWidth * 0.41), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &seconds300Rect);
+    SDL_RenderCopy(renderer, oTexture, nullptr, &seconds300Rect);
 
     // 10 minute
     SDL_Rect seconds600ButtonRect = {static_cast<int>(windowWidth * 0.46) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds600ButtonRect);
 
     SDL_Rect seconds600Rect = {static_cast<int>(windowWidth * 0.46), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &seconds600Rect);
+    SDL_RenderCopy(renderer, oTexture, nullptr, &seconds600Rect);
 
     // 30 minute
     SDL_Rect seconds1800ButtonRect = {static_cast<int>(windowWidth * 0.51) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds1800ButtonRect);
 
     SDL_Rect seconds1800Rect = {static_cast<int>(windowWidth * 0.51), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &seconds1800Rect);
+    SDL_RenderCopy(renderer, oTexture, nullptr, &seconds1800Rect);
 
     // 1 hour
     SDL_Rect seconds3600ButtonRect = {static_cast<int>(windowWidth * 0.56) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds3600ButtonRect);
 
     SDL_Rect seconds3600Rect = {static_cast<int>(windowWidth * 0.56), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &seconds3600Rect);
+    SDL_RenderCopy(renderer, oTexture, nullptr, &seconds3600Rect);
 }
 void ttt_draw_X_or_O()
 {
@@ -349,11 +349,11 @@ void ttt_draw_X_or_O()
     {
         if (ttt_positions[i] == 0)
         {
-            SDL_RenderCopy(renderer, ttt_position_O_texture, nullptr, &positionRects[i]);
+            SDL_RenderCopy(renderer, oTexture, nullptr, &positionRects[i]);
         }
         else if (ttt_positions[i] == 1)
         {
-            SDL_RenderCopy(renderer, ttt_position_X_texture, nullptr, &positionRects[i]);
+            SDL_RenderCopy(renderer, xTexture, nullptr, &positionRects[i]);
         }
         else if (ttt_positions[i] == 2)
         {
@@ -562,7 +562,7 @@ void ttt_update_new_game_reset_variables()
     // Restart timer - generic function
     timerRunning = false;
     countdownStarted = false;
-    countdownSeconds = 30;
+    countdownSeconds = 300;
 }
 void ttt_update_is_position_taken(int index)
 {
@@ -941,9 +941,9 @@ void ttt_SDL_update()
 void ttt_SDL_cleanup()
 {
     // ttt_textures
-    SDL_DestroyTexture(ttt_position_X_texture);
-    SDL_DestroyTexture(ttt_position_O_texture);
-    SDL_DestroyTexture(ttt_position_line_texture);
+    SDL_DestroyTexture(xTexture);
+    SDL_DestroyTexture(oTexture);
+    SDL_DestroyTexture(lineTexture);
 }
 
 #endif

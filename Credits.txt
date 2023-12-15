@@ -55,3 +55,7 @@ Game buttons
 Animations
 
 * Fireworks animation by @haenaillust taken from giphy.com
+
+Game graphics
+Playing cards - https://opengameart.org/content/playing-cards-vector-png
+Senet board image - https://thiefontheflats.blogspot.com/2012/01/printable-senet-boards.html

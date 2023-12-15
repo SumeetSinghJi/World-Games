@@ -251,7 +251,7 @@ int lastTime = SDL_GetTicks(); // for FPS HUD display toggle
 // HUD - Timer variables
 bool timerRunning = false;
 bool countdownStarted = false;
-int countdownSeconds = 10; // Initial countdown time
+int countdownSeconds = 300; // Initial countdown time
 
 // GAME VARIABLES
 bool game_started = NULL;                     // Toggle to prevent "continuing to game" if game hasn't begun
