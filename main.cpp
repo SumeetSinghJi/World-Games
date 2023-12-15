@@ -90,6 +90,7 @@ SDL_Texture *backwardTexture = nullptr;
 // Popup textures
 SDL_Texture *humanTexture = nullptr;
 SDL_Texture *computerTexture = nullptr;
+SDL_Texture *buttonTexture = nullptr;    // Popup - button texture
 
 // animations
 SDL_Texture *fireworksAnimationTexture = nullptr;
@@ -210,8 +211,12 @@ SDL_Event event;                          // event loop object initialise
 bool quit_event_loop = NULL;    // for run_SDL Event loop
 int windowWidth = 1366;         // for Window resolution
 int windowHeight = 768;         // for Window resolution
-int rectWidth = (windowWidth / 18);             // default button Rect width/height
-int rectHeight = (windowHeight / 18);            // default button width/height
+int rectWidth = (windowWidth / 22);   // Button - The image width inside button itself
+int rectHeight = (windowHeight / 22); // Button - The image height inside button itself
+int buttonWidth = ((windowWidth / 10)); // Button - The literal button width
+int buttonHeight = ((windowHeight / 12));// Button - The literal button height
+int buttonXOffset = 25; // Button - X Offset e.g. (windowWidth / 10) - 10) = ((windowWidth / 10) - buttonXOffset) - higher number box goes left
+int buttonYOffset = 14;// Button - Y Offset e.g. (windowWidth / 10) - 15) = ((windowWidth / 10) - buttonXOffset) - higher number box goes up
 int worldmapRegionWidth = (windowWidth / 18);  // World Map scenes button size
 int worldmapRegionHeight = (windowWidth / 18); // World Map scenes button size
 int textWidth = 0;              // for font
@@ -560,9 +565,9 @@ void toggle_countdown()
             }
             timerRunning = false;
             if (countdownSeconds <= 0) {
-                if(!tic_tac_toe_showPopup) {
-                    tic_tac_toe_game_over = true;
-                    tic_tac_toe_winner = 3; // draw
+                if(!ttt_showPopup) {
+                    ttt_game_over = true;
+                    ttt_winner = 3; // draw
                 }
                 
             } });
@@ -722,7 +727,7 @@ void start_SDL()
     }
     load_fonts(); // Load fonts here
     load_textures();
-    tic_tac_toe_load_textures();
+    ttt_load_textures();
     load_animations();
     std::string currentSong = "";
     std::string songTitle = "assets/sounds/music/Time - AlexiAction.mp3";
@@ -793,7 +798,7 @@ void handle_events()
             }
             else if (scene == 32)
             {
-                tic_tac_toe_mouse_handle(mouseX, mouseY);
+                ttt_mouse_handle(mouseX, mouseY);
             }
         }
         else if (event.type == SDL_KEYDOWN) // for keyboard input
@@ -869,7 +874,7 @@ void update()
     }
     else if (scene == 32)
     {
-        tic_tac_toe_SDL_update();
+        ttt_SDL_update();
     }
 }
 void draw()
@@ -929,7 +934,7 @@ void draw()
     }
     else if (scene == 32)
     {
-        tic_tac_toe_SDL_draw();
+        ttt_SDL_draw();
     }
 
     SDL_RenderPresent(renderer);
@@ -1015,6 +1020,7 @@ void exit_SDL()
     // Popup textures
     SDL_DestroyTexture(humanTexture);
     SDL_DestroyTexture(computerTexture);
+    SDL_DestroyTexture(buttonTexture);
 
     // backgrounds
     SDL_DestroyTexture(tutorialBackgroundTexture);
@@ -1113,7 +1119,7 @@ void exit_SDL()
     SDL_DestroyWindow(window);
 
     // Games
-    tic_tac_toe_SDL_cleanup();
+    ttt_SDL_cleanup();
 
     // Quit SDL subsystems
     Mix_Quit();

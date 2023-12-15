@@ -59,6 +59,7 @@ extern SDL_Texture *backwardTexture;
 // Popup textures
 extern SDL_Texture *humanTexture;
 extern SDL_Texture *computerTexture;
+extern SDL_Texture *buttonTexture;
 
 // scene 6 - world map
 extern SDL_Texture *worldMapTexture;  // scene 6
@@ -321,7 +322,8 @@ void load_textures()
 
     // Popup buttons
     humanTexture = load_texture("assets/graphics/buttons/settings/human-button.png", "Human");
-    computerTexture = load_texture("assets/graphics/buttons/settings/computer-button.png", "Computer"); 
+    computerTexture = load_texture("assets/graphics/buttons/settings/computer-button.png", "Computer");
+    buttonTexture = load_texture("assets/graphics/buttons/boxes/button.png", "Button");
 
     // Backgrounds
     // scenes 20 - 29
