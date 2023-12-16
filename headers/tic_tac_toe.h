@@ -279,7 +279,13 @@ void ttt_draw_setup_game_popup_window()
     }
     else
     {
-        std::string renderTimer = "You choose: " + std::to_string(countdownSeconds) + " seconds";
+        int hours = countdownSeconds / 3600;
+        int remainingSecondsAfterHours = countdownSeconds % 3600;
+        int minutes = remainingSecondsAfterHours / 60;
+        int seconds = remainingSecondsAfterHours % 60;
+        std::string renderTimer = "You chose: " + std::to_string(hours) + " h, " +
+            std::to_string(minutes) + " m, " +
+            std::to_string(seconds) + " s";
         render_text(renderTimer, static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.82));
     }
 
