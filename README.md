@@ -33,5 +33,5 @@ linux and MacOS use HOME for the home directory
 
 
 HELP GUIDE
-* Read help_guide.txt file or in game slect Book (help) icon option in main menu or read 
+* Read help.txt file or in game slect Book (help) icon option in main menu or read 
 

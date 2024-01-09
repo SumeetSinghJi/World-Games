@@ -37,7 +37,11 @@
 
 /*
     TO DO
-    * scene 11 = profile
+    * scene 11 = enter username, + include button to sign up for online (scene 12)
+    * scene 12 = enter email and password to sign up online for multiplayer gaming
+    *   render below text by reading from a privacy-policy.txt
+    *   Use ChatGPT to create a privacy policy for game stating:
+    *   username and email will only be used online for publically displaying online for multiplayer gaming session tracking
     * Circle button texture for HUD buttons
     * fix update header
     * Fix reading readme and credits
@@ -228,7 +232,11 @@ int textWidth = 0;                             // for font
 int textHeight = 0;                            // for font
 int fontSize = 36;                             // for font
 int scene = 1;                                 // for scene to display
-std::string playerName = "";                   // Players name
+
+// PLAYER VARIABLES
+std::string username = "";                   // Multiplayer - Multiplayer players username
+std::string email = "";                      // Multiplayer - Multiplayer players email address
+std::string password = "";                   // Multiplayer - Multiplayer players account password
 
 // SETTINGS VARIABLES
 bool isMusicPlaying = NULL;                                           // for music
