@@ -128,7 +128,7 @@ void render_fireworks_animation()
 
 void render_buttons_scene_1() // Main menu
 {
-    // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
+    // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.15), rectWidth, rectHeight};
     SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
     SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
     SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
@@ -318,6 +318,11 @@ void render_buttons_scene_10() // Keybindings
 {
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
+}
+void render_buttons_scene_11() // Profile
+{
+    SDL_Rect inputTextRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.4), static_cast<int>(windowWidth * 0.9), (windowHeight / 10)};
+    SDL_RenderCopy(renderer, buttonTexture, nullptr, &inputTextRect);
 }
 
 #endif

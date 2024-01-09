@@ -7,7 +7,8 @@ Author: Sumeet Singh
 Website: www.sumeet-singh.com
 Created: 26th September 2023
 Version: 0.1
-Description: This game is a C++ learning project game in which Players travel the world playing different traditional games.
+Description: This game is a C++ learning project game in which Players travel the world playing different 
+traditional games.
 Location: https://github.com/SumeetSinghJi/world-games
 Developer: AgniSamooh
 Publisher: AgniSamooh
@@ -203,7 +204,7 @@ scene 7 = Tutorial
 scene 8 = multiplayer lobby - TBD
 scene 9 = Leaderboard - TBD
 scene 10 = keybindings - TBD
-scene 11 = _____UNUSED_____
+scene 11 = Profile
 scene 12 = _____UNUSED_____
 scene 13 = _____UNUSED_____
 scene 14 = _____UNUSED_____
@@ -246,12 +247,11 @@ scene 50 - Moon - Astronaught game
 
 
 
-_________________________________________________________________________________________________________________
+UNLOCKABLE ACHIEVEMENTS
 
-                                    USER GAME GUIDE
-                                    
-_________________________________________________________________________________________________________________
+Completing a traditional game from a scene unlocks that achievement.
 
+12 (scene 32): Won Tic Tac Toe
 
 
 OBJECTIVE
@@ -259,9 +259,65 @@ OBJECTIVE
 1. Win the game by winning all games around the world while having fun.
 
 
+_________________________________________________________________________________________________________________
 
-UNLOCKABLE ACHIEVEMENTS
+                                            USER GAME GUIDE
+                                    
+_________________________________________________________________________________________________________________
 
-Completing a traditional game from a scene unlocks that achievement.
 
-12 (scene 32): Won Tic Tac Toe
+Beijing (China) - Rock paper scissors (Chinese; romanised: Shoushiling, traditional: 手勢令. simplified: 手势令)
+
+A seemingly simple game of chance, has woven its way into cultures worldwide, transcending generations and 
+borders. Despite its apparent simplicity, its origins are steeped in history, folklore, and strategic 
+subtleties. This humble game finds its roots in ancient civilizations and evolves continuously, embracing
+new forms and variations.
+
+Origins and Folklore:
+The exact origins of rock-paper-scissors are shrouded in mystery, with multiple theories tracing its roots
+across different cultures. One of the earliest known versions dates back to China during the 
+Han Dynasty (206 BCE – 220 CE). This version, known as "shoushiling," featured hand gestures representing
+a rock, a piece of cloth, and scissors. Legend has it that this game was used to resolve disputes and make 
+decisions, much like its contemporary usage.
+
+Another theory traces its origins to Japan, where the game was called "jan-ken." It was believed to have
+been introduced in the 17th century, gaining popularity among children and adults alike. In Japanese 
+folklore, it's said that the game was used by samurai to settle conflicts and make decisions in a manner
+that was akin to divination.
+
+Rules and Gameplay:
+The game revolves around three elements: rock, paper, and scissors. Each element defeats one and is defeated
+by another, creating a cyclic relationship:
+
+Rock crushes scissors.
+Scissors cut paper.
+Paper covers rock.
+Players face off by simultaneously forming one of the three shapes with their hands. After a count or a 
+chant, both reveal their chosen gesture, and the winner is determined based on the hierarchy of interactions. 
+The game often follows a best-of-three or best-of-five format, adding suspense and strategy.
+
+Cultural Significance and Variations:
+Rock-paper-scissors is not merely a game but a cultural phenomenon. It has made its way into various aspects 
+of society, from resolving disputes to being used in decision-making processes. Its simplicity and universality 
+have led to its integration into pop culture, sports, and even academic research.
+
+Interestingly, different cultures have their variations of the game. For instance, the Korean version, 
+"kai-bai-bo," features similar hand gestures but with different names and meanings. In some versions, 
+there are additional elements like a well, a lion, or a spock, introducing further complexities and strategies.
+
+Unique Trivia:
+Competitive Tournaments: Believe it or not, there are competitive rock-paper-scissors tournaments held 
+worldwide. Participants strategize and compete for prizes, showcasing their skill in a seemingly luck-based 
+game.
+
+AI and Strategy: Researchers have developed AI programs specifically designed to excel at rock-paper-scissors. 
+These programs analyze patterns in human behavior and adapt strategies, demonstrating the complexities within 
+what seems like a simple game.
+
+Decision-Making Tool: Beyond its entertainment value, rock-paper-scissors has found applications in 
+decision-making processes. Its randomness and unbiased nature make it an interesting tool in scenarios 
+where impartial choices are needed.
+
+In summary, rock-paper-scissors transcends its simplistic appearance, embodying centuries of cultural 
+heritage and human interaction. Its adaptability and universality continue to fascinate and entertain people 
+across the globe, proving that even the simplest of games can carry profound significance in society.

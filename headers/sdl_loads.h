@@ -39,6 +39,9 @@ extern SDL_Texture *menuUpdateGameTexture;
 extern SDL_Texture *menuQuitTexture;
 extern SDL_Texture *AgniSamoohLogoTexture;
 
+// Profile - Scene 11
+extern SDL_Texture *inputTextTexture;
+
 // settings buttons
 extern SDL_Texture *settingsTexture;
 extern SDL_Texture *fontTexture;

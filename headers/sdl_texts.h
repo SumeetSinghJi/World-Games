@@ -154,5 +154,19 @@ void text_for_HUD_scene_9() // Leaderboard
         render_text("リーダーボード", (windowWidth * 0.4), (windowHeight * 0.1));
     }
 }
+void text_for_HUD_scene_11() // Profile
+{
+    if (language == "English")
+    {
+        render_text("Profile", (windowWidth * 0.45), (windowHeight * 0.1));
+        render_text("Enter your name:", (windowWidth * 0.3), (windowHeight * 0.3));
+    }
+    else if (language == "日本語")
+    {
+        render_text("プロフィール", (windowWidth * 0.4), (windowHeight * 0.1));
+        render_text("あなたの名前を入力してください", (windowWidth * 0.3), (windowHeight * 0.3));
+    }
+}
+
 
 #endif

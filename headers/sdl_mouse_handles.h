@@ -34,7 +34,7 @@ void render_fps();
 
 void handle_click_scene_1(int mouseX, int mouseY) // main menu
 {
-    // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
+    // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.15), rectWidth, rectHeight};
     SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
     SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
     SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
@@ -42,6 +42,7 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
     SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
     SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.73), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
+
 
     SDL_Point mousePosition = {mouseX, mouseY};
     /*
@@ -54,7 +55,8 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     if (SDL_PointInRect(&mousePosition, &menuNewGameRect))
     {
         std::cout << "You clicked Start Game" << std::endl;
-        new_game();
+        scene = 11;
+        // new_game(); // uncomment this and remove scene = 11, after testing;
     }
     else if (SDL_PointInRect(&mousePosition, &menuSettingsRect))
     {

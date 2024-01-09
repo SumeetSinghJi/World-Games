@@ -37,11 +37,13 @@
 
 /*
     TO DO
+    * scene 11 = profile
     * Circle button texture for HUD buttons
     * fix update header
     * Fix reading readme and credits
     * Fix mouse scroll up/down options
     * Fix Keyboard main menu selection
+    * Implement multiplayer
 */
 
 SDL_Window *window = nullptr;
@@ -226,6 +228,7 @@ int textWidth = 0;                             // for font
 int textHeight = 0;                            // for font
 int fontSize = 36;                             // for font
 int scene = 1;                                 // for scene to display
+std::string playerName = "";                   // Players name
 
 // SETTINGS VARIABLES
 bool isMusicPlaying = NULL;                                           // for music
@@ -914,7 +917,13 @@ void draw()
         text_for_HUD_scene_9();
         render_buttons_scene_9();
     }
-    else if (scene == 32)
+    else if (scene == 11) // Profile
+    {
+        text_for_HUD_scene_11();
+        render_buttons_scene_11();
+    }
+    
+    else if (scene == 32) // Game Map - Rome - Tic Tac Toe
     {
         ttt_SDL_draw();
     }
