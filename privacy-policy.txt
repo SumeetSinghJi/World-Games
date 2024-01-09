@@ -1,0 +1,49 @@
+Privacy Policy
+Effective Date: 10th January 2024
+Thank you for using World Games. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you interact with our multiplayer game.
+
+Table of Contents
+1. Information We Collect	1
+2. How We Use Your Information	1
+3. Information Sharing	1
+4. Data Security	1
+5. Your Choices	1
+6. Parental Controls and Choices	2
+7. Children’s Privacy	2
+8. Changes to This Policy	2
+9. Contact Us	2
+
+1. Information We Collect
+a. Account Information: When you create an account, we collect your username, email address, and other necessary information to facilitate your gameplay and account management.
+b. Gameplay Data: We collect and store gameplay statistics, including scores, achievements, and other relevant gameplay data associated with your username.
+
+2. How We Use Your Information
+a. Multiplayer Usage: Your username will be publicly displayed during multiplayer sessions to identify you to other players.
+b. Game Statistics: We may use your game statistics for leaderboards, in-game rankings, or other interactive features within the game.
+c. Improvement and Development: Your data may be utilized to analyze gameplay patterns, improve game mechanics, and develop new features to enhance user experience.
+
+3. Information Sharing
+a. Public Display: Your username and game statistics may be publicly displayed within the game, such as on leaderboards or achievement lists, visible to other players.
+b. Third-Party Service Providers: We may share your information with trusted third-party service providers to support game functionality, analytics, or marketing purposes.
+
+4. Data Security
+We take appropriate measures to safeguard your information against unauthorized access, alteration, disclosure, or destruction.
+
+5. Your Choices
+a. Account Management: You can update or delete your account information by contacting us directly.
+b. Opt-Out: You can choose not to publicly display certain information, though this might limit access to specific game features. To do so simply choose not to sign up in game.
+
+6. Parental Controls and Choices
+a. Parental Oversight: Parents can review, modify, or delete their child's account information by contacting us directly.
+b. Opt-Out: Users can choose not to display certain information, ensuring a safer gaming experience.
+7. Children’s Privacy
+a. COPPA Compliance: We comply with COPPA and do not knowingly collect personal information from children under 13 without verifiable parental consent.
+b. Parental Consent: Parental consent is required for the collection of personal information from children under 13, with clear instructions provided within the game.
+
+8. Changes to This Policy
+We reserve the right to modify this Privacy Policy at any time. We encourage you to review this policy periodically for any changes.
+
+9. Contact Us
+If you have any questions, concerns, or requests regarding this Privacy Policy or your data, please contact us at the AgniSamooh.com team at support@agnisamooh.com
+By using our game, you agree to the terms outlined in this Privacy Policy.
+
