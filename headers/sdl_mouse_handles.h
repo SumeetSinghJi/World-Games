@@ -1,5 +1,4 @@
-#ifndef sdl_mouse_handles
-#define sdl_mouse_handles
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -459,5 +458,3 @@ void handle_click_scene_10(int mouseX, int mouseY) // Keybindings
         scene = 1;
     }
 }
-
-#endif

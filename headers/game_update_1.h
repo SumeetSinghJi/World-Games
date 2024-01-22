@@ -1,5 +1,4 @@
-#ifndef game_update_1
-#define game_update_1
+#pragma once
 
 #include <iostream>
 #include <curl.h>       // for downloading latest game from Github
@@ -455,5 +454,3 @@ void start_game_update_1()
     CMAKE_build();
     game_start();
 }
-
-#endif

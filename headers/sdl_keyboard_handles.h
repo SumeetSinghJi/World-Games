@@ -1,5 +1,4 @@
-#ifndef sdl_keyboard_handles
-#define sdl_keyboard_handles
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -221,5 +220,3 @@ void handle_keyboard_scene_5(SDL_Event event)
         break;
     }
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef multiplayer
-#define multiplayer
+#pragma once
 
 #include <iostream>
 
@@ -39,8 +38,3 @@ void GET_resuts_to_leaderboard() {
     // Get (curl) leaderboard results from www.agnisamooh.com/leaderboards
     std::cout << "Get (curl) leaderboard results from www.agnisamooh.com/leaderboards" << std::endl;
 }
-
-
-
-
-#endif

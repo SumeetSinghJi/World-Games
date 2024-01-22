@@ -1,5 +1,4 @@
-#ifndef sdl_gamepad_handles
-#define sdl_gamepad_handles
+#pragma once
 
 #include <iostream>
 #include <string>
@@ -221,6 +220,3 @@ void handle_gamepad_scene_5(int button)
         break;
     }
 }
-
-
-#endif

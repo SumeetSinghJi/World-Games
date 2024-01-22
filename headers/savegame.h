@@ -1,5 +1,4 @@
-#ifndef savegame
-#define savegame
+#pragma once
 
 #include <iostream>
 #include <fstream>
@@ -129,5 +128,3 @@ void does_save_file_exist()
     new_game();
   }
 }
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef tic_tac_toe
-#define tic_tac_toe
+#pragma once
 
 #include <iostream>
 
@@ -951,5 +950,3 @@ void ttt_SDL_cleanup()
     SDL_DestroyTexture(oTexture);
     SDL_DestroyTexture(lineTexture);
 }
-
-#endif

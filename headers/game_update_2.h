@@ -1,5 +1,4 @@
-#ifndef game_update_2
-#define game_update_2
+#pragma once
 
 #include <iostream>
 #include <cstring>
@@ -286,5 +285,4 @@ void game_start()
         system(start_command.c_str());
     }
 }
-
-#endif
+#pragma once

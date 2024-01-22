@@ -37,17 +37,38 @@
 
 /*
     TO DO
-    * scene 11 = enter username, + include button to sign up for online (scene 12)
-    * scene 12 = enter email and password to sign up online for multiplayer gaming
-    *   render below text by reading from a privacy-policy.txt
-    *   Use ChatGPT to create a privacy policy for game stating:
-    *   username and email will only be used online for publically displaying online for multiplayer gaming session tracking
+
+    instead of C style pointer below (3 lines) and remember I havn't done doubel-free avoiding
+
+    SDL_Texture* xTexture = nullptr;
+    SDL_DestroyTexture(xTexture);
+    xTexture = nullptr; // Make sure to set xTexture to nullptr after destruction to avoid double-free.
+
+    use c++ smart pointer
+    using SDLTexturePtr = std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)>;
+    
+
+
+    * scene 11 = enter username, + include button to 
+      1. Submit
+      2. sign up for online
+    *  Render text for privacy-policy.txt
+    *  input for email (with render text: optional)
+    *  input for password (with render text: optional)
     * Circle button texture for HUD buttons
     * fix update header
     * Fix reading readme and credits
     * Fix mouse scroll up/down options
     * Fix Keyboard main menu selection
     * Implement multiplayer
+    * Add 10 more games
+    *   Tutorial game - Shoushiling - Beijing - Scissors paper rock
+    *   2nd game - Senet - Egypt
+    *   3rd game - The Royal Game of Ur - Babylon
+    *   4th game - Kite - China
+    *   5th game - 
+    *   
+    * Submit on Steam for free
 */
 
 SDL_Window *window = nullptr;

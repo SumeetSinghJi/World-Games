@@ -1,5 +1,4 @@
-#ifndef sdl_loads
-#define sdl_loads
+#pragma once
 
 #include <iostream>
 #include <SDL_ttf.h>
@@ -418,6 +417,3 @@ void load_animations()
         std::cout << "Animation's are loaded." << std::endl;
     }
 }
-
-
-#endif

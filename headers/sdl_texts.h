@@ -1,5 +1,4 @@
-#ifndef sdl_texts
-#define sdl_texts
+#pragma once
 
 #include <iostream>
 
@@ -167,6 +166,3 @@ void text_for_HUD_scene_11() // Profile
         render_text("あなたの名前を入力してください", (windowWidth * 0.3), (windowHeight * 0.3));
     }
 }
-
-
-#endif
