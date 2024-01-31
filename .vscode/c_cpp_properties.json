@@ -7,8 +7,9 @@
                 "${workspaceFolder}/src/SDL2_Image/x86_64-w64-mingw32/include/SDL2",
                 "${workspaceFolder}/src/SDL2_Mixer/x86_64-w64-mingw32/include/SDL2",
                 "${workspaceFolder}/src/SDL2_TTF/x86_64-w64-mingw32/include/SDL2",
-                "${workspaceFolder}/src/curl/include",
-                "${workspaceFolder}/src/libzip"
+                "${workspaceFolder}/src/curl/include/curl",
+                "${workspaceFolder}/src/libzip/lib",
+                "${workspaceFolder}"
             ],
             "defines": [
                 "_DEBUG",
@@ -16,10 +17,9 @@
                 "_UNICODE"
             ],
             "windowsSdkVersion": "10.0.22000.0",
-            "compilerPath": "cl.exe",
+            "compilerPath": "C:/msys64/mingw64/bin/g++.exe",
             "cStandard": "c17",
-            "cppStandard": "c++17",
-            "intelliSenseMode": "windows-msvc-x64"
+            "cppStandard": "c++17"
         }
     ],
     "version": 4

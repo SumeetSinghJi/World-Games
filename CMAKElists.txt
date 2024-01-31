@@ -1,66 +1,83 @@
-cmake_minimum_required(VERSION 3.0)
+# Uses instructions here for SDL CMAKE Setup:
+# https://www.reddit.com/r/sdl/comments/134kpd0/how_to_setup_sdl2_sdl_image_with_cmake_on_windows/
+cmake_minimum_required(VERSION 3.12)
 
-project(SDL_ENGINE)
+project(World-Games VERSION 0.1.0)
 
-# Set paths to SDL2 and SDL2_image (for non-standard location)
-set(CMAKE_PREFIX_PATH "${CMAKE_PREFIX_PATH};${CMAKE_SOURCE_DIR}/src/SDL2/x86_64-w64-mingw32;${CMAKE_SOURCE_DIR}/src/SDL2_image/x86_64-w64-mingw32;${CMAKE_SOURCE_DIR}/src/SDL2_Mixer/x86_64-w64-mingw32;${CMAKE_SOURCE_DIR}/src/SDL2_TTF/x86_64-w64-mingw32")
+# set directory for CMAKE config files "e.g. SDL2-config.cmake"
+set(SDL2_DIR "${CMAKE_SOURCE_DIR}/src/SDL2/cmake")
+set(SDL2_Image_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_image/cmake")
+set(SDL2_Mixer_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_Mixer/cmake")
+set(SDL2_TTF_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_TTF/cmake")
+set(CURL_DIR "${CMAKE_SOURCE_DIR}/src/curl")
+set(libzip_DIR "${CMAKE_SOURCE_DIR}/src/libzip")
 
-# find_package looks in /cmake folder to learn to set variables for /bin, /include/SDL2 and /lib
-find_package(SDL2 REQUIRED) # This works but the remainder don't
-find_package(SDL2_image REQUIRED)
+# variabel names don't include ${}
+set(CURL_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/curl/include")
+set(CURL_LIBRARY "${CMAKE_SOURCE_DIR}/src/curl/lib")
+
+# build from above set DIR's
+find_package(SDL2 REQUIRED)
+find_package(SDL2_Image REQUIRED)
 find_package(SDL2_Mixer REQUIRED)
 find_package(SDL2_TTF REQUIRED)
+find_package(CURL REQUIRED)
+find_package(libzip REQUIRED)
 
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}) 
+add_executable(World-Games main.cpp)
 
-# Add the main.cpp here
-set(SOURCES
-    main.cpp
+# target_include_directories will automatically find the package include directories based on find_package
+# Note 1: include_directories is outdated, only use target_include_directories
+# Note 2: ./assets not necessary during compilation as during runtime of .exe/bin the program is hardcoded where to look
+target_include_directories(World-Games PRIVATE
+    headers
+    ${CMAKE_SOURCE_DIR}/src/curl/include/curl # necessary to find <curl.h>. Using ${CURL_INCLUDE_DIRS} doesnt work.
+    ${CMAKE_SOURCE_DIR}/src/libzip/lib # necessary to find <zip.h>. Using ${LIBZIP_INCLUDE_DIRS} doesnt work.
 )
 
-set(HEADERS
-    headers/help.h
-    headers/savegame.h
-    headers/sdl_loads.h
-    headers/sdl_renders.h
-    headers/sdl_texts.h
+# found from above find_package which sets the x_LIBRARIES directories and looks in them for the -l linkers
+target_link_libraries(World-Games
+    SDL2::SDL2main
+    SDL2::SDL2
+    SDL2_image::SDL2_image
+    SDL2_mixer::SDL2_mixer
+    SDL2_ttf::SDL2_ttf
+    ${CMAKE_SOURCE_DIR}/src/curl/lib/libcurl.a # necessary to find -lcurl
+    ${LIBZIP_LIBRARIES}  # necessary to find -lzip
 )
 
-# Create the .exe
-add_executable(SDL_ENGINE ${SOURCES})
+set_target_properties(World-Games PROPERTIES
+    # move .exe/.bin etc., from ./build to ./
+    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
 
-# Change the .exe or .bin name
-set_target_properties(SDL_ENGINE PROPERTIES OUTPUT_NAME "main")
+# UNTESTED for final release
+#if(WIN32)
+#    # Add the -mwindows flag
+#    # target_link_options(Shoushiling PRIVATE -mwindows) # untested
+#
+#    # Use windres to include the icon in the executable
+#    add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/icon_res.o
+#    
+#        COMMAND windres "${CMAKE_SOURCE_DIR}/images/icons/icon.rc" "${CMAKE_BINARY_DIR}/icon_res.o"
+#        COMMAND ${CMAKE_COMMAND} -E echo "Including icon in the executable..."
+#        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+#        DEPENDS "${CMAKE_SOURCE_DIR}/images/icons/icon.rc")
+#
+#    add_custom_target(BuildIcon ALL DEPENDS ${CMAKE_BINARY_DIR}/icon_res.o)
+#
+#    # Link the icon object to the executable
+#    add_dependencies(SDL_ENGINE BuildIcon)
+#    target_sources(SDL_ENGINE PRIVATE ${CMAKE_BINARY_DIR}/icon_res.o)
+#
+#    # After the build, execute the batch script to create the shortcut
+#    add_custom_command(TARGET SDL_ENGINE POST_BUILD
+#    COMMAND "${CMAKE_BINARY_DIR}/windows_create_shortcut.bat"
+#    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+#    COMMENT "Creating shortcut on desktop"
+#    )
 
-# Link libraries based on the operating system
-if(WIN32)
-    # Add the -mwindows flag
-    # target_link_options(Shoushiling PRIVATE -mwindows) # untested
-
-    # Use windres to include the icon in the executable
-    add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/icon_res.o
-    
-        COMMAND windres "${CMAKE_SOURCE_DIR}/images/icons/icon.rc" "${CMAKE_BINARY_DIR}/icon_res.o"
-        COMMAND ${CMAKE_COMMAND} -E echo "Including icon in the executable..."
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-        DEPENDS "${CMAKE_SOURCE_DIR}/images/icons/icon.rc") 
-
-    add_custom_target(BuildIcon ALL DEPENDS ${CMAKE_BINARY_DIR}/icon_res.o)
-
-    # Link the icon object to the executable
-    add_dependencies(SDL_ENGINE BuildIcon)
-    target_sources(SDL_ENGINE PRIVATE ${CMAKE_BINARY_DIR}/icon_res.o)
-
-    # After the build, execute the batch script to create the shortcut
-    add_custom_command(TARGET SDL_ENGINE POST_BUILD
-    COMMAND "${CMAKE_BINARY_DIR}/windows_create_shortcut.bat"
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    COMMENT "Creating shortcut on desktop"
-    )
-
-else()
-    # Commands for other operating systems
-    # ...
-endif()
+#else()
+#    # Commands for other operating systems
+#    # ...
+#endif()

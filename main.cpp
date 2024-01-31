@@ -47,7 +47,7 @@
     use c++ smart pointer
     using SDLTexturePtr = std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)>;
     
-
+    * Chinese high pitch drum symbol when starting new game
 
     * scene 11 = enter username, + include button to 
       1. Submit

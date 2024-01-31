@@ -11,11 +11,11 @@
                 "-I./src/SDL2_image/x86_64-w64-mingw32/include/SDL2", // SDL2 Image header folder
                 "-I./src/SDL2_Mixer/x86_64-w64-mingw32/include/SDL2", // SDL2 Mixer header folder
                 "-I./src/SDL2_TTF/x86_64-w64-mingw32/include/SDL2", // SDL2 TTF header folder
-                "-I./src/curl/include", // libcurl
-                "-I./src/libzip", // libzib
+                "-I./src/curl/include/curl", // libcurl
+                "-I./src/libzip/lib", // libzib
                 "-g",
-                // "${file}", // uncomment for only building main.cpp
-                "${fileDirname}/*.cpp", // uncomment for combining all .cpp files
+                "${file}", // uncomment for only building main.cpp
+                // "${fileDirname}/*.cpp", // uncomment for combining all .cpp files
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
 				"-L./src/SDL2/x86_64-w64-mingw32/lib", // SDL2 lib folder
@@ -23,7 +23,7 @@
                 "-L./src/SDL2_Mixer/x86_64-w64-mingw32/lib", // SDL2 Mixer lib folder
                 "-L./src/SDL2_TTF/x86_64-w64-mingw32/lib", // SDL2 TTF lib folder
                 "-L./src/curl/lib", // libcurl
-                "-L./src/libzip", // libzib
+                "-L./src/libzip", // libzib point to .dll and/or .a location usually within ./x/lib path
                 "-lzip", // libzib
                 "-lcurl", // libcurl
 				"-lmingw32", // MingW compiler library found here C:\msys64\mingw64\lib\libmingw32.a
@@ -32,7 +32,7 @@
 				"-lSDL2_image", // SDL Image
 				"-lSDL2_ttf", // SDL TTF
 				"-lSDL2_mixer", // SDL Mixer
-				// "-mwindows" // for removing cmd when .exe is run, for final release only
+				// "-mwindows" // Uncomment to remove terminal popup with diagnostics during final release
             ],
             "options": {
                 "cwd": "${fileDirname}"
