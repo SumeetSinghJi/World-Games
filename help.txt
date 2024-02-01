@@ -194,7 +194,7 @@ Uses header below
 
 SCENES
 
-scene 1 = Title
+scene 1 = Main menu
 scene 2 = Settings
 scene 3 = Credits
 scene 4 = Achievements
@@ -204,8 +204,8 @@ scene 7 = Tutorial
 scene 8 = multiplayer lobby - TBD
 scene 9 = Leaderboard - TBD
 scene 10 = keybindings - TBD
-scene 11 = Profile
-scene 12 = _____UNUSED_____
+scene 11 = Create name - TBD
+scene 12 = Create account - TBD
 scene 13 = _____UNUSED_____
 scene 14 = _____UNUSED_____
 scene 15 = _____UNUSED_____

@@ -37,22 +37,17 @@
 
 /*
     TO DO
-
-    instead of C style pointer below (3 lines) and remember I havn't done doubel-free avoiding
-
-    SDL_Texture* xTexture = nullptr;
-    SDL_DestroyTexture(xTexture);
-    xTexture = nullptr; // Make sure to set xTexture to nullptr after destruction to avoid double-free.
-
-    use c++ smart pointer
-    using SDLTexturePtr = std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)>;
-    
-    * Chinese high pitch drum symbol when starting new game
-
+    * Convert all texture C style raw pointers to smart unique ptr's gradually
+    * Game accessability for Sight impaired
+    * Chinese high pitch drum symbol when starting new game/pausing like Sleeping Dogs start menu sound
+    * Clicking noise for toggles in settings
+    * flag noise for changing languages
+    * volume up/down slider noise
+    * Reset all settings to default button
     * scene 11 = enter username, + include button to 
       1. Submit
-      2. sign up for online
-    *  Render text for privacy-policy.txt
+      2. sign up for online -> on click Render text for privacy-policy.txt -> accept/decline buttons
+    * scene 12 = Sign up
     *  input for email (with render text: optional)
     *  input for password (with render text: optional)
     * Circle button texture for HUD buttons
@@ -60,15 +55,14 @@
     * Fix reading readme and credits
     * Fix mouse scroll up/down options
     * Fix Keyboard main menu selection
-    * Implement multiplayer
+    * Key remapping option
+    * Implement multiplayer consider using e-net at least for tic tac toe
     * Add 10 more games
     *   Tutorial game - Shoushiling - Beijing - Scissors paper rock
     *   2nd game - Senet - Egypt
     *   3rd game - The Royal Game of Ur - Babylon
     *   4th game - Kite - China
-    *   5th game - 
-    *   
-    * Submit on Steam for free
+    * Submit on Steam for free for everyone
 */
 
 SDL_Window *window = nullptr;

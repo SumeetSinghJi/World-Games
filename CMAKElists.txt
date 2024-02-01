@@ -70,7 +70,7 @@ set_target_properties(World-Games PROPERTIES
 #    add_dependencies(SDL_ENGINE BuildIcon)
 #    target_sources(SDL_ENGINE PRIVATE ${CMAKE_BINARY_DIR}/icon_res.o)
 #
-#    # After the build, execute the batch script to create the shortcut
+#    # After the build, execute the batch script to create the shortcut on users desktop
 #    add_custom_command(TARGET SDL_ENGINE POST_BUILD
 #    COMMAND "${CMAKE_BINARY_DIR}/windows_create_shortcut.bat"
 #    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
