@@ -255,7 +255,7 @@ void load_sound()
 
     if (!winRoundSound || !loseRoundSound || !winGameSound || !loseGameSound || !drawGameSound)
     {
-        std::cerr << "Error: Failed to load vicotry/loss sound effects: " << Mix_GetError() << std::endl;
+        std::cerr << "Error: Failed to load victory & loss sound effects: " << Mix_GetError() << std::endl;
     }
 
 }
