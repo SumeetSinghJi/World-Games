@@ -12,7 +12,6 @@ set(SDL2_TTF_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_TTF/cmake")
 set(CURL_DIR "${CMAKE_SOURCE_DIR}/src/curl")
 set(libzip_DIR "${CMAKE_SOURCE_DIR}/src/libzip")
 
-# variabel names don't include ${}
 set(CURL_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/curl/include")
 set(CURL_LIBRARY "${CMAKE_SOURCE_DIR}/src/curl/lib")
 

@@ -27,7 +27,7 @@
 // #include "headers/savegame.h"          // FUTURE DEVELOPMENT - For save/continue functions
 #include "headers/sdl_loads.h"            // SDL Textures, Sounds, Animations to load
 #include "headers/sdl_renders.h"          // SDL Rect/Buttons to render to screen/scene/GUI
-#include "headers/sdl_texts.h"            // SDL Text to Render  to screen/scene/GUI
+#include "headers/sdl_texts.h"            // SDL Text to Render to screen/scene/GUI
 #include "headers/sdl_mouse_handles.h"    // SDL Mouse and Touch keypresses
 #include "headers/sdl_keyboard_handles.h" // SDL Keyboard keypresses
 #include "headers/sdl_gamepad_handles.h"  // SDL Gamepad controller keypresses
@@ -314,7 +314,7 @@ void is_scene_unlocked(int target)
     }
     if (found == true)
     {
-        render_text("You already defeated the grandmaster", (windowWidth * 0.3), (windowHeight * 0.8));
+        render_text("You already defeated the grandmaster", (windowWidth * 0.3), (windowHeight * 0.8), 255);
     }
     else
     {
@@ -608,7 +608,7 @@ void draw_timer()
     // If minutes or seconds < 10, it will add an 0 e.g. 120 seconds = 2. As 2 < 10, final output: 02:00
     std::string timerText = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-    render_text(timerText, timerRect.x + 150, timerRect.y + 30);
+    render_text(timerText, timerRect.x + 150, timerRect.y + 30, 255);
 }
 void draw_win_frequency(const std::vector<int> &winners, const std::vector<int> &winnersChoice)
 {
@@ -652,8 +652,8 @@ void draw_win_frequency(const std::vector<int> &winners, const std::vector<int> 
         }
 
         // Render winner and their choice at appropriate positions
-        render_text(winnerString, static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet);
-        render_text(winnerChoiceString, static_cast<int>(windowWidth * 0.92), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet);
+        render_text(winnerString, static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet, 255);
+        render_text(winnerChoiceString, static_cast<int>(windowWidth * 0.92), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet, 255);
 
         frequencyRectyOffSet += 40; // Move to the next vertical position for next winner
     }
@@ -887,12 +887,7 @@ void update()
 }
 void draw()
 {
-    /*
-    While game is running 3 functions are called
-    handle_events() - Deals with listening for key press then call header for keyboard/mouse/gamepad input
-    update() - Calls logic depending on scene e.g. if scene x, play song x
-    draw() - Calls headers for rendering buttons and rendering text
-    */
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND); // Set the blend mode to enable transparency
     SDL_SetRenderDrawColor(renderer, 144, 238, 144, 255); // set default background colour to lime green
     SDL_RenderClear(renderer);
 

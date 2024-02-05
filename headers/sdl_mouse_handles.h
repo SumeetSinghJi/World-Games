@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-#include "headers/game_update_1.h"
 
 /*
 Both Mouse and Touch click use the same mousePoint variable
@@ -75,7 +74,7 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     else if (SDL_PointInRect(&mousePosition, &menuGameUpdateRect))
     {
         std::cout << "You clicked Update game" << std::endl;
-        start_game_update_1();
+        // start_game_update_1();
     }
     else if (SDL_PointInRect(&mousePosition, &menuQuitRect))
     {

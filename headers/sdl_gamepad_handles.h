@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <string>
-#include "headers/game_update_1.h"
 
 /*
 For keyboard input
@@ -103,7 +102,7 @@ void handle_gamepad_scene_1(int button)
         else if (SDL_PointInRect(&selectedPoint, &menuGameUpdateRect))
         {
             std::cout << "You clicked Update game" << std::endl;
-            start_game_update_1();
+            // start_game_update_1();
         }
         else if (SDL_PointInRect(&selectedPoint, &menuQuitRect))
         {

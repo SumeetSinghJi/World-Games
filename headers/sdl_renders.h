@@ -76,33 +76,31 @@ extern int selectedOption;    // For keyboard arrow key and gamepad d pad key op
 // FUNCTION PROTOTYPE
 bool is_achievement_unlocked(int target); // For rendering Trophy icon if achievement unlocked
 
-void render_text(const std::string &text, int x, int y)
+void render_text(const std::string &text, int x, int y, Uint8 alpha)
 {
     TTF_Font *font = nullptr;
     if (fontSize == 24)
     {
         font = font_24;
-        // std::cout << "Rendering Font at size: " << fontSize << std::endl; // for debugging text render size
     }
     else if (fontSize == 36)
     {
         font = font_36;
-        // std::cout << "Rendering Font at size: " << fontSize << std::endl; // for debugging text render size
     }
     else if (fontSize == 48)
     {
         font = font_48;
-        // std::cout << "Rendering Font at size: " << fontSize << std::endl; // for debugging text render size
     }
 
     if (font)
     {
-        SDL_Color textColor = {0, 0, 0};
-        SDL_Surface *textSurface = TTF_RenderUTF8_Solid(font, text.c_str(), textColor);
+        SDL_Color textColor = {0, 0, 0, alpha};
+        SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, text.c_str(), textColor);
 
         if (textSurface)
         {
             // Calculate textWidth and textHeight using TTF_SizeText
+            int textWidth, textHeight;
             TTF_SizeText(font, text.c_str(), &textWidth, &textHeight);
 
             SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
