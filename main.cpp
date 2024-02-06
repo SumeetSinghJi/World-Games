@@ -7,7 +7,7 @@
     Version: 0.1
     Description: Players travel the world playing different traditional games.
     License: Main source code is open source excluding the third party libraries which have their own licensing.
-    Game and Programming logic: Read in help_scene.h file or view in game help menu.
+    Game and Programming logic: Read in help_scene.hpp file or view in game help menu.
     Location: https://github.com/SumeetSinghJi/World-Games
 */
 
@@ -23,17 +23,17 @@
 #include <SDL_image.h>                    // SDL Requirement
 #include <SDL_ttf.h>                      // SDL Requirement
 #include <SDL_mixer.h>                    // SDL Requirement
-#include "headers/multiplayer.h"          // FUTURE DEVELOPMENT - For Multiplayer
-// #include "headers/savegame.h"          // FUTURE DEVELOPMENT - For save/continue functions
-#include "headers/sdl_loads.h"            // SDL Textures, Sounds, Animations to load
-#include "headers/sdl_renders.h"          // SDL Rect/Buttons to render to screen/scene/GUI
-#include "headers/sdl_texts.h"            // SDL Text to Render to screen/scene/GUI
-#include "headers/sdl_mouse_handles.h"    // SDL Mouse and Touch keypresses
-#include "headers/sdl_keyboard_handles.h" // SDL Keyboard keypresses
-#include "headers/sdl_gamepad_handles.h"  // SDL Gamepad controller keypresses
-#include "headers/game_update_1.h"        // For downloading latest game update
-#include "headers/game_update_2.h"        // For downloading latest game update
-#include "headers/tic_tac_toe.h"          // Scene 32 - Rome - Tic Tac Toe
+#include "headers/multiplayer.hpp"          // FUTURE DEVELOPMENT - For Multiplayer
+// #include "headers/savegame.hpp"          // FUTURE DEVELOPMENT - For save/continue functions
+#include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
+#include "headers/sdl_renders.hpp"          // SDL Rect/Buttons to render to screen/scene/GUI
+#include "headers/sdl_texts.hpp"            // SDL Text to Render to screen/scene/GUI
+#include "headers/sdl_mouse_handles.hpp"    // SDL Mouse and Touch keypresses
+#include "headers/sdl_keyboard_handles.hpp" // SDL Keyboard keypresses
+#include "headers/sdl_gamepad_handles.hpp"  // SDL Gamepad controller keypresses
+#include "headers/game_update_1.hpp"        // For downloading latest game update
+#include "headers/game_update_2.hpp"        // For downloading latest game update
+#include "headers/tic_tac_toe.hpp"          // Scene 32 - Rome - Tic Tac Toe
 
 /*
     TO DO
@@ -839,7 +839,7 @@ void handle_events()
 }
 void update()
 {
-    // Render FPS if toggled from Settings button, which renders in sdl_texts.h
+    // Render FPS if toggled from Settings button, which renders in sdl_texts.hpp
     frameCount++;
     int currentTime = SDL_GetTicks();
     if (currentTime - lastTime >= 1000)
@@ -962,7 +962,7 @@ void exit_SDL()
     // Splash screen
     SDL_DestroyTexture(splashScreenTexture);
 
-    // sdl_loads.h load_texture texture
+    // sdl_loads.hpp load_texture texture
     SDL_DestroyTexture(texture);
 
     // Scene 1 destroy - Main menu
