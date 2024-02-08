@@ -11,7 +11,7 @@ extern bool fps_condition;
 
 void render_text(const std::string &text, int x, int y);
 
-void text_for_HUD_scene_1() // Main menu
+void draw_text_for_HUD_scene_1() // Main menu
 {
     if (language == "English")
     {
@@ -44,7 +44,7 @@ void text_for_HUD_scene_1() // Main menu
         render_text("@AgniSamooh.com", (windowWidth * 0.7), (windowHeight * 0.9), 255);
     }
 }
-void text_for_HUD_scene_2() // Settings
+void draw_text_for_HUD_scene_2() // Settings
 {
     if (language == "English")
     {
@@ -85,7 +85,7 @@ void text_for_HUD_scene_2() // Settings
         render_text("メインメニュー", (windowWidth * 0.8), (windowHeight * 0.4), 255);
     }
 }
-void text_for_HUD_scene_4() // Achievements
+void draw_text_for_HUD_scene_4() // Achievements
 {
     if (language == "English")
     {
@@ -120,7 +120,7 @@ void text_for_HUD_scene_4() // Achievements
         render_text("10. 試合に負けることはありません", (windowWidth * 0.5), (windowHeight * 0.6), 255);
     }
 }
-void text_for_HUD_scene_6() // World map
+void draw_text_for_HUD_scene_6() // World map
 {
     if (language == "English")
     {
@@ -131,7 +131,7 @@ void text_for_HUD_scene_6() // World map
         render_text("手伝う", (windowWidth * 0.4), (windowHeight * 0.1), 255);
     }
 }
-void text_for_HUD_scene_8() // Multiplayer lobby
+void draw_text_for_HUD_scene_8() // Multiplayer lobby
 {
     if (language == "English")
     {
@@ -142,7 +142,7 @@ void text_for_HUD_scene_8() // Multiplayer lobby
         render_text("マルチプレイヤーロビー", (windowWidth * 0.4), (windowHeight * 0.1), 255);
     }
 }
-void text_for_HUD_scene_9() // Leaderboard
+void draw_text_for_HUD_scene_9() // Leaderboard
 {
     if (language == "English")
     {
@@ -153,7 +153,7 @@ void text_for_HUD_scene_9() // Leaderboard
         render_text("リーダーボード", (windowWidth * 0.4), (windowHeight * 0.1), 255);
     }
 }
-void text_for_HUD_scene_11() // Profile
+void draw_text_for_HUD_scene_11() // Profile
 {
     if (language == "English")
     {

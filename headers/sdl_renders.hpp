@@ -123,7 +123,7 @@ void render_fireworks_animation()
     std::cout << "Animation is playing" << std::endl;
 }
 
-void render_buttons_scene_1() // Main menu
+void draw_buttons_scene_1() // Main menu
 {
     // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.15), rectWidth, rectHeight};
     SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
@@ -160,7 +160,7 @@ void render_buttons_scene_1() // Main menu
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // Red color (adjust as needed)
     SDL_RenderDrawRect(renderer, &selectedRect);
 }
-void render_buttons_scene_2() // Settings
+void draw_buttons_scene_2() // Settings
 {
     SDL_Rect fontRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
     SDL_Rect soundRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
@@ -191,12 +191,12 @@ void render_buttons_scene_2() // Settings
     SDL_RenderCopy(renderer, returnGameTexture, nullptr, &returnGameRect);
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }
-void render_buttons_scene_3() // Credits
+void draw_buttons_scene_3() // Credits
 {
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }
-void render_buttons_scene_4() // Achievements
+void draw_buttons_scene_4() // Achievements
 {
     SDL_Rect achievement1Rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
     SDL_Rect achievement2Rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.3), rectWidth, rectHeight};
@@ -235,7 +235,7 @@ void render_buttons_scene_4() // Achievements
     }
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }
-void render_buttons_scene_5() // Help
+void draw_buttons_scene_5() // Help
 {
     SDL_Rect backwardRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
     SDL_Rect forwardRect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
@@ -247,7 +247,7 @@ void render_buttons_scene_5() // Help
     SDL_RenderCopy(renderer, forwardTexture, nullptr, &forwardRect);
     SDL_RenderCopy(renderer, backwardTexture, nullptr, &backwardRect);
 }
-void render_buttons_scene_6() // World map
+void draw_buttons_scene_6() // World map
 {
     SDL_Rect helpRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
     SDL_Rect settingsRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
@@ -285,7 +285,7 @@ void render_buttons_scene_6() // World map
     // SDL_RenderCopy(renderer, saveTexture, nullptr, &saveRect);
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }
-void render_buttons_scene_8() // Multiplayer lobby
+void draw_buttons_scene_8() // Multiplayer lobby
 {
     SDL_Rect joinAvailableGameRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
     SDL_Rect createAvailableGameRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
@@ -305,18 +305,18 @@ void render_buttons_scene_8() // Multiplayer lobby
 
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }
-void render_buttons_scene_9() // leaderboard
+void draw_buttons_scene_9() // leaderboard
 {
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
     
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }
-void render_buttons_scene_10() // Keybindings
+void draw_buttons_scene_10() // Keybindings
 {
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }
-void render_buttons_scene_11() // Profile
+void draw_buttons_scene_11() // Profile
 {
     SDL_Rect inputTextRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.4), static_cast<int>(windowWidth * 0.9), (windowHeight / 10)};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &inputTextRect);

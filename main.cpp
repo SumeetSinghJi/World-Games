@@ -37,6 +37,8 @@
 
 /*
     TO DO
+    * Use AI to create victory animation
+    * Use AI to create won game animation travelling the world in hot weather baloon
     * Convert all texture C style raw pointers to smart unique ptr's gradually
     * Game accessability for Sight impaired
     * Chinese high pitch drum symbol when starting new game/pausing like Sleeping Dogs start menu sound
@@ -895,50 +897,50 @@ void draw()
     if (scene == 1) // menu
     {
         SDL_RenderCopy(renderer, menuBackgroundTexture, NULL, NULL);
-        text_for_HUD_scene_1();
-        render_buttons_scene_1();
+        draw_text_for_HUD_scene_1();
+        draw_buttons_scene_1();
     }
     else if (scene == 2) // settings
     {
-        text_for_HUD_scene_2();
-        render_buttons_scene_2();
+        draw_text_for_HUD_scene_2();
+        draw_buttons_scene_2();
     }
     else if (game_won == true) // credits
     {
         std::cout << "You won the game!" << std::endl;
-        render_buttons_scene_3();
+        draw_buttons_scene_3();
         credits_file_read(); // render txt output of credits.txt to screen
     }
     else if (scene == 4) // achievements
     {
-        text_for_HUD_scene_4();
-        render_buttons_scene_4();
+        draw_text_for_HUD_scene_4();
+        draw_buttons_scene_4();
     }
     else if (scene == 5) // help
     {
-        render_buttons_scene_5();
+        draw_buttons_scene_5();
         help_guide_file_read(); // render txt output of help.txt to screen
     }
     else if (scene == 6) // world map
     {
         SDL_RenderCopy(renderer, worldMapTexture, NULL, NULL);
-        text_for_HUD_scene_6();
-        render_buttons_scene_6();
+        draw_text_for_HUD_scene_6();
+        draw_buttons_scene_6();
     }
     else if (scene == 8) // tutorial
     {
-        text_for_HUD_scene_8();
-        render_buttons_scene_8();
+        draw_text_for_HUD_scene_8();
+        draw_buttons_scene_8();
     }
     else if (scene == 9) // leaderboard
     {
-        text_for_HUD_scene_9();
-        render_buttons_scene_9();
+        draw_text_for_HUD_scene_9();
+        draw_buttons_scene_9();
     }
     else if (scene == 11) // Profile
     {
-        text_for_HUD_scene_11();
-        render_buttons_scene_11();
+        draw_text_for_HUD_scene_11();
+        draw_buttons_scene_11();
     }
     
     else if (scene == 32) // Game Map - Rome - Tic Tac Toe
