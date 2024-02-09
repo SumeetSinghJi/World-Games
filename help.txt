@@ -345,13 +345,10 @@ ________________________________________________________________________________
 _________________________________________________________________________________________________________________
 
 
-CREDITS
+                                    Game developer - Sumeet Singh
 
-Game developer - Sumeet Singh 🧔🏾‍♂️
-Play tester - You 📜
 
-"I made this game to emulate all the 80's to 90's DOS era Shareware developers.
-Thank you for making our lives better with your gifts to the world."
+"I made this in honour of all the 80's and 90's Shareware era developers"
 
 
 PROGRAMMING LIBRARIES

@@ -6,9 +6,27 @@
 * Version: 0.2
 * Description: A C++ game on traditional board and hand games from different cultures around the world.
 * License:
-    Source Code License: The source code in this project is licensed under the MIT License.
-    Graphical Assets License: The graphical assets in this project are licensed under the Creative Commons Attribution (CC-BY) License.
 
+Source Code License:
+The source code in this project is licensed under the MIT License.
+
+Copyright (c) 2023 Sumeet Singh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+[MIT License terms]
+
+Graphical Assets License:
+The graphical assets in this project are licensed under the Creative Commons Attribution (CC-BY) License.
+
+Copyright (c) Individual authors are attributed within the "help.txt" file
+
+The graphical assets included in this project are licensed under the Creative Commons Attribution (CC-BY) License. You are free to use, modify, and distribute these assets, provided that you give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+[CC-BY License terms]
 
 
 ## REQUIREMENTS
