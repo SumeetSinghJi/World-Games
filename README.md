@@ -2,22 +2,17 @@
 
 * Name: World Games
 * Author: Sumeet Singh
-* Author contact: www.sumeet-singh.com
-* Creation Date: 26th September 2023
+* Creation Date: 26/12/2023
 * Version: 0.2
-* Description: This game is a C++ learning project game in which Players travel
-the world playing different traditional games
+* Description: A C++ game on traditional board and hand games from different cultures around the world.
+* License:
+    Source Code License: The source code in this project is licensed under the MIT License.
+    Graphical Assets License: The graphical assets in this project are licensed under the Creative Commons Attribution (CC-BY) License.
 
 
-LICENSE
-This software is open source however the third party libraries, images, and sounds
-use their own respective licensing.
-The full list of attribution to graphics and sounds are in the credits.txt file.
-For the portion of code, and graphics that are by author are free to use subject
-to the 
 
+## REQUIREMENTS
 
-INSTALLATION REQUIREMENTS
 * Supported OS: Windows 10+ (untested on other or older OS)
 * Processor: at least 7th gen Intel Core i3 
 * Memory: 4 GB RAM
@@ -25,13 +20,16 @@ INSTALLATION REQUIREMENTS
 * Hard Drive: 5 GB Free
 
 
-INSTALLATION INSTRUCTIONS
-1. Download, extract and move folder to home directory.
-Windows uses USERPROFILE for the home directory
-linux and MacOS use HOME for the home directory
+## SETUP
+
+1. Download and extract folder to home directory.
+Windows uses USERPROFILE for the home directory, e.g: c:\users\sumeet
+linux and MacOS use HOME for the home directory, e.g: /home/sumeet
+
 2. Run main.exe to start game
 
 
-HELP GUIDE
-* Read help.txt file or in game slect Book (help) icon option in main menu or read 
+## INSTRUCTIONS
+
+Read help.txt file which can also be found in game using the Book icon option in main menu.
 
