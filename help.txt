@@ -1,18 +1,48 @@
+_________________________________________________________________________________________________________________
 
-World Games - HELP GUIDE
+                                            WORLD GAMES - Help Guide
 
-Name: World Games
-main source file: main.cpp
-Author: Sumeet Singh
-Website: www.sumeet-singh.com
-Created: 26th September 2023
-Version: 0.1
-Description: This game is a C++ learning project game in which Players travel the world playing different 
-traditional games.
-Location: https://github.com/SumeetSinghJi/world-games
-Developer: AgniSamooh
-Publisher: AgniSamooh
+_________________________________________________________________________________________________________________
 
+* Name: World Games
+* Creation: 26/09/2023
+* Version: 0.1 (Still in testing)
+* Description: A C++ game on traditional board and hand games from different cultures around the world.
+* Author: Sumeet Singh
+* Author address: www.sumeet-singh.com
+* Author contact: kurta.kursi@gmail.com
+* Publisher: AgniSamooh
+* Publisher address: www.agniSamooh.com
+* Publisher contact: support@agnisamooh.com
+* Location: https://github.com/SumeetSinghJi/world-games
+* License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) License.
+
+_________________________________________________________________________________________________________________
+
+                                            LICENSE
+
+_________________________________________________________________________________________________________________
+
+Source Code License:
+The source code in this project is licensed under the MIT License.
+
+Copyright (c) 2023 Sumeet Singh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+[MIT License terms]
+
+Graphical Assets License:
+The graphical assets in this project are licensed under the Creative Commons Attribution (CC-BY) License.
+
+Copyright (c) Individual authors are attributed within the "help.txt" file
+
+The graphical assets included in this project are licensed under the Creative Commons Attribution (CC-BY) License. You are free to use, modify, and distribute these assets, provided that you give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+[CC-BY License terms]
 
 
 _________________________________________________________________________________________________________________
@@ -37,25 +67,25 @@ ________________________________________________________________________________
 
 
 
-PURPOSE
+BACKGROUND
 
-This game is a C++ learning project game in which Players travel the world playing different traditional games.
+"As the creator, I wanted to dive into programming and learn C++, which I've always been curious about. So, I 
+decided to take on the challenge of making a game – something like chess, but simpler. I was getting a bit 
+bored of modern board games, so I thought, why not create my own? I focused on crafting easy-to-understand games 
+that I've never played before, which made the process both fun and educational. This project is great because 
+it lets me experiment with different programming techniques. If I find something that doesn't work, I can tweak 
+it without wasting too much time. Plus, I can easily add new features or games in the future without messing up 
+what's already there."
 
 
 
-LICENSE
-
-Main source code is open source excluding the third party libraries which have their own licensing.
-
-
-
-HELP GUIDE
+HELP
 
 Found in game by clicking on "Help" (Book) option in main menu or read help.txt file
 
 
 
-INSTALLATION REQUIREMENTS
+REQUIREMENTS
 
 * Supported OS: Windows 10+ (untested on older or different Operating Systems)
 * Processor: at least 7th gen Intel Core i3 or AMD equivalent
@@ -65,7 +95,7 @@ INSTALLATION REQUIREMENTS
 
 
 
-INSTALLATION INSTRUCTIONS
+SETUP
 
 1. Download zipped game folder from GitHub here:
 https://github.com/SumeetSinghJi/world-games/archive/refs/heads/main.zip
@@ -280,7 +310,7 @@ ________________________________________________________________________________
 _________________________________________________________________________________________________________________
 
 
-Beijing (China) - Rock paper scissors (Chinese; romanised: Shoushiling, traditional: 手勢令. simplified: 手势令)
+Beijing (China) - Rock paper scissors (Chinese; romanized: Shoushiling, traditional: 手勢令. simplified: 手势令)
 
 A seemingly simple game of chance, has woven its way into cultures worldwide, transcending generations and 
 borders. Despite its apparent simplicity, its origins are steeped in history, folklore, and strategic 
@@ -355,7 +385,7 @@ PROGRAMMING LIBRARIES
 
 SDL2 from https://github.com/libsdl-org/SDL
 SDL2_images from https://github.com/libsdl-org/SDL_image
-SDL2_mixter from https://github.com/libsdl-org/SDL_mixer
+SDL2_mixer from https://github.com/libsdl-org/SDL_mixer
 SDL2_ttf from https://github.com/libsdl-org/SDL_ttf
 curl from https://github.com/curl/curl
 libzip from https://github.com/nih-at/libzip
@@ -369,7 +399,7 @@ Background scenes created by A.I. art from creator.nightcafe.studio
 SOUNDS
 
 Music taken from pixabay.com
-Sound effects taken from from pixabay.com
+Sound effects taken from pixabay.com
 
 
 SETTINGS BUTTONS
@@ -384,7 +414,7 @@ Font, size icon by Ant design from icon-icons.com
 book icon by ChrisL21 (Chris) from icon-icons.com
 Human button by Bryn Taylor from  icon-icons.com
 Computer button by Vexels from icon-icons.com
-All button images otherwise with missing attributions taken from respective
+All button images without attributions taken from respective
 authors fromicon-icons.com
 
 
