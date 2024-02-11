@@ -247,7 +247,7 @@ void draw_buttons_scene_5() // Help
     SDL_RenderCopy(renderer, forwardTexture, nullptr, &forwardRect);
     SDL_RenderCopy(renderer, backwardTexture, nullptr, &backwardRect);
 }
-void draw_buttons_scene_6() // World map
+void draw_buttons_scene_25() // World map
 {
     SDL_Rect helpRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
     SDL_Rect settingsRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};

@@ -120,7 +120,7 @@ void draw_text_for_HUD_scene_4() // Achievements
         render_text("10. 試合に負けることはありません", (windowWidth * 0.5), (windowHeight * 0.6), 255);
     }
 }
-void draw_text_for_HUD_scene_6() // World map
+void draw_text_for_HUD_scene_25() // World map
 {
     if (language == "English")
     {

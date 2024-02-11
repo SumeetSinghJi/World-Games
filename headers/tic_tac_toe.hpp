@@ -819,7 +819,7 @@ void ttt_mouse_handle(int mouseX, int mouseY)
     else if (SDL_PointInRect(&mousePosition, &worldMapRect))
     {
         std::cout << "You clicked return to World Map" << std::endl;
-        scene = 6;
+        scene = 25;
     }
     
     // HUD - Buttons

@@ -377,7 +377,7 @@ void new_game()
     game_won = NULL;
     unlockedScenes.clear();
     unlockedAchievements.clear();
-    scene = 6;
+    scene = 25;
 }
 std::string find_os()
 {
@@ -802,9 +802,9 @@ void handle_events()
             {
                 handle_click_scene_5(mouseX, mouseY);
             }
-            else if (scene == 6)
+            else if (scene == 25)
             {
-                handle_click_scene_6(mouseX, mouseY);
+                handle_click_scene_25(mouseX, mouseY);
             }
             else if (scene == 32)
             {
@@ -873,7 +873,7 @@ void update()
     else if (scene == 5) // help
     {
     }
-    else if (scene == 6) // world map
+    else if (scene == 25) // world map
     {
     }
     else if (scene == 8) // multiplayer
@@ -921,11 +921,11 @@ void draw()
         draw_buttons_scene_5();
         help_guide_file_read(); // render txt output of help.txt to screen
     }
-    else if (scene == 6) // world map
+    else if (scene == 25) // world map
     {
         SDL_RenderCopy(renderer, worldMapTexture, NULL, NULL);
-        draw_text_for_HUD_scene_6();
-        draw_buttons_scene_6();
+        draw_text_for_HUD_scene_25();
+        draw_buttons_scene_25();
     }
     else if (scene == 8) // tutorial
     {

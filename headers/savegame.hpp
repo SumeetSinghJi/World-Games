@@ -94,7 +94,7 @@ void load_game()
     }
     savefile_object.close();
     std::cout << "Save loaded..." << std::endl;
-    scene = 6; // Scene 6 = world map
+    scene = 25; // Scene 6 = world map
   }
   else
   {

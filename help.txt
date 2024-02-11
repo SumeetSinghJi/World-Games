@@ -243,51 +243,53 @@ scene 2 = Settings
 scene 3 = Credits
 scene 4 = Achievements
 scene 5 = Help
-scene 6 = World map
-scene 7 = Tutorial
-scene 8 = multiplayer lobby - TBD
-scene 9 = Leaderboard - TBD
-scene 10 = keybindings - TBD
-scene 11 = Create name - TBD
-scene 12 = Create account - TBD
-scene 13 = _____UNUSED_____
-scene 14 = _____UNUSED_____
+scene 6 = Leaderboard
+scene 7 = _____UNUSED_____
+scene 8 = _____UNUSED_____
+scene 9 = _____UNUSED_____
+scene 10 = keybindings
+scene 11 = Create name
+scene 12 = Create account
+scene 13 = Online login
+scene 14 = multiplayer lobby
 scene 15 = _____UNUSED_____
 scene 16 = _____UNUSED_____
 scene 17 = _____UNUSED_____
 scene 18 = _____UNUSED_____
 scene 19 = _____UNUSED_____
-scene 20 - beijing - shoushiling (traditional 手勢令), frog 蛙, snake 蛇, centipede 蜈蜙
-scene 21 = london - Scissors Paper Rock
-scene 22 = paris
-scene 23 = berlin
-scene 24 = delhi
-scene 25 = singapore
-scene 26 = hawaii -
-scene 27 = tokyo
-scene 28 = seoul
-scene 29 = shanghai
-scene 30 - Cape Town
-scene 31 - Rio De Janero
-scene 32 - Rome - Tic Tac Toe
-scene 33 - Hanoi
-scene 34 - Barcelona
-scene 35 - Kenya
-scene 36 - Moscow
-scene 37 - Athens
-scene 38 - Manilla
-scene 39 - Tehran
-scene 40 - Tel Aviv
-scene 41 - Cairo
-scene 42 - Bogota
-scene 43 - Istanbul
-scene 44 - Stolkholm
-scene 45 - Mexico city
-scene 46 - Bangkok
-scene 47 - Kathmandu
-scene 48 - Vancouver
-scene 49 - New York
-scene 50 - Moon - Astronaught game
+scene 20 = _____UNUSED_____
+scene 21 = _____UNUSED_____
+scene 22 = _____UNUSED_____
+scene 23 = _____UNUSED_____
+scene 24 = _____UNUSED_____
+scene 25 = World map
+scene 26 = _____UNUSED_____
+scene 27 = Tutorial
+scene 28 = _____UNUSED_____
+scene 29 = _____UNUSED_____
+scene 30 = _____UNUSED_____
+scene 31 - beijing - shoushiling (traditional 手勢令), frog 蛙, snake 蛇, centipede 蜈蜙
+scene 32 = london - Scissors Paper Rock
+scene 33 = paris
+scene 34 = berlin
+scene 35 = delhi
+scene 36 = hawaii
+scene 37 = tokyo
+scene 38 = seoul
+scene 39 = shanghai
+scene 40 - Rome - Tic Tac Toe
+scene 41 - Kenya
+scene 42 - Moscow
+scene 43 - Athens
+scene 44 - Manilla
+scene 45 - Tehran
+scene 46 - Tel Aviv
+scene 47 - Cairo
+scene 48 - Bangkok
+scene 49 - Kathmandu
+scene 50 - Alaska
+scene 51 - _____UNUSED_____
+
 
 
 

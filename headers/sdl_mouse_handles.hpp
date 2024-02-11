@@ -284,7 +284,7 @@ void handle_click_scene_5(int mouseX, int mouseY) // Help
         }
     }
 }
-void handle_click_scene_6(int mouseX, int mouseY) // World map
+void handle_click_scene_25(int mouseX, int mouseY) // World map
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
