@@ -38,11 +38,17 @@ furnished to do so, subject to the following conditions:
 
 Graphical Assets License:
 The graphical assets in this project are licensed under the Creative Commons Attribution (CC-BY) License.
+Individual authors are attributed within the `./help.txt` file.
 
-Copyright (c) Individual authors are attributed within the "help.txt" file
+Component Library Licenses:
+Note: This project includes components licensed under different terms:
 
-The graphical assets included in this project are licensed under the Creative Commons Attribution (CC-BY) License. You are free to use, modify, and distribute these assets, provided that you give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.
-[CC-BY License terms]
+- Libzip: See `./src/libzip/LICENSE` for details.
+- Curl: See `./src/curl/COPYING.txt` for details.
+- SDL2: See `./src/SDL2/COPYING.txt` for details.
+- SDL2 image: See `./src/SDL2_image/LICENSE.txt` for details.
+- SDL2 Mixer: See `./src/SDL2_Mixer/LICENSE.txt` for details.
+- SDL2 TTF: See `./src/src/SDL2_TTF/LICENSE.txt` for details.
 
 
 _________________________________________________________________________________________________________________
@@ -380,73 +386,63 @@ ________________________________________________________________________________
                                     Game developer - Sumeet Singh
 
 
-"I made this in honour of all the 80's and 90's Shareware era developers"
+                "I made this in honour of all the 80's and 90's Shareware era developers"
 
 
-PROGRAMMING LIBRARIES
+                                        BACKGROUND IMAGES
 
-SDL2 from https://github.com/libsdl-org/SDL
-SDL2_images from https://github.com/libsdl-org/SDL_image
-SDL2_mixer from https://github.com/libsdl-org/SDL_mixer
-SDL2_ttf from https://github.com/libsdl-org/SDL_ttf
-curl from https://github.com/curl/curl
-libzip from https://github.com/nih-at/libzip
+                Background scenes created by A.I. art from creator.nightcafe.studio
 
 
-BACKGROUND IMAGES
+                                            SOUNDS
 
-Background scenes created by A.I. art from creator.nightcafe.studio
-
-
-SOUNDS
-
-Music taken from pixabay.com
-Sound effects taken from pixabay.com
+                        Music taken from pixabay.com
+                        Sound effects taken from pixabay.com
 
 
-SETTINGS BUTTONS
+                                        SETTINGS BUTTONS
 
-save button by Nick Frost and Greg Lapin taken from icon-icons.com
-update button by Nick Frost and Greg Lapin taken from icon-icons.com
-load button by Nick Frost and Greg Lapin taken from icon-icons.com
-star button by Gianni Polito taken from icon-icons.com
-coin button by iconpacks taken from icon-icons.com
-restart button by Radhika Paghdal taken from icon-icons.com
-Font, size icon by Ant design from icon-icons.com
-book icon by ChrisL21 (Chris) from icon-icons.com
-Human button by Bryn Taylor from  icon-icons.com
-Computer button by Vexels from icon-icons.com
-All button images without attributions taken from respective
-authors fromicon-icons.com
-
-
-COUNTRY BUTTONS
-
-England map icon by Bart Kowalski from icon-icons.com
-Beijing/China map icon by Rokey from icon-icons.com
-Shanghai map icon by Google from icon-icons.com
-Seoul map icon by maxicons from icon-icons.com
-Japan map icon by maxicons from icon-icons.com
-Hawaii map icon by Zulfa Mahendra from icon-icons.com
-Berlin map icon by Manthana Chaiwong from icon-icons.com
-Paris map icon by Oleksandr Yershov from icon-icons.com
-Delhi map icon by Jemis Mali from icon-icons.com
-Singapore map icon by Icons-Land from icon-icons.com
-Rome colosseum map icon by Iconka from from icon-icons.com
+                save button by Nick Frost and Greg Lapin taken from icon-icons.com
+                update button by Nick Frost and Greg Lapin taken from icon-icons.com
+                load button by Nick Frost and Greg Lapin taken from icon-icons.com
+                star button by Gianni Polito taken from icon-icons.com
+                coin button by iconpacks taken from icon-icons.com
+                restart button by Radhika Paghdal taken from icon-icons.com
+                Font, size icon by Ant design from icon-icons.com
+                book icon by ChrisL21 (Chris) from icon-icons.com
+                Human button by Bryn Taylor from  icon-icons.com
+                Computer button by Vexels from icon-icons.com
+                All button images without attributions taken from respective
+                authors fromicon-icons.com
 
 
-IN GAME GRAPHICS
+                                        COUNTRY BUTTONS
 
-Scissor image icon By Author: Gulraiz from Freepik.com
-Paper icon by Vexels from icon-icons.com
-stone icon by ChrisL21 (Chris) from icon-icons.com
-Playing cards - https://opengameart.org/content/playing-cards-vector-png
-Senet board image - https://thiefontheflats.blogspot.com/2012/01/printable-senet-boards.html
+                    England map icon by Bart Kowalski from icon-icons.com
+                    Beijing/China map icon by Rokey from icon-icons.com
+                    Shanghai map icon by Google from icon-icons.com
+                    Seoul map icon by maxicons from icon-icons.com
+                    Japan map icon by maxicons from icon-icons.com
+                    Hawaii map icon by Zulfa Mahendra from icon-icons.com
+                    Berlin map icon by Manthana Chaiwong from icon-icons.com
+                    Paris map icon by Oleksandr Yershov from icon-icons.com
+                    Delhi map icon by Jemis Mali from icon-icons.com
+                    Singapore map icon by Icons-Land from icon-icons.com
+                    Rome colosseum map icon by Iconka from from icon-icons.com
 
 
-ANIMATIONS
+                                    IN GAME GRAPHICS
 
-Fireworks animation by @haenaillust taken from giphy.com
+                Scissor image icon By Author: Gulraiz from Freepik.com
+                Paper icon by Vexels from icon-icons.com
+                stone icon by ChrisL21 (Chris) from icon-icons.com
+                Playing cards - https://opengameart.org/content/playing-cards-vector-png
+                Senet board image - https://thiefontheflats.blogspot.com/2012/01/printable-senet-boards.html
+
+
+                                        ANIMATIONS
+
+                Fireworks animation by @haenaillust taken from giphy.com
 
 
 

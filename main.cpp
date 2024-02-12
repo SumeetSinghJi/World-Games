@@ -37,6 +37,8 @@
 
 /*
     TO DO
+    * Add information in help.txt regarding modding e.g. assets/ can be modified, modify render_texts, loads, etc., for logic
+    * add instructions for importing new board games,
     * Use AI to create victory animation
     * Use AI to create won game animation travelling the world in hot weather baloon
     * Convert all texture C style raw pointers to smart unique ptr's gradually

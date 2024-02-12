@@ -11,8 +11,7 @@
 * Publisher address: www.agniSamooh.com
 * Publisher contact: support@agnisamooh.com
 * Location: https://github.com/SumeetSinghJi/world-games
-* License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) License.
-
+* License: This project is licensed under the MIT License. Full license terms can be found in the `./help.txt` file.
 
 
 ## REQUIREMENTS
