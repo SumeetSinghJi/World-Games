@@ -23,7 +23,7 @@ find_package(SDL2_TTF REQUIRED)
 find_package(CURL REQUIRED)
 find_package(libzip REQUIRED)
 
-add_executable(World-Games main.cpp)
+add_executable(World-Games test.cpp)
 
 # target_include_directories will automatically find the package include directories based on find_package
 # Note 1: include_directories is outdated, only use target_include_directories
