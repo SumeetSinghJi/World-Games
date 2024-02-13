@@ -394,26 +394,26 @@ ________________________________________________________________________________
                 Background scenes created by A.I. art from creator.nightcafe.studio
 
 
-                                            SOUNDS
+                                               SOUNDS
 
-                        Music taken from pixabay.com
-                        Sound effects taken from pixabay.com
+                                Music taken from pixabay.com
+                                Sound effects taken from pixabay.com
 
 
                                         SETTINGS BUTTONS
 
-                save button by Nick Frost and Greg Lapin taken from icon-icons.com
-                update button by Nick Frost and Greg Lapin taken from icon-icons.com
-                load button by Nick Frost and Greg Lapin taken from icon-icons.com
-                star button by Gianni Polito taken from icon-icons.com
-                coin button by iconpacks taken from icon-icons.com
-                restart button by Radhika Paghdal taken from icon-icons.com
-                Font, size icon by Ant design from icon-icons.com
-                book icon by ChrisL21 (Chris) from icon-icons.com
-                Human button by Bryn Taylor from  icon-icons.com
-                Computer button by Vexels from icon-icons.com
-                All button images without attributions taken from respective
-                authors fromicon-icons.com
+                    save button by Nick Frost and Greg Lapin taken from icon-icons.com
+                    update button by Nick Frost and Greg Lapin taken from icon-icons.com
+                    load button by Nick Frost and Greg Lapin taken from icon-icons.com
+                    star button by Gianni Polito taken from icon-icons.com
+                    coin button by iconpacks taken from icon-icons.com
+                    restart button by Radhika Paghdal taken from icon-icons.com
+                    Font, size icon by Ant design from icon-icons.com
+                    book icon by ChrisL21 (Chris) from icon-icons.com
+                    Human button by Bryn Taylor from  icon-icons.com
+                    Computer button by Vexels from icon-icons.com
+                    All button images without attributions taken from respective
+                    authors fromicon-icons.com
 
 
                                         COUNTRY BUTTONS
@@ -431,18 +431,18 @@ ________________________________________________________________________________
                     Rome colosseum map icon by Iconka from from icon-icons.com
 
 
-                                    IN GAME GRAPHICS
+                                        IN GAME GRAPHICS
 
-                Scissor image icon By Author: Gulraiz from Freepik.com
-                Paper icon by Vexels from icon-icons.com
-                stone icon by ChrisL21 (Chris) from icon-icons.com
-                Playing cards - https://opengameart.org/content/playing-cards-vector-png
-                Senet board image - https://thiefontheflats.blogspot.com/2012/01/printable-senet-boards.html
+                    Scissor image icon By Author: Gulraiz from Freepik.com
+                    Paper icon by Vexels from icon-icons.com
+                    stone icon by ChrisL21 (Chris) from icon-icons.com
+                    Playing cards - https://opengameart.org/content/playing-cards-vector-png
+                    Senet board image - https://thiefontheflats.blogspot.com/2012/01/printable-senet-boards.html
 
 
-                                        ANIMATIONS
+                                            ANIMATIONS
 
-                Fireworks animation by @haenaillust taken from giphy.com
+                    Fireworks animation by @haenaillust taken from giphy.com
 
 
 

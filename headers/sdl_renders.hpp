@@ -76,20 +76,50 @@ extern int selectedOption;    // For keyboard arrow key and gamepad d pad key op
 // FUNCTION PROTOTYPE
 bool is_achievement_unlocked(int target); // For rendering Trophy icon if achievement unlocked
 
-void render_text(const std::string &text, int x, int y, Uint8 alpha)
+void render_text(const std::string &text, int x, int y, Uint8 alpha, int customFontSize)
 {
+    /* Example
+     1. Parameter definitions
+     const std::string &text: The text to render to screen
+     int x, x position e.g. static_cast<int>(windowWidth * 0.1) = if there are 10 columns it will appear in 1st column from left
+     int y: y position e.g. static_cast<int>(windowHeight * 0.3) = if there are 10 rows it will appear in 3rd row from top
+     Uint8 alpha: transperancy, leave at 255 per default unless you want particular text transparent scale 0 - 255
+     int customFontSize = leave as 0 to scale with all global fontsize functions, however can statically
+     set to values equal to fonts on loop below e.g. 24, 36, 48 for fixed heading sizes
+
+     2. Populate parameters
+     render_text("Enter Username: ", static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2), 255, 0);
+    */
     TTF_Font *font = nullptr;
-    if (fontSize == 24)
+    if (customFontSize == 0)
     {
-        font = font_24;
+        if (fontSize == 24)
+        {
+            font = font_24;
+        }
+        else if (fontSize == 36)
+        {
+            font = font_36;
+        }
+        else if (fontSize == 48)
+        {
+            font = font_48;
+        }
     }
-    else if (fontSize == 36)
+    else if (!customFontSize == 0)
     {
-        font = font_36;
-    }
-    else if (fontSize == 48)
-    {
-        font = font_48;
+        if (customFontSize == 24)
+        {
+            font = font_24;
+        }
+        else if (customFontSize == 36)
+        {
+            font = font_36;
+        }
+        else if (customFontSize == 48)
+        {
+            font = font_48;
+        }
     }
 
     if (font)
@@ -110,7 +140,6 @@ void render_text(const std::string &text, int x, int y, Uint8 alpha)
             {
                 SDL_Rect textRect = {x, y, textWidth, textHeight};
                 SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
-                SDL_DestroyTexture(textTexture);
             }
         }
     }

@@ -11,20 +11,20 @@
     Location: https://github.com/SumeetSinghJi/World-Games
 */
 
-#include <iostream>                       // Core logic
-#include <cstdlib>                        // Core logic
-#include <ctime>                          // Core logic - for srand
-#include <vector>                         // Core logic
-#include <string>                         // Core logic
-#include <thread>                         // Core logic - for timer
-#include <chrono>                         // Core logic - for timer
-#include <fstream>                        // multiplatform method for for file open read write objects
-#include <SDL.h>                          // SDL Requirement
-#include <SDL_image.h>                    // SDL Requirement
-#include <SDL_ttf.h>                      // SDL Requirement
-#include <SDL_mixer.h>                    // SDL Requirement
-#include "headers/multiplayer.hpp"          // FUTURE DEVELOPMENT - For Multiplayer
-// #include "headers/savegame.hpp"          // FUTURE DEVELOPMENT - For save/continue functions
+#include <iostream>                         // Core logic
+#include <cstdlib>                          // Core logic
+#include <ctime>                            // Core logic - for srand
+#include <vector>                           // Core logic
+#include <string>                           // Core logic
+#include <thread>                           // Core logic - for timer
+#include <chrono>                           // Core logic - for timer
+#include <fstream>                          // multiplatform method for for file open read write objects
+#include <SDL.h>                            // SDL Requirement
+#include <SDL_image.h>                      // SDL Requirement
+#include <SDL_ttf.h>                        // SDL Requirement
+#include <SDL_mixer.h>                      // SDL Requirement
+#include "headers/multiplayer.hpp"          // For Multiplayer
+#include "headers/savegame.hpp"             // For save/continue functions
 #include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
 #include "headers/sdl_renders.hpp"          // SDL Rect/Buttons to render to screen/scene/GUI
 #include "headers/sdl_texts.hpp"            // SDL Text to Render to screen/scene/GUI
@@ -34,9 +34,11 @@
 #include "headers/game_update_1.hpp"        // For downloading latest game update
 #include "headers/game_update_2.hpp"        // For downloading latest game update
 #include "headers/tic_tac_toe.hpp"          // Scene 32 - Rome - Tic Tac Toe
+#include "headers/custom_SDL_button.hpp"    // Custom SDL Button class for creating buttons for handles
 
 /*
     TO DO
+    * Game WONT QUIT
     * Add information in help.txt regarding modding e.g. assets/ can be modified, modify render_texts, loads, etc., for logic
     * add instructions for importing new board games,
     * Use AI to create victory animation
@@ -235,6 +237,64 @@ SDL_Texture *newyorkNightBackgroundTexture = nullptr;    // scene 49
 SDL_GameController *controller = nullptr; // gamepad object initialise
 SDL_Event event;                          // event loop object initialise
 
+// Global variables automatically destroyed at end of main() no need to manual destroy
+// Scene 11
+Custom_SDL_Button scene11submitUsernameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene11registerButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene11acceptButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene11denyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene11fontScaleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+// Scene 12
+Custom_SDL_Button scene12submitEmailPasswordButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene12backButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+// Scene 13
+Custom_SDL_Button scene13submitLoginButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene13backButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+// Scene 14
+Custom_SDL_Button scene14hostGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene14joinGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene14searchGamesButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene14searchFriendsGamesButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene14refreshButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene14backButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+// Scene 25
+Custom_SDL_Button scene25backusernameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
+// For SDL_Custom_button find_nearest() to find nearest button through kb handle arrow direction keys for GUI navigation
+std::vector<Custom_SDL_Button *> scene1buttons;
+std::vector<Custom_SDL_Button *> scene2buttons;
+std::vector<Custom_SDL_Button *> scene3buttons;
+std::vector<Custom_SDL_Button *> scene4buttons;
+std::vector<Custom_SDL_Button *> scene5buttons;
+std::vector<Custom_SDL_Button *> scene6buttons;
+std::vector<Custom_SDL_Button *> scene7buttons;
+std::vector<Custom_SDL_Button *> scene8buttons;
+std::vector<Custom_SDL_Button *> scene9buttons;
+std::vector<Custom_SDL_Button *> scene10buttons;
+std::vector<Custom_SDL_Button *> scene11buttons;
+std::vector<Custom_SDL_Button *> scene12buttons;
+std::vector<Custom_SDL_Button *> scene13buttons;
+std::vector<Custom_SDL_Button *> scene14buttons;
+std::vector<Custom_SDL_Button *> scene15buttons;
+std::vector<Custom_SDL_Button *> scene16buttons;
+std::vector<Custom_SDL_Button *> scene17buttons;
+std::vector<Custom_SDL_Button *> scene18buttons;
+std::vector<Custom_SDL_Button *> scene19buttons;
+std::vector<Custom_SDL_Button *> scene20buttons;
+std::vector<Custom_SDL_Button *> scene21buttons;
+std::vector<Custom_SDL_Button *> scene22buttons;
+std::vector<Custom_SDL_Button *> scene23buttons;
+std::vector<Custom_SDL_Button *> scene24buttons;
+std::vector<Custom_SDL_Button *> scene25buttons;
+std::vector<Custom_SDL_Button *> scene26buttons;
+std::vector<Custom_SDL_Button *> scene27buttons;
+std::vector<Custom_SDL_Button *> scene28buttons;
+std::vector<Custom_SDL_Button *> scene29buttons;
+std::vector<Custom_SDL_Button *> scene30buttons;
+
+std::vector<Custom_SDL_Button *> allButtons;
+Custom_SDL_Button *Custom_SDL_Button::selectedButton = nullptr;
+
 // GLOBAL VARIABLES
 bool quit_event_loop = NULL;                   // for run_SDL Event loop
 int windowWidth = 1366;                        // for Window resolution
@@ -318,7 +378,7 @@ void is_scene_unlocked(int target)
     }
     if (found == true)
     {
-        render_text("You already defeated the grandmaster", (windowWidth * 0.3), (windowHeight * 0.8), 255);
+        render_text("You already defeated the grandmaster", (windowWidth * 0.3), (windowHeight * 0.8), 255, 0);
     }
     else
     {
@@ -612,7 +672,7 @@ void draw_timer()
     // If minutes or seconds < 10, it will add an 0 e.g. 120 seconds = 2. As 2 < 10, final output: 02:00
     std::string timerText = (minutes < 10 ? "0" : "") + std::to_string(minutes) + ":" + (seconds < 10 ? "0" : "") + std::to_string(seconds);
 
-    render_text(timerText, timerRect.x + 150, timerRect.y + 30, 255);
+    render_text(timerText, timerRect.x + 150, timerRect.y + 30, 255, 0);
 }
 void draw_win_frequency(const std::vector<int> &winners, const std::vector<int> &winnersChoice)
 {
@@ -656,8 +716,8 @@ void draw_win_frequency(const std::vector<int> &winners, const std::vector<int> 
         }
 
         // Render winner and their choice at appropriate positions
-        render_text(winnerString, static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet, 255);
-        render_text(winnerChoiceString, static_cast<int>(windowWidth * 0.92), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet, 255);
+        render_text(winnerString, static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet, 255, 0);
+        render_text(winnerChoiceString, static_cast<int>(windowWidth * 0.92), static_cast<int>(windowHeight * 0.15) + frequencyRect.y + frequencyRectyOffSet, 255, 0);
 
         frequencyRectyOffSet += 40; // Move to the next vertical position for next winner
     }
@@ -676,6 +736,133 @@ void draw_lives(int lives)
         SDL_RenderCopy(renderer, heartTexture, nullptr, &heartRect);
     }
 }
+
+// MOVE TO LOADS
+void load_buttons_to_scene_vectors()
+{
+    scene11buttons.push_back(&scene11submitUsernameButton);
+    scene11buttons.push_back(&scene11registerButton);
+    scene11buttons.push_back(&scene11acceptButton);
+    scene11buttons.push_back(&scene11denyButton);
+    scene11buttons.push_back(&scene11fontScaleButton);
+
+    scene12buttons.push_back(&scene12submitEmailPasswordButton);
+    scene12buttons.push_back(&scene12backButton);
+
+    scene13buttons.push_back(&scene13submitLoginButton);
+    scene13buttons.push_back(&scene13backButton);
+
+    scene14buttons.push_back(&scene14hostGameButton);
+    scene14buttons.push_back(&scene14joinGameButton);
+    scene14buttons.push_back(&scene14searchGamesButton);
+    scene14buttons.push_back(&scene14searchFriendsGamesButton);
+    scene14buttons.push_back(&scene14refreshButton);
+    scene14buttons.push_back(&scene14backButton);
+
+    scene25buttons.push_back(&scene25backusernameButton);
+}
+void load_buttons_to_allButtons_vector()
+{
+    allButtons.insert(allButtons.end(), scene1buttons.begin(), scene1buttons.end());
+    allButtons.insert(allButtons.end(), scene2buttons.begin(), scene2buttons.end());
+    allButtons.insert(allButtons.end(), scene3buttons.begin(), scene3buttons.end());
+    allButtons.insert(allButtons.end(), scene4buttons.begin(), scene4buttons.end());
+    allButtons.insert(allButtons.end(), scene5buttons.begin(), scene5buttons.end());
+    allButtons.insert(allButtons.end(), scene6buttons.begin(), scene6buttons.end());
+    allButtons.insert(allButtons.end(), scene7buttons.begin(), scene7buttons.end());
+    allButtons.insert(allButtons.end(), scene8buttons.begin(), scene8buttons.end());
+    allButtons.insert(allButtons.end(), scene9buttons.begin(), scene9buttons.end());
+    allButtons.insert(allButtons.end(), scene10buttons.begin(), scene10buttons.end());
+    allButtons.insert(allButtons.end(), scene11buttons.begin(), scene11buttons.end());
+    allButtons.insert(allButtons.end(), scene12buttons.begin(), scene12buttons.end());
+    allButtons.insert(allButtons.end(), scene13buttons.begin(), scene13buttons.end());
+    allButtons.insert(allButtons.end(), scene14buttons.begin(), scene14buttons.end());
+    allButtons.insert(allButtons.end(), scene15buttons.begin(), scene15buttons.end());
+    allButtons.insert(allButtons.end(), scene16buttons.begin(), scene16buttons.end());
+    allButtons.insert(allButtons.end(), scene17buttons.begin(), scene17buttons.end());
+    allButtons.insert(allButtons.end(), scene18buttons.begin(), scene18buttons.end());
+    allButtons.insert(allButtons.end(), scene19buttons.begin(), scene19buttons.end());
+    allButtons.insert(allButtons.end(), scene20buttons.begin(), scene20buttons.end());
+    allButtons.insert(allButtons.end(), scene21buttons.begin(), scene21buttons.end());
+    allButtons.insert(allButtons.end(), scene22buttons.begin(), scene22buttons.end());
+    allButtons.insert(allButtons.end(), scene23buttons.begin(), scene23buttons.end());
+    allButtons.insert(allButtons.end(), scene24buttons.begin(), scene24buttons.end());
+    allButtons.insert(allButtons.end(), scene25buttons.begin(), scene25buttons.end());
+    allButtons.insert(allButtons.end(), scene26buttons.begin(), scene26buttons.end());
+    allButtons.insert(allButtons.end(), scene27buttons.begin(), scene27buttons.end());
+    allButtons.insert(allButtons.end(), scene28buttons.begin(), scene28buttons.end());
+    allButtons.insert(allButtons.end(), scene29buttons.begin(), scene29buttons.end());
+    allButtons.insert(allButtons.end(), scene30buttons.begin(), scene30buttons.end());
+}
+
+void load_buttons_11()
+{
+    scene11submitUsernameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.8),
+                                                    static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                                    "SUBMIT", 144, 238, 144, 255, "", false); // RGB: Light green
+    scene11registerButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.8),
+                                              static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                              "REGISTER", 144, 238, 144, 255, "", false); // RGB: Light green
+    scene11acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.6),
+                                            static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                            "ACCEPT", 144, 238, 144, 255, "", false); // RGB: Light green
+    scene11denyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.6),
+                                          static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                          "DENY", 144, 238, 144, 255, "", false); // RGB: Light green
+    scene11fontScaleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                               static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                               "CHANGE FONT", 144, 238, 144, 255, "", false); // RGB: Light green
+}
+void load_buttons_12()
+{
+    scene12submitEmailPasswordButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.8),
+                                                         static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                                         "SUBMIT", 144, 238, 144, 255, "", false); // RGB: Light green
+    scene12backButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
+                                          static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                          "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
+    scene12backButton.set_button_texture(renderer);
+}
+void load_buttons_13()
+{
+    scene13submitLoginButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.8),
+                                                 static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                                 "SUBMIT", 144, 238, 144, 255, "", false); // RGB: Light green
+    scene13backButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
+                                          static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                          "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
+    scene13backButton.set_button_texture(renderer);
+}
+void load_buttons_14()
+{
+    scene14hostGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.8),
+                                              static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                              "SUBMIT", 144, 238, 144, 255, "", false); // RGB: Light green
+    scene14joinGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.8),
+                                              static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                              "SUBMIT", 144, 238, 144, 255, "", false); // RGB: Light green
+    scene14searchGamesButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.8),
+                                                 static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                                 "SUBMIT", 144, 238, 144, 255, "assets/graphics/buttons/settings/zoom-button.png", false); // RGB: Light green
+    scene14searchFriendsGamesButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.8),
+                                                        static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                                        "SUBMIT", 144, 238, 144, 255, "assets/graphics/buttons/settings/zoom-button.png", false); // RGB: Light green
+    scene14refreshButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
+                                             static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                             "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/refresh-button.png", false); // RGB: Light green
+    scene14backButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
+                                          static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                          "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
+    scene14backButton.set_button_texture(renderer);
+}
+void load_buttons_25()
+{
+    scene25backusernameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
+                                                  static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                                  "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
+    scene25backusernameButton.set_button_texture(renderer);
+}
+
 
 /*
 _________________________________________________________________________________________________

@@ -53,8 +53,8 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     if (SDL_PointInRect(&mousePosition, &menuNewGameRect))
     {
         std::cout << "You clicked Start Game" << std::endl;
-        scene = 11;
-        // new_game(); // uncomment this and remove scene = 11, after testing;
+        // scene = 11;
+        new_game(); // uncomment this and remove scene = 11, after testing;
     }
     else if (SDL_PointInRect(&mousePosition, &menuSettingsRect))
     {

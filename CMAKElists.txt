@@ -49,34 +49,3 @@ set_target_properties(World-Games PROPERTIES
     # move .exe/.bin etc., from ./build to ./
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}
 )
-
-# UNTESTED for final release
-#if(WIN32)
-#    # Add the -mwindows flag
-#    # target_link_options(Shoushiling PRIVATE -mwindows) # untested
-#
-#    # Use windres to include the icon in the executable
-#    add_custom_command(OUTPUT ${CMAKE_BINARY_DIR}/icon_res.o
-#    
-#        COMMAND windres "${CMAKE_SOURCE_DIR}/images/icons/icon.rc" "${CMAKE_BINARY_DIR}/icon_res.o"
-#        COMMAND ${CMAKE_COMMAND} -E echo "Including icon in the executable..."
-#        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-#        DEPENDS "${CMAKE_SOURCE_DIR}/images/icons/icon.rc")
-#
-#    add_custom_target(BuildIcon ALL DEPENDS ${CMAKE_BINARY_DIR}/icon_res.o)
-#
-#    # Link the icon object to the executable
-#    add_dependencies(SDL_ENGINE BuildIcon)
-#    target_sources(SDL_ENGINE PRIVATE ${CMAKE_BINARY_DIR}/icon_res.o)
-#
-#    # After the build, execute the batch script to create the shortcut on users desktop
-#    add_custom_command(TARGET SDL_ENGINE POST_BUILD
-#    COMMAND "${CMAKE_BINARY_DIR}/windows_create_shortcut.bat"
-#    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-#    COMMENT "Creating shortcut on desktop"
-#    )
-
-#else()
-#    # Commands for other operating systems
-#    # ...
-#endif()

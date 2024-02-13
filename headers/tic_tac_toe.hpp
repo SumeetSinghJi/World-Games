@@ -39,7 +39,7 @@ std::vector<int> ttt_winner_choice_history;                   // HUD - winners f
 
 // FUNCTION PROTOTYPES - Functions called from main.cpp
 SDL_Texture *load_texture(const char *path, const char *name);                                   // In main.cpp
-void render_text(const std::string &text, int x, int y);                                         // In main.cpp
+void render_text(const std::string &text, int x, int y, Uint8 alpha, int customFontSize);        // In main.cpp
 void draw_timer();                                                                               // In main.cpp
 void draw_lives(int lives);                                                                      // In main.cpp
 void draw_win_frequency(const std::vector<int> &winners, const std::vector<int> &winnersChoice); // In main.cpp
@@ -119,18 +119,18 @@ void ttt_draw_setup_game_popup_window()
     */
     if (!ttt_player_choose_x_or_o)
     {
-        render_text("Choose: Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.2), 255);
+        render_text("Choose: Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.2), 255, 0);
     }
     else // after picking choice advise player what they choose
     {
         if (ttt_player_choice == 0)
         {
-            render_text("You choose: 0", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.2), 255);
+            render_text("You choose: 0", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.2), 255, 0);
             // highlight selected rect, and in if condition dont hide, so player can repick.
         }
         else
         {
-            render_text("You choose: X", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.2), 255);
+            render_text("You choose: X", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.2), 255, 0);
             // highlight selected rect, and in if condition dont hide, so player can repick.
         }
     }
@@ -157,17 +157,17 @@ void ttt_draw_setup_game_popup_window()
 
     if (!ttt_starting_player_chosen)
     {
-        render_text("Who starts first: X or 0", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255);
+        render_text("Who starts first: X or 0", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255, 0);
     }
     else
     {
         if (!ttt_starting_player_is_x)
         {
-            render_text("You choose: Starting player O", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255);
+            render_text("You choose: Starting player O", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255, 0);
         }
         else if (ttt_starting_player_is_x)
         {
-            render_text("You choose: Starting player X", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255);
+            render_text("You choose: Starting player X", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255, 0);
         }
     }
 
@@ -193,17 +193,17 @@ void ttt_draw_setup_game_popup_window()
 
     if (!ttt_choose_human_or_computer)
     {
-        render_text("Play against: Human or Computer", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.50), 255);
+        render_text("Play against: Human or Computer", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.50), 255, 0);
     }
     else
     {
         if (ttt_play_against_human)
         {
-            render_text("You choose: Play against Human", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.50), 255);
+            render_text("You choose: Play against Human", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.50), 255, 0);
         }
         else
         {
-            render_text("You choose: Play against Computer", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.50), 255);
+            render_text("You choose: Play against Computer", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.50), 255, 0);
         }
     }
 
@@ -229,12 +229,12 @@ void ttt_draw_setup_game_popup_window()
 
     if (!ttt_choose_rounds)
     {
-        render_text("Rounds: 1, 3, 5, custom", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.66), 255);
+        render_text("Rounds: 1, 3, 5, custom", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.66), 255, 0);
     }
     else
     {
         std::string renderRounds = "You choose: " + std::to_string(ttt_rounds) + " rounds";
-        render_text(renderRounds, static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.66), 255);
+        render_text(renderRounds, static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.66), 255, 0);
     }
 
     // 1 Round
@@ -273,7 +273,7 @@ void ttt_draw_setup_game_popup_window()
 
    if (!ttt_timer_set)
     {
-        render_text("Timer: 10s, 30s, 1m, 5m, 10m, 30m, 1hr, custom (s) ", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.82), 255);
+        render_text("Timer: 10s, 30s, 1m, 5m, 10m, 30m, 1hr, custom (s) ", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.82), 255, 0);
     }
     else
     {
@@ -284,7 +284,7 @@ void ttt_draw_setup_game_popup_window()
         std::string renderTimer = "You chose: " + std::to_string(hours) + " h, " +
             std::to_string(minutes) + " m, " +
             std::to_string(seconds) + " s";
-        render_text(renderTimer, static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.82), 255);
+        render_text(renderTimer, static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.82), 255, 0);
     }
 
     
@@ -899,7 +899,7 @@ void ttt_gamepad_handle(int button)
 void ttt_SDL_draw()
 {
     SDL_RenderCopy(renderer, romeDayBackgroundTexture, NULL, NULL);
-    render_text("Ancient Rome - Tic Tac Toe", static_cast<int>(windowWidth * 0.37), static_cast<int>(windowHeight * 0.1), 255);
+    render_text("Ancient Rome - Tic Tac Toe", static_cast<int>(windowWidth * 0.37), static_cast<int>(windowHeight * 0.1), 255, 0);
 
     // HUD Buttons
     draw_timer();
@@ -920,15 +920,15 @@ void ttt_SDL_draw()
 
     if (ttt_winner == 1)
     {
-        render_text("player wins", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8), 255);
+        render_text("player wins", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8), 255, 0);
     }
     else if (ttt_winner == 2)
     {
-        render_text("Opponent wins", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8), 255);
+        render_text("Opponent wins", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8), 255, 0);
     }
     else if (ttt_winner == 3)
     {
-        render_text("It's a Draw.", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8), 255);
+        render_text("It's a Draw.", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8), 255, 0);
     }
 }
 void ttt_SDL_update()
