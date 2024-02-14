@@ -163,7 +163,7 @@ SDL2_image (https://github.com/libsdl-org/SDL_image) - Library for adding non im
 SDL2_Mixer (https://github.com/libsdl-org/SDL_mixer) - Library for adding sound/music to a SDL2 application
 SDL2_TTF (https://github.com/libsdl-org/SDL_ttf) - Library for rendering text/font to SDL2 Window
 
-
+Also contains other libraries;
 CURL - Library for web content gathering and posting for online services and multiplayer
 LIBZIP - Library for extracting Zip files used for extracting downloaded game zip from source repository
 
@@ -172,18 +172,16 @@ FILES
 
 The below files are contained in the downloaded game directory
 
-./vscode - used by Visual Studio (IDE) for the development environment for coding
-./assets - contains subdirectories of various assets e.g. images, sounds, fonts
-./headers - contains c++ header files that attach to source file on build
-./src - contains all the third party libraries e.g. SDL2
-main.cpp - main source code
-main.exe - .exe for game
-help_guide.txt - Contains all information about game such as requirements, installation, play guide etc.,
+./vscode - vscode configuration files
+./assets - subdirectories of assets e.g. images, sounds, fonts
+./headers - C++ header files
+./src - Third party libraries
+main.cpp - Implementation file
+main.exe - Game executable
+help_guide.txt - Contains information about game
 privacy_policy.txt - Online services Privacy Policy
 terms_and_conditions.txt - Online services Terms and Conditions
-Credits.txt - Contains the Credits for the game
-CMAKElists-draft.txt - Used for CMAKE, currently Unused due to building with VSCode currently
-Various DLL's that third party library DLL compiles with .exe on build {
+Various DLL's for libraries {
     libcurl-x64.dll - libcurl
     libzip.dll - libzip
     SDL2_image.dll - SDL2 Image
@@ -192,7 +190,7 @@ Various DLL's that third party library DLL compiles with .exe on build {
     SDL2.dll - SDL2
 }
 world-games_save.txt - in game save file
-world-games.code-workspace - used by Visual Studio (IDE) for the development environment for coding
+world-games.code-workspace - vscode configuration file
 
 
 
