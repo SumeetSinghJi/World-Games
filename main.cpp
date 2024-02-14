@@ -20,21 +20,19 @@
 #include <SDL_ttf.h>                        // SDL Requirement
 #include <SDL_mixer.h>                      // SDL Requirement
 #include "headers/multiplayer.hpp"          // For Multiplayer
-#include "headers/savegame.hpp"             // For save/continue functions
+#include "headers/save_game.hpp"             // For save/continue functions
 #include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
 #include "headers/sdl_renders.hpp"          // SDL Rect/Buttons to render to screen/scene/GUI
 #include "headers/sdl_texts.hpp"            // SDL Text to Render to screen/scene/GUI
 #include "headers/sdl_mouse_handles.hpp"    // SDL Mouse and Touch keypresses
 #include "headers/sdl_keyboard_handles.hpp" // SDL Keyboard keypresses
 #include "headers/sdl_gamepad_handles.hpp"  // SDL Gamepad controller keypresses
-#include "headers/game_update_1.hpp"        // For downloading latest game update
-#include "headers/game_update_2.hpp"        // For downloading latest game update
+#include "headers/update_game.hpp"          // For downloading latest game update
 #include "headers/tic_tac_toe.hpp"          // Scene 32 - Rome - Tic Tac Toe
 #include "headers/custom_SDL_button.hpp"    // Custom SDL Button class for creating buttons for handles
 
 /*
     TO DO
-    * Game WONT QUIT
     * Add information in help.txt regarding modding e.g. assets/ can be modified, modify render_texts, loads, etc., for logic
     * add instructions for importing new board games,
     * Use AI to create victory animation
