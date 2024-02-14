@@ -1,3 +1,12 @@
+/*
+    Author: Sumeet Singh
+    Dated: 14/02/2024
+    Minimum C++ Standard: C++11
+    Purpose: Declaration/Definition file combined
+    License: MIT License
+    Description: read the attached help.txt file
+*/
+
 #pragma once
 
 #include <iostream>

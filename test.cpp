@@ -1,7 +1,16 @@
-// for testing Text Input with SDL
+/*
+Author: Sumeet Singh
+Dated: 14/02/2024
+Minimum C++ Standard: C++11
+Purpose: Declaration/Definition/Implementation file combined
+License: MIT License
+Description: Test Development environment
+*/
+
 #include <iostream>
 #include <string>
-#include <memory>
+#include <fstream>
+#include <sstream>
 #include <vector>
 #include <SDL.h>
 #include <SDL_image.h>
@@ -110,6 +119,26 @@ std::vector<Custom_SDL_Button*> scene27buttons;
 std::vector<Custom_SDL_Button*> scene28buttons;
 std::vector<Custom_SDL_Button*> scene29buttons;
 std::vector<Custom_SDL_Button*> scene30buttons;
+std::vector<Custom_SDL_Button*> scene31buttons;
+std::vector<Custom_SDL_Button*> scene32buttons;
+std::vector<Custom_SDL_Button*> scene33buttons;
+std::vector<Custom_SDL_Button*> scene34buttons;
+std::vector<Custom_SDL_Button*> scene35buttons;
+std::vector<Custom_SDL_Button*> scene36buttons;
+std::vector<Custom_SDL_Button*> scene37buttons;
+std::vector<Custom_SDL_Button*> scene38buttons;
+std::vector<Custom_SDL_Button*> scene39buttons;
+std::vector<Custom_SDL_Button*> scene40buttons;
+std::vector<Custom_SDL_Button*> scene41buttons;
+std::vector<Custom_SDL_Button*> scene42buttons;
+std::vector<Custom_SDL_Button*> scene43buttons;
+std::vector<Custom_SDL_Button*> scene44buttons;
+std::vector<Custom_SDL_Button*> scene45buttons;
+std::vector<Custom_SDL_Button*> scene46buttons;
+std::vector<Custom_SDL_Button*> scene47buttons;
+std::vector<Custom_SDL_Button*> scene48buttons;
+std::vector<Custom_SDL_Button*> scene49buttons;
+std::vector<Custom_SDL_Button*> scene50buttons;
 
 std::vector<Custom_SDL_Button*> allButtons;
 Custom_SDL_Button *Custom_SDL_Button::selectedButton = nullptr;
@@ -128,7 +157,6 @@ std::string playerPassword = "";
 bool submitUsername = false;
 bool showPrivacyPolicyPopup = false;
 bool acceptedPrivacyPolicy = false;
-
 
 // SDL2 TTF library
 TTF_Font *font_24;
@@ -216,6 +244,22 @@ SDL_Texture *render_texture(std::string path, std::string name)
         std::cout << "Successfully loaded texture: " << name << std::endl;
     }
     return texture; // local variable is automatically destroyed when out of scope no need to free this *texture
+}
+
+void render_text_from_file(const std::string &filename, int x, int y, Uint8 alpha, int customFontSize)
+{
+    std::ifstream file(filename);
+    if (!file.is_open()) {
+        std::cerr << "Error:Failed to open file: " << filename << std::endl;
+        return;
+    }
+
+    std::stringstream buffer;
+    buffer << file.rdbuf(); // Read the entire file into the stringstream;
+    std::string text = buffer.str();
+
+    // Call render_text function with the text read from the file
+    render_text(text, x, y, alpha, customFontSize);
 }
 
 // LOGIC
@@ -551,6 +595,11 @@ void mouse_handles_11(int mouseX, int mouseY)
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
+    SDL_Rect rockpaperscissorsRulesRect = {static_cast<int>(windowWidth * 0.8),
+                                           static_cast<int>(windowHeight * 0.6),
+                                           static_cast<int>(windowWidth * 0.2),
+                                           static_cast<int>(windowHeight * 0.2)};
+
     if (!showPrivacyPolicyPopup)
     {
         if (scene11submitUsernameButton.isClicked(mousePosition))
@@ -568,6 +617,11 @@ void mouse_handles_11(int mouseX, int mouseY)
         {
             std::cout << "You clicked: Change font size" << std::endl;
             scale_font_and_button_size();
+        }
+        else if (SDL_PointInRect(&mousePosition, &rockpaperscissorsRulesRect))
+        {
+            std::cout << "You clicked: Encyoclopedia" << std::endl;
+            render_text_from_file("help.txt", 1, 1, 255, 0);
         }
     }
 

@@ -1,3 +1,12 @@
+/*
+    Author: Sumeet Singh
+    Dated: 14/02/2024
+    Minimum C++ Standard: C++11
+    Purpose: Declaration/Definition file combined
+    License: MIT License
+    Description: read the attached help.txt file
+*/
+
 #pragma once
 
 #include <iostream>
@@ -10,14 +19,10 @@
 #include <limits>
 
 /*
-AUTHOR: Sumeet Singh
-AUTHOR CONTACT: kurta.kursi@gmail.com
-DATE: 08/02/2024
 REQUIREMENTS:
 SDL library - https://github.com/libsdl-org/SDL
 SDL_Image library - https://github.com/libsdl-org/SDL_image
 SDL_TTF - https://github.com/libsdl-org/SDL_ttf
-
 
 PURPOSE:
 SDL Class for Buttons initialised with Custom_SDL_Button::button

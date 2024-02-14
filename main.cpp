@@ -1,14 +1,10 @@
 /*
-    Name: World Games
-    Purpose: main.cpp
     Author: Sumeet Singh
-    Website: www.sumeet-singh.com
-    Created: 26th September 2023
-    Version: 0.1
-    Description: Players travel the world playing different traditional games.
-    License: Main source code is open source excluding the third party libraries which have their own licensing.
-    Game and Programming logic: Read in help_scene.hpp file or view in game help menu.
-    Location: https://github.com/SumeetSinghJi/World-Games
+    Dated: 26/09/2023
+    Minimum C++ Standard: C++11
+    Purpose: Implementation file
+    License: MIT License
+    Description: read the attached help.txt file
 */
 
 #include <iostream>                         // Core logic
@@ -50,7 +46,7 @@
     * flag noise for changing languages
     * volume up/down slider noise
     * Reset all settings to default button
-    * scene 11 = enter username, + include button to 
+    * scene 11 = enter username, + include button to
       1. Submit
       2. sign up for online -> on click Render text for privacy-policy.txt -> accept/decline buttons
     * scene 12 = Sign up
@@ -313,9 +309,9 @@ int fontSize = 36;                             // for font
 int scene = 1;                                 // for scene to display
 
 // PLAYER VARIABLES
-std::string username = "";                   // Multiplayer - Multiplayer players username
-std::string email = "";                      // Multiplayer - Multiplayer players email address
-std::string password = "";                   // Multiplayer - Multiplayer players account password
+std::string username = ""; // Multiplayer - Multiplayer players username
+std::string email = "";    // Multiplayer - Multiplayer players email address
+std::string password = ""; // Multiplayer - Multiplayer players account password
 
 // SETTINGS VARIABLES
 bool isMusicPlaying = NULL;                                           // for music
@@ -863,7 +859,6 @@ void load_buttons_25()
     scene25backusernameButton.set_button_texture(renderer);
 }
 
-
 /*
 _________________________________________________________________________________________________
 
@@ -1079,7 +1074,7 @@ void update()
 void draw()
 {
     SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND); // Set the blend mode to enable transparency
-    SDL_SetRenderDrawColor(renderer, 144, 238, 144, 255); // set default background colour to lime green
+    SDL_SetRenderDrawColor(renderer, 144, 238, 144, 255);      // set default background colour to lime green
     SDL_RenderClear(renderer);
 
     // Rendering text, buttons and backgrounds to screen
@@ -1131,7 +1126,7 @@ void draw()
         draw_text_for_HUD_scene_11();
         draw_buttons_scene_11();
     }
-    
+
     else if (scene == 32) // Game Map - Rome - Tic Tac Toe
     {
         ttt_SDL_draw();
