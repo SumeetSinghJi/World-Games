@@ -19,7 +19,7 @@
 #ifdef _WIN32
     #include <winsock2.h> // For curling on Windows
 #endif
-#include "game_update_2.hpp"
+#include "headers/game_update_2.hpp"
 
 /*
 This header is used for Curl of GitHub repo of world-games game directory

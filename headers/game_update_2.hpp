@@ -294,5 +294,3 @@ void game_start()
         system(start_command.c_str());
     }
 }
-
-#pragma once
