@@ -6,7 +6,7 @@ ________________________________________________________________________________
 
 * Name: World Games
 * Creation: 26/09/2023
-* Version: 0.1 (Still in testing)
+* Version: 0.1
 * Description: A C++ game on traditional board and hand games from different cultures around the world.
 * Author: Sumeet Singh
 * Author address: www.sumeet-singh.com
@@ -19,7 +19,7 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________________________
 
-                                            LICENSE
+                                                LICENSE
 
 _________________________________________________________________________________________________________________
 
@@ -53,7 +53,7 @@ Note: This project includes components licensed under different terms:
 
 _________________________________________________________________________________________________________________
 
-                                        TABLE OF CONTENTS
+                                            TABLE OF CONTENTS
 
 _________________________________________________________________________________________________________________
 
@@ -140,7 +140,7 @@ Keybindings for Keyboard and Gamepad use default Arrow or D-Pad directional keys
 
 _________________________________________________________________________________________________________________
 
-                                    2. PROGRAMMING LOGIC
+                                            2. PROGRAMMING LOGIC
 
 _________________________________________________________________________________________________________________
 
@@ -151,24 +151,14 @@ C++ game was built on a Windows 11 Operating System desktop environment using Vi
 Game is written in c++ however uses a C programming language library framework 
 called SDL2, along with 3 associated SDL2 libraries to create a interactive GUI Window
 
-all 3 Frameworks are downloaded from GitHub
 SDL2 (https://github.com/libsdl-org/SDL)- Used for creating a Window and rendering buttons and key inputs
 SDL2_image (https://github.com/libsdl-org/SDL_image) - Library for adding non images JPG/PNG etc., to a SDL2 Applicaiton
 SDL2_Mixer (https://github.com/libsdl-org/SDL_mixer) - Library for adding sound/music to a SDL2 application
 SDL2_TTF (https://github.com/libsdl-org/SDL_ttf) - Library for rendering text/font to SDL2 Window
 
-uses headers below
-#include <SDL.h>                          // SDL Requirement
-#include <SDL_image.h>                    // SDL Requirement
-#include <SDL_ttf.h>                      // SDL Requirement
-#include <SDL_mixer.h>                    // SDL Requirement
-#include "headers/sdl_loads.h"            // SDL Textures, Sounds, Animations to load
-#include "headers/sdl_renders.h"          // SDL Rect/Buttons to render to screen/scene/GUI
-#include "headers/sdl_texts.h"            // SDL Text to Render  to screen/scene/GUI
-#include "headers/sdl_mouse_handles.h"    // SDL Mouse and Touch keypresses
-#include "headers/sdl_keyboard_handles.h" // SDL Keyboard keypresses
-#include "headers/sdl_gamepad_handles.h"  // SDL Gamepad controller keypresses
 
+CURL - Library for web content gathering and posting for online services and multiplayer
+LIBZIP - Library for extracting Zip files used for extracting downloaded game zip from source repository
 
 
 FILES
@@ -182,6 +172,8 @@ The below files are contained in the downloaded game directory
 main.cpp - main source code
 main.exe - .exe for game
 help.txt - Contains all information about game such as requirements, installation, play guide etc.,
+privacy_policy.txt - Online services Privacy Policy
+terms_and_conditions.txt - Online services Terms and Conditions
 Credits.txt - Contains the Credits for the game
 CMAKElists-draft.txt - Used for CMAKE, currently Unused due to building with VSCode currently
 Various DLL's that third party library DLL compiles with .exe on build {
@@ -194,8 +186,6 @@ Various DLL's that third party library DLL compiles with .exe on build {
 }
 world-games_save.txt - in game save file
 world-games.code-workspace - used by Visual Studio (IDE) for the development environment for coding
-windows_create_shortcut.bat - Used for CMAKE, currently Unused due to building with VSCode currently
-windows_create_shortcut.ps1 - Used for CMAKE, currently Unused due to building with VSCode currently
 
 
 
@@ -216,7 +206,7 @@ SAVING AND LOADING/CONTINUE
 
 A save game text file world-games_save.txt is created on SDL Quit and on main menu Continue button loaded.
 uses header below
-#include "headers/savegame.h"             // For save/continue functions
+#include "headers/save_game.h"             // For save/continue functions
 
 
 
@@ -226,9 +216,8 @@ There is an in game option to update game. It will contact a repository hosting 
 game was downloaded and installed from, which will check the latest version string then download and replace the
 existing game directory while retaining save game files.
 
-Uses both headers below
-#include "headers/game_update_1.h"        // For downloading latest game update
-#include "headers/game_update_2.h"        // For downloading latest game update
+Uses headers;
+#include "headers/update_game.h"        // For downloading latest game update
 
 
 
