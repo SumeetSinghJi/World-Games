@@ -6,7 +6,7 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________________________
 
-                                                BACKGROUND
+                                                WELCOME
 
 "As the creator, I wanted to dive into programming and learn C++, which I've always been curious about. So, I 
 decided to take on the challenge of making a game – something like chess, but simpler. I was getting a bit 
@@ -18,20 +18,13 @@ what's already there."
 
 
 
-* Name: World Games
-* Creation: 26/09/2023
-* Version: 0.1
-* Description: A C++ game on traditional board and hand games from different cultures around the world.
-* Author: Sumeet Singh
-* Author address: www.sumeet-singh.com
-* Author contact: kurta.kursi@gmail.com
-* Publisher: AgniSamooh
-* Publisher address: www.agniSamooh.com
-* Publisher contact: support@agnisamooh.com
-* Location: https://github.com/SumeetSinghJi/world-games
-* License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) License.
-
-
+Game Name: World Games
+Creation: 26/09/2023
+Version: 0.1
+Description: A C++ game on traditional board and hand games from different cultures around the world.
+Author: Sumeet Singh @ www.sumeet-singh.com
+Publisher: AgniSamooh @ www.agniSamooh.com
+License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) License.
 
 
 _________________________________________________________________________________________________________________
