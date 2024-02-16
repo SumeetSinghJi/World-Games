@@ -11,12 +11,14 @@ Description: read the attached help.txt file
 
 #include <iostream>
 #include <string>
+#include "headers/custom_SDL_button.hpp" // Custom SDL Button class for creating buttons for handles
 
 /*
 Both Mouse and Touch click use the same mousePoint variable
 */
 
 extern SDL_Window *window;
+extern std::vector<Custom_SDL_Button *> allButtons;
 
 // for Window resolution
 extern int windowWidth;
@@ -49,7 +51,6 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
     SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
     SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.73), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
-
 
     SDL_Point mousePosition = {mouseX, mouseY};
     /*
@@ -212,28 +213,50 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
     {
         std::cout << "You clicked set to 800 x 600 resolution" << std::endl;
         change_resolution(800, 600);
+        fontSize = 24;
+        for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+        {
+            button->set_font_size(24);
+        }
     }
     else if (SDL_PointInRect(&mousePosition, &resolution1366x768Rect))
     {
         std::cout << "You clicked set to 1366 x 768 resolution" << std::endl;
         change_resolution(1366, 768);
+        fontSize = 36;
+        for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+        {
+            button->set_font_size(36);
+        }
     }
     else if (SDL_PointInRect(&mousePosition, &resolutionFullScreenRect))
     {
-        std::cout << "You clicked set to Full Screen resolution" << std::endl;
-        // change to full screen
-        SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-        // capture the new window resolution width and height, and update the existing
-        // window width and height variables
+        std::cout << "You clicked: Full Screen to Windowed resolution" << std::endl;
+
+        int borderFlag = SDL_GetWindowFlags(window);
+        bool isFullscreen = (borderFlag & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
+        if (isFullscreen)
+        {
+            SDL_SetWindowFullscreen(window, 0);
+        }
+        else
+        {
+            SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+        }
+
         SDL_GetWindowSize(window, &windowWidth, &windowHeight);
-        // pass the new values of width and height to change_resolution() to then update positioning
-        // for rendering of objects
         change_resolution(windowWidth, windowHeight);
+
+        fontSize = 48;
+        for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+        {
+            button->set_font_size(48);
+        }
     }
 }
 void handle_click_scene_3(int mouseX, int mouseY) // Credits
 {
-    SDL_Point mousePosition = {mouseX, mouseY};  
+    SDL_Point mousePosition = {mouseX, mouseY};
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
 
     // Settings Buttons
@@ -241,7 +264,7 @@ void handle_click_scene_3(int mouseX, int mouseY) // Credits
     {
         std::cout << "You clicked Return to title" << std::endl;
         scene = 1;
-    } 
+    }
 }
 void handle_click_scene_4(int mouseX, int mouseY) // Achievements
 {
@@ -314,7 +337,6 @@ void handle_click_scene_25(int mouseX, int mouseY) // World map
 
     SDL_Rect romeRect = {static_cast<int>(windowWidth * 0.50), static_cast<int>(windowHeight * 0.45), worldmapRegionWidth, worldmapRegionHeight};
 
-
     // Settings Buttons
     if (SDL_PointInRect(&mousePosition, &helpRect))
     {
@@ -335,40 +357,40 @@ void handle_click_scene_25(int mouseX, int mouseY) // World map
     }
     else if (SDL_PointInRect(&mousePosition, &beijingRect))
     {
-        std::cout << "You clicked Beijing" << std::endl;  
+        std::cout << "You clicked Beijing" << std::endl;
         int target = 20;
         is_scene_unlocked(target);
     }
     else if (SDL_PointInRect(&mousePosition, &londonRect))
     {
-        std::cout << "You clicked London" << std::endl;   
+        std::cout << "You clicked London" << std::endl;
         int target = 21;
         is_scene_unlocked(target);
     }
     else if (SDL_PointInRect(&mousePosition, &parisRect))
     {
-        std::cout << "You clicked Paris" << std::endl;     
+        std::cout << "You clicked Paris" << std::endl;
         int target = 22;
         is_scene_unlocked(target);
     }
     else if (SDL_PointInRect(&mousePosition, &berlinRect))
     {
         std::cout << "You clicked Berlin" << std::endl;
-        
+
         int target = 23;
         is_scene_unlocked(target);
     }
     else if (SDL_PointInRect(&mousePosition, &delhiRect))
     {
         std::cout << "You clicked Dehli" << std::endl;
-        
+
         int target = 24;
         is_scene_unlocked(target);
     }
     else if (SDL_PointInRect(&mousePosition, &singaporeRect))
     {
         std::cout << "You clicked Singapore" << std::endl;
-        
+
         int target = 25;
         is_scene_unlocked(target);
     }
@@ -410,7 +432,7 @@ void handle_click_scene_8(int mouseX, int mouseY) // Multiplayer lobby
     SDL_Rect joinAvailableGameRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
     SDL_Rect createAvailableGameRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
     SDL_Rect inviteFriendToAvailableGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    
+
     SDL_Rect refreshAvailableGamesRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
     SDL_Rect returnToAvailableGamesRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
 
@@ -420,21 +442,25 @@ void handle_click_scene_8(int mouseX, int mouseY) // Multiplayer lobby
     if (SDL_PointInRect(&mousePosition, &joinAvailableGameRect))
     {
         std::cout << "You clicked Join available game" << std::endl;
-    } else if (SDL_PointInRect(&mousePosition, &createAvailableGameRect))
+    }
+    else if (SDL_PointInRect(&mousePosition, &createAvailableGameRect))
     {
         std::cout << "You clicked Create multiplayer game" << std::endl;
-    } else if (SDL_PointInRect(&mousePosition, &inviteFriendToAvailableGameRect))
+    }
+    else if (SDL_PointInRect(&mousePosition, &inviteFriendToAvailableGameRect))
     {
         std::cout << "You clicked Invite friend to game" << std::endl;
-    } else if (SDL_PointInRect(&mousePosition, &refreshAvailableGamesRect))
+    }
+    else if (SDL_PointInRect(&mousePosition, &refreshAvailableGamesRect))
     {
         std::cout << "You clicked Refresh available multiplayer games" << std::endl;
-    }else if (SDL_PointInRect(&mousePosition, &returnToAvailableGamesRect))
+    }
+    else if (SDL_PointInRect(&mousePosition, &returnToAvailableGamesRect))
     {
         std::cout << "You clicked Return to Multiplayer lobby" << std::endl;
         scene = 8;
     }
-      else if (SDL_PointInRect(&mousePosition, &returnTitleRect))
+    else if (SDL_PointInRect(&mousePosition, &returnTitleRect))
     {
         std::cout << "You clicked Return to title" << std::endl;
         scene = 1;

@@ -1,10 +1,10 @@
 /*
-Author: Sumeet Singh
-Dated: 14/02/2024
-Minimum C++ Standard: C++11
-Purpose: Declaration/Definition/Implementation file combined
-License: MIT License
-Description: Test Development environment
+    Author: Sumeet Singh
+    Dated: 14/02/2024
+    Minimum C++ Standard: C++11
+    Purpose: Declaration/Definition/Implementation file combined
+    License: MIT License
+    Description: Test Development environment
 */
 
 #include <iostream>
@@ -40,6 +40,12 @@ Description: Test Development environment
     !username.empty() - scene = 25;
     else continue;
     on submit.onclick() save username to txt file
+    6. Update on World Games
+
+_________________________________________________________________________
+
+
+
     6. Scene 14 - multiplayer after search friends click to add to friend list
     CURL POST add friend to account
     *  In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield

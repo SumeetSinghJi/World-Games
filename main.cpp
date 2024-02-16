@@ -33,6 +33,7 @@
 
 /*
     TO DO
+    * Game pausing on quiting. Maybe buttons aren't clearing/deleting?
     * Add information in help.txt regarding modding e.g. assets/ can be modified, modify render_texts, loads, etc., for logic
     * add instructions for importing new board games,
     * Use AI to create victory animation
@@ -427,6 +428,7 @@ void change_resolution(int newWindowWidth, int newWindowHeight)
     windowHeight = newWindowHeight;
     SDL_SetWindowSize(window, windowWidth, windowHeight);
 }
+
 void new_game()
 {
     game_started = true; // This is flagged as on, so that in Settings screen you can "Continue" to game, if started else not.
