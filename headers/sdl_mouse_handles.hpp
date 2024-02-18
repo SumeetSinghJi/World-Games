@@ -11,7 +11,7 @@ Description: read the attached help.txt file
 
 #include <iostream>
 #include <string>
-#include "headers/custom_SDL_button.hpp" // Custom SDL Button class for creating buttons for handles
+#include "custom_SDL_button.hpp" // Custom SDL Button class for creating buttons for handles
 
 /*
 Both Mouse and Touch click use the same mousePoint variable
