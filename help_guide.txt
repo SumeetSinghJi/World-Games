@@ -147,18 +147,17 @@ ________________________________________________________________________________
 
 ENVIRONMENT
 
-C++ game was built on a Windows 11 Operating System desktop environment using Visual Studio code as the IDE.
-Game is written in c++ however uses a C programming language library framework 
-called SDL2, along with 3 associated SDL2 libraries to create a interactive GUI Window
+Game uses the following third party libraries.
 
-SDL2 (https://github.com/libsdl-org/SDL)- Used for creating a Window and rendering buttons and key inputs
-SDL2_image (https://github.com/libsdl-org/SDL_image) - Library for adding non images JPG/PNG etc., to a SDL2 Applicaiton
-SDL2_Mixer (https://github.com/libsdl-org/SDL_mixer) - Library for adding sound/music to a SDL2 application
-SDL2_TTF (https://github.com/libsdl-org/SDL_ttf) - Library for rendering text/font to SDL2 Window
-
-Also contains other libraries;
-CURL - Library for web content gathering and posting for online services and multiplayer
-LIBZIP - Library for extracting Zip files used for extracting downloaded game zip from source repository
+1. SDL2 (https://github.com/libsdl-org/SDL)- Used for creating a Window and rendering buttons and key inputs
+2. SDL2_image (https://github.com/libsdl-org/SDL_image) - Library for adding non images JPG/PNG etc., to a SDL2 
+Applicaiton
+3. SDL2_Mixer (https://github.com/libsdl-org/SDL_mixer) - Library for adding sound/music to a SDL2 application
+4. SDL2_TTF (https://github.com/libsdl-org/SDL_ttf) - Library for rendering text/font to SDL2 Window
+5. CURL - (https://github.com/curl/curl) - Library for web content gathering and posting for online services 
+and multiplayer
+6. LIBZIP - (https://github.com/nih-at/libzip) - Library for extracting Zip files used for extracting 
+downloaded game zip from source repository
 
 
 FILES
@@ -169,6 +168,8 @@ The below files are contained in the downloaded game directory
 ./assets - subdirectories of assets e.g. images, sounds, fonts
 ./headers - C++ header files
 ./src - Third party libraries
+CMAKEllists.txt - Used in development file
+.gitignore - Used in development file
 main.cpp - Implementation file
 main.exe - Game executable
 help_guide.txt - Contains information about game
