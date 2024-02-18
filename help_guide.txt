@@ -298,6 +298,13 @@ OBJECTIVE
 1. Win the game by winning all games around the world while having fun.
 
 
+MODDING
+
+Game can be modified anytime through source code. Free scenes are marked as _____UNUSED_____ in scenes section.
+Creating new games can be achieved by creating a new header file for your game using an existing as an template
+if needed then creating the relevant SDL links.
+
+
 _________________________________________________________________________________________________________________
 
                                         5. GAMES AND RULES

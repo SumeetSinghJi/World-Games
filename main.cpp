@@ -35,17 +35,15 @@
     TO DO
     * Use profiler to identify what's taking soo long to quit game OR change resolution
     * consider adding cout messages in quit e..g after clearing window to see what stage quitting is stuck at
-    * Add information in help.txt regarding modding e.g. assets/ can be modified, modify render_texts, loads, etc., for logic
-    * add instructions for importing new board games,
+    *   e.g. before destroytexture() add a cout << "Attempting: Destroy textures" << std::endl;
     * Use AI to create victory animation
     * Use AI to create won game animation travelling the world in hot weather baloon
-    * Convert all texture C style raw pointers to smart unique ptr's gradually
-    * Game accessability for Sight impaired
+        * Game accessability for Sight impaired
     * Chinese high pitch drum symbol when starting new game/pausing like Sleeping Dogs start menu sound
     * Clicking noise for toggles in settings
     * flag noise for changing languages
     * volume up/down slider noise
-    * Reset all settings to default button
+    * Reset all settings to default button - Important
     * scene 11 = enter username, + include button to
       1. Submit
       2. sign up for online -> on click Render text for privacy-policy.txt -> accept/decline buttons

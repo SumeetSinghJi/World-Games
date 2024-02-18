@@ -3,48 +3,83 @@ cmake_minimum_required(VERSION 3.12)
 
 project(World-Games VERSION 0.1.0)
 
-# set directory for CMAKE config files "e.g. SDL2-config.cmake" for find_package()
-set(SDL2_DIR "${CMAKE_SOURCE_DIR}/src/SDL2/cmake")
-set(SDL2_Image_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_image/cmake")
-set(SDL2_Mixer_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_Mixer/cmake")
-set(SDL2_TTF_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_TTF/cmake")
-set(CURL_DIR "${CMAKE_SOURCE_DIR}/src/curl")
+set(SDL2_DIR "${CMAKE_SOURCE_DIR}/src/SDL2/cmake") # points to "SDL2-config.cmake"
+find_package(SDL2 QUIET)
+if(NOT SDL2_FOUND)
+    message(WARNING "Error: SDL2 find_package() failed")
+else()
+    message(STATUS "Success: SDL2 find_package() found")
+endif()
+
+set(SDL2_Image_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_image/cmake") # points to "sdl2_image-config.cmake"
+find_package(SDL2_Image QUIET)
+if(NOT SDL2_Image_FOUND)
+    message(WARNING "Error: SDL2_Image find_package() failed")
+else()
+    message(STATUS "Success: SDL2_Image find_package() found")
+endif()
+
+set(SDL2_Mixer_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_Mixer/cmake") # points to "sdl2_mixer-config.cmake"
+find_package(SDL2_Mixer QUIET)
+if(NOT SDL2_Mixer_FOUND)
+    message(WARNING "Error: SDL2_Mixer find_package() failed")
+else()
+    message(STATUS "Success: SDL2_Mixer find_package() found")
+endif()
+
+set(SDL2_TTF_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_TTF/cmake") # points to "sdl2_ttf-config.cmake"
+find_package(SDL2_TTF QUIET)
+if(NOT SDL2_TTF_FOUND)
+    message(WARNING "Error: SDL2_TTF find_package() failed")    
+else()
+    message(STATUS "Success: SDL2_TTF find_package() found")
+endif()
+
+set(CURL_DIR "${CMAKE_SOURCE_DIR}/src/curl/build/generated")
+find_package(CURL QUIET)
+if(NOT CURL_FOUND)
+    message(WARNING "Error: CURL find_package() failed")
+else()
+    message(STATUS "Success: CURL find_package() found")
+    set(CURL_INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/src/curl/include/curl")
+    set(CURL_LIBRARY "${CMAKE_SOURCE_DIR}/src/curl/include/lib")
+endif()
+
 set(libzip_DIR "${CMAKE_SOURCE_DIR}/src/libzip")
+find_package(libzip QUIET)
+if(NOT libzip_FOUND)
+    message(WARNING "Error: libzip find_package() failed")
+else()
+    message(STATUS "Success: libzip find_package() found")
+endif()
 
-set(CURL_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/curl/include")
-set(CURL_LIBRARY "${CMAKE_SOURCE_DIR}/src/curl/lib")
-
-# build from above set DIR's
-find_package(SDL2 REQUIRED)
-find_package(SDL2_Image REQUIRED)
-find_package(SDL2_Mixer REQUIRED)
-find_package(SDL2_TTF REQUIRED)
-find_package(CURL REQUIRED)
-find_package(libzip REQUIRED)
+#get_cmake_property(_variableNames VARIABLES)
+#list (SORT _variableNames)
+#foreach (_variableName ${_variableNames})
+#    message(STATUS "${_variableName}=${${_variableName}}")
+#endforeach()
 
 add_executable(World-Games main.cpp)
 
-# target_include_directories will automatically find the package include directories based on find_package
-# Note 1: include_directories is outdated, only use target_include_directories
-# Note 2: ./assets not necessary during compilation as during runtime of .exe/bin the program is hardcoded where to look
 target_include_directories(World-Games PRIVATE
     headers
-    ${CMAKE_SOURCE_DIR}/src/curl/include/curl # necessary to find <curl.h>. Using ${CURL_INCLUDE_DIRS} doesnt work.
-    ${CMAKE_SOURCE_DIR}/src/libzip/lib # necessary to find <zip.h>. Using ${LIBZIP_INCLUDE_DIRS} doesnt work.
+    ${SDL2_INCLUDE_DIRS}
+    ${SDL2_Image_INCLUDE_DIRS}
+    ${SDL2_Mixer_INCLUDE_DIRS}
+    ${SDL2_TTF_INCLUDE_DIRS}
+    ${CURL_INCLUDE_DIRS}
+    ${libzip_INCLUDE_DIRS}
 )
 
-# found from above find_package which sets the x_LIBRARIES directories and looks in them for the -l linkers
 target_link_libraries(World-Games
-    SDL2::SDL2main
-    SDL2::SDL2
-    SDL2_image::SDL2_image
-    SDL2_mixer::SDL2_mixer
-    SDL2_ttf::SDL2_ttf
-    ${CMAKE_SOURCE_DIR}/src/curl/lib/libcurl.a # necessary to find -lcurl
-    ${LIBZIP_LIBRARIES}  # necessary to find -lzip
+    ${SDL2_LIBRARIES}
+    ${SDL2_Image_LIBRARIES}
+    ${SDL2_Mixer_LIBRARIES}
+    ${SDL2_TTF_LIBRARIES}
+    # ${CURL_LIBRARIES}
+    CURL::libcurl
+    ${LIBZIP_LIBRARIES}
+    ws2_32 # for #include <winsock.h>
 )
 
-set_target_properties(World-Games PROPERTIES
-    # move .exe/.bin etc., from ./build to ./
-    RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}
-)
+set_target_properties(World-Games PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}) #output .exe to "./"
