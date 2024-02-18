@@ -1,3 +1,16 @@
 # Build folders
 /build
-/src/curl
+/src/curl/.circleci
+/src/curl/.github
+/src/curl/.reuse
+/src/curl/build
+/src/curl/dep
+/src/curl/docs
+/src/curl/m4
+/src/curl/packages
+/src/curl/plan9
+/src/curl/projects
+/src/curl/scripts
+/src/curl/src
+/src/curl/tests
+/src/curl/winbuild
