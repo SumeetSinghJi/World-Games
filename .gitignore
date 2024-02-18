@@ -6,6 +6,7 @@
 /src/curl/build
 /src/curl/dep
 /src/curl/docs
+/src/curl/docs/examples
 /src/curl/m4
 /src/curl/packages
 /src/curl/plan9

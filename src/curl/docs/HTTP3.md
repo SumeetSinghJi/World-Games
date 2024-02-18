@@ -58,7 +58,6 @@ Build nghttp3
      % cd ..
      % git clone -b v1.1.0 https://github.com/ngtcp2/nghttp3
      % cd nghttp3
-     % git submodule update --init
      % autoreconf -fi
      % ./configure --prefix=<somewhere2> --enable-lib-only
      % make
@@ -102,7 +101,6 @@ Build nghttp3
      % cd ..
      % git clone -b v1.1.0 https://github.com/ngtcp2/nghttp3
      % cd nghttp3
-     % git submodule update --init
      % autoreconf -fi
      % ./configure --prefix=<somewhere2> --enable-lib-only
      % make
@@ -144,7 +142,6 @@ Build nghttp3
      % cd ..
      % git clone -b v1.1.0 https://github.com/ngtcp2/nghttp3
      % cd nghttp3
-     % git submodule update --init
      % autoreconf -fi
      % ./configure --prefix=<somewhere2> --enable-lib-only
      % make
@@ -200,7 +197,7 @@ Build curl:
 
 # OpenSSL version
 
-QUIC support is **EXPERIMENTAL**
+quiche QUIC support is **EXPERIMENTAL**
 
 Build OpenSSL 3.2.0
 
@@ -208,7 +205,6 @@ Build OpenSSL 3.2.0
      % git clone -b openssl-3.2.0 https://github.com/openssl/openssl
      % cd openssl
      % ./config enable-tls1_3 --prefix=<somewhere> --libdir=<somewhere>/lib
-     % make
      % make install
 
 Build nghttp3
@@ -216,7 +212,6 @@ Build nghttp3
      % cd ..
      % git clone -b v1.1.0 https://github.com/ngtcp2/nghttp3
      % cd nghttp3
-     % git submodule update --init
      % autoreconf -fi
      % ./configure --prefix=<somewhere2> --enable-lib-only
      % make
@@ -228,7 +223,7 @@ Build curl:
      % git clone https://github.com/curl/curl
      % cd curl
      % autoreconf -fi
-     % LDFLAGS="-Wl,-rpath,<somewhere>/lib" ./configure --with-openssl=<somewhere> --with-openssl-quic --with-nghttp3=<somewhere2> 
+     % ./configure --with-openssl=<somewhere> --with-openssl-quic --with-nghttp3=<somewhere2> 
      % make
      % make install
 

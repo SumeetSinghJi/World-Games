@@ -6,7 +6,7 @@
 * Author: Sumeet Singh @ www.sumeet-singh.com
 * Publisher: AgniSamooh @ www.agnisamooh.com 
 * License: This project is licensed under the MIT License. 
-Full license terms can be found in the `./help_guide.txt` file.
+Full license terms can be found in the `./README.txt` file.
 
 
 # REQUIREMENTS
@@ -29,5 +29,6 @@ linux and MacOS use HOME for the home directory, e.g: /home/sumeet
 
 # INSTRUCTIONS
 
-Read help.txt file which can also be found in game using the Book icon option in main menu.
+The READNE.txt file contains instructions on gameplay and development. 
+File may also be found in game using the Book (Help) icon option.
 

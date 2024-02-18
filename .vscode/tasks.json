@@ -6,24 +6,29 @@
             "command": "C:\\msys64\\mingw64\\bin\\g++.exe",
             "args": [
                 "-fdiagnostics-color=always",
-                "-I${fileDirname}",
-				"-I./src/SDL2/x86_64-w64-mingw32/include/SDL2", // SDL2 header folder
-                "-I./src/SDL2_image/x86_64-w64-mingw32/include/SDL2", // SDL2 Image header folder
-                "-I./src/SDL2_Mixer/x86_64-w64-mingw32/include/SDL2", // SDL2 Mixer header folder
-                "-I./src/SDL2_TTF/x86_64-w64-mingw32/include/SDL2", // SDL2 TTF header folder
-                "-I./src/curl/include/curl", // libcurl
-                "-I./src/libzip/lib", // libzib
+                "-I${workspaceFolder}",
+				"-I${workspaceFolder}/src/SDL2/x86_64-w64-mingw32/include/SDL2", // SDL2 header folder
+                "-I${workspaceFolder}/src/SDL2_image/x86_64-w64-mingw32/include/SDL2", // SDL2 Image header folder
+                "-I${workspaceFolder}/src/SDL2_Mixer/x86_64-w64-mingw32/include/SDL2", // SDL2 Mixer header folder
+                "-I${workspaceFolder}/src/SDL2_TTF/x86_64-w64-mingw32/include/SDL2", // SDL2 TTF header folder
+                "-I${workspaceFolder}/src/curl/include/curl", // libcurl
+                "-I${workspaceFolder}/src/libzip/lib", // libzib
                 "-g",
                 "${file}", // uncomment for only building main.cpp
                 // "${fileDirname}/*.cpp", // uncomment for combining all .cpp files
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe",
-				"-L./src/SDL2/x86_64-w64-mingw32/lib", // SDL2 lib folder
-                "-L./src/SDL2_Image/x86_64-w64-mingw32/lib", // SDL2 Image lib folder
-                "-L./src/SDL2_Mixer/x86_64-w64-mingw32/lib", // SDL2 Mixer lib folder
-                "-L./src/SDL2_TTF/x86_64-w64-mingw32/lib", // SDL2 TTF lib folder
-                "-L./src/curl/lib", // libcurl
-                "-L./src/libzip", // libzib point to .dll and/or .a location usually within ./x/lib path
+                /* STATIC VS DYNAMIC
+                Static libraries (.lib files on Windows, .a files on Unix-like systems)
+                Dynamic/shared libraries (.dll files on Windows, .so files on Unix-like systems)
+                to get Static libraries configure library with "cmake .. -G "MingW - DC STATICON flag"
+                */
+                "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+				"-L${workspaceFolder}/src/SDL2/x86_64-w64-mingw32/lib", // SDL2 lib folder
+                "-L${workspaceFolder}/src/SDL2_Image/x86_64-w64-mingw32/lib", // SDL2 Image lib folder
+                "-L${workspaceFolder}/src/SDL2_Mixer/x86_64-w64-mingw32/lib", // SDL2 Mixer lib folder
+                "-L${workspaceFolder}/src/SDL2_TTF/x86_64-w64-mingw32/lib", // SDL2 TTF lib folder
+                "-L${workspaceFolder}/src/curl/lib", // libcurl
+                "-L${workspaceFolder}/src/libzip", // libzib point to .dll and/or .a location usually within ./x/lib path
                 "-lzip", // libzib
                 "-lcurl", // libcurl
 				"-lmingw32", // MingW compiler library found here C:\msys64\mingw64\lib\libmingw32.a

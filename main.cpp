@@ -15,10 +15,6 @@
 #include <thread>                           // Core logic - for timer
 #include <chrono>                           // Core logic - for timer
 #include <fstream>                          // multiplatform method for for file open read write objects
-#include <SDL.h>                            // SDL Requirement
-#include <SDL_image.h>                      // SDL Requirement
-#include <SDL_ttf.h>                        // SDL Requirement
-#include <SDL_mixer.h>                      // SDL Requirement
 #include "headers/multiplayer.hpp"          // For Multiplayer
 #include "headers/save_game.hpp"            // For save/continue functions
 #include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
@@ -55,6 +51,7 @@
     * Fix reading readme and credits
     * Fix mouse scroll up/down options
     * Fix Keyboard main menu selection
+    * Statically link all files, to not require DLL's making .exe portable to place in ./workspacefolder
     * Key remapping option
     * Implement multiplayer consider using e-net at least for tic tac toe
     * Add 10 more games
@@ -872,6 +869,8 @@ void start_SDL()
     {
         std::cerr << "Error: Failed to initialize SDL: " << SDL_GetError() << std::endl;
         exit(1);
+    } else {
+        std::cout << "Successfully initialised: SDL2" << std::endl;
     }
 
     if (TTF_Init() != 0)
@@ -879,6 +878,8 @@ void start_SDL()
         std::cerr << "Error: Failed to initialize SDL Font: " << TTF_GetError() << std::endl;
         SDL_Quit();
         exit(1);
+    } else {
+        std::cout << "Successfully initialised: SDL2 TTF" << std::endl;
     }
 
     if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG)
@@ -886,6 +887,8 @@ void start_SDL()
         std::cerr << "Error: Failed to initialize SDL IMG: " << IMG_GetError() << std::endl;
         SDL_Quit();
         exit(1);
+    } else {
+        std::cout << "Successfully initialised: SDL2 Image" << std::endl;
     }
 
     if (Mix_Init(MIX_INIT_MP3) != MIX_INIT_MP3)
@@ -893,6 +896,8 @@ void start_SDL()
         std::cerr << "Error: Failed to initialize Audio: " << Mix_GetError() << std::endl;
         SDL_Quit();
         exit(1);
+    } else {
+        std::cout << "Successfully initialised: SDL2 Mixer" << std::endl;
     }
 
     if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)

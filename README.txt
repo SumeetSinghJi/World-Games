@@ -1,0 +1,444 @@
+_________________________________________________________________________________________________________________
+
+                                          World Games Help Guide
+
+                                            1. INTRODUCTION
+
+_________________________________________________________________________________________________________________
+
+                                                WELCOME
+
+"As the creator, I wanted to dive into programming and learn C++, which I've always been curious about. So, I 
+decided to take on the challenge of making a game – something like chess, but simpler. I was getting a bit 
+bored of modern board games, so I thought, why not create my own? I focused on crafting easy-to-understand games 
+that I've never played before, which made the process both fun and educational. This project is great because 
+it lets me experiment with different programming techniques. If I find something that doesn't work, I can tweak 
+it without wasting too much time. Plus, I can easily add new features or games in the future without messing up 
+what's already there."
+
+
+
+Game Name: World Games
+Creation: 26/09/2023
+Version: 0.1
+Description: A C++ game on traditional board and hand games from different cultures around the world.
+Author: Sumeet Singh @ www.sumeet-singh.com
+Publisher: AgniSamooh @ www.agniSamooh.com
+License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) License.
+
+
+_________________________________________________________________________________________________________________
+
+                                            TABLE OF CONTENTS
+
+_________________________________________________________________________________________________________________
+
+
+1. Introduction
+2. License
+3. Setup
+4. Software logic
+5. Games and Rules
+6. Credits
+
+
+_________________________________________________________________________________________________________________
+
+                                                2. LICENSE
+
+_________________________________________________________________________________________________________________
+
+Source Code License:
+The source code in this project is licensed under the MIT License.
+
+Copyright (c) 2023 Sumeet Singh
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+[MIT License terms]
+
+Graphical Assets License:
+The graphical assets in this project are licensed under the Creative Commons Attribution (CC-BY) License.
+Individual authors are attributed within the `./README.txt` file.
+
+Component Library Licenses:
+Note: This project includes components licensed under different terms:
+
+- Libzip: See `./src/libzip/LICENSE` for details.
+- Curl: See `./src/curl/COPYING.txt` for details.
+- SDL2: See `./src/SDL2/COPYING.txt` for details.
+- SDL2 image: See `./src/SDL2_image/LICENSE.txt` for details.
+- SDL2 Mixer: See `./src/SDL2_Mixer/LICENSE.txt` for details.
+- SDL2 TTF: See `./src/src/SDL2_TTF/LICENSE.txt` for details.
+
+
+
+_________________________________________________________________________________________________________________
+
+                                                3. SETUP
+
+_________________________________________________________________________________________________________________
+
+
+
+HELP
+
+Found in game by clicking on "Help" (Book) option in main menu or read README.txt file
+
+
+
+REQUIREMENTS
+
+* Supported OS: Windows 10+ (untested on older or different Operating Systems)
+* Processor: at least 7th gen Intel Core i3 or AMD equivalent
+* RAM: 4 GB RAM
+* Graphics: Either CPU's dedicated GPU, or an HD capable GPU
+* Storage: 5 GB available space
+
+
+
+SETUP
+
+1. Download zipped game folder from GitHub here:
+https://github.com/SumeetSinghJi/world-games/archive/refs/heads/main.zip
+
+2. Unzip to computers user directory in new folder
+For Windows: c:\users\username\world-games
+For MacOS: default download folder
+For Linux: /home/username/world-games
+
+3. Run below file to start game
+For Windows: main.exe
+For Linux: main
+For MacOS: copy over this file main.bin to applications folder and accept default priviliges
+
+
+
+ACCESSIBILITY - LANGUAGES
+
+Game supports several languages with full language support below.
+Language can be changed from the Settings - Language (World) option in the main menu.
+1. ENGLISH
+2. 日本語 (JAPANESE)
+
+
+
+ACESSIBILITY - INPUT
+
+Game supports using several key input methods to play game
+1. Mouse (Preferred)
+2. Keyboard
+3. Gamepad
+4. Touch
+
+Keybindings for Keyboard and Gamepad use default Arrow or D-Pad directional keys with ENTER or A to select.
+
+
+_________________________________________________________________________________________________________________
+
+                                        4. SOFTWARE LOGIC
+
+_________________________________________________________________________________________________________________
+
+
+ENVIRONMENT
+
+Game uses the following third party libraries.
+
+1. SDL2 (https://github.com/libsdl-org/SDL)- Used for creating a Window and rendering buttons and key inputs
+2. SDL2_image (https://github.com/libsdl-org/SDL_image) - Library for adding non images JPG/PNG etc., to a SDL2 
+Applicaiton
+3. SDL2_Mixer (https://github.com/libsdl-org/SDL_mixer) - Library for adding sound/music to a SDL2 application
+4. SDL2_TTF (https://github.com/libsdl-org/SDL_ttf) - Library for rendering text/font to SDL2 Window
+5. CURL - (https://github.com/curl/curl) - Library for web content gathering and posting for online services 
+and multiplayer
+6. LIBZIP - (https://github.com/nih-at/libzip) - Library for extracting Zip files used for extracting 
+downloaded game zip from source repository
+
+
+FILES
+
+The below files are contained in the downloaded game directory
+
+./vscode - vscode configuration files
+./assets - subdirectories of assets e.g. images, sounds, fonts
+./headers - C++ header files
+./src - Third party libraries
+CMAKEllists.txt - Used in development file
+.gitignore - Used in development file
+main.cpp - Implementation file
+main.exe - Game executable
+README.txt - Contains information about game
+privacy_policy.txt - Online services Privacy Policy
+terms_and_conditions.txt - Online services Terms and Conditions
+Various DLL's for libraries {
+    libcurl-x64.dll - libcurl
+    libzip.dll - libzip
+    SDL2_image.dll - SDL2 Image
+    SDL2_mixer.dll - SDL2 Mixer
+    SDL2_TTF.dll - SDL2 TTF/Font
+    SDL2.dll - SDL2
+}
+world-games_save.txt - in game save file
+world-games.code-workspace - vscode configuration file
+
+
+
+GAME NAVIGATION
+
+Game menu and navigation is based on SDL Game design best practice "scenes".
+There are scenes for all different menu options e.g. Settings, or Credits, and a
+central hub "scene 6" for in game world map which interconnects with other in game
+scenes e.g. "scene 30 = Beijing" where different maps/levels/scenes can be accessed
+which all have slight variations of the named function start_spr_game() function depending on regional variations.
+
+headers SDL_renders and SDL_texts will load the HUD depending on regional variation of game.
+Navigating through scene is dependent on handle_events() button clicks in GAME LOGIC
+
+
+
+SAVING AND LOADING/CONTINUE
+
+A save game text file world-games_save.txt is created on SDL Quit and on main menu Continue button loaded.
+uses header below
+#include "headers/save_game.h"             // For save/continue functions
+
+
+
+UPDATING GAME
+
+There is an in game option to update game. It will contact a repository hosting game depending on which platform
+game was downloaded and installed from, which will check the latest version string then download and replace the
+existing game directory while retaining save game files.
+
+Uses headers;
+#include "headers/update_game.h"        // For downloading latest game update
+
+
+
+MULTIPLAYER
+
+FUTURE DEVELOPMENT - There is future scope to add an multiplayer mode however the time taken for author
+to learn C++ web development will take precious time spent elsewhere. Regardless the files and scenes
+are in game but not useable.
+Uses header below
+#include "headers/multiplayer.h"          // FUTURE DEVELOPMENT - For Multiplayer
+
+
+
+SCENES
+
+scene 1 = Main menu
+scene 2 = Settings
+scene 3 = Credits
+scene 4 = Achievements
+scene 5 = Help
+scene 6 = Leaderboard
+scene 7 = _____UNUSED_____
+scene 8 = _____UNUSED_____
+scene 9 = _____UNUSED_____
+scene 10 = keybindings
+scene 11 = Create name
+scene 12 = Create account
+scene 13 = Online login
+scene 14 = multiplayer lobby
+scene 15 = _____UNUSED_____
+scene 16 = _____UNUSED_____
+scene 17 = _____UNUSED_____
+scene 18 = _____UNUSED_____
+scene 19 = _____UNUSED_____
+scene 20 = _____UNUSED_____
+scene 21 = _____UNUSED_____
+scene 22 = _____UNUSED_____
+scene 23 = _____UNUSED_____
+scene 24 = _____UNUSED_____
+scene 25 = World map
+scene 26 = _____UNUSED_____
+scene 27 = Tutorial
+scene 28 = _____UNUSED_____
+scene 29 = _____UNUSED_____
+scene 30 = _____UNUSED_____
+scene 31 - beijing - shoushiling (traditional 手勢令), frog 蛙, snake 蛇, centipede 蜈蜙
+scene 32 = london - Scissors Paper Rock
+scene 33 = paris
+scene 34 = berlin
+scene 35 = delhi
+scene 36 = hawaii
+scene 37 = tokyo
+scene 38 = seoul
+scene 39 = shanghai
+scene 40 - Rome - Tic Tac Toe
+scene 41 - Kenya
+scene 42 - Moscow
+scene 43 - Athens
+scene 44 - Manilla
+scene 45 - Tehran
+scene 46 - Tel Aviv
+scene 47 - Cairo
+scene 48 - Bangkok
+scene 49 - Kathmandu
+scene 50 - Alaska
+scene 51 - _____UNUSED_____
+
+
+
+
+UNLOCKABLE ACHIEVEMENTS
+
+Completing a traditional game from a scene unlocks that achievement.
+
+12 (scene 32): Won Tic Tac Toe
+
+
+OBJECTIVE
+
+1. Win the game by winning all games around the world while having fun.
+
+
+MODDING
+
+Game can be modified anytime through source code. Free scenes are marked as _____UNUSED_____ in scenes section.
+Creating new games can be achieved by creating a new header file for your game using an existing as an template
+if needed then creating the relevant SDL links.
+
+
+_________________________________________________________________________________________________________________
+
+                                        5. GAMES AND RULES
+                                    
+_________________________________________________________________________________________________________________
+
+
+Beijing (China) - Rock paper scissors (Chinese; romanized: Shoushiling, traditional: 手勢令. simplified: 手势令)
+
+A seemingly simple game of chance, has woven its way into cultures worldwide, transcending generations and 
+borders. Despite its apparent simplicity, its origins are steeped in history, folklore, and strategic 
+subtleties. This humble game finds its roots in ancient civilizations and evolves continuously, embracing
+new forms and variations.
+
+Origins and Folklore:
+The exact origins of rock-paper-scissors are shrouded in mystery, with multiple theories tracing its roots
+across different cultures. One of the earliest known versions dates back to China during the 
+Han Dynasty (206 BCE – 220 CE). This version, known as "shoushiling," featured hand gestures representing
+a rock, a piece of cloth, and scissors. Legend has it that this game was used to resolve disputes and make 
+decisions, much like its contemporary usage.
+
+Another theory traces its origins to Japan, where the game was called "jan-ken." It was believed to have
+been introduced in the 17th century, gaining popularity among children and adults alike. In Japanese 
+folklore, it's said that the game was used by samurai to settle conflicts and make decisions in a manner
+that was akin to divination.
+
+Rules and Gameplay:
+The game revolves around three elements: rock, paper, and scissors. Each element defeats one and is defeated
+by another, creating a cyclic relationship:
+
+Rock crushes scissors.
+Scissors cut paper.
+Paper covers rock.
+Players face off by simultaneously forming one of the three shapes with their hands. After a count or a 
+chant, both reveal their chosen gesture, and the winner is determined based on the hierarchy of interactions. 
+The game often follows a best-of-three or best-of-five format, adding suspense and strategy.
+
+Cultural Significance and Variations:
+Rock-paper-scissors is not merely a game but a cultural phenomenon. It has made its way into various aspects 
+of society, from resolving disputes to being used in decision-making processes. Its simplicity and universality 
+have led to its integration into pop culture, sports, and even academic research.
+
+Interestingly, different cultures have their variations of the game. For instance, the Korean version, 
+"kai-bai-bo," features similar hand gestures but with different names and meanings. In some versions, 
+there are additional elements like a well, a lion, or a spock, introducing further complexities and strategies.
+
+Unique Trivia:
+Competitive Tournaments: Believe it or not, there are competitive rock-paper-scissors tournaments held 
+worldwide. Participants strategize and compete for prizes, showcasing their skill in a seemingly luck-based 
+game.
+
+AI and Strategy: Researchers have developed AI programs specifically designed to excel at rock-paper-scissors. 
+These programs analyze patterns in human behavior and adapt strategies, demonstrating the complexities within 
+what seems like a simple game.
+
+Decision-Making Tool: Beyond its entertainment value, rock-paper-scissors has found applications in 
+decision-making processes. Its randomness and unbiased nature make it an interesting tool in scenarios 
+where impartial choices are needed.
+
+In summary, rock-paper-scissors transcends its simplistic appearance, embodying centuries of cultural 
+heritage and human interaction. Its adaptability and universality continue to fascinate and entertain people 
+across the globe, proving that even the simplest of games can carry profound significance in society.
+
+
+
+_________________________________________________________________________________________________________________
+
+                                            6. CREDITS
+                                    
+_________________________________________________________________________________________________________________
+
+
+                                    Game developer - Sumeet Singh
+
+
+                "I made this in honour of all the 80's and 90's Shareware era developers"
+
+
+                                        BACKGROUND IMAGES
+
+                Background scenes created by A.I. art from creator.nightcafe.studio
+
+
+                                               SOUNDS
+
+                                Music taken from pixabay.com
+                                Sound effects taken from pixabay.com
+
+
+                                        SETTINGS BUTTONS
+
+                    save button by Nick Frost and Greg Lapin taken from icon-icons.com
+                    update button by Nick Frost and Greg Lapin taken from icon-icons.com
+                    load button by Nick Frost and Greg Lapin taken from icon-icons.com
+                    star button by Gianni Polito taken from icon-icons.com
+                    coin button by iconpacks taken from icon-icons.com
+                    restart button by Radhika Paghdal taken from icon-icons.com
+                    Font, size icon by Ant design from icon-icons.com
+                    book icon by ChrisL21 (Chris) from icon-icons.com
+                    Human button by Bryn Taylor from  icon-icons.com
+                    Computer button by Vexels from icon-icons.com
+                    All button images without attributions taken from respective
+                    authors fromicon-icons.com
+
+
+                                        COUNTRY BUTTONS
+
+                    England map icon by Bart Kowalski from icon-icons.com
+                    Beijing/China map icon by Rokey from icon-icons.com
+                    Shanghai map icon by Google from icon-icons.com
+                    Seoul map icon by maxicons from icon-icons.com
+                    Japan map icon by maxicons from icon-icons.com
+                    Hawaii map icon by Zulfa Mahendra from icon-icons.com
+                    Berlin map icon by Manthana Chaiwong from icon-icons.com
+                    Paris map icon by Oleksandr Yershov from icon-icons.com
+                    Delhi map icon by Jemis Mali from icon-icons.com
+                    Singapore map icon by Icons-Land from icon-icons.com
+                    Rome colosseum map icon by Iconka from from icon-icons.com
+
+
+                                        IN GAME GRAPHICS
+
+                    Scissor image icon By Author: Gulraiz from Freepik.com
+                    Paper icon by Vexels from icon-icons.com
+                    stone icon by ChrisL21 (Chris) from icon-icons.com
+                    Playing cards - https://opengameart.org/content/playing-cards-vector-png
+                    Senet board image - https://thiefontheflats.blogspot.com/2012/01/printable-senet-boards.html
+
+
+                                            ANIMATIONS
+
+                    Fireworks animation by @haenaillust taken from giphy.com
+
+
+
+
