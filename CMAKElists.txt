@@ -1,10 +1,9 @@
 # Uses instructions here for SDL CMAKE Setup:
-# https://www.reddit.com/r/sdl/comments/134kpd0/how_to_setup_sdl2_sdl_image_with_cmake_on_windows/
 cmake_minimum_required(VERSION 3.12)
 
 project(World-Games VERSION 0.1.0)
 
-# set directory for CMAKE config files "e.g. SDL2-config.cmake"
+# set directory for CMAKE config files "e.g. SDL2-config.cmake" for find_package()
 set(SDL2_DIR "${CMAKE_SOURCE_DIR}/src/SDL2/cmake")
 set(SDL2_Image_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_image/cmake")
 set(SDL2_Mixer_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_Mixer/cmake")

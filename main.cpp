@@ -20,7 +20,7 @@
 #include <SDL_ttf.h>                        // SDL Requirement
 #include <SDL_mixer.h>                      // SDL Requirement
 #include "headers/multiplayer.hpp"          // For Multiplayer
-#include "headers/save_game.hpp"             // For save/continue functions
+#include "headers/save_game.hpp"            // For save/continue functions
 #include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
 #include "headers/sdl_renders.hpp"          // SDL Rect/Buttons to render to screen/scene/GUI
 #include "headers/sdl_texts.hpp"            // SDL Text to Render to screen/scene/GUI
@@ -33,7 +33,8 @@
 
 /*
     TO DO
-    * Game pausing on quiting. Maybe buttons aren't clearing/deleting?
+    * Use profiler to identify what's taking soo long to quit game OR change resolution
+    * consider adding cout messages in quit e..g after clearing window to see what stage quitting is stuck at
     * Add information in help.txt regarding modding e.g. assets/ can be modified, modify render_texts, loads, etc., for logic
     * add instructions for importing new board games,
     * Use AI to create victory animation
@@ -1339,6 +1340,7 @@ int main(int argc, char *argv[])
 
     run_SDL();
     exit_SDL();
+    SDL_GetNumAllocations();
 
     return 0;
 }

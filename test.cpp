@@ -21,6 +21,10 @@
 #include "headers/custom_SDL_button.hpp"
 
 /*
+
+    1. Static code analysis how to
+
+
     TO DO
     1. Add mouse handle 11 privacy policy popup onclick code to keyboard and controller
     Add code for all the keyboard/gamepad handles
@@ -95,58 +99,58 @@ Custom_SDL_Button scene14backButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false)
 Custom_SDL_Button scene25backusernameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 
 // For SDL_Custom_button find_nearest() to find nearest button through kb handle arrow direction keys for GUI navigation
-std::vector<Custom_SDL_Button*> scene1buttons;
-std::vector<Custom_SDL_Button*> scene2buttons;
-std::vector<Custom_SDL_Button*> scene3buttons;
-std::vector<Custom_SDL_Button*> scene4buttons;
-std::vector<Custom_SDL_Button*> scene5buttons;
-std::vector<Custom_SDL_Button*> scene6buttons;
-std::vector<Custom_SDL_Button*> scene7buttons;
-std::vector<Custom_SDL_Button*> scene8buttons;
-std::vector<Custom_SDL_Button*> scene9buttons;
-std::vector<Custom_SDL_Button*> scene10buttons;
-std::vector<Custom_SDL_Button*> scene11buttons;
-std::vector<Custom_SDL_Button*> scene12buttons;
-std::vector<Custom_SDL_Button*> scene13buttons;
-std::vector<Custom_SDL_Button*> scene14buttons;
-std::vector<Custom_SDL_Button*> scene15buttons;
-std::vector<Custom_SDL_Button*> scene16buttons;
-std::vector<Custom_SDL_Button*> scene17buttons;
-std::vector<Custom_SDL_Button*> scene18buttons;
-std::vector<Custom_SDL_Button*> scene19buttons;
-std::vector<Custom_SDL_Button*> scene20buttons;
-std::vector<Custom_SDL_Button*> scene21buttons;
-std::vector<Custom_SDL_Button*> scene22buttons;
-std::vector<Custom_SDL_Button*> scene23buttons;
-std::vector<Custom_SDL_Button*> scene24buttons;
-std::vector<Custom_SDL_Button*> scene25buttons;
-std::vector<Custom_SDL_Button*> scene26buttons;
-std::vector<Custom_SDL_Button*> scene27buttons;
-std::vector<Custom_SDL_Button*> scene28buttons;
-std::vector<Custom_SDL_Button*> scene29buttons;
-std::vector<Custom_SDL_Button*> scene30buttons;
-std::vector<Custom_SDL_Button*> scene31buttons;
-std::vector<Custom_SDL_Button*> scene32buttons;
-std::vector<Custom_SDL_Button*> scene33buttons;
-std::vector<Custom_SDL_Button*> scene34buttons;
-std::vector<Custom_SDL_Button*> scene35buttons;
-std::vector<Custom_SDL_Button*> scene36buttons;
-std::vector<Custom_SDL_Button*> scene37buttons;
-std::vector<Custom_SDL_Button*> scene38buttons;
-std::vector<Custom_SDL_Button*> scene39buttons;
-std::vector<Custom_SDL_Button*> scene40buttons;
-std::vector<Custom_SDL_Button*> scene41buttons;
-std::vector<Custom_SDL_Button*> scene42buttons;
-std::vector<Custom_SDL_Button*> scene43buttons;
-std::vector<Custom_SDL_Button*> scene44buttons;
-std::vector<Custom_SDL_Button*> scene45buttons;
-std::vector<Custom_SDL_Button*> scene46buttons;
-std::vector<Custom_SDL_Button*> scene47buttons;
-std::vector<Custom_SDL_Button*> scene48buttons;
-std::vector<Custom_SDL_Button*> scene49buttons;
-std::vector<Custom_SDL_Button*> scene50buttons;
+std::vector<Custom_SDL_Button *> scene1buttons;
+std::vector<Custom_SDL_Button *> scene2buttons;
+std::vector<Custom_SDL_Button *> scene3buttons;
+std::vector<Custom_SDL_Button *> scene4buttons;
+std::vector<Custom_SDL_Button *> scene5buttons;
+std::vector<Custom_SDL_Button *> scene6buttons;
+std::vector<Custom_SDL_Button *> scene7buttons;
+std::vector<Custom_SDL_Button *> scene8buttons;
+std::vector<Custom_SDL_Button *> scene9buttons;
+std::vector<Custom_SDL_Button *> scene10buttons;
+std::vector<Custom_SDL_Button *> scene11buttons;
+std::vector<Custom_SDL_Button *> scene12buttons;
+std::vector<Custom_SDL_Button *> scene13buttons;
+std::vector<Custom_SDL_Button *> scene14buttons;
+std::vector<Custom_SDL_Button *> scene15buttons;
+std::vector<Custom_SDL_Button *> scene16buttons;
+std::vector<Custom_SDL_Button *> scene17buttons;
+std::vector<Custom_SDL_Button *> scene18buttons;
+std::vector<Custom_SDL_Button *> scene19buttons;
+std::vector<Custom_SDL_Button *> scene20buttons;
+std::vector<Custom_SDL_Button *> scene21buttons;
+std::vector<Custom_SDL_Button *> scene22buttons;
+std::vector<Custom_SDL_Button *> scene23buttons;
+std::vector<Custom_SDL_Button *> scene24buttons;
+std::vector<Custom_SDL_Button *> scene25buttons;
+std::vector<Custom_SDL_Button *> scene26buttons;
+std::vector<Custom_SDL_Button *> scene27buttons;
+std::vector<Custom_SDL_Button *> scene28buttons;
+std::vector<Custom_SDL_Button *> scene29buttons;
+std::vector<Custom_SDL_Button *> scene30buttons;
+std::vector<Custom_SDL_Button *> scene31buttons;
+std::vector<Custom_SDL_Button *> scene32buttons;
+std::vector<Custom_SDL_Button *> scene33buttons;
+std::vector<Custom_SDL_Button *> scene34buttons;
+std::vector<Custom_SDL_Button *> scene35buttons;
+std::vector<Custom_SDL_Button *> scene36buttons;
+std::vector<Custom_SDL_Button *> scene37buttons;
+std::vector<Custom_SDL_Button *> scene38buttons;
+std::vector<Custom_SDL_Button *> scene39buttons;
+std::vector<Custom_SDL_Button *> scene40buttons;
+std::vector<Custom_SDL_Button *> scene41buttons;
+std::vector<Custom_SDL_Button *> scene42buttons;
+std::vector<Custom_SDL_Button *> scene43buttons;
+std::vector<Custom_SDL_Button *> scene44buttons;
+std::vector<Custom_SDL_Button *> scene45buttons;
+std::vector<Custom_SDL_Button *> scene46buttons;
+std::vector<Custom_SDL_Button *> scene47buttons;
+std::vector<Custom_SDL_Button *> scene48buttons;
+std::vector<Custom_SDL_Button *> scene49buttons;
+std::vector<Custom_SDL_Button *> scene50buttons;
 
-std::vector<Custom_SDL_Button*> allButtons;
+std::vector<Custom_SDL_Button *> allButtons;
 Custom_SDL_Button *Custom_SDL_Button::selectedButton = nullptr;
 
 int scene = 11;
@@ -255,7 +259,8 @@ SDL_Texture *render_texture(std::string path, std::string name)
 void render_text_from_file(const std::string &filename, int x, int y, Uint8 alpha, int customFontSize)
 {
     std::ifstream file(filename);
-    if (!file.is_open()) {
+    if (!file.is_open())
+    {
         std::cerr << "Error:Failed to open file: " << filename << std::endl;
         return;
     }
@@ -1005,5 +1010,6 @@ int main(int argc, char *argv[])
 
     run_SDL();
     quit_SDL();
+    SDL_GetNumAllocations();
     return 0;
 }
