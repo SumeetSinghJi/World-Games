@@ -32,7 +32,7 @@
 /*
     TO DO
     * Scene 11 + 12 implement
-    * Fix reading readme and credits
+    * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * fix update header
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings
     * Replace all textures with buttons

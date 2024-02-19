@@ -6,7 +6,7 @@
 * Author: Sumeet Singh @ www.sumeet-singh.com
 * Publisher: AgniSamooh @ www.agnisamooh.com 
 * License: This project is licensed under the MIT License. 
-Full license terms can be found in the `./README.txt` file.
+Full license terms can be found in the `./MANUAL.txt` file.
 
 
 # REQUIREMENTS
