@@ -62,13 +62,11 @@
     * Add 10 more games
     * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
     * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
-    *   2st game - Chinese Go - Han
-    *   3rd game - Senet - Misr
-    *   4th game - The Royal Game of Ur - Babylon
-    *   5th game - Chaturanga - Aryavarta - import or create own chess engine
-    *   6th game - Ashtapada - Aryavarta
-    *   6th game - Chowka Bhara - South India - https://en.wikipedia.org/wiki/Chowka_bhara
-    *   7th game - Moksha Patam - Aryavarta - Snakes and ladders
+    * For the board games below, have real image backgrounds e.g. Chess is heiroglohyic image of woman playing senet
+    *   2nd game - Senet - Misr
+    *   3rd game - The Royal Game of Ur - Babylon
+    *   4th game - Ashtapada - Aryavarta
+    *   5th game - Chowka Bhara - South India - https://en.wikipedia.org/wiki/Chowka_bhara
 */
 
 SDL_Window *window = nullptr;

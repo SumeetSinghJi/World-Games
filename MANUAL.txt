@@ -8,13 +8,54 @@ ________________________________________________________________________________
 
                                                 WELCOME
 
-"As the creator, I wanted to dive into programming and learn C++, which I've always been curious about. So, I 
-decided to take on the challenge of making a game – something like chess, but simpler. I was getting a bit 
-bored of modern board games, so I thought, why not create my own? I focused on crafting easy-to-understand games 
-that I've never played before, which made the process both fun and educational. This project is great because 
-it lets me experiment with different programming techniques. If I find something that doesn't work, I can tweak 
-it without wasting too much time. Plus, I can easily add new features or games in the future without messing up 
-what's already there."
+
+"As the author, I always wanted to learn programming. Growing up in the 90s shareware gaming era, the internet 
+wasn't as widespread, fast, affordable, or accessible during that time period. The lack of the Internet left 
+very few ways to enjoy video games. Electronic games were mainly accessed through the arcade, which was an 
+expensive hobby, handheld and home game consoles, which had little public documentation, leaving the only way 
+to judge a game's fun to viewing the boxed art, leaving little room for errors in judgment and another 
+expensive endeavor.
+
+Thankfully, operating systems at the time had free inbuilt games that became the subject of speculation and 
+fascination. However, the only way to enjoy the games at that age or time was limited to access on school 
+computers with limited libraries of installed games, and with supervision, leaving approval of games played up 
+to the ever-dominant and watchful eyes of the teachers' moral approval.
+
+This left the only way to enjoy games repeatedly without any costly endeavors were the utopian abundance of 
+demonstration games known as demos, which were free and often limited in gameplay samples of computer games. The 
+easiest method of obtaining them was free diskettes known as floppy disks or floppies and CD-ROMs shortened to 
+CDs found in technology and gaming-focused magazines that were often purchased from local news agencies.
+
+The low cost of the barrier, ease, often non-existent standards to program and develop computer games meant that 
+many game developers published their works often through the aforementioned media, and the time period was 
+colloquially and fondly referred to as the Shareware era. Shareware games could be copied for free on other media 
+and spread to families and friends, bringing the cost barrier to electronic gaming down to accessible levels.
+
+Floppies and CDs would be inserted and the drive accessed on the computer, where you could browse the game's 
+contents known as folders in Windows. Games folders would contain many files such as images, videos, music known 
+as assets used by the game, as well as the executables, the software to run and play the game. The lack of 
+knowledge on video games and digital media at the time meant that browsing a game's content on the computer could 
+lead to finding cheats about a game, viewing fascinating artwork, stories in game manuals, that could be copied 
+to the local computer and accessed anytime, leading to a revolution in video game ownership contrasted to 
+expensive arcade visits with coin slot machines and foreign expensive priced game consoles and cartridge games.
+
+The process of acquiring a new game-filled floppy or CD with new mysterious experiences and browsing the contents 
+on a computer and adding them to my growing collection created lifelong positive memories. The acquisition of 
+new games and thus technology became my passion.
+
+In memory of the Shareware developers that created media that brought joy to my life, I wanted to replicate the 
+process. Learning video game development was a step in the right direction. C++ was a programming language at the 
+time I remember in my deepest memories; I could recall many advising it as the next best technology. Although C++
+has been overtaken by newer programming languages, I wanted to replicate the old mysterious process of my 
+shareware heroes and create a simple 90s-style shareware era game and related contents such as this manual.
+
+Recreating historical board games as a computer game was a simple, interesting, and replayable project I could 
+attempt, and thus I set out on a year and a bit more journey to fulfill. Programming this video game was one of 
+the most enjoyable experiences in my life and brought closure to an innermost fascination I held being on a 
+journey emulating my shareware era developer heroes I admired when younger.
+
+Thus, I hope this story and game evoke similar enjoyable moments for you. I encourage you, at least once in your 
+life, to pursue a nostalgic lifelong fascination you have, as it may bring closure to subconscious desires."
 
 
 
