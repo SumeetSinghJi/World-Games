@@ -1,5 +1,6 @@
 # Build folders
 /build
+/tests
 /src/curl/.circleci
 /src/curl/.github
 /src/curl/.reuse

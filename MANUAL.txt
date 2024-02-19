@@ -169,8 +169,9 @@ The below files are contained in the downloaded game directory
 ./assets - subdirectories of assets e.g. images, sounds, fonts
 ./headers - C++ header files
 ./src - Third party libraries
-CMAKEllists.txt - Used in development file
+./tests - Tests directory, contains various game development tests using Google Tests library
 .gitignore - Used in development file
+CMAKEllists.txt - Used in development file
 main.cpp - Implementation file
 main.exe - Game executable
 MANUAL.txt - Contains information about game
@@ -190,7 +191,7 @@ world-games.code-workspace - vscode configuration file
 
 
 
-GAME NAVIGATION
+GRAPHICAL USER INTERFACE & GAME NAVIGATION
 
 Game menu and navigation is based on SDL Game design best practice "scenes".
 There are scenes for all different menu options e.g. Settings, or Credits, and a
@@ -202,13 +203,36 @@ on regional variations.
 headers SDL_renders and SDL_texts will load the HUD depending on regional variation of game.
 Navigating through scene is dependent on handle_events() button clicks in GAME LOGIC
 
+Graphical navigation is dictated by button object created from the Custom_SDL_button class
+within custom_SDL_button.hpp that are clickable as defined in sdl_mouse_handles.hpp
+
+Uses headers;
+
+#include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
+#include "headers/sdl_renders.hpp"          // SDL Rect/Buttons to render to screen/scene/GUI
+#include "headers/sdl_texts.hpp"            // SDL Text to Render to screen/scene/GUI
+#include "headers/sdl_mouse_handles.hpp"    // SDL Mouse and Touch keypresses
+#include "headers/sdl_keyboard_handles.hpp" // SDL Keyboard keypresses
+#include "headers/sdl_gamepad_handles.hpp"  // SDL Gamepad controller keypresses
+#include "headers/custom_SDL_button.hpp"    // Custom SDL Button class for creating buttons for handles
 
 
-SAVING AND LOADING/CONTINUE
+GAMEPLAY
+
+Each individual board or hand video game is encapsulated within it's own header file which uses shared
+SDL logic with the main and related headers.
+
+Uses headers;
+#include "headers/tic_tac_toe.hpp"          // Scene 32 - Rome - Tic Tac Toe
+
+
+
+SAVING AND RESTORING GAME
 
 A save game text file world-games_save.txt is created on SDL Quit and on main menu Continue button loaded.
-uses header below
-#include "headers/save_game.h"             // For save/continue functions
+
+Uses headers;
+#include "headers/save_game.hpp"             // For save/continue functions
 
 
 
@@ -219,17 +243,26 @@ game was downloaded and installed from, which will check the latest version stri
 existing game directory while retaining save game files.
 
 Uses headers;
-#include "headers/update_game.h"        // For downloading latest game update
+#include "headers/download_game.hpp"        // For downloading latest game update
+#include "headers/install_game.hpp"        // For Installing latest game update
 
 
 
 MULTIPLAYER
 
-FUTURE DEVELOPMENT - There is future scope to add an multiplayer mode however the time taken for author
-to learn C++ web development will take precious time spent elsewhere. Regardless the files and scenes
-are in game but not useable.
-Uses header below
-#include "headers/multiplayer.h"          // FUTURE DEVELOPMENT - For Multiplayer
+Multiplayer use requires creating an account which consists of a username, email and password. During
+new game or when Multiplayer scene is selected an option will appear to sign up and register for online
+services. Once Privacy Policy and Terms and Conditions are accepted, a CURL function will push user account 
+details to the developers website/webserver i.e, agnisamooh.com A verification email will be sent out to users
+to verify their account. Once verified users will be able to login and view, host and join server or user
+created games for online play. Users can find, add and communicate with friends in game and play along with 
+them. Leaderboard information will be available in game and publically as per privacy policy notice if 
+enforced.
+
+Uses headers;
+#include "headers/multiplayer.hpp"          // For Multiplayer
+
+
 
 
 
