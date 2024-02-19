@@ -36,20 +36,17 @@
     * fix update header
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings
     * Replace all textures with buttons
-    * 
+    * Key remapping option
+    *
     * Build with cppcheck to see errors
     * Build with Clang to see errors
     * Clang tidy
     * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
     * Use AI to create victory animation
-    * Use AI to create won game animation travelling the world in hot weather baloon
-    * Chinese high pitch drum symbol when starting new game/pausing like Sleeping Dogs start menu sound
     * volume up/down slider noise
-    * Fix mouse scroll up/down options
-    * Fix Keyboard main menu selection
+    * Implement full Keyboard controls
     * Statically link all files, to not require DLL's making .exe portable to place in ./workspacefolder
-    * Key remapping option
-    * Avatar portrait choice
+    *
     * 6. Scene 14 - multiplayer after search friends click to add to friend list
     CURL POST add friend to account
     *  In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
@@ -60,14 +57,18 @@
     8. In game friends chat
         CURL server to find friends
         Profanity filter
-    KNOWN BUGS
-    1. Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
+    KNOWN ISSUES
+    Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
     * Add 10 more games
-    *   Tutorial game - Shoushiling - Beijing - Scissors paper rock
-    *   2nd game - Senet - Egypt
-    *   3rd game - The Royal Game of Ur - Babylon
-    *   4th game - Kite - China
-    * Submit on Steam for free for everyone
+    * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
+    * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
+    *   2st game - Chinese Go - Han
+    *   3rd game - Senet - Misr
+    *   4th game - The Royal Game of Ur - Babylon
+    *   5th game - Chaturanga - Aryavarta - import or create own chess engine
+    *   6th game - Ashtapada - Aryavarta
+    *   6th game - Chowka Bhara - South India - https://en.wikipedia.org/wiki/Chowka_bhara
+    *   7th game - Moksha Patam - Aryavarta - Snakes and ladders
 */
 
 SDL_Window *window = nullptr;
@@ -671,12 +672,16 @@ void start_game_update_2()
 
     std::cout << "ENDING: Game Update steps 2 of 2 completed." << std::endl;
 }
-void key_remap_SDL(SDL_Keycode& oldKey, const std::string& newKey) {
+void key_remap_SDL(const std::string &newKey, SDL_Keycode &oldKey)
+{
     auto it = keyMap.find(newKey);
-    if (it != keyMap.end()) {
+    if (it != keyMap.end())
+    {
         oldKey = it->second;
         std::cout << "Key remapped successfully!" << std::endl;
-    } else {
+    }
+    else
+    {
         std::cout << "Invalid key mapping: " << newKey << std::endl;
     }
 }

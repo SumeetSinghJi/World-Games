@@ -282,7 +282,7 @@ void load_sound()
 void load_textures()
 {
     // Splash screen
-    splashScreenTexture = load_texture("assets/graphics/AgniSamooh/AgniSamooh-HD-logo.png", "Developer Splash screen");
+    splashScreenTexture = load_texture("assets/graphics/developer_images/AgniSamooh-HD-logo.png", "Developer Splash screen");
 
     // Backgrounds
     menuBackgroundTexture = load_texture("assets/graphics/backgrounds/title_background.jpg", "Menu Background");
@@ -296,7 +296,7 @@ void load_textures()
     menuHelpTexture = load_texture("assets/graphics/buttons/settings/help-button.png", "Help Button");
     menuUpdateGameTexture = load_texture("assets/graphics/buttons/settings/update-button.png", "Update Button");
     menuQuitTexture = load_texture("assets/graphics/buttons/settings/quit-button.png", "Quit Button");
-    AgniSamoohLogoTexture = load_texture("assets/graphics/AgniSamooh/AgniSamooh-4k-logo.png", "AgniSamooh Logo");
+    AgniSamoohLogoTexture = load_texture("assets/graphics/developer_images/AgniSamooh-4k-logo.png", "AgniSamooh Logo");
 
     // Settings buttons
     settingsTexture = load_texture("assets/graphics/buttons/settings/settings-button.png", "Settings Button");
