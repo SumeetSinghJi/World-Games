@@ -32,6 +32,8 @@ extern SDL_Texture *AgniSamoohLogoTexture;
 
 // settings buttons
 extern SDL_Texture *settingsTexture;
+extern SDL_Texture *settingsResetTexture;
+extern SDL_Texture *settingsSaveTexture;
 extern SDL_Texture *fontTexture;
 extern SDL_Texture *soundOnTexture;
 extern SDL_Texture *soundOffTexture;
@@ -211,6 +213,9 @@ void draw_buttons_scene_2() // Settings
 
     SDL_Rect returnGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
+    SDL_Rect settingsResetRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
+    SDL_Rect settingsSaveRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
+
 
     SDL_RenderCopy(renderer, fontTexture, nullptr, &fontRect);
     if (isMusicPlaying)
@@ -227,6 +232,9 @@ void draw_buttons_scene_2() // Settings
     SDL_RenderCopy(renderer, resolution1366x768Texture, nullptr, &resolution1366x768Rect);
     SDL_RenderCopy(renderer, resolutionFullScreenTexture, nullptr, &resolutionFullScreenRect);
     SDL_RenderCopy(renderer, returnGameTexture, nullptr, &returnGameRect);
+    SDL_RenderCopy(renderer, settingsResetTexture, nullptr, &settingsResetRect);
+    SDL_RenderCopy(renderer, settingsSaveTexture, nullptr, &settingsSaveRect);
+    SDL_RenderCopy(renderer, settingsSaveTexture, nullptr, &settingsSaveRect);
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }
 void draw_buttons_scene_3() // Credits

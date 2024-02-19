@@ -22,7 +22,6 @@ extern SDL_Window *window;
 extern int windowWidth;
 extern int windowHeight;
 extern int textWidth, textHeight;
-extern bool isFullScreen;
 extern int scene;
 extern int lastScene;
 extern std::string os_version;

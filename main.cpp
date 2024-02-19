@@ -30,24 +30,19 @@
 
 /*
     TO DO
-    * Set all textures to null variables
-    * Use profiler to identify what's taking soo long to quit game OR change resolution
-    * consider adding cout messages in quit e..g after clearing window to see what stage quitting is stuck at
-    *   e.g. before destroytexture() add a cout << "Attempting: Destroy textures" << std::endl;
+    * on settingsSaveRect in mouse handle save settings, popup asking to save settings
+    * Replace all textures with buttons
+    * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
     * Use AI to create victory animation
     * Use AI to create won game animation travelling the world in hot weather baloon
-        * Game accessability for Sight impaired
     * Chinese high pitch drum symbol when starting new game/pausing like Sleeping Dogs start menu sound
     * volume up/down slider noise
-    * Run static profiler on change resolution as halting
-    * Reset all settings to default button - Important
     * scene 11 = enter username, + include button to
       1. Submit
       2. sign up for online -> on click Render text for privacy-policy.txt -> accept/decline buttons
     * scene 12 = Sign up
     *  input for email (with render text: optional)
     *  input for password (with render text: optional)
-    * Circle button texture for HUD buttons
     * fix update header
     * Fix reading readme and credits
     * Fix mouse scroll up/down options
@@ -89,6 +84,8 @@ SDL_Texture *AgniSamoohLogoTexture = nullptr;
 
 // Settings buttons
 SDL_Texture *settingsTexture = nullptr;
+SDL_Texture *settingsResetTexture = nullptr;
+SDL_Texture *settingsSaveTexture = nullptr;
 SDL_Texture *fontTexture = nullptr;
 SDL_Texture *soundOnTexture = nullptr;
 SDL_Texture *soundOffTexture = nullptr;
@@ -317,6 +314,7 @@ std::string language = "English";                                     // for cha
 std::string os_version = "";                                          // Custom Multiplatform social media link
 int lastScene = 1;                                                    // Settings - return to last game scene
 bool isNight = NULL;                                                  // for background cosmetics
+bool fpsRendering = false;
 
 // GAME UPDATE
 std::string zip_file_path;
@@ -644,7 +642,6 @@ void start_game_update_2()
     std::cout << "ENDING: Game Update steps 2 of 2 completed." << std::endl;
 }
 
-
 // main.cpp HUD Functions
 void toggle_countdown()
 {
@@ -900,7 +897,9 @@ void start_SDL()
     {
         std::cerr << "Error: Failed to initialize SDL: " << SDL_GetError() << std::endl;
         exit(1);
-    } else {
+    }
+    else
+    {
         std::cout << "Successfully initialised: SDL2" << std::endl;
     }
 
@@ -909,7 +908,9 @@ void start_SDL()
         std::cerr << "Error: Failed to initialize SDL Font: " << TTF_GetError() << std::endl;
         SDL_Quit();
         exit(1);
-    } else {
+    }
+    else
+    {
         std::cout << "Successfully initialised: SDL2 TTF" << std::endl;
     }
 
@@ -918,7 +919,9 @@ void start_SDL()
         std::cerr << "Error: Failed to initialize SDL IMG: " << IMG_GetError() << std::endl;
         SDL_Quit();
         exit(1);
-    } else {
+    }
+    else
+    {
         std::cout << "Successfully initialised: SDL2 Image" << std::endl;
     }
 
@@ -927,7 +930,9 @@ void start_SDL()
         std::cerr << "Error: Failed to initialize Audio: " << Mix_GetError() << std::endl;
         SDL_Quit();
         exit(1);
-    } else {
+    }
+    else
+    {
         std::cout << "Successfully initialised: SDL2 Mixer" << std::endl;
     }
 
@@ -1219,11 +1224,11 @@ void exit_SDL()
     scene28buttons.clear();
     scene29buttons.clear();
     scene30buttons.clear();
-    
+
     // Clear the allButtons vector
     allButtons.clear();
 
-    std::cout << "STARTING: Destroy game textures." << std::endl;
+    std::cout << "STARTING: Destroy Textures." << std::endl;
 
     // Splash screen
     SDL_DestroyTexture(splashScreenTexture);
@@ -1244,6 +1249,8 @@ void exit_SDL()
 
     // Scene 2 destroy - Settings options
     SDL_DestroyTexture(settingsTexture);
+    SDL_DestroyTexture(settingsResetTexture);
+    SDL_DestroyTexture(settingsSaveTexture);
     SDL_DestroyTexture(fontTexture);
     SDL_DestroyTexture(soundOnTexture);
     SDL_DestroyTexture(soundOffTexture);
@@ -1375,6 +1382,10 @@ void exit_SDL()
 
     // clearing fonts
     SDL_DestroyTexture(textTexture);
+    font_24 = nullptr;
+    font_36 = nullptr;
+    font_48 = nullptr;
+    texture = nullptr;
 
     std::cout << "STARTING: Destroy SDL_Mixer" << std::endl;
     // clear Sound
@@ -1384,14 +1395,11 @@ void exit_SDL()
     Mix_FreeChunk(loseGameSound);
     Mix_FreeChunk(drawGameSound);
 
-
     // Stop the music
     Mix_HaltMusic();
     Mix_FreeMusic(music);
     Mix_CloseAudio();
     Mix_Quit();
-
-    
 
     std::cout << "STARTING: Destroy controller" << std::endl;
     // Close game controller
@@ -1402,6 +1410,7 @@ void exit_SDL()
 
     std::cout << "STARTING: Destroy renderer" << std::endl;
     SDL_DestroyRenderer(renderer);
+    renderer = nullptr;
     std::cout << "STARTING: Destroy window" << std::endl;
     SDL_DestroyWindow(window);
 

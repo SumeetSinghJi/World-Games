@@ -73,6 +73,8 @@ void draw_text_for_HUD_scene_2() // Settings
 
         render_text("Continue", (windowWidth * 0.8), (windowHeight * 0.2), 255, 0);
         render_text("Main Menu", (windowWidth * 0.8), (windowHeight * 0.4), 255, 0);
+        render_text("Reset Settings", (windowWidth * 0.8), (windowHeight * 0.6), 255, 0);
+        render_text("Save Settings", (windowWidth * 0.8), (windowHeight * 0.8), 255, 0);
     }
     else if (language == "日本語")
     {
@@ -92,6 +94,8 @@ void draw_text_for_HUD_scene_2() // Settings
 
         render_text("続く", (windowWidth * 0.8), (windowHeight * 0.2), 255, 0);
         render_text("メインメニュー", (windowWidth * 0.8), (windowHeight * 0.4), 255, 0);
+        render_text("設定をリセット", (windowWidth * 0.8), (windowHeight * 0.6), 255, 0);
+        render_text("設定を保存する", (windowWidth * 0.8), (windowHeight * 0.8), 255, 0);
     }
 }
 void draw_text_for_HUD_scene_4() // Achievements

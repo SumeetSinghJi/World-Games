@@ -26,6 +26,10 @@ extern int scene;
 
 void new_game();
 
+void save_settings() {
+  // on settingsSaveRect in mouse handle save settings
+}
+
 void save_game()
 {
   std::ofstream savefile_object("world-games_save.txt");

@@ -53,6 +53,8 @@ extern SDL_Texture *inputTextTexture;
 
 // settings buttons
 extern SDL_Texture *settingsTexture;
+extern SDL_Texture *settingsResetTexture;
+extern SDL_Texture *settingsSaveTexture;
 extern SDL_Texture *fontTexture;
 extern SDL_Texture *soundOnTexture;
 extern SDL_Texture *soundOffTexture;
@@ -295,6 +297,8 @@ void load_textures()
     soundOnTexture = load_texture("assets/graphics/buttons/settings/sound-on-button.png", "Sound On Button");
     soundOffTexture = load_texture("assets/graphics/buttons/settings/sound-off-button.png", "Sound Off Button");
     languageTexture = load_texture("assets/graphics/buttons/settings/language-button.png", "Language Button");
+    settingsResetTexture = load_texture("assets/graphics/buttons/settings/update-button.png", "Reset settings Button");
+    settingsSaveTexture = load_texture("assets/graphics/buttons/settings/save-button.png", "Save settings Button");
     fpsTexture = load_texture("assets/graphics/buttons/settings/fps-button.png", "FPS Button");
     resolution800x600Texture = load_texture("assets/graphics/buttons/settings/resolution-800x600-button.png", "Resolution 800x600 Button");
     resolution1366x768Texture = load_texture("assets/graphics/buttons/settings/resolution-1300x768-button.png", "Resolution 1366x768 Button");

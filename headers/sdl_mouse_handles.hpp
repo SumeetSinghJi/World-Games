@@ -24,7 +24,6 @@ extern std::vector<Custom_SDL_Button *> allButtons;
 extern int windowWidth;
 extern int windowHeight;
 extern int textWidth, textHeight;
-extern bool isFullScreen;
 extern int scene;
 extern int lastScene;
 extern std::string os_version;
@@ -32,6 +31,7 @@ extern bool game_started;
 // README SCROLL VARIABLES
 extern int scrollY;
 extern int scrollSpeed;
+extern bool fpsRendering;
 
 // FUNCTION PROTOTPES
 void change_resolution(int newWindowWidth, int newWindowHeight);
@@ -136,6 +136,8 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
 
     SDL_Rect returnGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
+    SDL_Rect settingsResetRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
+    SDL_Rect settingsSaveRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
 
     SDL_Point mousePosition = {mouseX, mouseY};
 
@@ -191,8 +193,30 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
     }
     else if (SDL_PointInRect(&mousePosition, &fpsRect))
     {
-        render_fps();
         std::cout << "You clicked FPS toggle" << std::endl;
+        render_fps();
+        fpsRendering = true;
+    }
+    else if (SDL_PointInRect(&mousePosition, &settingsResetRect))
+    {
+        std::cout << "You clicked: Reset settings" << std::endl;
+        change_resolution(1366, 768);
+        fontSize = 36;
+        for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+        {
+            button->set_font_size(36);
+        }
+        if (!isMusicPlaying) {
+            Mix_ResumeMusic();
+        }
+        if (fpsRendering) {
+            render_fps();
+        }
+        language = "English";
+    }
+    else if (SDL_PointInRect(&mousePosition, &settingsSaveRect))
+    {
+        std::cout << "You clicked: Save settings" << std::endl;
     }
     else if (SDL_PointInRect(&mousePosition, &returnGameRect))
     {
