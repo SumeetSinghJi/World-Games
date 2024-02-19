@@ -30,21 +30,18 @@
 
 /*
     TO DO
+    * Scene 11 + 12 implement
+    * Fix reading readme and credits
+    * fix update header
+    * Fix reading readme and credits
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings
     * Replace all textures with buttons
+    * 
     * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
     * Use AI to create victory animation
     * Use AI to create won game animation travelling the world in hot weather baloon
     * Chinese high pitch drum symbol when starting new game/pausing like Sleeping Dogs start menu sound
     * volume up/down slider noise
-    * scene 11 = enter username, + include button to
-      1. Submit
-      2. sign up for online -> on click Render text for privacy-policy.txt -> accept/decline buttons
-    * scene 12 = Sign up
-    *  input for email (with render text: optional)
-    *  input for password (with render text: optional)
-    * fix update header
-    * Fix reading readme and credits
     * Fix mouse scroll up/down options
     * Fix Keyboard main menu selection
     * Statically link all files, to not require DLL's making .exe portable to place in ./workspacefolder
