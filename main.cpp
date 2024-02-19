@@ -23,12 +23,14 @@
 #include "headers/sdl_mouse_handles.hpp"    // SDL Mouse and Touch keypresses
 #include "headers/sdl_keyboard_handles.hpp" // SDL Keyboard keypresses
 #include "headers/sdl_gamepad_handles.hpp"  // SDL Gamepad controller keypresses
-#include "headers/update_game.hpp"          // For downloading latest game update
+#include "headers/download_game.hpp"        // For downloading latest game update
+#include "headers/Install_game.hpp"         // For Installing game from zip
 #include "headers/tic_tac_toe.hpp"          // Scene 32 - Rome - Tic Tac Toe
 #include "headers/custom_SDL_button.hpp"    // Custom SDL Button class for creating buttons for handles
 
 /*
     TO DO
+    * Set all textures to null variables
     * Use profiler to identify what's taking soo long to quit game OR change resolution
     * consider adding cout messages in quit e..g after clearing window to see what stage quitting is stuck at
     *   e.g. before destroytexture() add a cout << "Attempting: Destroy textures" << std::endl;
@@ -36,9 +38,8 @@
     * Use AI to create won game animation travelling the world in hot weather baloon
         * Game accessability for Sight impaired
     * Chinese high pitch drum symbol when starting new game/pausing like Sleeping Dogs start menu sound
-    * Clicking noise for toggles in settings
-    * flag noise for changing languages
     * volume up/down slider noise
+    * Run static profiler on change resolution as halting
     * Reset all settings to default button - Important
     * scene 11 = enter username, + include button to
       1. Submit
@@ -316,6 +317,9 @@ std::string language = "English";                                     // for cha
 std::string os_version = "";                                          // Custom Multiplatform social media link
 int lastScene = 1;                                                    // Settings - return to last game scene
 bool isNight = NULL;                                                  // for background cosmetics
+
+// GAME UPDATE
+std::string zip_file_path;
 
 // README MOUSE SCROLL VARIABLES
 int scrollY = 0;      // Current scroll position
@@ -613,6 +617,33 @@ void credits_file_read()
         startY += textHeight;
     }
 }
+void start_game_update_1()
+{
+    // Functions from header download_game.hpp
+    std::cout << "STARTING: Game Update steps 1 of 2." << std::endl;
+
+    update_version_string_from_readme_file();
+    save_path_for_zip();
+    start_curl();
+    download_file();
+    extract_zip();
+
+    std::cout << "ENDING: Game Update steps 1 of 2 completed." << std::endl;
+}
+void start_game_update_2()
+{
+    std::cout << "STARTING: Game Update steps 2 of 2." << std::endl;
+
+    copy_save_to_extracted_folder();
+    exit_game();
+    delete_original_game_directory_subdirectories();
+    rename_extracted_folder();
+    CMAKE_build();
+    game_start();
+
+    std::cout << "ENDING: Game Update steps 2 of 2 completed." << std::endl;
+}
+
 
 // main.cpp HUD Functions
 void toggle_countdown()
@@ -932,6 +963,13 @@ void start_SDL()
     load_music(songTitle);
     load_sound();
     load_controller();
+    load_buttons_11();
+    load_buttons_12();
+    load_buttons_13();
+    load_buttons_14();
+    load_buttons_25();
+    load_buttons_to_scene_vectors();
+    load_buttons_to_allButtons_vector();
 }
 void handle_events()
 {
@@ -1149,6 +1187,44 @@ void run_SDL()
 }
 void exit_SDL()
 {
+    // Clear each scene button vector
+    std::cout << "STARTING: Clear Button Vectors." << std::endl;
+    scene1buttons.clear();
+    scene2buttons.clear();
+    scene3buttons.clear();
+    scene4buttons.clear();
+    scene5buttons.clear();
+    scene6buttons.clear();
+    scene7buttons.clear();
+    scene8buttons.clear();
+    scene9buttons.clear();
+    scene10buttons.clear();
+    scene11buttons.clear();
+    scene12buttons.clear();
+    scene13buttons.clear();
+    scene14buttons.clear();
+    scene15buttons.clear();
+    scene16buttons.clear();
+    scene17buttons.clear();
+    scene18buttons.clear();
+    scene19buttons.clear();
+    scene20buttons.clear();
+    scene21buttons.clear();
+    scene22buttons.clear();
+    scene23buttons.clear();
+    scene24buttons.clear();
+    scene25buttons.clear();
+    scene26buttons.clear();
+    scene27buttons.clear();
+    scene28buttons.clear();
+    scene29buttons.clear();
+    scene30buttons.clear();
+    
+    // Clear the allButtons vector
+    allButtons.clear();
+
+    std::cout << "STARTING: Destroy game textures." << std::endl;
+
     // Splash screen
     SDL_DestroyTexture(splashScreenTexture);
 
@@ -1300,12 +1376,7 @@ void exit_SDL()
     // clearing fonts
     SDL_DestroyTexture(textTexture);
 
-    // Stop the music
-    Mix_HaltMusic();
-    Mix_FreeMusic(music);
-    Mix_CloseAudio();
-    Mix_Quit();
-
+    std::cout << "STARTING: Destroy SDL_Mixer" << std::endl;
     // clear Sound
     Mix_FreeChunk(winRoundSound);
     Mix_FreeChunk(loseRoundSound);
@@ -1313,20 +1384,33 @@ void exit_SDL()
     Mix_FreeChunk(loseGameSound);
     Mix_FreeChunk(drawGameSound);
 
+
+    // Stop the music
+    Mix_HaltMusic();
+    Mix_FreeMusic(music);
+    Mix_CloseAudio();
+    Mix_Quit();
+
+    
+
+    std::cout << "STARTING: Destroy controller" << std::endl;
     // Close game controller
     if (controller)
     {
         SDL_GameControllerClose(controller);
     }
 
+    std::cout << "STARTING: Destroy renderer" << std::endl;
     SDL_DestroyRenderer(renderer);
+    std::cout << "STARTING: Destroy window" << std::endl;
     SDL_DestroyWindow(window);
 
+    std::cout << "STARTING: Destroy Tic Tae Toe" << std::endl;
     // Games
     ttt_SDL_cleanup();
 
     // Quit SDL subsystems
-    Mix_Quit();
+    std::cout << "STARTING: Quit SDL libraries." << std::endl;
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();

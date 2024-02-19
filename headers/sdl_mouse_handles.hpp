@@ -161,16 +161,18 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
     }
     else if (SDL_PointInRect(&mousePosition, &soundRect))
     {
-        std::cout << "You clicked Sound toggle" << std::endl;
+        std::cout << "You clicked: Sound toggle" << std::endl;
         if (isMusicPlaying)
         {
             Mix_PauseMusic();
             isMusicPlaying = false;
-            std::cout << "Music is off: " << isMusicPlaying << std::endl;
+            std::cout << "Music is: " << isMusicPlaying << std::endl;
         }
         else
         {
-            load_music(songTitle);
+            Mix_ResumeMusic();
+            isMusicPlaying = true;
+            std::cout << "Music is: " << isMusicPlaying << std::endl;
         }
     }
     else if (SDL_PointInRect(&mousePosition, &languageRect))
@@ -211,7 +213,7 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
     }
     else if (SDL_PointInRect(&mousePosition, &resolution800x600Rect))
     {
-        std::cout << "You clicked set to 800 x 600 resolution" << std::endl;
+        std::cout << "You clicked: set to 800 x 600 resolution" << std::endl;
         change_resolution(800, 600);
         fontSize = 24;
         for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
@@ -221,7 +223,7 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
     }
     else if (SDL_PointInRect(&mousePosition, &resolution1366x768Rect))
     {
-        std::cout << "You clicked set to 1366 x 768 resolution" << std::endl;
+        std::cout << "You clicked: set to 1366 x 768 resolution" << std::endl;
         change_resolution(1366, 768);
         fontSize = 36;
         for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*

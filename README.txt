@@ -24,7 +24,8 @@ Version: 0.1
 Description: A C++ game on traditional board and hand games from different cultures around the world.
 Author: Sumeet Singh @ www.sumeet-singh.com
 Publisher: AgniSamooh @ www.agniSamooh.com
-License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) License.
+License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) 
+License.
 
 
 _________________________________________________________________________________________________________________
@@ -194,7 +195,8 @@ Game menu and navigation is based on SDL Game design best practice "scenes".
 There are scenes for all different menu options e.g. Settings, or Credits, and a
 central hub "scene 6" for in game world map which interconnects with other in game
 scenes e.g. "scene 30 = Beijing" where different maps/levels/scenes can be accessed
-which all have slight variations of the named function start_spr_game() function depending on regional variations.
+which all have slight variations of the named function start_spr_game() function depending 
+on regional variations.
 
 headers SDL_renders and SDL_texts will load the HUD depending on regional variation of game.
 Navigating through scene is dependent on handle_events() button clicks in GAME LOGIC
