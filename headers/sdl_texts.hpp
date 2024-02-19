@@ -70,6 +70,7 @@ void draw_text_for_HUD_scene_2() // Settings
         render_text("Resolution", (windowWidth * 0.5), (windowHeight * 0.5), 255, 0);
         render_text("Fullscreen", (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
         render_text("Resolution", (windowWidth * 0.5), (windowHeight * 0.7), 255, 0);
+        render_text("Key Mapping", (windowWidth * 0.5), (windowHeight * 0.8), 255, 0);
 
         render_text("Continue", (windowWidth * 0.8), (windowHeight * 0.2), 255, 0);
         render_text("Main Menu", (windowWidth * 0.8), (windowHeight * 0.4), 255, 0);
@@ -91,6 +92,7 @@ void draw_text_for_HUD_scene_2() // Settings
         render_text("解像度", (windowWidth * 0.5), (windowHeight * 0.5), 255, 0);
         render_text("全画面表示", (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
         render_text("解像度", (windowWidth * 0.5), (windowHeight * 0.7), 255, 0);
+        render_text("キーボードのキー変更", (windowWidth * 0.5), (windowHeight * 0.8), 255, 0);
 
         render_text("続く", (windowWidth * 0.8), (windowHeight * 0.2), 255, 0);
         render_text("メインメニュー", (windowWidth * 0.8), (windowHeight * 0.4), 255, 0);

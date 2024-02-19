@@ -33,10 +33,12 @@
     * Scene 11 + 12 implement
     * Fix reading readme and credits
     * fix update header
-    * Fix reading readme and credits
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings
     * Replace all textures with buttons
     * 
+    * Build with cppcheck to see errors
+    * Build with Clang to see errors
+    * Clang tidy
     * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
     * Use AI to create victory animation
     * Use AI to create won game animation travelling the world in hot weather baloon
@@ -46,7 +48,19 @@
     * Fix Keyboard main menu selection
     * Statically link all files, to not require DLL's making .exe portable to place in ./workspacefolder
     * Key remapping option
-    * Implement multiplayer consider using e-net at least for tic tac toe
+    * Avatar portrait choice
+    * 6. Scene 14 - multiplayer after search friends click to add to friend list
+    CURL POST add friend to account
+    *  In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
+    server responds with verification email.
+    If user clicks OK on email verification, account created
+    *  Scene 14 - ask for login, POST to server, if server responds OK, ???
+    7. Setup enet
+    8. In game friends chat
+        CURL server to find friends
+        Profanity filter
+    KNOWN BUGS
+    1. Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
     * Add 10 more games
     *   Tutorial game - Shoushiling - Beijing - Scissors paper rock
     *   2nd game - Senet - Egypt
@@ -88,6 +102,7 @@ SDL_Texture *soundOnTexture = nullptr;
 SDL_Texture *soundOffTexture = nullptr;
 SDL_Texture *languageTexture = nullptr;
 SDL_Texture *fpsTexture = nullptr;
+SDL_Texture *keyRemapTexture = nullptr;
 SDL_Texture *resolution800x600Texture = nullptr;
 SDL_Texture *resolution1366x768Texture = nullptr;
 SDL_Texture *resolutionFullScreenTexture = nullptr;
@@ -1253,6 +1268,7 @@ void exit_SDL()
     SDL_DestroyTexture(soundOffTexture);
     SDL_DestroyTexture(languageTexture);
     SDL_DestroyTexture(fpsTexture);
+    SDL_DestroyTexture(keyRemapTexture);
     SDL_DestroyTexture(resolution800x600Texture);
     SDL_DestroyTexture(resolution1366x768Texture);
     SDL_DestroyTexture(resolutionFullScreenTexture);

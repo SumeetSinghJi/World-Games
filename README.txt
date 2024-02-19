@@ -401,6 +401,7 @@ ________________________________________________________________________________
 
                     save button by Nick Frost and Greg Lapin taken from icon-icons.com
                     update button by Nick Frost and Greg Lapin taken from icon-icons.com
+                    Keyboard button by Google Noto Emoji Objects taken from icon-icons.com
                     load button by Nick Frost and Greg Lapin taken from icon-icons.com
                     star button by Gianni Polito taken from icon-icons.com
                     coin button by iconpacks taken from icon-icons.com
@@ -410,7 +411,7 @@ ________________________________________________________________________________
                     Human button by Bryn Taylor from  icon-icons.com
                     Computer button by Vexels from icon-icons.com
                     All button images without attributions taken from respective
-                    authors fromicon-icons.com
+                    authors from icon-icons.com
 
 
                                         COUNTRY BUTTONS

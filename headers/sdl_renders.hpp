@@ -39,6 +39,7 @@ extern SDL_Texture *soundOnTexture;
 extern SDL_Texture *soundOffTexture;
 extern SDL_Texture *languageTexture;
 extern SDL_Texture *fpsTexture;
+extern SDL_Texture *keyRemapTexture;
 extern SDL_Texture *resolution800x600Texture;
 extern SDL_Texture *resolution1366x768Texture;
 extern SDL_Texture *resolutionFullScreenTexture;
@@ -210,6 +211,7 @@ void draw_buttons_scene_2() // Settings
     SDL_Rect resolution800x600Rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
     SDL_Rect resolution1366x768Rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
     SDL_Rect resolutionFullScreenRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
+    SDL_Rect keyRemapRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
 
     SDL_Rect returnGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
@@ -228,6 +230,7 @@ void draw_buttons_scene_2() // Settings
     }
     SDL_RenderCopy(renderer, languageTexture, nullptr, &languageRect);
     SDL_RenderCopy(renderer, fpsTexture, nullptr, &fpsRect);
+    SDL_RenderCopy(renderer, keyRemapTexture, nullptr, &keyRemapRect);
     SDL_RenderCopy(renderer, resolution800x600Texture, nullptr, &resolution800x600Rect);
     SDL_RenderCopy(renderer, resolution1366x768Texture, nullptr, &resolution1366x768Rect);
     SDL_RenderCopy(renderer, resolutionFullScreenTexture, nullptr, &resolutionFullScreenRect);

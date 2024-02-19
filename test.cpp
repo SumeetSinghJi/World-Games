@@ -20,12 +20,7 @@
 #include <zip.h>
 #include "headers/custom_SDL_button.hpp"
 
-/*
-
-    1. Static code analysis how to
-
-
-    TO DO
+/*  TO DO
     1. Add mouse handle 11 privacy policy popup onclick code to keyboard and controller
     Add code for all the keyboard/gamepad handles
     2. Fix button class
@@ -45,24 +40,6 @@
     else continue;
     on submit.onclick() save username to txt file
     6. Update on World Games
-
-_________________________________________________________________________
-
-
-
-    6. Scene 14 - multiplayer after search friends click to add to friend list
-    CURL POST add friend to account
-    *  In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
-    server responds with verification email.
-    If user clicks OK on email verification, account created
-    *  Scene 14 - ask for login, POST to server, if server responds OK, ???
-    7. Setup enet
-    8. In game friends chat
-        CURL server to find friends
-        Profanity filter
-
-    KNOWN BUGS
-    1. Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
 */
 
 // SDL2 library

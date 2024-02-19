@@ -60,6 +60,7 @@ extern SDL_Texture *soundOnTexture;
 extern SDL_Texture *soundOffTexture;
 extern SDL_Texture *languageTexture;
 extern SDL_Texture *fpsTexture;
+extern SDL_Texture *keyRemapTexture;
 extern SDL_Texture *resolution800x600Texture;
 extern SDL_Texture *resolution1366x768Texture;
 extern SDL_Texture *resolutionFullScreenTexture;
@@ -300,6 +301,7 @@ void load_textures()
     settingsResetTexture = load_texture("assets/graphics/buttons/settings/update-button.png", "Reset settings Button");
     settingsSaveTexture = load_texture("assets/graphics/buttons/settings/save-button.png", "Save settings Button");
     fpsTexture = load_texture("assets/graphics/buttons/settings/fps-button.png", "FPS Button");
+    keyRemapTexture = load_texture("assets/graphics/buttons/settings/keyboard-button.png", "Keyboard Mapping Button");
     resolution800x600Texture = load_texture("assets/graphics/buttons/settings/resolution-800x600-button.png", "Resolution 800x600 Button");
     resolution1366x768Texture = load_texture("assets/graphics/buttons/settings/resolution-1300x768-button.png", "Resolution 1366x768 Button");
     resolutionFullScreenTexture = load_texture("assets/graphics/buttons/settings/resolution-Full-Screen-button.png", "Resolution Full Screen Button");
