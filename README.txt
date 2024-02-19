@@ -410,8 +410,13 @@ ________________________________________________________________________________
                     book icon by ChrisL21 (Chris) from icon-icons.com
                     Human button by Bryn Taylor from  icon-icons.com
                     Computer button by Vexels from icon-icons.com
-                    All button images without attributions taken from respective
-                    authors from icon-icons.com
+                    Keyboard realistic Image by juicy_fish on Freepik.com
+                    Keyboard cartoon Image by juicy_fish on Freepik.com
+                    controller image by user; nicefrog on opengameart.org
+                    computer mouse image taken from monkeypen.com
+                  All images with missing attributions taken from respective
+                        authors from icon-icons.com, or FreePik.com
+                    
 
 
                                         COUNTRY BUTTONS

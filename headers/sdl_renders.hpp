@@ -46,6 +46,12 @@ extern SDL_Texture *resolutionFullScreenTexture;
 extern SDL_Texture *returnGameTexture;
 extern SDL_Texture *returnTitleTexture;
 
+// Keyboard remapping texture
+extern SDL_Texture *keyboardRealisticTexture;
+extern SDL_Texture *keyboardCartoonTexture;
+extern SDL_Texture *gameControllerTexture;
+extern SDL_Texture *computerMouseTexture;
+
 // help buttons
 // Uses return to title button from settings
 extern SDL_Texture *forwardTexture;
@@ -218,6 +224,10 @@ void draw_buttons_scene_2() // Settings
     SDL_Rect settingsResetRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
     SDL_Rect settingsSaveRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
 
+    extern SDL_Texture *keyboardRealisticTexture;
+    extern SDL_Texture *keyboardCartoonTexture;
+    extern SDL_Texture *gameControllerTexture;
+    extern SDL_Texture *computerMouseTexture;
 
     SDL_RenderCopy(renderer, fontTexture, nullptr, &fontRect);
     if (isMusicPlaying)
@@ -230,13 +240,15 @@ void draw_buttons_scene_2() // Settings
     }
     SDL_RenderCopy(renderer, languageTexture, nullptr, &languageRect);
     SDL_RenderCopy(renderer, fpsTexture, nullptr, &fpsRect);
-    SDL_RenderCopy(renderer, keyRemapTexture, nullptr, &keyRemapRect);
+    
+
     SDL_RenderCopy(renderer, resolution800x600Texture, nullptr, &resolution800x600Rect);
     SDL_RenderCopy(renderer, resolution1366x768Texture, nullptr, &resolution1366x768Rect);
     SDL_RenderCopy(renderer, resolutionFullScreenTexture, nullptr, &resolutionFullScreenRect);
+    SDL_RenderCopy(renderer, keyRemapTexture, nullptr, &keyRemapRect);
+
     SDL_RenderCopy(renderer, returnGameTexture, nullptr, &returnGameRect);
     SDL_RenderCopy(renderer, settingsResetTexture, nullptr, &settingsResetRect);
-    SDL_RenderCopy(renderer, settingsSaveTexture, nullptr, &settingsSaveRect);
     SDL_RenderCopy(renderer, settingsSaveTexture, nullptr, &settingsSaveRect);
     SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }

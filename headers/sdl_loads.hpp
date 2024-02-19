@@ -67,6 +67,12 @@ extern SDL_Texture *resolutionFullScreenTexture;
 extern SDL_Texture *returnGameTexture;
 extern SDL_Texture *returnTitleTexture;
 
+// Keyboard remapping texture
+extern SDL_Texture *keyboardRealisticTexture;
+extern SDL_Texture *keyboardCartoonTexture;
+extern SDL_Texture *gameControllerTexture;
+extern SDL_Texture *computerMouseTexture;
+
 // Uses return to title button from settings
 extern SDL_Texture *forwardTexture;
 extern SDL_Texture *backwardTexture;
@@ -307,6 +313,12 @@ void load_textures()
     resolutionFullScreenTexture = load_texture("assets/graphics/buttons/settings/resolution-Full-Screen-button.png", "Resolution Full Screen Button");
     returnGameTexture = load_texture("assets/graphics/buttons/settings/return-button.png", "Return Button");
     returnTitleTexture = load_texture("assets/graphics/buttons/settings/home-button.png", "Return to Title Button");
+
+    // Keyboard remapping texture
+    keyboardRealisticTexture = load_texture("assets/graphics/boxes/settings/keyboard_realistic.png", "Realistic Keyboard");
+    keyboardCartoonTexture = load_texture("assets/graphics/boxes/settings/keyboard_cartoon.png", "Cartoon Keyboard");
+    gameControllerTexture = load_texture("assets/graphics/boxes/settings/game_controller.png", "Game controller");
+    computerMouseTexture = load_texture("assets/graphics/boxes/settings/computer_mouse.png", "Computer mouse");
 
     // Help buttons
     forwardTexture = load_texture("assets/graphics/buttons/settings/forward-button.png", "Forward Button");

@@ -15,6 +15,7 @@
 #include <thread>                           // Core logic - for timer
 #include <chrono>                           // Core logic - for timer
 #include <fstream>                          // multiplatform method for for file open read write objects
+#include <unordered_map>                    // For key mapping
 #include "headers/multiplayer.hpp"          // For Multiplayer
 #include "headers/save_game.hpp"            // For save/continue functions
 #include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
@@ -108,6 +109,12 @@ SDL_Texture *resolution1366x768Texture = nullptr;
 SDL_Texture *resolutionFullScreenTexture = nullptr;
 SDL_Texture *returnGameTexture = nullptr;
 SDL_Texture *returnTitleTexture = nullptr;
+
+// Keyboard remapping texture
+SDL_Texture *keyboardRealisticTexture = nullptr;
+SDL_Texture *keyboardCartoonTexture = nullptr;
+SDL_Texture *gameControllerTexture = nullptr;
+SDL_Texture *computerMouseTexture = nullptr;
 
 // Uses return to title button from settings
 SDL_Texture *forwardTexture = nullptr;
@@ -355,6 +362,17 @@ int selectedOption = 0;                       // For Keyboard arrow key or Gamep
 int menuTotalOptions = 6;                     // For Keyboard arrow key or Gamepad d-pad selection
 int SettingsTotalOptions = 10;                // For Keyboard arrow key or Gamepad d-pad selection
 int GameTotalOptions = 10;                    // For Keyboard arrow key or Gamepad d-pad selection
+
+// Keyboard Remapping
+std::unordered_map<std::string, SDL_Keycode> keyMap = {
+    {"w", SDLK_UP},
+    {"s", SDLK_DOWN},
+    {"a", SDLK_LEFT},
+    {"d", SDLK_RIGHT},
+    {"d", SDLK_ESCAPE},
+    {"d", SDLK_SPACE},
+    {"d", SDLK_RETURN},
+};
 
 /*
 _________________________________________________________________________________________________
@@ -652,6 +670,15 @@ void start_game_update_2()
     game_start();
 
     std::cout << "ENDING: Game Update steps 2 of 2 completed." << std::endl;
+}
+void key_remap_SDL(SDL_Keycode& oldKey, const std::string& newKey) {
+    auto it = keyMap.find(newKey);
+    if (it != keyMap.end()) {
+        oldKey = it->second;
+        std::cout << "Key remapped successfully!" << std::endl;
+    } else {
+        std::cout << "Invalid key mapping: " << newKey << std::endl;
+    }
 }
 
 // main.cpp HUD Functions
@@ -1392,6 +1419,12 @@ void exit_SDL()
     // Animations
     SDL_DestroyTexture(fireworksAnimationTexture);
     SDL_FreeSurface(fireworksAnimationSurface);
+
+    // Keyboard remapping texture
+    SDL_DestroyTexture(keyboardRealisticTexture);
+    SDL_DestroyTexture(keyboardCartoonTexture);
+    SDL_DestroyTexture(gameControllerTexture);
+    SDL_DestroyTexture(computerMouseTexture);
 
     // clearing fonts
     SDL_DestroyTexture(textTexture);

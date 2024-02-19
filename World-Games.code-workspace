@@ -89,7 +89,8 @@
 			"cinttypes": "cpp",
 			"variant": "cpp",
 			"queue": "cpp",
-			"stack": "cpp"
+			"stack": "cpp",
+			"xhash": "cpp"
 		},
 		"name":"World-Games"
 	}
