@@ -6,6 +6,7 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________________________
 
+
                                                 WELCOME
 
 
@@ -22,14 +23,16 @@ computers with limited libraries of installed games, and with supervision, leavi
 to the ever-dominant and watchful eyes of the teachers' moral approval.
 
 This left the only way to enjoy games repeatedly without any costly endeavors were the utopian abundance of 
-demonstration games known as demos, which were free and often limited in gameplay samples of computer games. The 
-easiest method of obtaining them was free diskettes known as floppy disks or floppies and CD-ROMs shortened to 
-CDs found in technology and gaming-focused magazines that were often purchased from local news agencies.
+demonstration games known as demos, which were free, limited in gameplay samples of computer games. The 
+easiest method of obtaining them was from free diskettes known as floppy disks or floppies and CD-ROMs 
+shortened to CDs bundled with technology magazines that were often purchased from news agencies.
 
 The low cost of the barrier, ease, often non-existent standards to program and develop computer games meant that 
 many game developers published their works often through the aforementioned media, and the time period was 
-colloquially and fondly referred to as the Shareware era. Shareware games could be copied for free on other media 
-and spread to families and friends, bringing the cost barrier to electronic gaming down to accessible levels.
+colloquially and fondly referred to as the Shareware era. Shareware is any commercial software that is 
+distributed free, encouraging owners to donate or pay for the complete licensed and often unlocked version.
+Shareware games could be copied for free on other media and spread to families and friends, bringing the 
+cost barrier to electronic gaming down to accessible levels.
 
 Floppies and CDs would be inserted and the drive accessed on the computer, where you could browse the game's 
 contents known as folders in Windows. Games folders would contain many files such as images, videos, music known 
@@ -56,6 +59,7 @@ journey emulating my shareware era developer heroes I admired when younger.
 
 Thus, I hope this story and game evoke similar enjoyable moments for you. I encourage you, at least once in your 
 life, to pursue a nostalgic lifelong fascination you have, as it may bring closure to subconscious desires."
+
 
 
 
@@ -89,6 +93,7 @@ ________________________________________________________________________________
                                                 2. LICENSE
 
 _________________________________________________________________________________________________________________
+
 
 Source Code License:
 The source code in this project is licensed under the MIT License.

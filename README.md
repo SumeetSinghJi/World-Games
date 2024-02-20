@@ -3,9 +3,9 @@
 * Created: 26/09/2023
 * Version: 0.1
 * Description: A C++ game on traditional board and hand games from different cultures around the world.
-* Author: Sumeet Singh @ www.sumeet-singh.com
-* Publisher: AgniSamooh @ www.agnisamooh.com 
-* License: This project is licensed under the MIT License. 
+* Author: Sumeet Singh @ sumeet-singh.com
+* Publisher: AgniSamooh @ agnisamooh.com
+* License: This project is licensed under the MIT License.
 Full license terms can be found in the `./MANUAL.txt` file.
 
 
