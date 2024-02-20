@@ -19,8 +19,9 @@
                 "-o",
                 /* STATIC VS DYNAMIC
                 Static libraries (.lib files on Windows, .a files on Unix-like systems)
-                Dynamic/shared libraries (.dll files on Windows, .so files on Unix-like systems)
-                to get Static libraries configure library with "cmake .. -G "MingW - DC STATICON flag"
+                Dynamic/shared libraries (.dll/.dll.a (for linking) files on Windows, .so files on Unix-like systems)
+                to get Static libraries configure library with library specific flag e.g. 
+                Googletest cmake flags: cmake -G "MinGW Makefiles" -Dgtest_build_tests=OFF -DBUILD_SHARED_LIBS=OFF ..
                 */
                 "${workspaceFolder}/${fileBasenameNoExtension}.exe",
 				"-L${workspaceFolder}/src/SDL2/x86_64-w64-mingw32/lib", // SDL2 lib folder

@@ -31,6 +31,7 @@
 
 /*
     TO DO
+    * Statically link all files, to not require DLL's making .exe portable to place in ./workspacefolder
     * Scene 11 + 12 implement
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * fix update header
@@ -38,14 +39,17 @@
     * Replace all textures with buttons
     * Key remapping option
     *
+    * Log all cout to debug_logs.txt
+    * 
     * Build with cppcheck to see errors
-    * Build with Clang to see errors
+    * Build with Clang to see errors on windows
+    * Build on Macbook with Clang
     * Clang tidy
     * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
     * Use AI to create victory animation
     * volume up/down slider noise
     * Implement full Keyboard controls
-    * Statically link all files, to not require DLL's making .exe portable to place in ./workspacefolder
+    * 
     *
     * 6. Scene 14 - multiplayer after search friends click to add to friend list
     CURL POST add friend to account
@@ -65,8 +69,9 @@
     * For the board games below, have real image backgrounds e.g. Chess is heiroglohyic image of woman playing senet
     *   2nd game - Senet - Misr
     *   3rd game - The Royal Game of Ur - Babylon
-    *   4th game - Ashtapada - Aryavarta
-    *   5th game - Chowka Bhara - South India - https://en.wikipedia.org/wiki/Chowka_bhara
+    *   4th game - Chatruanga - Aryavarta
+    *   5th game - Snakes and ladders
+    *   6th game - Chowka Bhara - South India - https://en.wikipedia.org/wiki/Chowka_bhara
 */
 
 SDL_Window *window = nullptr;
