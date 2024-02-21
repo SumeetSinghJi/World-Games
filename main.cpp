@@ -38,7 +38,7 @@
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings
     * Replace all textures with buttons
     * Key remapping option
-    *
+    * Make Tic Tac toe roman circle game
     * Log all cout to debug_logs.txt
     * 
     * Build with cppcheck to see errors
