@@ -35,16 +35,9 @@
 
 /*
     TO DO
-    * Draw text file tree e.g. (and also include citation were it was created so I can create again)
-    then put info in README.md and MANUAL, so that anyone building can know the heirachy 
-    - ./
-    -    ./main
-    -          ./main/hello_world.cpp
-    
-    * Statically link all files, to not require DLL's making .exe portable to place in ./workspacefolder
     * Scene 11 + 12 implement
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
-    * fix update header
+    * fix update header and create a popup for it
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings
     * Replace all textures with buttons
     * Key remapping option
@@ -71,6 +64,7 @@
     8. In game friends chat
         CURL server to find friends
         Profanity filter
+    * on Installation set download_game.h variable curl_path to automatic to allow updating game from any directory
     KNOWN ISSUES
     Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
     * Add 10 more games

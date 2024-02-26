@@ -77,6 +77,7 @@ std::string set_curl_executable_or_bin_path()
     {
         std::cout << "Error: Host OS Home directory folder cannot be found" << std::endl;
     }
+    std::cout << "Curl binary/executable path set to: " << curl_path << std::endl;
     return curl_path;
 }
 
@@ -126,20 +127,20 @@ void start_curl()
         std::cout << "Success: Curl initialised." << std::endl; 
         curl_easy_setopt(curl, CURLOPT_URL, "https://github.com/SumeetSinghJi/world-games");
 
-        // Step 1 - set curl to use the custom curl path for portability (if not macOS)
+        // Step 1 - Configure curl with curl.exe path
         std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
-        if (!curl_path.empty() && os_version != "Mac OS X")
+        if (!curl_path.empty())
         {
             curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
             curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
         }
-
+        
         // Store the response in a string
         std::string response;
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, cout_curl_response_to_terminal);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
-        std::cout << "Success: Curl protocols configured, now curling https://github.com/SumeetSinghJi/world-games" << std::endl;
+        std::cout << "Status: Now starting to curl https://github.com/SumeetSinghJi/world-games" << std::endl;
 
         // Perform the request
         res = curl_easy_perform(curl);
