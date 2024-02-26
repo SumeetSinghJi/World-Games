@@ -53,7 +53,10 @@
     * volume up/down slider noise
     * Implement full Keyboard controls
     * 
-    *
+    * Start with Declare global variables in global_variables.hpp, define in main.cpp, 
+    *   remove all externs from all SDL headers
+    *   Then if that works, repeat with all other variables
+    *   Consider making a additional .cpp source file or header to place functions for 
     * 6. Scene 14 - multiplayer after search friends click to add to friend list
     CURL POST add friend to account
     *  In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
@@ -64,11 +67,8 @@
     8. In game friends chat
         CURL server to find friends
         Profanity filter
-    * on Installation set download_game.h variable curl_path to automatic to allow updating game from any directory
-    KNOWN ISSUES
-    Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
-    * is_achievement_unlocked(1) in render scene 4 will cause memory leak fix afte rimplementing button class
-    
+    * on Installation set download_game.h variable curl_path to automatic to allow updating game from any directory  
+    * Get advice from professional on how to improve code, including refractoring, segregating and security  
     * Add 10 more games
     * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
     * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
@@ -78,6 +78,12 @@
     *   4th game - Chatruanga - Aryavarta
     *   5th game - Snakes and ladders
     *   6th game - Chowka Bhara - South India - https://en.wikipedia.org/wiki/Chowka_bhara
+    * 
+    *     KNOWN ISSUES
+    * High Risk - Computer crashing, replicate on Tic Tac Toe game computer starting first and winning
+    * High Risk - Windows Defender Trojan warning (after memory leak above)
+    * High Risk - Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
+    * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix afte rimplementing button class
 */
 
 SDL_Window *window = nullptr;
@@ -383,13 +389,6 @@ std::unordered_map<std::string, SDL_Keycode> keyMap = {
     {"d", SDLK_SPACE},
     {"d", SDLK_RETURN},
 };
-
-/*
-_________________________________________________________________________________________________
-
-                                        Main Functions
-_________________________________________________________________________________________________
-*/
 
 // GAME LOGIC
 void is_scene_unlocked(int target)
@@ -935,13 +934,6 @@ void load_buttons_25()
                                                   "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
     scene25backusernameButton.set_button_texture(renderer);
 }
-
-/*
-_________________________________________________________________________________________________
-
-                                        MAIN SDL Functions
-_________________________________________________________________________________________________
-*/
 
 // SDL CODE FUNCTIONS
 void start_SDL()
