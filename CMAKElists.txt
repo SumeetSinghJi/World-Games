@@ -1,7 +1,7 @@
 # Uses instructions here for SDL CMAKE Setup:
 cmake_minimum_required(VERSION 3.12)
 
-project(World-Games VERSION 0.1.0)
+project(World-Games)
 
 find_package(SDL2 REQUIRED HINTS "${CMAKE_SOURCE_DIR}/src/SDL2/cmake")
 if(NOT SDL2_FOUND)

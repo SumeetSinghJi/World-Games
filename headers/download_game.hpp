@@ -10,7 +10,8 @@
 #pragma once
 
 #include <iostream>
-#include <curl.h>     // for downloading latest game from Github
+// #include <curl.h>     // for downloading latest game from Github
+#include "../src/curl/include/curl/curl.h"
 #include <cstdio>
 #include <cstring>
 #include <cstdlib> // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,

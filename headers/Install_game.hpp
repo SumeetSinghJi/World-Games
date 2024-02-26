@@ -10,7 +10,8 @@
 #pragma once
 
 #include <iostream>
-#include <zip.h>      // for unzipping downloaded game from GitHub/source repo
+// #include <zip.h>      // for unzipping downloaded game from GitHub/source repo
+#include "../src/libzip/lib/zip.h"
 #include <fstream>    // multiplatform method for for file open read write objects
 #include <filesystem> // multiplatform method for creating and deleting directories (folders)
 #include <string>     // For getline()

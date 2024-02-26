@@ -16,10 +16,10 @@
 #include <chrono>                           // Core logic - for timer
 #include <fstream>                          // multiplatform method for for file open read write objects
 #include <unordered_map>                    // For key mapping
-#include <SDL.h>                            // 
-#include <SDL_ttf.h>                        // 
-#include <SDL_image.h>                      // 
-#include <SDL_mixer.h>                      // 
+#include <SDL.h>                            // SDL 2 library
+#include <SDL_ttf.h>                        // SDL 2 Font library for rendering text
+#include <SDL_image.h>                      // SDL 2 Image library for loading complex images
+#include <SDL_mixer.h>                      // SDL 2 Mixer for audio integration
 #include "headers/multiplayer.hpp"          // For Multiplayer
 #include "headers/save_game.hpp"            // For save/continue functions
 #include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
