@@ -90,7 +90,13 @@
 			"variant": "cpp",
 			"queue": "cpp",
 			"stack": "cpp",
-			"xhash": "cpp"
+			"xhash": "cpp",
+			"any": "cpp",
+			"csignal": "cpp",
+			"map": "cpp",
+			"set": "cpp",
+			"unordered_set": "cpp",
+			"xtree": "cpp"
 		},
 		"name":"World-Games"
 	}

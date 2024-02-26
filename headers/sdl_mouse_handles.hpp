@@ -40,6 +40,7 @@ void new_game();
 void exit_SDL();
 std::string find_os();
 void render_fps();
+void start_game_update_1();
 
 void handle_click_scene_1(int mouseX, int mouseY) // main menu
 {
@@ -84,7 +85,8 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     else if (SDL_PointInRect(&mousePosition, &menuGameUpdateRect))
     {
         std::cout << "You clicked Update game" << std::endl;
-        // start_game_update_1();
+        start_game_update_1();
+        // start_game_update_2();
     }
     else if (SDL_PointInRect(&mousePosition, &menuQuitRect))
     {

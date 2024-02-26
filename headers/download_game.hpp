@@ -65,7 +65,7 @@ std::string set_curl_executable_or_bin_path()
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
-        curl_path = std::string(home_directory) + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
+        curl_path = std::string(home_directory) +  filepath_separator + "Documents" + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
     }
     else if (os_version == "linux" || os_version == "Mac OS X")
     {
@@ -116,8 +116,6 @@ size_t cout_curl_response_to_terminal(void *contents, size_t size, size_t nmemb,
 // Start Curl to world-games Github to check for updates
 void start_curl()
 {
-    std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
-
     CURL *curl;
     CURLcode res;
     curl_global_init(CURL_GLOBAL_ALL);
@@ -125,13 +123,11 @@ void start_curl()
 
     if (curl)
     {
+        std::cout << "Success: Curl initialised." << std::endl; 
         curl_easy_setopt(curl, CURLOPT_URL, "https://github.com/SumeetSinghJi/world-games");
 
-        // Important. Read on first.
-        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); // Disable SSL certificate verification
-        curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L); // Disable hostname verification
-
         // Step 1 - set curl to use the custom curl path for portability (if not macOS)
+        std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
         if (!curl_path.empty() && os_version != "Mac OS X")
         {
             curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
@@ -143,7 +139,7 @@ void start_curl()
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, cout_curl_response_to_terminal);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
-        std::cout << "Curl sucessfully initialised/configured, now curling https://github.com/SumeetSinghJi/world-games" << std::endl;
+        std::cout << "Success: Curl protocols configured, now curling https://github.com/SumeetSinghJi/world-games" << std::endl;
 
         // Perform the request
         res = curl_easy_perform(curl);
@@ -203,7 +199,7 @@ void start_curl()
         else
         {
             std::cout << "Error: curl failed: " << curl_easy_strerror(res) << std::endl;
-            std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/world-games." << std::endl;
+            std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/world-games" << std::endl;
         }
 
         curl_easy_cleanup(curl);
@@ -211,7 +207,7 @@ void start_curl()
     else
     {
         std::cout << "Error: Failed to initialize curl." << std::endl;
-        std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/world-games." << std::endl;
+        std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/world-games" << std::endl;
     }
 
     curl_global_cleanup();

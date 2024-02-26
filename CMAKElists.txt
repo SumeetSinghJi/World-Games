@@ -3,57 +3,56 @@ cmake_minimum_required(VERSION 3.12)
 
 project(World-Games VERSION 0.1.0)
 
-set(SDL2_DIR "${CMAKE_SOURCE_DIR}/src/SDL2/cmake") # point to "SDL2-config.cmake"
-find_package(SDL2 QUIET)
+find_package(SDL2 REQUIRED HINTS "${CMAKE_SOURCE_DIR}/src/SDL2/cmake")
 if(NOT SDL2_FOUND)
     message(WARNING "Error: SDL2 find_package() failed")
 else()
     message(STATUS "Success: SDL2 find_package() found")
 endif()
 
-set(SDL2_Image_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_image/cmake") # point to "sdl2_image-config.cmake"
-find_package(SDL2_Image QUIET)
+find_package(SDL2_Image REQUIRED HINTS "${CMAKE_SOURCE_DIR}/src/SDL2_image/cmake")
 if(NOT SDL2_Image_FOUND)
     message(WARNING "Error: SDL2_Image find_package() failed")
 else()
     message(STATUS "Success: SDL2_Image find_package() found")
 endif()
 
-set(SDL2_Mixer_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_Mixer/cmake") # point to "sdl2_mixer-config.cmake"
-find_package(SDL2_Mixer QUIET)
+find_package(SDL2_Mixer REQUIRED HINTS "${CMAKE_SOURCE_DIR}/src/SDL2_Mixer/cmake")
 if(NOT SDL2_Mixer_FOUND)
     message(WARNING "Error: SDL2_Mixer find_package() failed")
 else()
     message(STATUS "Success: SDL2_Mixer find_package() found")
 endif()
 
-set(SDL2_TTF_DIR "${CMAKE_SOURCE_DIR}/src/SDL2_TTF/cmake") # point to "sdl2_ttf-config.cmake"
-find_package(SDL2_TTF QUIET)
+find_package(SDL2_TTF REQUIRED HINTS "${CMAKE_SOURCE_DIR}/src/SDL2_TTF/cmake")
 if(NOT SDL2_TTF_FOUND)
     message(WARNING "Error: SDL2_TTF find_package() failed")    
 else()
     message(STATUS "Success: SDL2_TTF find_package() found")
+    set(SDL2_TTF_INCLUDE_DIRS "${CMAKE_SOURCE_DIR}/src/SDL2_TTF/x86_64-w64-mingw32/include")
+    set(SDL2_TTF_LIBRARY "${CMAKE_SOURCE_DIR}/src/SDL2_TTF/x86_64-w64-mingw32/lib")
 endif()
 
-find_package(CURL QUIET HINTS "${CMAKE_SOURCE_DIR}/src/curl")
+find_package(CURL REQUIRED HINTS "${CMAKE_SOURCE_DIR}/src/curl")
 if(NOT CURL_FOUND)
     message(WARNING "Error: CURL find_package() failed")
 else()
     message(STATUS "Success: CURL find_package() found")
 endif()
 
-set(libzip_DIR "${CMAKE_SOURCE_DIR}/src/libzip")
-find_package(libzip QUIET)
+find_package(libzip REQUIRED HINTS "${CMAKE_SOURCE_DIR}/src/libzip")
 if(NOT libzip_FOUND)
     message(WARNING "Error: libzip find_package() failed")
 else()
     message(STATUS "Success: libzip find_package() found")
 endif()
 
+# loop over cmake variables to find matching string "", in cmake wildcard is ".*"
 get_cmake_property(_variableNames VARIABLES)
-list (SORT _variableNames)
 foreach (_variableName ${_variableNames})
-    message(STATUS "${_variableName}=${${_variableName}}")
+    if (_variableName MATCHES ".*TTF.*")
+        message(STATUS "${_variableName}=${${_variableName}}")
+    endif()
 endforeach()
 
 add_executable(World-Games main.cpp)
@@ -73,8 +72,8 @@ target_link_libraries(World-Games
     ${SDL2_LIBRARIES}
     ${SDL2_Image_LIBRARIES}
     ${SDL2_Mixer_LIBRARIES}
-    ${SDL2_TTF_LIBRARIES}
-    ${CURL_LIBRARIES} # curl::libcurl
+    ${SDL2_TTF_LIBRARY}/libSDL2_ttf.a
+    ${CURL_LIBRARIES}
     ${LIBZIP_LIBRARIES}
     ws2_32 # for #include <winsock.h>
 )
