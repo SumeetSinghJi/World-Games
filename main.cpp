@@ -67,6 +67,8 @@
     * on Installation set download_game.h variable curl_path to automatic to allow updating game from any directory
     KNOWN ISSUES
     Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
+    * is_achievement_unlocked(1) in render scene 4 will cause memory leak fix afte rimplementing button class
+    
     * Add 10 more games
     * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
     * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
