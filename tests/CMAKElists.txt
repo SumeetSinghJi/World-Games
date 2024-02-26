@@ -1,0 +1,26 @@
+cmake_minimum_required(VERSION 3.10)
+
+project(tests)
+
+set(SOURCES
+    tests.cpp
+)
+
+add_executable(tests ${SOURCES})
+
+target_include_directories(tests PRIVATE 
+    "${CMAKE_CURRENT_SOURCE_DIR}/../src/googletest/googletest/include" # Google test
+    "${CMAKE_CURRENT_SOURCE_DIR}/../headers"
+)
+
+target_link_libraries(tests PRIVATE 
+    "${CMAKE_CURRENT_SOURCE_DIR}/../src/googletest/build/lib/libgtest_main.a" # Google test
+    "${CMAKE_CURRENT_SOURCE_DIR}/../src/googletest/build/lib/libgtest.a" # Google test
+    "${CMAKE_CURRENT_SOURCE_DIR}/../src/googletest/build/lib/libgmock_main.a" # Google test
+    "${CMAKE_CURRENT_SOURCE_DIR}/../src/googletest/build/lib/libgmock.a" # Google test
+    "stdc++"
+)
+
+#set_target_properties(tests PROPERTIES
+#    RUNTIME_OUTPUT_DIRECTORY "../" # output .exe to "./"
+#)

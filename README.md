@@ -2,7 +2,7 @@
 
 * Created: 26/09/2023
 * Version: 0.1
-* Description: A C++ game on traditional board and hand games from different cultures around the world.
+* Description: A free fun C++ game players can travel the world playing different ancient culture board games.
 * Author: Sumeet Singh @ sumeet-singh.com
 * Publisher: AgniSamooh @ agnisamooh.com
 * License: This project is licensed under the MIT License.
@@ -29,6 +29,6 @@ linux and MacOS use HOME for the home directory, e.g: /home/sumeet
 
 # INSTRUCTIONS
 
-The READNE.txt file contains instructions on gameplay and development. 
+The README.txt file contains instructions on gameplay and development. 
 File may also be found in game using the Book (Help) icon option.
 

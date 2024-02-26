@@ -35,15 +35,9 @@ else()
     message(STATUS "Success: SDL2_TTF find_package() found")
 endif()
 
-set(CURL_DIR "${CMAKE_SOURCE_DIR}/src")
-find_package(CURL QUIET)
+find_package(CURL QUIET HINTS "${CMAKE_SOURCE_DIR}/src/curl")
 if(NOT CURL_FOUND)
     message(WARNING "Error: CURL find_package() failed")
-    set(CURL_INCLUDE_DIR "${CMAKE_SOURCE_DIR}/src/curl/include")
-    set(CURL_LIBRARY "${CMAKE_SOURCE_DIR}/src/curl/lib")
-    set(CURL_LIBRARIES "${CMAKE_SOURCE_DIR}/src/curl/lib/libcurl.a")
-    # message("CURL_LIBRARY value is: " ${CURL_LIBRARY})
-    # message("CURL_LIBRARIES value is: " ${CURL_LIBRARIES})
 else()
     message(STATUS "Success: CURL find_package() found")
 endif()
@@ -72,6 +66,7 @@ target_include_directories(World-Games PRIVATE
     ${CURL_INCLUDE_DIRS}
     ${libzip_INCLUDE_DIRS}
     headers
+    # assets - do not add. .exe/automatically detects path based on hardcoding
 )
 
 target_link_libraries(World-Games
@@ -79,7 +74,7 @@ target_link_libraries(World-Games
     ${SDL2_Image_LIBRARIES}
     ${SDL2_Mixer_LIBRARIES}
     ${SDL2_TTF_LIBRARIES}
-    ${CURL_LIBRARIES}
+    ${CURL_LIBRARIES} # curl::libcurl
     ${LIBZIP_LIBRARIES}
     ws2_32 # for #include <winsock.h>
 )

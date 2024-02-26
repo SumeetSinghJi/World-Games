@@ -13,23 +13,20 @@
                 "-I${workspaceFolder}/src/SDL2_TTF/x86_64-w64-mingw32/include/SDL2", // SDL2 TTF header folder
                 "-I${workspaceFolder}/src/curl/include/curl", // libcurl
                 "-I${workspaceFolder}/src/libzip/lib", // libzib
+                "-I${workspaceFolder}/src/googletest/googletest/include", // Googletest - https://github.com/google/googletest.git
                 "-g",
                 "${file}", // uncomment for only building main.cpp
-                // "${fileDirname}/*.cpp", // uncomment for combining all .cpp files
+                // "${fileDirname}/*.cpp", // Targets current active file to build
+                // "${workspaceFolder}/src/*.cpp", // Includes any source .cpp files together with above
                 "-o",
-                /* STATIC VS DYNAMIC
-                Static libraries (.lib files on Windows, .a files on Unix-like systems)
-                Dynamic/shared libraries (.dll/.dll.a (for linking) files on Windows, .so files on Unix-like systems)
-                to get Static libraries configure library with library specific flag e.g. 
-                Googletest cmake flags: cmake -G "MinGW Makefiles" -Dgtest_build_tests=OFF -DBUILD_SHARED_LIBS=OFF ..
-                */
                 "${workspaceFolder}/${fileBasenameNoExtension}.exe",
 				"-L${workspaceFolder}/src/SDL2/x86_64-w64-mingw32/lib", // SDL2 lib folder
                 "-L${workspaceFolder}/src/SDL2_Image/x86_64-w64-mingw32/lib", // SDL2 Image lib folder
                 "-L${workspaceFolder}/src/SDL2_Mixer/x86_64-w64-mingw32/lib", // SDL2 Mixer lib folder
                 "-L${workspaceFolder}/src/SDL2_TTF/x86_64-w64-mingw32/lib", // SDL2 TTF lib folder
-                "-L${workspaceFolder}/src/curl/lib", // libcurl
+                "-L${workspaceFolder}/src/curl/lib", // libcurl: Generating STATIC LIB: cmake -G "MinGW Makefiles"  -DBUILD_SHARED_LIBS=OFF -DBUILD_STATIC_CURL=ON -DBUILD_STATIC_LIBS=ON ..
                 "-L${workspaceFolder}/src/libzip", // libzib point to .dll and/or .a location usually within ./x/lib path
+                "-L${workspaceFolder}/src/googletest/build/lib", // Google test: Generating STATIC LIB: cmake -G "MinGW Makefiles" -Dgtest_build_tests=OFF -DBUILD_SHARED_LIBS=OFF ..
                 "-lzip", // libzib
                 "-lcurl", // libcurl
 				"-lmingw32", // MingW compiler library found here C:\msys64\mingw64\lib\libmingw32.a
@@ -38,6 +35,8 @@
 				"-lSDL2_image", // SDL Image
 				"-lSDL2_ttf", // SDL TTF
 				"-lSDL2_mixer", // SDL Mixer
+                "-lgtest", // Google test
+                "-lgtest_main", // Google test
 				// "-mwindows" // Uncomment to remove terminal popup with diagnostics during final release
             ],
             "options": {

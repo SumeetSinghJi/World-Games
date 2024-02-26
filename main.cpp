@@ -16,6 +16,10 @@
 #include <chrono>                           // Core logic - for timer
 #include <fstream>                          // multiplatform method for for file open read write objects
 #include <unordered_map>                    // For key mapping
+#include <SDL.h>                            // 
+#include <SDL_ttf.h>                        // 
+#include <SDL_image.h>                      // 
+#include <SDL_mixer.h>                      // 
 #include "headers/multiplayer.hpp"          // For Multiplayer
 #include "headers/save_game.hpp"            // For save/continue functions
 #include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
@@ -31,6 +35,12 @@
 
 /*
     TO DO
+    * Draw text file tree e.g. (and also include citation were it was created so I can create again)
+    then put info in README.md and MANUAL, so that anyone building can know the heirachy 
+    - ./
+    -    ./main
+    -          ./main/hello_world.cpp
+    
     * Statically link all files, to not require DLL's making .exe portable to place in ./workspacefolder
     * Scene 11 + 12 implement
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
