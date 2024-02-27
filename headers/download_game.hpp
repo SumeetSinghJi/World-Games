@@ -23,9 +23,9 @@
 void download_file();
 
 // GLOBAL VARIABLES
-std::string current_version;
-extern std::string os_version;
-extern std::string zip_file_path;
+extern std::string currentVersion;
+extern std::string osVersion;
+extern std::string zipFilePath;
 double download_progress = 0.0;
 bool show_progress = false;
 
@@ -41,8 +41,8 @@ std::string update_version_string_from_readme_file()
         while (std::getline(readme_object, line))
         {
             if (line.find("Version: ") != std::string::npos)
-                current_version = line.substr(9);
-            std::cout << "Current Version is: " << current_version << std::endl;
+                currentVersion = line.substr(9);
+            std::cout << "Current Version is: " << currentVersion << std::endl;
         }
 
         readme_object.close();
@@ -52,7 +52,7 @@ std::string update_version_string_from_readme_file()
     {
         std::cerr << "Error: Unable to open README.md file to find version." << std::endl;
     }
-    return current_version;
+    return currentVersion;
 }
 
 // Set curl executable or bin path by OS
@@ -62,13 +62,13 @@ std::string set_curl_executable_or_bin_path()
     std::string curl_path = "";
     const char *home_directory = nullptr;
 
-    if (os_version == "Windows")
+    if (osVersion == "Windows")
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
         curl_path = std::string(home_directory) + filepath_separator + "Documents" + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
     }
-    else if (os_version == "linux" || os_version == "Mac OS X")
+    else if (osVersion == "linux" || osVersion == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
@@ -88,23 +88,23 @@ std::string save_path_for_zip()
     std::string filepath_separator = "";
     const char *home_directory = nullptr;
 
-    if (os_version == "Windows")
+    if (osVersion == "Windows")
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
-        zip_file_path = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
+        zipFilePath = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
     }
-    else if (os_version == "linux" || os_version == "Mac OS X")
+    else if (osVersion == "linux" || osVersion == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
-        zip_file_path = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
+        zipFilePath = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
     }
     else
     {
         std::cout << "Error: Host OS Home directory folder cannot be found" << std::endl;
     }
-    return zip_file_path;
+    return zipFilePath;
 }
 
 // Callback function to handle the response received from the website
@@ -179,11 +179,11 @@ void start_curl()
                 size_t non_numeric_pos = response.find_first_not_of("0123456789.", version_pos);
 
                 // Keep only the numeric part of the version number
-                std::string version_number = response.substr(version_pos, non_numeric_pos - version_pos);
+                std::string versionNumber = response.substr(version_pos, non_numeric_pos - version_pos);
 
                 // Convert version strings to double
-                double current_version_double = stod(current_version);
-                double remote_version_double = stod(version_number);
+                double current_version_double = stod(currentVersion);
+                double remote_version_double = stod(versionNumber);
 
                 if (remote_version_double <= current_version_double)
                 {
@@ -286,7 +286,7 @@ void download_file()
         return;
     }
     // Step 1 - set curl to use the custom curl path for portability (if not macOS)
-    if (!curl_path.empty() && os_version != "Mac OS X")
+    if (!curl_path.empty() && osVersion != "Mac OS X")
     {
         curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
         curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());

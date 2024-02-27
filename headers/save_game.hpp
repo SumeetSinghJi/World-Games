@@ -17,11 +17,11 @@ Description: read the attached help.txt file
 #include <cstdio>
 
 extern bool everLostGame;
-extern bool game_started;
+extern bool gameStarted;
 extern std::vector<int> unlockedScenes;
 extern std::vector<int> unlockedAchievements;
 extern int tutorialRound;
-extern std::string os_version;
+extern std::string osVersion;
 extern int scene;
 
 void new_game();

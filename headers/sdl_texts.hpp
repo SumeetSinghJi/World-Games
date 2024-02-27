@@ -12,11 +12,12 @@ Description: read the attached help.txt file
 #include <iostream>
 
 extern std::string language;
+extern std::string currentVersion;
 extern int windowWidth;
 extern int windowHeight;
 extern int fps;
 extern int scene;
-extern bool fps_condition;
+extern bool fpsCondition;
 
 void render_text(const std::string &text, int x, int y, Uint8 alpha, int customFontSize);
 
@@ -34,7 +35,7 @@ void draw_text_for_HUD_scene_1() // Main menu
         render_text("Update", (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
         render_text("Exit", (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
 
-        render_text("version: 0.1", (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
+        render_text("version: " + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
         render_text("@AgniSamooh.com", (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
     }
     else if (language == "日本語")
@@ -49,7 +50,7 @@ void draw_text_for_HUD_scene_1() // Main menu
         render_text("更新", (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
         render_text("出口", (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
 
-        render_text("バージョン: 1.0", (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
+        render_text("バージョン: " + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
         render_text("@AgniSamooh.com", (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
     }
 }

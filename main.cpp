@@ -33,59 +33,6 @@
 #include "headers/tic_tac_toe.hpp"          // Scene 32 - Rome - Tic Tac Toe
 #include "headers/custom_SDL_button.hpp"    // Custom SDL Button class for creating buttons for handles
 
-/*
-    TO DO
-    * Scene 11 + 12 implement
-    * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
-    * fix update header and create a popup for it
-    * on settingsSaveRect in mouse handle save settings, popup asking to save settings
-    * Replace all textures with buttons
-    * Key remapping option
-    * Make Tic Tac toe roman circle game
-    * Log all cout to debug_logs.txt
-    * 
-    * Build with cppcheck to see errors
-    * Build with Clang to see errors on windows
-    * Build on Macbook with Clang
-    * Clang tidy
-    * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
-    * Use AI to create victory animation
-    * volume up/down slider noise
-    * Implement full Keyboard controls
-    * 
-    * Start with Declare global variables in global_variables.hpp, define in main.cpp, 
-    *   remove all externs from all SDL headers
-    *   Then if that works, repeat with all other variables
-    *   Consider making a additional .cpp source file or header to place functions for 
-    * 6. Scene 14 - multiplayer after search friends click to add to friend list
-    CURL POST add friend to account
-    *  In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
-    server responds with verification email.
-    If user clicks OK on email verification, account created
-    *  Scene 14 - ask for login, POST to server, if server responds OK, ???
-    7. Setup enet
-    8. In game friends chat
-        CURL server to find friends
-        Profanity filter
-    * on Installation set download_game.h variable curl_path to automatic to allow updating game from any directory  
-    * Get advice from professional on how to improve code, including refractoring, segregating and security  
-    * Add 10 more games
-    * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
-    * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
-    * For the board games below, have real image backgrounds e.g. Chess is heiroglohyic image of woman playing senet
-    *   2nd game - Senet - Misr
-    *   3rd game - The Royal Game of Ur - Babylon
-    *   4th game - Chatruanga - Aryavarta
-    *   5th game - Snakes and ladders
-    *   6th game - Chowka Bhara - South India - https://en.wikipedia.org/wiki/Chowka_bhara
-    * 
-    *     KNOWN ISSUES
-    * High Risk - Computer crashing, replicate on Tic Tac Toe game computer starting first and winning
-    * High Risk - Windows Defender Trojan warning (after memory leak above)
-    * High Risk - Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
-    * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix afte rimplementing button class
-*/
-
 SDL_Window *window = nullptr;
 SDL_Renderer *renderer = nullptr;
 
@@ -320,7 +267,7 @@ std::vector<Custom_SDL_Button *> allButtons;
 Custom_SDL_Button *Custom_SDL_Button::selectedButton = nullptr;
 
 // GLOBAL VARIABLES
-bool quit_event_loop = NULL;                   // for run_SDL Event loop
+bool quitEventLoop = NULL;                     // for run_SDL Event loop
 int windowWidth = 1366;                        // for Window resolution
 int windowHeight = 768;                        // for Window resolution
 int rectWidth = (windowWidth / 22);            // Button - The image width inside button itself
@@ -346,13 +293,14 @@ bool isMusicPlaying = NULL;                                           // for mus
 std::string currentSong = "";                                         // for music
 std::string songTitle = "assets/sounds/music/Time - AlexiAction.mp3"; // for music
 std::string language = "English";                                     // for changing language
-std::string os_version = "";                                          // Custom Multiplatform social media link
+std::string osVersion = "";                                           // Custom Multiplatform social media link
 int lastScene = 1;                                                    // Settings - return to last game scene
 bool isNight = NULL;                                                  // for background cosmetics
 bool fpsRendering = false;
 
 // GAME UPDATE
-std::string zip_file_path;
+std::string zipFilePath;
+std::string currentVersion;
 
 // README MOUSE SCROLL VARIABLES
 int scrollY = 0;      // Current scroll position
@@ -361,7 +309,7 @@ int scrollSpeed = 20; // Speed of scrollin
 // HUD VARIABLES
 int frameCount = 0;            // for FPS HUD display toggle
 int timerFPS, lastFrame, fps;  // for FPS HUD display toggle
-bool fps_condition = NULL;     // for FPS HUD display toggle
+bool fpsCondition = NULL;      // for FPS HUD display toggle
 int lastTime = SDL_GetTicks(); // for FPS HUD display toggle
 
 // HUD - Timer variables
@@ -370,8 +318,8 @@ bool countdownStarted = false;
 int countdownSeconds = 300; // Initial countdown time
 
 // GAME VARIABLES
-bool game_started = NULL;                     // Toggle to prevent "continuing to game" if game hasn't begun
-bool game_won = NULL;                         // Game variable - display credits on game completion
+bool gameStarted = NULL;                      // Toggle to prevent "continuing to game" if game hasn't begun
+bool gameWon = NULL;                          // Game variable - display credits on game completion
 std::vector<int> unlockedScenes(30, 0);       // unlocked scenes if in game mode
 std::vector<int> unlockedAchievements(10, 0); // unlocked scenes if in game mode
 int selectedOption = 0;                       // For Keyboard arrow key or Gamepad d-pad selection
@@ -440,13 +388,13 @@ bool is_achievement_unlocked(int target)
 }
 void render_fps()
 {
-    if (!fps_condition)
+    if (!fpsCondition)
     {
-        fps_condition = true;
+        fpsCondition = true;
     }
     else
     {
-        fps_condition = false;
+        fpsCondition = false;
     }
 }
 
@@ -465,11 +413,10 @@ void change_resolution(int newWindowWidth, int newWindowHeight)
     windowHeight = newWindowHeight;
     SDL_SetWindowSize(window, windowWidth, windowHeight);
 }
-
 void new_game()
 {
-    game_started = true; // This is flagged as on, so that in Settings screen you can "Continue" to game, if started else not.
-    game_won = NULL;
+    gameStarted = true; // This is flagged as on, so that in Settings screen you can "Continue" to game, if started else not.
+    gameWon = NULL;
     unlockedScenes.clear();
     unlockedAchievements.clear();
     scene = 25;
@@ -477,7 +424,7 @@ void new_game()
 std::string find_os()
 {
     const char *char_osVersion = SDL_GetPlatform();
-    os_version = char_osVersion;
+    osVersion = char_osVersion;
     if (char_osVersion != NULL)
     {
         std::cout << "Host operating system: " << char_osVersion << std::endl;
@@ -486,7 +433,7 @@ std::string find_os()
     {
         std::cerr << "Failed to detect the host operating system." << std::endl;
     }
-    return os_version;
+    return osVersion;
 }
 void help_guide_file_read()
 {
@@ -657,10 +604,10 @@ void credits_file_read()
 void start_game_update()
 {
     // Functions from header download_game.hpp
-    update_version_string_from_readme_file();
+    // called in main() -> update_version_string_from_readme_file();
     save_path_for_zip();
     start_curl();
-    download_file();
+    // called in start_curl -> download_file();
     extract_zip();
     copy_save_to_extracted_folder();
     exit_game();
@@ -1019,7 +966,7 @@ void handle_events()
         {
             // save_game();
             std::cout << "Game Quiting. Goodbye" << std::endl;
-            quit_event_loop = true;
+            quitEventLoop = true;
         }
         else if (event.type == SDL_MOUSEWHEEL)
         {
@@ -1125,7 +1072,7 @@ void update()
     else if (scene == 2) // settings
     {
     }
-    else if (game_won == true) // Credits (after winning game)
+    else if (gameWon == true) // Credits (after winning game)
     {
         songTitle = "assets/sounds/music/Out Of Time - AlexiAction.mp3";
         load_music(songTitle);
@@ -1171,7 +1118,7 @@ void draw()
         draw_text_for_HUD_scene_2();
         draw_buttons_scene_2();
     }
-    else if (game_won == true) // credits
+    else if (gameWon == true) // credits
     {
         std::cout << "You won the game!" << std::endl;
         draw_buttons_scene_3();
@@ -1218,7 +1165,7 @@ void draw()
 }
 void run_SDL()
 {
-    while (!quit_event_loop)
+    while (!quitEventLoop)
     {
         handle_events();
         update();
@@ -1471,6 +1418,7 @@ int main(int argc, char *argv[])
 {
     srand(static_cast<unsigned int>(time(0)));
     find_os();
+    update_version_string_from_readme_file();
 
     start_SDL();
 

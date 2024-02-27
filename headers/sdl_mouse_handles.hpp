@@ -26,8 +26,8 @@ extern int windowHeight;
 extern int textWidth, textHeight;
 extern int scene;
 extern int lastScene;
-extern std::string os_version;
-extern bool game_started;
+extern std::string osVersion;
+extern bool gameStarted;
 // README SCROLL VARIABLES
 extern int scrollY;
 extern int scrollSpeed;
@@ -97,23 +97,23 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     else if (SDL_PointInRect(&mousePosition, &AgniSamoohLogoRect))
     {
         std::cout << "You clicked visit Agni Samooh logo" << std::endl;
-        if (os_version == "Windows")
+        if (osVersion == "Windows")
         {
             system("start https://agnisamooh.com");
         }
-        else if (os_version == "Mac OS X")
+        else if (osVersion == "Mac OS X")
         {
             system("open https://agnisamooh.com");
         }
-        else if (os_version == "linux")
+        else if (osVersion == "linux")
         {
             system("xdg-open https://agnisamooh.com");
         }
-        else if (os_version == "Android")
+        else if (osVersion == "Android")
         {
             system("am start -a android.intent.action.VIEW -d https://agnisamooh.com");
         }
-        else if (os_version == "iOS")
+        else if (osVersion == "iOS")
         {
             system("openurl://agnisamooh.com");
         }
@@ -227,7 +227,7 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
     else if (SDL_PointInRect(&mousePosition, &returnGameRect))
     {
         std::cout << "You clicked Return to game" << std::endl;
-        if (game_started)
+        if (gameStarted)
         {
             scene = lastScene;
         }
@@ -338,7 +338,7 @@ void handle_click_scene_5(int mouseX, int mouseY) // Help
     else if (SDL_PointInRect(&mousePosition, &returnGameRect))
     {
         std::cout << "You clicked Return to game" << std::endl;
-        if (game_started)
+        if (gameStarted)
         {
             scene = lastScene;
         }

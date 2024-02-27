@@ -25,12 +25,12 @@ extern int textWidth, textHeight;
 extern bool isFullScreen;
 extern int scene;
 extern int lastScene;
-extern std::string os_version;
-extern bool game_started;
+extern std::string osVersion;
+extern bool gameStarted;
 extern int selectedOption;
 extern int menuTotalOptions;
 // unique to keyboard AND possibly gamepad?
-extern bool quit_event_loop;
+extern bool quitEventLoop;
 extern int rectWidth;
 extern int rectHeight;
 // README SCROLL VARIABLES
@@ -69,7 +69,7 @@ void handle_gamepad_scene_1(int button)
     {
     case SDL_CONTROLLER_BUTTON_START:
         std::cout << "You pressed controller button: START" << std::endl;
-        quit_event_loop = true;
+        quitEventLoop = true;
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_UP:
         std::cout << "You pressed controller button: Up" << std::endl;
@@ -123,23 +123,23 @@ void handle_gamepad_scene_1(int button)
         else if (SDL_PointInRect(&selectedPoint, &AgniSamoohLogoRect))
         {
             std::cout << "You clicked visit Agni Samooh logo" << std::endl;
-            if (os_version == "Windows")
+            if (osVersion == "Windows")
             {
                 system("start https://agnisamooh.com");
             }
-            else if (os_version == "Mac OS X")
+            else if (osVersion == "Mac OS X")
             {
                 system("open https://agnisamooh.com");
             }
-            else if (os_version == "linux")
+            else if (osVersion == "linux")
             {
                 system("xdg-open https://agnisamooh.com");
             }
-            else if (os_version == "Android")
+            else if (osVersion == "Android")
             {
                 system("am start -a android.intent.action.VIEW -d https://agnisamooh.com");
             }
-            else if (os_version == "iOS")
+            else if (osVersion == "iOS")
             {
                 system("openurl://agnisamooh.com");
             }
@@ -176,7 +176,7 @@ void handle_gamepad_scene_5(int button)
     {
     case SDLK_ESCAPE:
         std::cout << "You pressed button: ESC" << std::endl;
-        quit_event_loop = true;
+        quitEventLoop = true;
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_UP:
         std::cout << "You pressed button: UP" << std::endl;
@@ -214,7 +214,7 @@ void handle_gamepad_scene_5(int button)
         else if (SDL_PointInRect(&selectedPoint, &returnGameRect))
         {
             std::cout << "You clicked Return to game" << std::endl;
-            if (game_started)
+            if (gameStarted)
             {
                 scene = lastScene;
             }

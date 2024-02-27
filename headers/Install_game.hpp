@@ -18,8 +18,8 @@
 #include <cstdlib>    // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,
 
 // GLOBAL VARIABLES
-extern std::string os_version;
-extern std::string zip_file_path;
+extern std::string osVersion;
+extern std::string zipFilePath;
 
 // Extract Zip of downloaded game update from curl of Github repo
 bool extract_zip()
@@ -30,12 +30,12 @@ bool extract_zip()
     char buf[100];
 
     // Get the directory path from the zip_file_path
-    std::filesystem::path zip_directory = std::filesystem::path(zip_file_path).parent_path();
+    std::filesystem::path zip_directory = std::filesystem::path(zipFilePath).parent_path();
 
     std::cout << "Starting Extract Zip function..." << std::endl;
 
     // Open the zip archive
-    zip_archive = zip_open(zip_file_path.c_str(), ZIP_RDONLY, nullptr);
+    zip_archive = zip_open(zipFilePath.c_str(), ZIP_RDONLY, nullptr);
     if (zip_archive == nullptr)
     {
         std::cout << "Error opening zip archive." << std::endl;
@@ -139,13 +139,13 @@ std::string get_existing_game_folder_path()
     const char *home_directory = nullptr;
     std::string existing_game_directory_path = "";
 
-    if (os_version == "Windows")
+    if (osVersion == "Windows")
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE");
         existing_game_directory_path = std::string(home_directory) + filepath_separator + "world-games";
     }
-    else if (os_version == "linux" || os_version == "Mac OS X")
+    else if (osVersion == "linux" || osVersion == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME");
@@ -165,13 +165,13 @@ std::string get_unzipped_game_destination_path()
     const char *home_directory = nullptr;
     std::string unzipped_game_destination_path = "";
 
-    if (os_version == "Windows")
+    if (osVersion == "Windows")
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE");
         unzipped_game_destination_path = std::string(home_directory) + filepath_separator + "world-games-master";
     }
-    else if (os_version == "linux" || os_version == "Mac OS X")
+    else if (osVersion == "linux" || osVersion == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME");
@@ -230,7 +230,7 @@ void exit_game()
     std::string windows_terrinate_process_command = "taskkill /F /IM main.exe";
     std::string unix_terrinate_process_command = "pkill main";
 
-    if (os_version == "Windows")
+    if (osVersion == "Windows")
     {
         system(windows_terrinate_process_command.c_str());
     }
@@ -283,7 +283,7 @@ void delete_directory(const std::string &folderPath)
 
     // Use the rmdir command to delete the current directory
 
-    if (os_version == "Windows")
+    if (osVersion == "Windows")
     {
         std::string command = "rmdir /s /q \"" + folderPath + "\"";
         int result = system(command.c_str());
@@ -331,7 +331,7 @@ void delete_original_game_folder()
     std::cout << "Existing game folder to be deleted is: " << get_existing_game_folder_path() << std::endl;
     std::string existing_game_folder_path = get_existing_game_folder_path();
 
-    if (os_version == "Windows")
+    if (osVersion == "Windows")
     {
         try
         {
@@ -343,7 +343,7 @@ void delete_original_game_folder()
             std::cout << "Error deleting original game directory: " << exception.what() << std::endl;
         }
     }
-    else if (os_version == "linux" || os_version == "Mac OS X")
+    else if (osVersion == "linux" || osVersion == "Mac OS X")
     {
         std::cout << "delete original game directory Work in progress" << std::endl;
     }
@@ -371,7 +371,7 @@ void rename_extracted_folder()
 void CMAKE_build()
 {
     std::cout << "Running CMAKE build steps to copy shortcuts to desktop" << std::endl;
-    if (os_version == "Windows")
+    if (osVersion == "Windows")
     {
         std::string scriptPath = "windows-add-icon.ps1";
         int result = system(("powershell.exe -ExecutionPolicy Bypass -File " + std::string(scriptPath)).c_str());
@@ -384,7 +384,7 @@ void CMAKE_build()
             std::cout << "Error: Failed to copy shortcut to users desktop" << std::endl;
         }
     }
-    else if (os_version == "linux" || os_version == "Mac OS X")
+    else if (osVersion == "linux" || osVersion == "Mac OS X")
     {
         std::cout << "CMAKE for Linux/MacOS Work in progress" << std::endl;
     }
@@ -397,7 +397,7 @@ void game_start()
     std::string new_game_directory_path = get_existing_game_folder_path();
     std::string start_command;
 
-    if (os_version == "Windows")
+    if (osVersion == "Windows")
     {
         start_command = "start \"\" \"" + new_game_directory_path + "\\world-games.exe\"";
         system(start_command.c_str());
