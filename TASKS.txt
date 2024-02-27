@@ -6,9 +6,7 @@ TASKS
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings
     * Replace all textures with buttons
     * Key remapping option
-    * Fix key_remap_SDL() - by making unordered map an extern in global_variables, then move function to code_game_logic.hpp
-    * fox toggle_countdown() hardcoded for ttt variables 
-    * in main load buttons require buttons somehow made externs into global_variables.hpp then functions moved to code_game_logic.hpp
+    * In main load buttons require buttons somehow made externs into global_variables.hpp then functions moved to code_game_logic.hpp
     * Refractor update_app.hpp to accept parameters in all functions and a way to call them, may require splitting game_update();
     * Log all cout to debug_logs.txt
     * Popup for start_curl() cout's  

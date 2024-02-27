@@ -2,7 +2,7 @@
 Author: Sumeet Singh
 Dated: 14/02/2024
 Minimum C++ Standard: C++11
-Purpose: Declaration/Definition file combined
+Purpose: Definition file (declaration file is: global_variables.hpp)
 License: MIT License
 Description: read the attached help.txt file
 */
@@ -12,6 +12,89 @@ Description: read the attached help.txt file
 #include "global_variables.hpp"
 
 // GAME LOGIC
+
+SDL_Texture *load_texture(const char *path, const char *name)
+{
+    texture = IMG_LoadTexture(renderer, path);
+    if (!texture)
+    {
+        std::cerr << "Error: Failed to load " << name << ": " << IMG_GetError() << std::endl;
+    }
+    else
+    {
+        std::cout << "Successfully loaded " << name << std::endl;
+    }
+    return texture;
+}
+void render_text(const std::string &text, int x, int y, Uint8 alpha, int customFontSize)
+{
+    /* Example
+     1. Parameter definitions
+     const std::string &text: The text to render to screen
+     int x, x position e.g. static_cast<int>(windowWidth * 0.1) = if there are 10 columns it will appear in 1st column from left
+     int y: y position e.g. static_cast<int>(windowHeight * 0.3) = if there are 10 rows it will appear in 3rd row from top
+     Uint8 alpha: transperancy, leave at 255 per default unless you want particular text transparent scale 0 - 255
+     int customFontSize = leave as 0 to scale with all global fontsize functions, however can statically
+     set to values equal to fonts on loop below e.g. 24, 36, 48 for fixed heading sizes
+
+     2. Populate parameters
+     render_text("Enter Username: ", static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2), 255, 0);
+    */
+    TTF_Font *font = nullptr;
+    if (customFontSize == 0)
+    {
+        if (fontSize == 24)
+        {
+            font = font_24;
+        }
+        else if (fontSize == 36)
+        {
+            font = font_36;
+        }
+        else if (fontSize == 48)
+        {
+            font = font_48;
+        }
+    }
+    else if (!customFontSize == 0)
+    {
+        if (customFontSize == 24)
+        {
+            font = font_24;
+        }
+        else if (customFontSize == 36)
+        {
+            font = font_36;
+        }
+        else if (customFontSize == 48)
+        {
+            font = font_48;
+        }
+    }
+
+    if (font)
+    {
+        SDL_Color textColor = {0, 0, 0, alpha};
+        SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, text.c_str(), textColor);
+
+        if (textSurface)
+        {
+            // Calculate textWidth and textHeight using TTF_SizeText
+            int textWidth, textHeight;
+            TTF_SizeText(font, text.c_str(), &textWidth, &textHeight);
+
+            SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+            SDL_FreeSurface(textSurface);
+
+            if (textTexture)
+            {
+                SDL_Rect textRect = {x, y, textWidth, textHeight};
+                SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
+            }
+        }
+    }
+}
+
 void is_scene_unlocked(int target)
 {
     std::cout << "target to find in unlocked scenes is " << target << std::endl;
@@ -272,6 +355,52 @@ void credits_file_read()
 
         // Update the startY coordinate for the next section
         startY += textHeight;
+    }
+}
+void key_remap_SDL(const std::string &newKey, SDL_Keycode &oldKey)
+{
+    auto it = keyMap.find(newKey);
+    if (it != keyMap.end())
+    {
+        oldKey = it->second;
+        std::cout << "Key remapped successfully!" << std::endl;
+    }
+    else
+    {
+        std::cout << "Invalid key mapping: " << newKey << std::endl;
+    }
+}
+
+// HUD Functions
+void toggle_countdown(bool& subGameSettingsShowPopup, bool& subGameOver, int& subGameWinner)
+{
+    // toggle_countdown() started whenever the popup for game start variable is closed
+    if (!countdownStarted)
+    {
+        countdownStarted = true;
+        std::thread countdownThread([&]()
+                                    {
+            timerRunning = true;
+            for (; countdownSeconds > 0 && timerRunning; --countdownSeconds) {
+                std::this_thread::sleep_for(std::chrono::seconds(1));
+            }
+            timerRunning = false;
+            if (countdownSeconds <= 0) {
+                if(!subGameSettingsShowPopup) {
+                    subGameOver = true;
+                    subGameWinner = 3; // draw
+
+                    /*                    
+                    */
+                }
+                
+            } });
+        countdownThread.detach(); // Detach the thread to let it run independently
+    }
+    else
+    {
+        countdownStarted = false;
+        timerRunning = false; // Stop the countdown when toggled off
     }
 }
 

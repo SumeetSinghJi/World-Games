@@ -43,7 +43,7 @@ void render_text(const std::string &text, int x, int y, Uint8 alpha, int customF
 void draw_timer();                                                                               // In main.cpp
 void draw_lives(int lives);                                                                      // In main.cpp
 void draw_win_frequency(const std::vector<int> &winners, const std::vector<int> &winnersChoice); // In main.cpp
-void toggle_countdown();                                                                         // In main.cpp
+void toggle_countdown(bool& subGameSettingsShowPopup, bool& subGameOver, int& subGameWinner);                                                                         // In main.cpp
 void ttt_SDL_cleanup();                                                                          // keyboard_handle - ESC = quit
 void exit_SDL();                                                                                 // keyboard_handle - ESC = quit
 
@@ -473,7 +473,7 @@ void ttt_update_winning_logic()
         if (!ttt_game_over)
         {
             std::cout << "Player wins" << std::endl;
-            toggle_countdown();
+            toggle_countdown(ttt_showPopup, ttt_game_over, ttt_winner);
             ttt_game_over = true;
             ttt_winner = 1;
             ttt_opponentsTurn = false;
@@ -494,7 +494,7 @@ void ttt_update_winning_logic()
         if (!ttt_game_over)
         {
             std::cout << "Opponent wins" << std::endl;
-            toggle_countdown();
+            toggle_countdown(ttt_showPopup, ttt_game_over, ttt_winner);
             ttt_game_over = true;
             ttt_winner = 2;
             ttt_opponentsTurn = false;
@@ -518,7 +518,7 @@ void ttt_update_winning_logic()
 
         if (ttt_all_positions_used && ttt_winner != 1 && ttt_winner != 2)
         {
-            toggle_countdown();
+            toggle_countdown(ttt_showPopup, ttt_game_over, ttt_winner);
             std::cout << "It's a Draw." << std::endl;
             ttt_opponentsTurn = false;
             ttt_game_over = true;
@@ -666,7 +666,7 @@ void ttt_mouse_handle(int mouseX, int mouseY)
                 {
                     std::cout << "You clicked Close Popup window" << std::endl;
                     ttt_showPopup = false;
-                    toggle_countdown();
+                    toggle_countdown(ttt_showPopup, ttt_game_over, ttt_winner);
                 }
                 else
                 {
@@ -826,7 +826,7 @@ void ttt_mouse_handle(int mouseX, int mouseY)
     else if (SDL_PointInRect(&mousePosition, &timerRect))
     {
         std::cout << "You clicked: Restart Timer" << std::endl;
-        toggle_countdown();
+        toggle_countdown(ttt_showPopup, ttt_game_over, ttt_winner);
     }
 }
 void ttt_keyboard_handle(SDL_Event event)

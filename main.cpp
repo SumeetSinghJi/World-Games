@@ -7,7 +7,7 @@
     Description: read the attached help.txt file
 */
 
-#include "headers/global_variables.hpp"     // Declarations for all headers and variables
+#include "headers/global_variables.hpp"     // Declarations for all headers, variables and functions
 #include "headers/core_game_logic.hpp"      // Core game logic code
 #include "headers/multiplayer.hpp"          // For Multiplayer
 #include "headers/save_game.hpp"            // For save/continue functions
@@ -322,50 +322,6 @@ std::unordered_map<std::string, SDL_Keycode> keyMap = {
     {"d", SDLK_RETURN},
 };
 
-void key_remap_SDL(const std::string &newKey, SDL_Keycode &oldKey)
-{
-    auto it = keyMap.find(newKey);
-    if (it != keyMap.end())
-    {
-        oldKey = it->second;
-        std::cout << "Key remapped successfully!" << std::endl;
-    }
-    else
-    {
-        std::cout << "Invalid key mapping: " << newKey << std::endl;
-    }
-}
-
-// HUD Functions
-void toggle_countdown()
-{
-    // toggle_countdown() started whenever the popup for game start variable is closed
-    if (!countdownStarted)
-    {
-        countdownStarted = true;
-        std::thread countdownThread([]()
-                                    {
-            timerRunning = true;
-            for (; countdownSeconds > 0 && timerRunning; --countdownSeconds) {
-                std::this_thread::sleep_for(std::chrono::seconds(1));
-            }
-            timerRunning = false;
-            if (countdownSeconds <= 0) {
-                if(!ttt_showPopup) {
-                    ttt_game_over = true;
-                    ttt_winner = 3; // draw
-                }
-                
-            } });
-        countdownThread.detach(); // Detach the thread to let it run independently
-    }
-    else
-    {
-        countdownStarted = false;
-        timerRunning = false; // Stop the countdown when toggled off
-    }
-}
-
 // MOVE TO LOADS
 void load_buttons_to_scene_vectors()
 {
@@ -490,88 +446,6 @@ void load_buttons_25()
                                                   static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
                                                   "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
     scene25backusernameButton.set_button_texture(renderer);
-}
-
-SDL_Texture *load_texture(const char *path, const char *name)
-{
-    texture = IMG_LoadTexture(renderer, path);
-    if (!texture)
-    {
-        std::cerr << "Error: Failed to load " << name << ": " << IMG_GetError() << std::endl;
-    }
-    else
-    {
-        std::cout << "Successfully loaded " << name << std::endl;
-    }
-    return texture;
-}
-void render_text(const std::string &text, int x, int y, Uint8 alpha, int customFontSize)
-{
-    /* Example
-     1. Parameter definitions
-     const std::string &text: The text to render to screen
-     int x, x position e.g. static_cast<int>(windowWidth * 0.1) = if there are 10 columns it will appear in 1st column from left
-     int y: y position e.g. static_cast<int>(windowHeight * 0.3) = if there are 10 rows it will appear in 3rd row from top
-     Uint8 alpha: transperancy, leave at 255 per default unless you want particular text transparent scale 0 - 255
-     int customFontSize = leave as 0 to scale with all global fontsize functions, however can statically
-     set to values equal to fonts on loop below e.g. 24, 36, 48 for fixed heading sizes
-
-     2. Populate parameters
-     render_text("Enter Username: ", static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2), 255, 0);
-    */
-    TTF_Font *font = nullptr;
-    if (customFontSize == 0)
-    {
-        if (fontSize == 24)
-        {
-            font = font_24;
-        }
-        else if (fontSize == 36)
-        {
-            font = font_36;
-        }
-        else if (fontSize == 48)
-        {
-            font = font_48;
-        }
-    }
-    else if (!customFontSize == 0)
-    {
-        if (customFontSize == 24)
-        {
-            font = font_24;
-        }
-        else if (customFontSize == 36)
-        {
-            font = font_36;
-        }
-        else if (customFontSize == 48)
-        {
-            font = font_48;
-        }
-    }
-
-    if (font)
-    {
-        SDL_Color textColor = {0, 0, 0, alpha};
-        SDL_Surface *textSurface = TTF_RenderUTF8_Blended(font, text.c_str(), textColor);
-
-        if (textSurface)
-        {
-            // Calculate textWidth and textHeight using TTF_SizeText
-            int textWidth, textHeight;
-            TTF_SizeText(font, text.c_str(), &textWidth, &textHeight);
-
-            SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
-            SDL_FreeSurface(textSurface);
-
-            if (textTexture)
-            {
-                SDL_Rect textRect = {x, y, textWidth, textHeight};
-                SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
-            }
-        }
-    }
 }
 
 // SDL CODE FUNCTIONS

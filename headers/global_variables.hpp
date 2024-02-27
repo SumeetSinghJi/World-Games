@@ -2,7 +2,7 @@
     Author: Sumeet Singh
     Dated: 14/02/2024
     Minimum C++ Standard: C++11
-    Purpose: Declaration file
+    Purpose: Declaration file (declaration file is: global_variables.hpp)
     License: MIT License
     Description: read the attached help.txt file
 */
