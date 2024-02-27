@@ -9,17 +9,7 @@ Description: read the attached help.txt file
 
 #pragma once
 
-#include <iostream>
-
-extern std::string language;
-extern std::string currentVersion;
-extern int windowWidth;
-extern int windowHeight;
-extern int fps;
-extern int scene;
-extern bool fpsCondition;
-
-void render_text(const std::string &text, int x, int y, Uint8 alpha, int customFontSize);
+#include "global_variables.hpp"
 
 void draw_text_for_HUD_scene_1() // Main menu
 {

@@ -1,54 +1,56 @@
 
-    TO DO
+TASKS
     * Scene 11 + 12 implement
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * fix update header and create a popup for it
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings
     * Replace all textures with buttons
     * Key remapping option
-    * Make Tic Tac toe roman circle game
+    * Fix key_remap_SDL() - by making unordered map an extern in global_variables, then move function to code_game_logic.hpp
+    * fox toggle_countdown() hardcoded for ttt variables 
+    * in main load buttons require buttons somehow made externs into global_variables.hpp then functions moved to code_game_logic.hpp
+    * Refractor update_app.hpp to accept parameters in all functions and a way to call them, may require splitting game_update();
     * Log all cout to debug_logs.txt
     * Popup for start_curl() cout's  
-    *
-    * Start with Declare global variables in global_variables.hpp, define in main.cpp,
-    *   remove all externs from all SDL headers
-    *   Then if that works, repeat with all other variables
-    *   Consider making a additional .cpp source file or header to place functions for
-    * 6. Scene 14 - multiplayer after search friends click to add to friend list
-    CURL POST add friend to account
-    *  In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
-    server responds with verification email.
-    If user clicks OK on email verification, account created
-    *  Scene 14 - ask for login, POST to server, if server responds OK, ???
-    7. Setup enet
-    8. In game friends chat
-        CURL server to find friends
-        Profanity filter
-    * on Installation set download_game.h variable curl_path to automatic to allow updating game from any directory
-
+    * Scene 14 - multiplayer after search friends click to add to friend list
+    * CURL POST add friend to account
+    * In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
+    * server responds with verification email.
+    * If user clicks OK on email verification, account created
+    * Scene 14 - ask for login, POST to server, if server responds OK, ???
+    * Setup enet
+    * In game friends chat
+    * Learn to make installer or CMAKE so that update_app() variables are populated to work anywhere on a system
+    * In above installer or CMAKE make a shortcut of app.
+    * Profanity filter
+    * break appart main.cpp into another source file or header file with game_engine.h functions()
     * Build with cppcheck to see errors
-    * Build with Clang to see errors on windows
-    * Build on Macbook with Clang
-    * Clang tidy
     * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
     * Use AI to create victory animation
     * volume up/down slider noise
     * Implement full Keyboard controls
+    * Make Tic Tac toe roman circle game
+    * Sign .exe with purchased Certificate to learn how process works and to deploy on Steam
 
 
-    * Get advice from professional on how to improve code, including refractoring, segregating and security
-    * Add 10 more games
-    * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
-    * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
-    * For the board games below, have real image backgrounds e.g. Chess is heiroglohyic image of woman playing senet
-    *   2nd game - Senet - Misr
-    *   3rd game - The Royal Game of Ur - Babylon
-    *   4th game - Chatruanga - Aryavarta
-    *   5th game - Snakes and ladders
-    *   6th game - Chowka Bhara - South India - https://en.wikipedia.org/wiki/Chowka_bhara
-    *
-    *     KNOWN ISSUES
+KNOWN ISSUES
     * High Risk - Computer crashing, replicate on Tic Tac Toe game computer starting first and winning
     * High Risk - Windows Defender Trojan warning (after memory leak above)
     * High Risk - Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
     * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix afte rimplementing button class
+
+
+FUTURE ADDITIONS
+    1. for button class
+        * Implement multi-highlight/selects
+        * Implement slider
+        * Implement checkboxs/radio buttons
+        * Implement toggle
+    2. Get advice from professional on how to improve code, including refractoring, segregating and security
+    * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
+    * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
+    * For the board games below, have real image backgrounds e.g. Chess is heiroglohyic image of woman playing senet
+    * game - Senet - Misr
+    * 3rd game - The Royal Game of Ur - Babylon
+    * 4th game - Chatruanga or Snakes and ladders - Aryavarta
+    * 5th game - Indus valley game

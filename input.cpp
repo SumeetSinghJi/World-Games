@@ -7,18 +7,7 @@
     Description: Test Development environment
 */
 
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <SDL.h>
-#include <SDL_image.h>
-#include <SDL_ttf.h>
-#include <SDL_mixer.h>
-#include <curl.h>
-#include <zip.h>
-#include "headers/custom_SDL_button.hpp"
+#include "headers/global_variables.hpp"
 
 /*  TO DO
     1. Add mouse handle 11 privacy policy popup onclick code to keyboard and controller
@@ -26,10 +15,6 @@
     2. Fix button class
             * keyboard highlight and select
             * Gamepad highlight/select
-        Implement multi-highlight/selects
-        Implement slider
-        Implement checkboxs/radio buttons
-        Implement toggle
     3. Fix Input class
         SDL function to call platforms native virtual keyboard
         Profanity filter

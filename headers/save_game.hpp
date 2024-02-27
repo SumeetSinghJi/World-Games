@@ -9,20 +9,7 @@ Description: read the attached help.txt file
 
 #pragma once
 
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <cstdio>
-
-extern bool everLostGame;
-extern bool gameStarted;
-extern std::vector<int> unlockedScenes;
-extern std::vector<int> unlockedAchievements;
-extern int tutorialRound;
-extern std::string osVersion;
-extern int scene;
+#include "global_variables.hpp"
 
 void new_game();
 

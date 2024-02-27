@@ -9,40 +9,7 @@ Description: read the attached help.txt file
 
 #pragma once
 
-#include <iostream>
-#include <string>
-
-/*
-For Gamepad input
-*/
-
-extern SDL_Window *window;
-
-// for Window resolution
-extern int windowWidth;
-extern int windowHeight;
-extern int textWidth, textHeight;
-extern int scene;
-extern int lastScene;
-extern std::string osVersion;
-extern bool gameStarted;
-extern int selectedOption;
-extern int menuTotalOptions;
-// unique to keyboard AND possibly gamepad?
-extern bool quitEventLoop;
-extern int rectWidth;
-extern int rectHeight;
-// README SCROLL VARIABLES
-extern int scrollY;
-extern int scrollSpeed;
-
-// FUNCTION PROTOTPES
-void change_resolution(int newWindowWidth, int newWindowHeight);
-void is_scene_unlocked(int target);
-void new_game();
-void exit_SDL();
-std::string find_os();
-void render_fps();
+#include "global_variables.hpp"
 
 void handle_keyboard_scene_1(SDL_Event event)
 {

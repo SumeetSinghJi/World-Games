@@ -9,7 +9,7 @@ Description: read the attached help.txt file
 
 #pragma once
 
-#include <iostream>
+#include "global_variables.hpp"
 
 /*
 This header is for multiplayer functionality (scene 7) that players

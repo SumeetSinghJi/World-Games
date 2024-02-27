@@ -9,38 +9,7 @@ Description: read the attached help.txt file
 
 #pragma once
 
-#include <iostream>
-#include <string>
-#include "custom_SDL_button.hpp" // Custom SDL Button class for creating buttons for handles
-
-/*
-Both Mouse and Touch click use the same mousePoint variable
-*/
-
-extern SDL_Window *window;
-extern std::vector<Custom_SDL_Button *> allButtons;
-
-// for Window resolution
-extern int windowWidth;
-extern int windowHeight;
-extern int textWidth, textHeight;
-extern int scene;
-extern int lastScene;
-extern std::string osVersion;
-extern bool gameStarted;
-// README SCROLL VARIABLES
-extern int scrollY;
-extern int scrollSpeed;
-extern bool fpsRendering;
-
-// FUNCTION PROTOTPES
-void change_resolution(int newWindowWidth, int newWindowHeight);
-void is_scene_unlocked(int target);
-void new_game();
-void exit_SDL();
-std::string find_os();
-void render_fps();
-void start_game_update();
+#include "global_variables.hpp"
 
 void handle_click_scene_1(int mouseX, int mouseY) // main menu
 {

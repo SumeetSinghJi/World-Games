@@ -9,21 +9,12 @@ Description: read the attached help.txt file
 
 #pragma once
 
-#include <iostream>
+#include "global_variables.hpp"
 
 // Tic Tac Toe - Textures
 SDL_Texture *xTexture = nullptr;
 SDL_Texture *oTexture = nullptr;
 SDL_Texture *lineTexture = nullptr;
-
-// main.cpp - Global variables
-extern bool timerRunning;
-extern bool countdownStarted;
-extern int countdownSeconds;
-extern int buttonWidth;
-extern int buttonHeight;
-extern int buttonXOffset;
-extern int buttonYOffset;
 
 // Tic Tac Toe - Global variables
 int ttt_ROWS = 3;                                             // Core Logic - for drawing 9 grid array
