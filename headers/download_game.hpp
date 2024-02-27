@@ -169,6 +169,7 @@ void start_curl()
             std::string version_tag = "Version: ";
             size_t version_pos = response.find(version_tag);
             std::cout << "now locating string '" << version_tag << "', in README.md" << std::endl;
+            
             if (version_pos != std::string::npos)
             {
                 version_pos += version_tag.length(); // Move past the "Version: " string
