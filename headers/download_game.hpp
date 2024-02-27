@@ -66,7 +66,7 @@ std::string set_curl_executable_or_bin_path()
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
-        curl_path = std::string(home_directory) +  filepath_separator + "Documents" + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
+        curl_path = std::string(home_directory) + filepath_separator + "Documents" + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
     }
     else if (os_version == "linux" || os_version == "Mac OS X")
     {
@@ -125,7 +125,7 @@ void start_curl()
 
     if (curl)
     {
-        std::cout << "Success: Curl initialised." << std::endl; 
+        std::cout << "Success: Curl initialised." << std::endl;
         curl_easy_setopt(curl, CURLOPT_URL, "https://github.com/SumeetSinghJi/world-games");
 
         // Step 1 - Configure curl with curl.exe path
@@ -135,7 +135,22 @@ void start_curl()
             curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
             curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
         }
-        
+
+        /*
+        Important: To prevent man in the middle attacks.
+        To enable libcurl to verify remote server SSL certificate you must point
+        curl to a existing .crt that contains a bunch of trusted famous CA's.
+
+        Curl provides one such certificate bundled within the ./bin folder e.g. here: src\curl\bin\curl-ca-bundle.crt
+        curl must be set to use this CA.
+
+        Note this can be bypassed for testing purpose only by replacing the below commands with only these 2 commands
+        which will bypass curl verifying remote server certificate
+        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); // Disable SSL certificate verification
+        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L); // Disable hostname verification
+        */
+        curl_easy_setopt(curl, CURLOPT_CAINFO, "./src/curl/bin/curl-ca-bundle.crt");
+
         // Store the response in a string
         std::string response;
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, cout_curl_response_to_terminal);
@@ -276,9 +291,21 @@ void download_file()
         curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
     }
 
-    // test after running without these 2 SSL lines. See if required.
-    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); // Disable SSL certificate verification (for debugging purposes only)
-    curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L); // Disable hostname verification (for debugging purposes only)
+    /*
+        Important: To prevent man in the middle attacks.
+        To enable libcurl to verify remote server SSL certificate you must point
+        curl to a existing .crt that contains a bunch of trusted famous CA's.
+
+        Curl provides one such certificate bundled within the ./bin folder e.g. here: src\curl\bin\curl-ca-bundle.crt
+        curl must be set to use this CA.
+
+        Note this can be bypassed for testing purpose only by replacing the below commands with only these 2 commands
+        which will bypass curl verifying remote server certificate
+        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); // Disable SSL certificate verification
+        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L); // Disable hostname verification
+        */
+    curl_easy_setopt(curl, CURLOPT_CAINFO, "./src/curl/bin/curl-ca-bundle.crt");
+
     curl_easy_setopt(curl, CURLOPT_URL, download_link.c_str());
 
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
@@ -310,4 +337,3 @@ void download_file()
     curl_easy_cleanup(curl);
     curl_global_cleanup();
 }
-
