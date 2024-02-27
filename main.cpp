@@ -654,22 +654,13 @@ void credits_file_read()
         startY += textHeight;
     }
 }
-void start_game_update_1()
+void start_game_update()
 {
     // Functions from header download_game.hpp
-    std::cout << "STARTING: Game Update steps 1 of 2." << std::endl;
-
     update_version_string_from_readme_file();
     save_path_for_zip();
     start_curl();
     download_file();
-    
-
-    std::cout << "ENDING: Game Update steps 1 of 2 completed." << std::endl;
-}
-void start_game_update_2()
-{
-    std::cout << "STARTING: Game Update steps 2 of 2." << std::endl;
     extract_zip();
     copy_save_to_extracted_folder();
     exit_game();
@@ -677,9 +668,8 @@ void start_game_update_2()
     rename_extracted_folder();
     CMAKE_build();
     game_start();
-
-    std::cout << "ENDING: Game Update steps 2 of 2 completed." << std::endl;
 }
+
 void key_remap_SDL(const std::string &newKey, SDL_Keycode &oldKey)
 {
     auto it = keyMap.find(newKey);
