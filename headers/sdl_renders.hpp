@@ -230,3 +230,4 @@ void draw_buttons_scene_11() // Profile
     SDL_Rect inputTextRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.4), static_cast<int>(windowWidth * 0.9), (windowHeight / 10)};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &inputTextRect);
 }
+

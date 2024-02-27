@@ -60,8 +60,12 @@ endif()
 #        message(STATUS "${_variableName}=${${_variableName}}")
 #    endif()
 #endforeach()
+set(SOURCES
+    main.cpp
+    ./src/core_game_logic.cpp
+)
 
-add_executable(World-Games main.cpp)
+add_executable(World-Games ${SOURCES})
 
 target_include_directories(World-Games PRIVATE
     ${SDL2_INCLUDE_DIRS}

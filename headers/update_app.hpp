@@ -23,14 +23,14 @@
 
 #include <iostream>
 #include "global_variables.hpp"
-#include "../src/curl/include/curl/curl.h"     // for downloading latest game from Github
+#include <curl.h>     // for downloading latest game from Github
 #include <cstdio> // for curl functions
 #include <cstring> // for curl functions
 #include <cstdlib> // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,
 #ifdef _WIN32
 #include <winsock2.h> // For curling on Windows
 #endif
-#include "../src/libzip/lib/zip.h"     // for unzipping downloaded game from GitHub/source repo
+#include <zip.h>     // for unzipping downloaded game from GitHub/source repo
 #include <fstream>    // multiplatform method for for file open read write objects
 #include <filesystem> // multiplatform method for creating and deleting directories (folders)
 #include <string>     // For getline()

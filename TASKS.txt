@@ -1,6 +1,6 @@
 
 TASKS
-    * Scene 11 + 12 implement
+    * IMPORTANT FIRST STEP - Scene 11 + 12 implement - input.cpp broken now
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * fix update header and create a popup for it
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings, new function()
@@ -25,13 +25,13 @@ TASKS
     * Make Tic Tac toe roman circle game
     * Sign .exe with purchased Certificate to learn how process works and to deploy on Steam
 
-KNOWN ISSUES
+BUGS
     * High Risk - Computer crashing, replicate on Tic Tac Toe game computer starting first and winning
     * High Risk - Windows Defender Trojan warning (after memory leak above)
     * High Risk - Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
     * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix afte rimplementing button class
 
-FUTURE ADDITIONS
+FUTURE
     1. for button class
         * Implement multi-highlight/selects
         * Implement slider

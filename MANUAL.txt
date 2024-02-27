@@ -216,7 +216,7 @@ The below files are contained in the downloaded game directory
 ./vscode - vscode configuration files
 ./assets - subdirectories of assets e.g. images, sounds, fonts
 ./headers - C++ header files
-./src - Third party libraries
+./src - Source code and Third party libraries
 ./tests - Tests directory, contains various game development tests using Google Tests library
 .gitignore - Used in development file
 CMAKEllists.txt - Used in development file

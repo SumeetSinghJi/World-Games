@@ -17,7 +17,7 @@
                 "-g",
                 "${file}", // uncomment for only building main.cpp
                 // "${fileDirname}/*.cpp", // Targets current active file to build
-                // "${workspaceFolder}/src/*.cpp", // Includes any source .cpp files together with above
+                "${workspaceFolder}/src/*.cpp", // Includes any source .cpp files together with above
                 "-o",
                 "${workspaceFolder}/${fileBasenameNoExtension}.exe",
 				"-L${workspaceFolder}/src/SDL2/x86_64-w64-mingw32/lib", // SDL2 lib folder

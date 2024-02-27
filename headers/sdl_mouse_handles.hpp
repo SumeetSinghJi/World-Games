@@ -493,3 +493,4 @@ void handle_click_scene_10(int mouseX, int mouseY) // Keybindings
         scene = 1;
     }
 }
+

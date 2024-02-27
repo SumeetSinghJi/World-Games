@@ -23,11 +23,11 @@
 #include <thread>        // Core logic - for timer
 #include <vector>        // Core logic
 #include <unordered_map> // For key mapping
-#include "../src/SDL2/x86_64-w64-mingw32/include/SDL2/SDL.h"
-#include "../src/SDL2_image/x86_64-w64-mingw32/include/SDL2/SDL_image.h"
-#include "../src/SDL2_TTF/x86_64-w64-mingw32/include/SDL2/SDL_ttf.h"
-#include "../src/SDL2_Mixer/x86_64-w64-mingw32/include/SDL2/SDL_mixer.h"
-#include "./headers/custom_SDL_button.hpp"
+#include <SDL.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#include <SDL_mixer.h>
+#include "custom_SDL_button.hpp"
 
 extern SDL_Window *window;
 extern SDL_Renderer *renderer;
@@ -339,3 +339,62 @@ void start_game_update();
 
 // for SDL_renders
 bool is_achievement_unlocked(int target); // For rendering Trophy icon if achievement unlocked
+
+// for main.cpp
+std::string find_os();
+std::string update_version_string_from_readme_file(std::string fileWithVersionString);
+void start_SDL();
+void play_developer_splash_screen();
+void run_SDL();
+void exit_SDL();
+
+// for core_game_logic.cpp - start_sdl()
+void load_fonts(); // Load fonts here
+void load_textures();
+void ttt_load_textures();
+void load_animations();
+void load_music(std::string songTitle);
+void load_sound();
+void load_controller();
+
+// for core_game_logic.cpp - run_sdl()
+
+void handle_gamepad_scene_1(int button);
+void handle_gamepad_scene_5(int button);
+
+void handle_keyboard_scene_1(SDL_Event event);
+void handle_keyboard_scene_5(SDL_Event event);
+
+void handle_click_scene_1(int mouseX, int mouseY);
+void handle_click_scene_2(int mouseX, int mouseY);
+void handle_click_scene_3(int mouseX, int mouseY);
+void handle_click_scene_4(int mouseX, int mouseY);
+void handle_click_scene_5(int mouseX, int mouseY);
+void handle_click_scene_25(int mouseX, int mouseY);
+void handle_click_scene_8(int mouseX, int mouseY);
+void handle_click_scene_9(int mouseX, int mouseY);
+void handle_click_scene_10(int mouseX, int mouseY);
+
+void draw_buttons_scene_1();
+void draw_buttons_scene_2();
+void draw_buttons_scene_3();
+void draw_buttons_scene_4();
+void draw_buttons_scene_5();
+void draw_buttons_scene_25();
+void draw_buttons_scene_8();
+void draw_buttons_scene_9();
+void draw_buttons_scene_10();
+void draw_buttons_scene_11();
+
+void draw_text_for_HUD_scene_1();
+void draw_text_for_HUD_scene_2();
+void draw_text_for_HUD_scene_4();
+void draw_text_for_HUD_scene_25();
+void draw_text_for_HUD_scene_8();
+void draw_text_for_HUD_scene_9();
+void draw_text_for_HUD_scene_11();
+
+void ttt_mouse_handle(int mouseX, int mouseY);
+void ttt_SDL_update();
+void ttt_SDL_draw();
+void ttt_SDL_cleanup();
