@@ -663,14 +663,14 @@ void start_game_update_1()
     save_path_for_zip();
     start_curl();
     download_file();
-    extract_zip();
+    
 
     std::cout << "ENDING: Game Update steps 1 of 2 completed." << std::endl;
 }
 void start_game_update_2()
 {
     std::cout << "STARTING: Game Update steps 2 of 2." << std::endl;
-
+    extract_zip();
     copy_save_to_extracted_folder();
     exit_game();
     delete_original_game_directory_subdirectories();

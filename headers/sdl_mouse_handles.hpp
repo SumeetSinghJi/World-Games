@@ -86,7 +86,7 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
     {
         std::cout << "You clicked Update game" << std::endl;
         start_game_update_1();
-        // start_game_update_2();
+        start_game_update_2();
     }
     else if (SDL_PointInRect(&mousePosition, &menuQuitRect))
     {
