@@ -197,6 +197,7 @@ SDL_GameController *controller = nullptr; // gamepad object initialise
 SDL_Event event;                          // event loop object initialise
 
 // Global variables automatically destroyed at end of main() no need to manual destroy
+
 // Scene 11
 Custom_SDL_Button scene11submitUsernameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene11registerButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -750,44 +751,8 @@ void run_SDL()
 }
 void exit_SDL()
 {
-    // Clear each scene button vector
-    std::cout << "STARTING: Clear Button Vectors." << std::endl;
-    scene1buttons.clear();
-    scene2buttons.clear();
-    scene3buttons.clear();
-    scene4buttons.clear();
-    scene5buttons.clear();
-    scene6buttons.clear();
-    scene7buttons.clear();
-    scene8buttons.clear();
-    scene9buttons.clear();
-    scene10buttons.clear();
-    scene11buttons.clear();
-    scene12buttons.clear();
-    scene13buttons.clear();
-    scene14buttons.clear();
-    scene15buttons.clear();
-    scene16buttons.clear();
-    scene17buttons.clear();
-    scene18buttons.clear();
-    scene19buttons.clear();
-    scene20buttons.clear();
-    scene21buttons.clear();
-    scene22buttons.clear();
-    scene23buttons.clear();
-    scene24buttons.clear();
-    scene25buttons.clear();
-    scene26buttons.clear();
-    scene27buttons.clear();
-    scene28buttons.clear();
-    scene29buttons.clear();
-    scene30buttons.clear();
-
-    // Clear the allButtons vector
-    allButtons.clear();
 
     std::cout << "STARTING: Destroy Textures." << std::endl;
-
     // Splash screen
     SDL_DestroyTexture(splashScreenTexture);
 
