@@ -3,10 +3,9 @@ TASKS
     * Scene 11 + 12 implement
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * fix update header and create a popup for it
-    * on settingsSaveRect in mouse handle save settings, popup asking to save settings
+    * on settingsSaveRect in mouse handle save settings, popup asking to save settings, new function()
     * Replace all textures with buttons
     * Key remapping option
-    * In main load buttons require buttons externs in global_variables.hpp then functions moved code_game_logic.hpp
     * Refractor update_app.hpp to accept parameters in all functions and a way to call them, may require splitting game_update();
     * Popup for start_curl() cout's  
     * In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield

@@ -323,7 +323,93 @@ std::unordered_map<std::string, SDL_Keycode> keyMap = {
     {"d", SDLK_RETURN},
 };
 
-// MOVE TO LOADS
+// SDL CODE FUNCTIONS
+void start_SDL()
+{
+    if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
+    {
+        std::cerr << "Error: Failed to initialize SDL: " << SDL_GetError() << std::endl;
+        exit(1);
+    }
+    else
+    {
+        std::cout << "Successfully initialised: SDL2" << std::endl;
+    }
+
+    if (TTF_Init() != 0)
+    {
+        std::cerr << "Error: Failed to initialize SDL Font: " << TTF_GetError() << std::endl;
+        SDL_Quit();
+        exit(1);
+    }
+    else
+    {
+        std::cout << "Successfully initialised: SDL2 TTF" << std::endl;
+    }
+
+    if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG)
+    {
+        std::cerr << "Error: Failed to initialize SDL IMG: " << IMG_GetError() << std::endl;
+        SDL_Quit();
+        exit(1);
+    }
+    else
+    {
+        std::cout << "Successfully initialised: SDL2 Image" << std::endl;
+    }
+
+    if (Mix_Init(MIX_INIT_MP3) != MIX_INIT_MP3)
+    {
+        std::cerr << "Error: Failed to initialize Audio: " << Mix_GetError() << std::endl;
+        SDL_Quit();
+        exit(1);
+    }
+    else
+    {
+        std::cout << "Successfully initialised: SDL2 Mixer" << std::endl;
+    }
+
+    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
+    {
+        std::cerr << "Error: Failed to open audio channel: " << Mix_GetError() << std::endl;
+        SDL_Quit();
+        exit(1);
+    }
+
+    window = SDL_CreateWindow("Shoushiling 手勢令", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
+    if (!window)
+    {
+        std::cerr << "Error: Failed to create SDL Window: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        exit(1);
+    }
+
+    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    if (!renderer)
+    {
+        std::cerr << "Error: Failed to create SDL Renderer: " << SDL_GetError() << std::endl;
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        exit(1);
+    }
+    load_fonts(); // Load fonts here
+    load_textures();
+    ttt_load_textures();
+    load_animations();
+    std::string currentSong = "";
+    std::string songTitle = "assets/sounds/music/Time - AlexiAction.mp3";
+    load_music(songTitle);
+    load_sound();
+    load_controller();
+    load_buttons_11();
+    load_buttons_12();
+    load_buttons_13();
+    load_buttons_14();
+    load_buttons_25();
+    load_buttons_to_scene_vectors();
+    load_buttons_to_allButtons_vector();
+}
+
 void load_buttons_to_scene_vectors()
 {
     scene11buttons.push_back(&scene11submitUsernameButton);
@@ -449,92 +535,6 @@ void load_buttons_25()
     scene25backusernameButton.set_button_texture(renderer);
 }
 
-// SDL CODE FUNCTIONS
-void start_SDL()
-{
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
-    {
-        std::cerr << "Error: Failed to initialize SDL: " << SDL_GetError() << std::endl;
-        exit(1);
-    }
-    else
-    {
-        std::cout << "Successfully initialised: SDL2" << std::endl;
-    }
-
-    if (TTF_Init() != 0)
-    {
-        std::cerr << "Error: Failed to initialize SDL Font: " << TTF_GetError() << std::endl;
-        SDL_Quit();
-        exit(1);
-    }
-    else
-    {
-        std::cout << "Successfully initialised: SDL2 TTF" << std::endl;
-    }
-
-    if (IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG)
-    {
-        std::cerr << "Error: Failed to initialize SDL IMG: " << IMG_GetError() << std::endl;
-        SDL_Quit();
-        exit(1);
-    }
-    else
-    {
-        std::cout << "Successfully initialised: SDL2 Image" << std::endl;
-    }
-
-    if (Mix_Init(MIX_INIT_MP3) != MIX_INIT_MP3)
-    {
-        std::cerr << "Error: Failed to initialize Audio: " << Mix_GetError() << std::endl;
-        SDL_Quit();
-        exit(1);
-    }
-    else
-    {
-        std::cout << "Successfully initialised: SDL2 Mixer" << std::endl;
-    }
-
-    if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 4096) == -1)
-    {
-        std::cerr << "Error: Failed to open audio channel: " << Mix_GetError() << std::endl;
-        SDL_Quit();
-        exit(1);
-    }
-
-    window = SDL_CreateWindow("Shoushiling 手勢令", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, SDL_WINDOW_SHOWN);
-    if (!window)
-    {
-        std::cerr << "Error: Failed to create SDL Window: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        exit(1);
-    }
-
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (!renderer)
-    {
-        std::cerr << "Error: Failed to create SDL Renderer: " << SDL_GetError() << std::endl;
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        exit(1);
-    }
-    load_fonts(); // Load fonts here
-    load_textures();
-    ttt_load_textures();
-    load_animations();
-    std::string currentSong = "";
-    std::string songTitle = "assets/sounds/music/Time - AlexiAction.mp3";
-    load_music(songTitle);
-    load_sound();
-    load_controller();
-    load_buttons_11();
-    load_buttons_12();
-    load_buttons_13();
-    load_buttons_14();
-    load_buttons_25();
-    load_buttons_to_scene_vectors();
-    load_buttons_to_allButtons_vector();
-}
 void handle_events()
 {
     while (SDL_PollEvent(&event) != 0)

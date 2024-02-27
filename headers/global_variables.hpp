@@ -204,6 +204,28 @@ extern SDL_Texture *newyorkNightBackgroundTexture;    // scene 49
 extern SDL_GameController *controller; // gamepad object initialise
 extern SDL_Event event;                // event loop object initialise
 
+// Scene 11
+extern Custom_SDL_Button scene11submitUsernameButton;
+extern Custom_SDL_Button scene11registerButton;
+extern Custom_SDL_Button scene11acceptButton;
+extern Custom_SDL_Button scene11denyButton;
+extern Custom_SDL_Button scene11fontScaleButton;
+// Scene 12
+extern Custom_SDL_Button scene12submitEmailPasswordButton;
+extern Custom_SDL_Button scene12backButton;
+// Scene 13
+extern Custom_SDL_Button scene13submitLoginButton;
+extern Custom_SDL_Button scene13backButton;
+// Scene 14
+extern Custom_SDL_Button scene14hostGameButton;
+extern Custom_SDL_Button scene14joinGameButton;
+extern Custom_SDL_Button scene14searchGamesButton;
+extern Custom_SDL_Button scene14searchFriendsGamesButton;
+extern Custom_SDL_Button scene14refreshButton;
+extern Custom_SDL_Button scene14backButton;
+// Scene 25
+extern Custom_SDL_Button scene25backusernameButton;
+
 // For SDL_Custom_button find_nearest() to find nearest button through kb handle arrow direction keys for GUI navigation
 extern std::vector<Custom_SDL_Button *> scene1buttons;
 extern std::vector<Custom_SDL_Button *> scene2buttons;
