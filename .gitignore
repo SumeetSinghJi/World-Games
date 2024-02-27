@@ -1,7 +1,7 @@
 # Build folders - 
 # must include "/" backslash character at end e.g. "/build/" to exclude directory
 /build/
-/src/curl/src/
+/tests/build/
 /src/curl/build/
 /src/googletest/.github
 /src/googletest/ci/
