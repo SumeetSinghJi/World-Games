@@ -168,7 +168,8 @@ void start_curl()
             // IMPORTANT - Repo needs to be public
             std::string version_tag = "Version: ";
             size_t version_pos = response.find(version_tag);
-            std::cout << "now locating string '" << version_tag << "', in README.md" << std::endl;
+            std::cout << "now locating string '" << version_tag << "', in README.md on Github."
+            "Ensure no bullet point in front of word in online page. e.g. Version: 1.0" << std::endl;
             
             if (version_pos != std::string::npos)
             {
