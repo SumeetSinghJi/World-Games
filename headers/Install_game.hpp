@@ -126,7 +126,6 @@ bool extract_zip()
     }
 
     std::cout << "Game updates unzipped successful." << std::endl;
-    std::cout << "Press ENTER key to continue..." << std::endl;
 
     // Close the zip archive
     zip_close(zip_archive);
@@ -215,16 +214,13 @@ void copy_save_to_extracted_folder()
         }
         else
         {
-            std::cerr << "Source file not found." << std::endl;
+            std::cerr << "Existing save file from non updated game directory not found." << std::endl;
         }
     }
     catch (const std::exception &e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
     }
-
-    std::cout << "Press ENTER key to continue..." << std::endl;
-    std::cin.get();
 }
 
 // Close existing world-games executable

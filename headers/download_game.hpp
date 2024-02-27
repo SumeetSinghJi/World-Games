@@ -262,7 +262,6 @@ int XferInfoCallback(void *clientp, curl_off_t dltotal, curl_off_t dlnow, curl_o
 void download_file()
 {
     std::cout << "Attempting to download updates for world-games." << std::endl;
-    std::cout << "Press ENTER key to continue..." << std::endl;
 
     CURL *curl;
     CURLcode res;
@@ -327,12 +326,10 @@ void download_file()
     if (res == CURLE_OK)
     {
         std::cout << "Download successful." << std::endl;
-        std::cout << "Press ENTER key to continue..." << std::endl;
     }
     else
     {
         std::cout << "Download failed: " << curl_easy_strerror(res) << std::endl;
-        std::cout << "Press ENTER key to continue..." << std::endl;
     }
 
     // Clean up
