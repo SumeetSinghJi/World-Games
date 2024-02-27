@@ -604,17 +604,22 @@ void credits_file_read()
 void start_game_update()
 {
     // Functions from header download_game.hpp
-    // called in main() -> update_version_string_from_readme_file();
+        // called in main() -> update_version_string_from_readme_file();
     save_path_for_zip();
     start_curl();
-    // called in start_curl -> download_file();
-    extract_zip();
-    copy_save_to_extracted_folder();
-    exit_game();
-    delete_original_game_directory_subdirectories();
-    rename_extracted_folder();
-    CMAKE_build();
-    game_start();
+        // called in start_curl -> download_file();
+
+    if (!remoteVersionDouble <= currentVersionDouble)
+    {
+        // Functions from header install_game.hpp
+        extract_zip();
+        copy_save_to_extracted_folder();
+        exit_game();
+        delete_original_game_directory_subdirectories();
+        rename_extracted_folder();
+        CMAKE_build();
+        game_start();
+    }
 }
 
 void key_remap_SDL(const std::string &newKey, SDL_Keycode &oldKey)

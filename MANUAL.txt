@@ -225,6 +225,7 @@ main.exe - Game executable
 MANUAL.txt - Contains information about game
 privacy_policy.txt - Online services Privacy Policy
 README.md - Github source repository introduction document
+TASKS.txt - Issue and Bug tracker
 terms_and_conditions.txt - Online services Terms and Conditions
 Various DLL's for libraries {
     libcurl-x64.dll - libcurl

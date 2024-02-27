@@ -1,4 +1,4 @@
-/*
+
     TO DO
     * Scene 11 + 12 implement
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
@@ -8,15 +8,7 @@
     * Key remapping option
     * Make Tic Tac toe roman circle game
     * Log all cout to debug_logs.txt
-    *
-    * Build with cppcheck to see errors
-    * Build with Clang to see errors on windows
-    * Build on Macbook with Clang
-    * Clang tidy
-    * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
-    * Use AI to create victory animation
-    * volume up/down slider noise
-    * Implement full Keyboard controls
+    * Popup for start_curl() cout's  
     *
     * Start with Declare global variables in global_variables.hpp, define in main.cpp,
     *   remove all externs from all SDL headers
@@ -33,6 +25,17 @@
         CURL server to find friends
         Profanity filter
     * on Installation set download_game.h variable curl_path to automatic to allow updating game from any directory
+
+    * Build with cppcheck to see errors
+    * Build with Clang to see errors on windows
+    * Build on Macbook with Clang
+    * Clang tidy
+    * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
+    * Use AI to create victory animation
+    * volume up/down slider noise
+    * Implement full Keyboard controls
+
+
     * Get advice from professional on how to improve code, including refractoring, segregating and security
     * Add 10 more games
     * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
@@ -49,4 +52,3 @@
     * High Risk - Windows Defender Trojan warning (after memory leak above)
     * High Risk - Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
     * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix afte rimplementing button class
-*/

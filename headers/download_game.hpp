@@ -28,6 +28,8 @@ extern std::string osVersion;
 extern std::string zipFilePath;
 double download_progress = 0.0;
 bool show_progress = false;
+double currentVersionDouble;
+double remoteVersionDouble;
 
 // This function reads the README.md to find the current version, to compare with online repo latest version
 std::string update_version_string_from_readme_file()
@@ -182,20 +184,20 @@ void start_curl()
                 std::string versionNumber = response.substr(version_pos, non_numeric_pos - version_pos);
 
                 // Convert version strings to double
-                double current_version_double = stod(currentVersion);
-                double remote_version_double = stod(versionNumber);
+                currentVersionDouble = stod(currentVersion);
+                remoteVersionDouble = stod(versionNumber);
 
-                if (remote_version_double <= current_version_double)
+                if (remoteVersionDouble <= currentVersionDouble)
                 {
-                    std::cout << "Current version: " << current_version_double << " .Up to date." << std::endl;
+                    std::cout << "Current version: " << currentVersionDouble << " , is already up to date." << std::endl;
                 }
                 else
                 {
                     // 1 - If the game is out of date, prompt to download the latest version
-                    std::cout << "Current version is: " << current_version_double << ", New version available is: " << remote_version_double << std::endl;
+                    std::cout << "Current version is: " << currentVersionDouble << ", New version available is: " << remoteVersionDouble << std::endl;
                     std::cout << "Would you like to update to the latest version? (Enter 'Y' for Yes or 'N' for No.): ";
                     char download_accept_char;
-                    std::cin >> download_accept_char;
+                    std::cin.get() >> download_accept_char;
                     std::cin.ignore(); // Ignore the newline character left in the buffer
 
                     if (download_accept_char == 'Y' || download_accept_char == 'y')
