@@ -15,11 +15,10 @@
                 "-I${workspaceFolder}/src/libzip/lib", // libzib
                 "-I${workspaceFolder}/src/googletest/googletest/include", // Googletest - https://github.com/google/googletest.git
                 "-g",
-                "${file}", // uncomment for only building main.cpp
-                // "${fileDirname}/*.cpp", // Targets current active file to build
-                "${workspaceFolder}/src/*.cpp", // Includes any source .cpp files together with above
+                "${file}", // targets the active .cpp file to build
+                "${workspaceFolder}/src/*.cpp", // Includes any source .cpp files in ./src together with above file
                 "-o",
-                "${workspaceFolder}/${fileBasenameNoExtension}.exe",
+                "${workspaceFolder}/${fileBasenameNoExtension}.exe", // Output's the compiled .exe to project folder
 				"-L${workspaceFolder}/src/SDL2/x86_64-w64-mingw32/lib", // SDL2 lib folder
                 "-L${workspaceFolder}/src/SDL2_Image/x86_64-w64-mingw32/lib", // SDL2 Image lib folder
                 "-L${workspaceFolder}/src/SDL2_Mixer/x86_64-w64-mingw32/lib", // SDL2 Mixer lib folder
