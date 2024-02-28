@@ -348,7 +348,7 @@ void new_game();
 void exit_SDL();
 std::string find_os();
 void render_fps();
-void start_game_update();
+void start_game_update(std::string urlPath, std::string certPath, std::string downloadLink);
 
 // for SDL_renders
 bool is_achievement_unlocked(int target); // For rendering Trophy icon if achievement unlocked

@@ -96,7 +96,12 @@
 			"map": "cpp",
 			"set": "cpp",
 			"unordered_set": "cpp",
-			"xtree": "cpp"
+			"xtree": "cpp",
+			"coroutine": "cpp",
+			"future": "cpp",
+			"ranges": "cpp",
+			"source_location": "cpp",
+			"strstream": "cpp"
 		},
 		"name":"World-Games"
 	}

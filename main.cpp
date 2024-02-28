@@ -20,7 +20,6 @@
 #include "headers/tic_tac_toe.hpp"          // Scene 32 - Rome - Tic Tac Toe
 #include "headers/custom_SDL_button.hpp"    // Custom SDL Button class for creating buttons for handles
 
-
 int main(int argc, char *argv[])
 {
     srand(static_cast<unsigned int>(time(0))); // Seed random time function for gameplay randomisation

@@ -14,43 +14,82 @@
     Example:
 
     1. Populate valuable for variable currentVersion by calling function: update_version_string_from_readme_file();
-    2. Populate variable osVersion with value matching "Windows" "linux" or "Mac OS X"
+    2. Populate variable OSversion with value matching "Windows" "linux" or "Mac OS X"
     3. Call function: start_game_update(); to update game, with parameters for URL of website with the string "Version: "
-    to match with offline version, and second parameter of local trusted CA certificate proving remote sites authenticity
+    to match with offline version, and second parameter of local trusted CA certificate proving remote sites authenticity.
+    3rd parameter string is the full zip path to download.
+    e.g. start_game_update("https://github.com/SumeetSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
 */
 
 #pragma once
 
 #include <iostream>
 #include "global_variables.hpp"
-#include <curl.h>     // for downloading latest game from Github
-#include <cstdio> // for curl functions
+#include <curl.h>  // for downloading latest game from Github
+#include <cstdio>  // for curl functions
 #include <cstring> // for curl functions
 #include <cstdlib> // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,
 #ifdef _WIN32
 #include <winsock2.h> // For curling on Windows
 #endif
-#include <zip.h>     // for unzipping downloaded game from GitHub/source repo
+#include <zip.h>      // for unzipping downloaded game from GitHub/source repo
 #include <fstream>    // multiplatform method for for file open read write objects
 #include <filesystem> // multiplatform method for creating and deleting directories (folders)
 #include <string>     // For getline()
 #include <cstdlib>    // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,
 
+#ifdef _WIN32
+const std::string OSversion = "Windows";
+#elif __APPLE__
+const std::string OSversion = "Mac OS X";
+#elif __linux__
+const std::string OSversion = "Linux";
+#else
+const std::string OSversion = "Unknown";
+#endif
 
 // FUNCTION PROTOTYPE
-void download_file(std::string urlZipPath, std::string certPath);
+void download_file(std::string downloadLink, std::string certPath);
 
 // GLOBAL VARIABLES
-std::string zipFilePath;
 std::string currentVersion;
+std::string zipFilePath;
 double download_progress = 0.0;
 bool show_progress = false;
 double currentVersionDouble;
 double remoteVersionDouble;
 
-/* Requires these external variables
-extern std::string osVersion;
-extern std::string zipFilePath;
+/* String variables/API's for GUI text Rendering
+
+ Example;:
+
+ bool startCurlTextRenderFlag = false;
+ std::string startCurlTextRenderString = "Starting Curl"
+
+ bool downloadLinkTextRenderFlag = false;
+ std::string downloadLinkTextRenderString = "Download Zip?"
+
+ start_curl() {
+    startCurlTextRenderFlag = true;
+    download_link();
+ }
+ download_link() {
+    startCurlTextRenderFlag = false;
+    downloadLinkTextRenderFlag = true;
+ }
+
+ sdl_draw() {
+     if (startCurlTextRenderFlag) {
+        render_text(startCurlTextRenderString); // will render text: "Starting Curl"
+     } else if (downloadLinkTextRenderFlag) {
+        render_text(downloadLinkTextRenderString); // will render text: "Download Zip?"
+     } else if (extractZipTextRenderFlag) {
+        render_text(extractZipTextRenderString); // will render text: "Extracting Zip"
+     }
+ }
+
+
+ Expected output: On screen text rendering in GUI application "Starting Curl" or "Downloading Zip"
 */
 
 // This function reads the README.md to find the current version, to compare with online repo latest version
@@ -86,13 +125,13 @@ std::string set_curl_executable_or_bin_path()
     std::string curl_path = "";
     const char *home_directory = nullptr;
 
-    if (osVersion == "Windows")
+    if (OSversion == "Windows")
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
         curl_path = std::string(home_directory) + filepath_separator + "Documents" + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
     }
-    else if (osVersion == "linux" || osVersion == "Mac OS X")
+    else if (OSversion == "linux" || OSversion == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
@@ -112,17 +151,17 @@ std::string save_path_for_zip()
     std::string filepath_separator = "";
     const char *home_directory = nullptr;
 
-    if (osVersion == "Windows")
+    if (OSversion == "Windows")
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
-        zipFilePath = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
+        std::string zipFilePath = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
     }
-    else if (osVersion == "linux" || osVersion == "Mac OS X")
+    else if (OSversion == "linux" || OSversion == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
-        zipFilePath = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
+        std::string zipFilePath = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
     }
     else
     {
@@ -140,8 +179,19 @@ size_t cout_curl_response_to_terminal(void *contents, size_t size, size_t nmemb,
 }
 
 // Start Curl to world-games Github to check for updates
-void start_curl(std::string urlPath, std::string certPath)
+void start_curl(std::string urlPath, std::string certPath, std::string downloadLink)
 {
+    /* Purpose
+
+    1. Function update_version_string_from_readme_file() called to populate global variable: currentVersion
+    from reading existing directory readme.md string version number
+    2. This function will connect to a website, and search for string "Version: " and find the trailing
+    numbers then update the global variables remoteVersionDouble
+    3. If remote version is greater then local version prompt will appear to download zip.
+    4. Remainder of steps called in start_game_update()
+
+    */
+
     CURL *curl;
     CURLcode res;
     curl_global_init(CURL_GLOBAL_ALL);
@@ -180,7 +230,7 @@ void start_curl(std::string urlPath, std::string certPath)
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, cout_curl_response_to_terminal);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
-        std::cout << "Status: Now starting to curl https://github.com/SumeetSinghJi/world-games" << std::endl;
+        std::cout << "Status: Now starting to curl: " << urlPath << std::endl;
 
         // Perform the request
         res = curl_easy_perform(curl);
@@ -193,8 +243,9 @@ void start_curl(std::string urlPath, std::string certPath)
             std::string version_tag = "Version: ";
             size_t version_pos = response.find(version_tag);
             std::cout << "now locating string '" << version_tag << "', in README.md on Github."
-            "Ensure no bullet point in front of word in online page. e.g. Version: 1.0" << std::endl;
-            
+                                                                   "Ensure no bullet point in front of word in online page. e.g. Version: 1.0"
+                      << std::endl;
+
             if (version_pos != std::string::npos)
             {
                 version_pos += version_tag.length(); // Move past the "Version: " string
@@ -225,7 +276,7 @@ void start_curl(std::string urlPath, std::string certPath)
                     if (download_accept_char == 'Y' || download_accept_char == 'y')
                     {
                         show_progress = true; // Enable progress display
-                        download_file("https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip", "./src/curl/bin/curl-ca-bundle.crt");
+                        download_file(downloadLink.c_str(), certPath.c_str());
                         show_progress = false; // Disable progress display after download
                     }
                     else
@@ -242,7 +293,7 @@ void start_curl(std::string urlPath, std::string certPath)
         else
         {
             std::cout << "Error: curl failed: " << curl_easy_strerror(res) << std::endl;
-            std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/world-games" << std::endl;
+            std::cout << "Manually download latest game version from here: " << downloadLink << std::endl;
         }
 
         curl_easy_cleanup(curl);
@@ -283,16 +334,14 @@ int XferInfoCallback(void *clientp, curl_off_t dltotal, curl_off_t dlnow, curl_o
 }
 
 // download update file from start_curl() prompt
-void download_file(std::string urlZipPath, std::string certPath)
+void download_file(std::string downloadLink, std::string certPath)
 {
     std::cout << "Attempting to download updates for world-games." << std::endl;
 
     CURL *curl;
     CURLcode res;
-    std::string download_link = urlZipPath;
-    std::string save_path = save_path_for_zip();
-    std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
-    FILE *file = fopen(save_path.c_str(), "wb");
+    std::string zipFilePath = save_path_for_zip();
+    FILE *file = fopen(zipFilePath.c_str(), "wb");
 
     if (!file)
     {
@@ -309,8 +358,9 @@ void download_file(std::string urlZipPath, std::string certPath)
         fclose(file);
         return;
     }
-    // Step 1 - set curl to use the custom curl path for portability (if not macOS)
-    if (!curl_path.empty() && osVersion != "Mac OS X")
+    // Step 1 - Configure curl with curl.exe path
+    std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
+    if (!curl_path.empty())
     {
         curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
         curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
@@ -331,7 +381,7 @@ void download_file(std::string urlZipPath, std::string certPath)
         */
     curl_easy_setopt(curl, CURLOPT_CAINFO, certPath.c_str());
 
-    curl_easy_setopt(curl, CURLOPT_URL, download_link.c_str());
+    curl_easy_setopt(curl, CURLOPT_URL, downloadLink.c_str());
 
     curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
     curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);                                                                                                                 // Pass file pointer to the callback
@@ -362,7 +412,7 @@ void download_file(std::string urlZipPath, std::string certPath)
 }
 
 // Extract Zip of downloaded game update from curl of Github repo
-bool extract_zip()
+bool extract_zip(std::string zipFilePath)
 {
     struct zip *zip_archive;
     struct zip_file *zip_file;
@@ -479,13 +529,13 @@ std::string get_existing_game_folder_path()
     const char *home_directory = nullptr;
     std::string existing_game_directory_path = "";
 
-    if (osVersion == "Windows")
+    if (OSversion == "Windows")
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE");
         existing_game_directory_path = std::string(home_directory) + filepath_separator + "world-games";
     }
-    else if (osVersion == "linux" || osVersion == "Mac OS X")
+    else if (OSversion == "linux" || OSversion == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME");
@@ -505,13 +555,13 @@ std::string get_unzipped_game_destination_path()
     const char *home_directory = nullptr;
     std::string unzipped_game_destination_path = "";
 
-    if (osVersion == "Windows")
+    if (OSversion == "Windows")
     {
         filepath_separator = '\\';
         home_directory = getenv("USERPROFILE");
         unzipped_game_destination_path = std::string(home_directory) + filepath_separator + "world-games-master";
     }
-    else if (osVersion == "linux" || osVersion == "Mac OS X")
+    else if (OSversion == "linux" || OSversion == "Mac OS X")
     {
         filepath_separator = '/';
         home_directory = getenv("HOME");
@@ -570,7 +620,7 @@ void exit_game()
     std::string windows_terrinate_process_command = "taskkill /F /IM main.exe";
     std::string unix_terrinate_process_command = "pkill main";
 
-    if (osVersion == "Windows")
+    if (OSversion == "Windows")
     {
         system(windows_terrinate_process_command.c_str());
     }
@@ -623,7 +673,7 @@ void delete_directory(const std::string &folderPath)
 
     // Use the rmdir command to delete the current directory
 
-    if (osVersion == "Windows")
+    if (OSversion == "Windows")
     {
         std::string command = "rmdir /s /q \"" + folderPath + "\"";
         int result = system(command.c_str());
@@ -671,7 +721,7 @@ void delete_original_game_folder()
     std::cout << "Existing game folder to be deleted is: " << get_existing_game_folder_path() << std::endl;
     std::string existing_game_folder_path = get_existing_game_folder_path();
 
-    if (osVersion == "Windows")
+    if (OSversion == "Windows")
     {
         try
         {
@@ -683,7 +733,7 @@ void delete_original_game_folder()
             std::cout << "Error deleting original game directory: " << exception.what() << std::endl;
         }
     }
-    else if (osVersion == "linux" || osVersion == "Mac OS X")
+    else if (OSversion == "linux" || OSversion == "Mac OS X")
     {
         std::cout << "delete original game directory Work in progress" << std::endl;
     }
@@ -711,7 +761,7 @@ void rename_extracted_folder()
 void CMAKE_build()
 {
     std::cout << "Running CMAKE build steps to copy shortcuts to desktop" << std::endl;
-    if (osVersion == "Windows")
+    if (OSversion == "Windows")
     {
         std::string scriptPath = "windows-add-icon.ps1";
         int result = system(("powershell.exe -ExecutionPolicy Bypass -File " + std::string(scriptPath)).c_str());
@@ -724,7 +774,7 @@ void CMAKE_build()
             std::cout << "Error: Failed to copy shortcut to users desktop" << std::endl;
         }
     }
-    else if (osVersion == "linux" || osVersion == "Mac OS X")
+    else if (OSversion == "linux" || OSversion == "Mac OS X")
     {
         std::cout << "CMAKE for Linux/MacOS Work in progress" << std::endl;
     }
@@ -737,7 +787,7 @@ void game_start()
     std::string new_game_directory_path = get_existing_game_folder_path();
     std::string start_command;
 
-    if (osVersion == "Windows")
+    if (OSversion == "Windows")
     {
         start_command = "start \"\" \"" + new_game_directory_path + "\\world-games.exe\"";
         system(start_command.c_str());
@@ -749,16 +799,15 @@ void game_start()
     }
 }
 
-void start_game_update()
+void start_game_update(std::string urlPath, std::string certPath, std::string downloadLink)
 {
-        // called in main() -> update_version_string_from_readme_file();
-    save_path_for_zip();
-    start_curl("https://github.com/SumeetSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt");
-        // called in start_curl -> download_file();
+    // start_game_update() -> first called elsewhere e.g. in mouse_handles();
+    // update_version_string_from_readme_file("README.md"); -> called in main
+    start_curl(urlPath, certPath, downloadLink); // -> will call download_link() if prompted
     if (!remoteVersionDouble > currentVersionDouble)
     {
         // Functions from header install_game.hpp
-        extract_zip();
+        extract_zip(zipFilePath);
         copy_save_to_extracted_folder();
         exit_game();
         delete_original_game_directory_subdirectories();

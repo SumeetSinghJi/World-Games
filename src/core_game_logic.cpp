@@ -493,7 +493,7 @@ void new_game()
 std::string find_os()
 {
     const char *char_osVersion = SDL_GetPlatform();
-    osVersion = char_osVersion;
+    std::string osVersion = char_osVersion;
     if (char_osVersion != NULL)
     {
         std::cout << "Host operating system: " << char_osVersion << std::endl;
