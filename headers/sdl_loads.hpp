@@ -86,16 +86,6 @@ void load_textures()
     menuBackgroundTexture = load_texture("assets/graphics/backgrounds/title_background.jpg", "Menu Background");
     worldMapTexture = load_texture("assets/graphics/backgrounds/world-map.jpg", "World Map");
 
-    // Main menu buttons
-    menuNewGameTexture = load_texture("assets/graphics/buttons/settings/newgame-button.png", "New Game Button");
-    menuLoadGameTexture = load_texture("assets/graphics/buttons/settings/save-button.png", "Load Game Button");
-    menuSettingsTexture = load_texture("assets/graphics/buttons/settings/settings-button.png", "Settings Button");
-    menuAchievementsTexture = load_texture("assets/graphics/buttons/settings/achievement-button.png", "Achievements Button");
-    menuHelpTexture = load_texture("assets/graphics/buttons/settings/help-button.png", "Help Button");
-    menuUpdateGameTexture = load_texture("assets/graphics/buttons/settings/update-button.png", "Update Button");
-    menuQuitTexture = load_texture("assets/graphics/buttons/settings/quit-button.png", "Quit Button");
-    AgniSamoohLogoTexture = load_texture("assets/graphics/developer_images/AgniSamooh-4k-logo.png", "AgniSamooh Logo");
-
     // Settings buttons
     settingsTexture = load_texture("assets/graphics/buttons/settings/settings-button.png", "Settings Button");
     fontTexture = load_texture("assets/graphics/buttons/settings/font-button.png", "Font Button");

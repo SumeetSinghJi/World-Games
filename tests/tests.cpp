@@ -37,6 +37,20 @@ class mainTest : public ::testing::Test {
         }
 };
 
+// Default Google test working test
+
+TEST_F(mainTest, adds_two_numbers_correctly) {
+    int a = 1;
+    int b = 2;
+    EXPECT_EQ(a + b, 3);
+}
+
+// Game logic tests
+
+
+
+// Settings options tests
+
 TEST_F(mainTest, core_game_logic_cpp_change_resolution_test) {
     int newWindowWidth = 1200;
     int newWindowHeight = 800;
@@ -48,11 +62,7 @@ TEST_F(mainTest, core_game_logic_cpp_change_resolution_test) {
     EXPECT_EQ(currentWindowHeight, newWindowHeight);
 }
 
-TEST_F(mainTest, adds_two_numbers_correctly) {
-    int a = 1;
-    int b = 2;
-    EXPECT_EQ(a + b, 3);
-}
+
 
 int main(int argc, char* argv[]) {
     ::testing::InitGoogleTest(&argc, argv);

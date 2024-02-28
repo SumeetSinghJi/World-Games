@@ -1,6 +1,7 @@
 
 TASKS
-    * IMPORTANT FIRST STEP - Scene 11 + 12 implement - input.cpp broken now
+    * IMPORTANT FIRST STEP - Scene 11 + 12 Implement
+    * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * fix update header and create a popup for it
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings, new function()
@@ -23,6 +24,7 @@ TASKS
     * volume up/down slider noise
     * Implement full Keyboard controls
     * Make Tic Tac toe roman circle game
+    * Compile on MacOS and Ubuntu
     * Sign .exe with purchased Certificate to learn how process works and to deploy on Steam
 
 BUGS
@@ -37,7 +39,6 @@ FUTURE
         * Implement slider
         * Implement checkboxs/radio buttons
         * Implement toggle
-    2. Get advice from professional on how to improve code, including refractoring, segregating and security
     * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
     * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
     * For the board games below, have real image backgrounds e.g. Chess is heiroglohyic image of woman playing senet
@@ -45,3 +46,8 @@ FUTURE
     * 3rd game - The Royal Game of Ur - Babylon
     * 4th game - Chatruanga or Snakes and ladders - Aryavarta
     * 5th game - Indus valley game
+
+REQUIRED ASSISTANCE
+    * tests.cpp building not working correctly
+    * CMAKElists.txt not working for main and tests
+    * Get advice from professional on how to improve code, including refractoring, segregating and security

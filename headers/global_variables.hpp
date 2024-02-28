@@ -204,25 +204,30 @@ extern SDL_Texture *newyorkNightBackgroundTexture;    // scene 49
 extern SDL_GameController *controller; // gamepad object initialise
 extern SDL_Event event;                // event loop object initialise
 
+
+// Scene 1 buttons
+extern Custom_SDL_Button scene1newGameButton;
+extern Custom_SDL_Button scene1settingsButton;
+extern Custom_SDL_Button scene1AchievementsButton;
+extern Custom_SDL_Button scene1HelpButton;
+extern Custom_SDL_Button scene1multiplayerButton;
+extern Custom_SDL_Button scene1QuitButton;
+extern Custom_SDL_Button scene1DeveloperLogoLinkButton;
 // Scene 11
 extern Custom_SDL_Button scene11submitUsernameButton;
 extern Custom_SDL_Button scene11registerButton;
 extern Custom_SDL_Button scene11acceptButton;
 extern Custom_SDL_Button scene11denyButton;
-extern Custom_SDL_Button scene11fontScaleButton;
 // Scene 12
 extern Custom_SDL_Button scene12submitEmailPasswordButton;
 extern Custom_SDL_Button scene12backButton;
 // Scene 13
-extern Custom_SDL_Button scene13submitLoginButton;
+extern Custom_SDL_Button scene13hostGameButton;
+extern Custom_SDL_Button scene13joinGameButton;
+extern Custom_SDL_Button scene13searchGamesButton;
+extern Custom_SDL_Button scene13searchFriendsGamesButton;
+extern Custom_SDL_Button scene13refreshButton;
 extern Custom_SDL_Button scene13backButton;
-// Scene 14
-extern Custom_SDL_Button scene14hostGameButton;
-extern Custom_SDL_Button scene14joinGameButton;
-extern Custom_SDL_Button scene14searchGamesButton;
-extern Custom_SDL_Button scene14searchFriendsGamesButton;
-extern Custom_SDL_Button scene14refreshButton;
-extern Custom_SDL_Button scene14backButton;
 // Scene 25
 extern Custom_SDL_Button scene25backusernameButton;
 
@@ -321,6 +326,14 @@ extern int selectedOption;                    // For Keyboard arrow key or Gamep
 extern int menuTotalOptions;                  // For Keyboard arrow key or Gamepad d-pad selection
 extern int SettingsTotalOptions;              // For Keyboard arrow key or Gamepad d-pad selection
 extern int GameTotalOptions;                  // For Keyboard arrow key or Gamepad d-pad selection
+
+// Multiplayer variables
+extern std::string playerUsername;
+extern std::string playerEmail;
+extern std::string playerPassword;
+extern bool submitUsername;
+extern bool showPrivacyPolicyPopup;
+extern bool acceptedPrivacyPolicy;
 
 extern std::unordered_map<std::string, SDL_Keycode> keyMap;
 

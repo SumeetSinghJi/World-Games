@@ -102,6 +102,8 @@ void draw_buttons_11()
 
 HANDLES
 
+NOTE: when having games like chess, you can have mouse clicks to be is selected so you're aware of what's selected
+
 1. For Mouse handles set .set_selected(); for button on click
 
 void mouse_handles_11(int mouseX, int mouseY)

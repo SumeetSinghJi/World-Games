@@ -22,7 +22,7 @@ void draw_text_for_HUD_scene_1() // Main menu
         render_text("Settings", (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
         render_text("Achievements", (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
         render_text("Help", (windowWidth * 0.45), (windowHeight * 0.55), 255, 0);
-        render_text("Update", (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
+        render_text("Online Multiplayer", (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
         render_text("Exit", (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
 
         render_text("version: " + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
@@ -30,14 +30,14 @@ void draw_text_for_HUD_scene_1() // Main menu
     }
     else if (language == "日本語")
     {
-        render_text("WORLD GAMES", (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
+        render_text("世界 ゲーム", (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
 
         // render_text("続く", (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
-        render_text("新しいゲーム", (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
+        render_text("始めるゲーム", (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
         render_text("設定", (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
         render_text("業績", (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
         render_text("助け", (windowWidth * 0.45), (windowHeight * 0.55), 255, 0);
-        render_text("更新", (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
+        render_text("オンラインマルチプレイヤー", (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
         render_text("出口", (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
 
         render_text("バージョン: " + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);

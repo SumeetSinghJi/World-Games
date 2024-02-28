@@ -11,59 +11,44 @@ Description: read the attached help.txt file
 
 #include "global_variables.hpp"
 
-void handle_click_scene_1(int mouseX, int mouseY) // main menu
+void handle_click_scene_1(int mouseX, int mouseY)
 {
-    // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.15), rectWidth, rectHeight};
-    SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
-    SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
-    SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
-    SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
-    SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
-    SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
-    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.73), static_cast<int>(windowHeight * 0.73), (windowWidth) / 6, (windowHeight) / 6};
-
     SDL_Point mousePosition = {mouseX, mouseY};
-    /*
-    if (SDL_PointInRect(&mousePosition, &menuLoadGameRect))
-    {
-        std::cout << "You clicked Load Game" << std::endl;
-        load_game();
-    }
-    */
-    if (SDL_PointInRect(&mousePosition, &menuNewGameRect))
+
+    if (scene1newGameButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Start Game" << std::endl;
         // scene = 11;
         new_game(); // uncomment this and remove scene = 11, after testing;
     }
-    else if (SDL_PointInRect(&mousePosition, &menuSettingsRect))
+    else if (scene1settingsButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Settings" << std::endl;
         scene = 2;
     }
-    else if (SDL_PointInRect(&mousePosition, &menuAchievementsRect))
+    else if (scene1AchievementsButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Achievements" << std::endl;
         scene = 4;
     }
-    else if (SDL_PointInRect(&mousePosition, &menuHelpRect))
+    else if (scene1HelpButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Help" << std::endl;
         scene = 5;
     }
-    else if (SDL_PointInRect(&mousePosition, &menuGameUpdateRect))
+    else if (scene1multiplayerButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Update game" << std::endl;
         start_game_update();
     }
-    else if (SDL_PointInRect(&mousePosition, &menuQuitRect))
+    else if (scene1QuitButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Quit game" << std::endl;
         // save_game();
         exit_SDL();
         exit(0);
     }
-    else if (SDL_PointInRect(&mousePosition, &AgniSamoohLogoRect))
+    else if (scene1DeveloperLogoLinkButton.isClicked(mousePosition))
     {
         std::cout << "You clicked visit Agni Samooh logo" << std::endl;
         if (osVersion == "Windows")
@@ -93,6 +78,7 @@ void handle_click_scene_1(int mouseX, int mouseY) // main menu
         find_os();
     }
 }
+
 void handle_click_scene_2(int mouseX, int mouseY) // Settings
 {
     SDL_Rect fontRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
@@ -181,10 +167,12 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
         {
             button->set_font_size(36);
         }
-        if (!isMusicPlaying) {
+        if (!isMusicPlaying)
+        {
             Mix_ResumeMusic();
         }
-        if (fpsRendering) {
+        if (fpsRendering)
+        {
             render_fps();
         }
         language = "English";
@@ -317,6 +305,130 @@ void handle_click_scene_5(int mouseX, int mouseY) // Help
         }
     }
 }
+
+void handle_click_scene_8(int mouseX, int mouseY) // Multiplayer lobby
+{
+    SDL_Point mousePosition = {mouseX, mouseY};
+
+    SDL_Rect joinAvailableGameRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
+    SDL_Rect createAvailableGameRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
+    SDL_Rect inviteFriendToAvailableGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
+
+    SDL_Rect refreshAvailableGamesRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
+    SDL_Rect returnToAvailableGamesRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
+
+    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
+
+    // Settings Buttons
+    if (SDL_PointInRect(&mousePosition, &joinAvailableGameRect))
+    {
+        std::cout << "You clicked Join available game" << std::endl;
+    }
+    else if (SDL_PointInRect(&mousePosition, &createAvailableGameRect))
+    {
+        std::cout << "You clicked Create multiplayer game" << std::endl;
+    }
+    else if (SDL_PointInRect(&mousePosition, &inviteFriendToAvailableGameRect))
+    {
+        std::cout << "You clicked Invite friend to game" << std::endl;
+    }
+    else if (SDL_PointInRect(&mousePosition, &refreshAvailableGamesRect))
+    {
+        std::cout << "You clicked Refresh available multiplayer games" << std::endl;
+    }
+    else if (SDL_PointInRect(&mousePosition, &returnToAvailableGamesRect))
+    {
+        std::cout << "You clicked Return to Multiplayer lobby" << std::endl;
+        scene = 8;
+    }
+    else if (SDL_PointInRect(&mousePosition, &returnTitleRect))
+    {
+        std::cout << "You clicked Return to title" << std::endl;
+        scene = 1;
+    }
+}
+void handle_click_scene_9(int mouseX, int mouseY) // Leaderboard
+{
+    SDL_Point mousePosition = {mouseX, mouseY};
+
+    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
+
+    // Settings Buttons
+    if (SDL_PointInRect(&mousePosition, &returnTitleRect))
+    {
+        std::cout << "You clicked Return to title" << std::endl;
+        scene = 1;
+    }
+}
+void handle_click_scene_10(int mouseX, int mouseY) // Keybindings
+{
+    SDL_Point mousePosition = {mouseX, mouseY};
+
+    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
+
+    // Settings Buttons
+    if (SDL_PointInRect(&mousePosition, &returnTitleRect))
+    {
+        std::cout << "You clicked Return to title" << std::endl;
+        scene = 1;
+    }
+}
+
+void handle_click_scene_11(int mouseX, int mouseY)
+{
+    SDL_Point mousePosition = {mouseX, mouseY};
+
+    if (!showPrivacyPolicyPopup)
+    {
+        if (scene11submitUsernameButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked: SUBMIT" << std::endl;
+            submitUsername = true;
+            scene = 12; // To world map
+        }
+        else if (scene11registerButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked: Register for online access" << std::endl;
+            showPrivacyPolicyPopup = true;
+        }
+    }
+    if (showPrivacyPolicyPopup)
+    {
+        if (scene11acceptButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked: Accept Privacy Policy" << std::endl;
+            showPrivacyPolicyPopup = false;
+            acceptedPrivacyPolicy = true;
+            scene = 13; // To multiplayer lobby
+        }
+        else if (scene11denyButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked: Deny Privacy Policy" << std::endl;
+            showPrivacyPolicyPopup = false;
+        }
+    }
+}
+void handle_click_scene_12(int mouseX, int mouseY)
+{
+    SDL_Point mousePosition = {mouseX, mouseY};
+
+    if (scene12submitEmailPasswordButton.isClicked(mousePosition))
+    {
+        std::cout << "You clicked: SUBMIT" << std::endl;
+        submitUsername = true;
+        scene = 13; // To Multiplayer lobby
+    }
+    else if (scene12backButton.isClicked(mousePosition))
+    {
+        std::cout << "You clicked: Back" << std::endl;
+        scene = 11; // back to login page
+    }
+}
+void handle_click_scene_13(int mouseX, int mouseY)
+{
+    SDL_Point mousePosition = {mouseX, mouseY};
+}
+
 void handle_click_scene_25(int mouseX, int mouseY) // World map
 {
     SDL_Point mousePosition = {mouseX, mouseY};
@@ -426,71 +538,3 @@ void handle_click_scene_25(int mouseX, int mouseY) // World map
         is_scene_unlocked(target);
     }
 }
-void handle_click_scene_8(int mouseX, int mouseY) // Multiplayer lobby
-{
-    SDL_Point mousePosition = {mouseX, mouseY};
-
-    SDL_Rect joinAvailableGameRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect createAvailableGameRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect inviteFriendToAvailableGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-
-    SDL_Rect refreshAvailableGamesRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
-    SDL_Rect returnToAvailableGamesRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
-
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
-    // Settings Buttons
-    if (SDL_PointInRect(&mousePosition, &joinAvailableGameRect))
-    {
-        std::cout << "You clicked Join available game" << std::endl;
-    }
-    else if (SDL_PointInRect(&mousePosition, &createAvailableGameRect))
-    {
-        std::cout << "You clicked Create multiplayer game" << std::endl;
-    }
-    else if (SDL_PointInRect(&mousePosition, &inviteFriendToAvailableGameRect))
-    {
-        std::cout << "You clicked Invite friend to game" << std::endl;
-    }
-    else if (SDL_PointInRect(&mousePosition, &refreshAvailableGamesRect))
-    {
-        std::cout << "You clicked Refresh available multiplayer games" << std::endl;
-    }
-    else if (SDL_PointInRect(&mousePosition, &returnToAvailableGamesRect))
-    {
-        std::cout << "You clicked Return to Multiplayer lobby" << std::endl;
-        scene = 8;
-    }
-    else if (SDL_PointInRect(&mousePosition, &returnTitleRect))
-    {
-        std::cout << "You clicked Return to title" << std::endl;
-        scene = 1;
-    }
-}
-void handle_click_scene_9(int mouseX, int mouseY) // Leaderboard
-{
-    SDL_Point mousePosition = {mouseX, mouseY};
-
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
-    // Settings Buttons
-    if (SDL_PointInRect(&mousePosition, &returnTitleRect))
-    {
-        std::cout << "You clicked Return to title" << std::endl;
-        scene = 1;
-    }
-}
-void handle_click_scene_10(int mouseX, int mouseY) // Keybindings
-{
-    SDL_Point mousePosition = {mouseX, mouseY};
-
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
-    // Settings Buttons
-    if (SDL_PointInRect(&mousePosition, &returnTitleRect))
-    {
-        std::cout << "You clicked Return to title" << std::endl;
-        scene = 1;
-    }
-}
-

@@ -13,82 +13,65 @@ Description: read the attached help.txt file
 
 void handle_gamepad_scene_1(int button)
 {
-    // SDL_Rect menuLoadGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
-    SDL_Rect menuNewGameRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25), rectWidth, rectHeight};
-    SDL_Rect menuSettingsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35), rectWidth, rectHeight};
-    SDL_Rect menuAchievementsRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45), rectWidth, rectHeight};
-    SDL_Rect menuHelpRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55), rectWidth, rectHeight};
-    SDL_Rect menuGameUpdateRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65), rectWidth, rectHeight};
-    SDL_Rect menuQuitRect = {static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75), rectWidth, rectHeight};
-    SDL_Rect AgniSamoohLogoRect = {static_cast<int>(windowWidth * 0.73), static_cast<int>(windowHeight * 0.85), (windowWidth) / 6, (windowHeight) / 6};
-
-    // Highlight the selected option for keyboard arrow key and gamepad d pad key input
-    SDL_Rect selectedRect = {
-        static_cast<int>(windowWidth * 0.35),
-        static_cast<int>(windowHeight * 0.25) + selectedOption * 100, // Adjust spacing as needed
-        rectWidth,
-        rectHeight};
-
-    SDL_Point selectedPoint = {selectedRect.x, selectedRect.y}; // This is the selectedRect which overlaps the button rects
-
     switch (button)
     {
     case SDL_CONTROLLER_BUTTON_START:
         std::cout << "You pressed controller button: START" << std::endl;
-        quitEventLoop = true;
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_UP:
-        std::cout << "You pressed controller button: Up" << std::endl;
-        selectedOption = (selectedOption - 1 + menuTotalOptions) % menuTotalOptions;
+        std::cout << "You pressed controller button: UP" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-        std::cout << "You pressed controller button: Down" << std::endl;
-        selectedOption = (selectedOption + 1) % menuTotalOptions;
+        std::cout << "You pressed controller button: DOWN" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        std::cout << "You pressed controller button: LEFT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        std::cout << "You pressed controller button: RIGHT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
         break;
     case SDL_CONTROLLER_BUTTON_A:
         std::cout << "You pressed controller button: A" << std::endl;
-        /*
-        if (SDL_PointInRect(&selectedPoint, &menuLoadGameRect))
+        if (scene1newGameButton.is_selected())
         {
-            std::cout << "You clicked Load Game" << std::endl;
-            load_game();
+            std::cout << "You selected: Start Game" << std::endl;
+            // scene = 11;
+            new_game(); // uncomment this and remove scene = 11, after testing;
         }
-        */
-        if (SDL_PointInRect(&selectedPoint, &menuNewGameRect))
+        else if (scene1settingsButton.is_selected())
         {
-            std::cout << "You clicked Start Game" << std::endl;
-            new_game();
-        }
-        else if (SDL_PointInRect(&selectedPoint, &menuSettingsRect))
-        {
-            std::cout << "You clicked Settings" << std::endl;
+            std::cout << "You selected: Settings" << std::endl;
             scene = 2;
         }
-        else if (SDL_PointInRect(&selectedPoint, &menuAchievementsRect))
+        else if (scene1AchievementsButton.is_selected())
         {
-            std::cout << "You clicked Achievements" << std::endl;
+            std::cout << "You selected: Achievements" << std::endl;
             scene = 4;
         }
-        else if (SDL_PointInRect(&selectedPoint, &menuHelpRect))
+        else if (scene1HelpButton.is_selected())
         {
-            std::cout << "You clicked Help" << std::endl;
+            std::cout << "You selected: Help" << std::endl;
             scene = 5;
         }
-        else if (SDL_PointInRect(&selectedPoint, &menuGameUpdateRect))
+        else if (scene1multiplayerButton.is_selected())
         {
-            std::cout << "You clicked Update game" << std::endl;
+            std::cout << "You selected: Online Multiplayer" << std::endl;
             // start_game_update_1();
         }
-        else if (SDL_PointInRect(&selectedPoint, &menuQuitRect))
+        else if (scene1QuitButton.is_selected())
         {
-            std::cout << "You clicked Quit game" << std::endl;
+            std::cout << "You selected Quit game" << std::endl;
             // save_game();
             exit_SDL();
             exit(0);
         }
-        else if (SDL_PointInRect(&selectedPoint, &AgniSamoohLogoRect))
+        else if (scene1DeveloperLogoLinkButton.is_selected())
         {
-            std::cout << "You clicked visit Agni Samooh logo" << std::endl;
+            std::cout << "You selected visit Agni Samooh logo" << std::endl;
             if (osVersion == "Windows")
             {
                 system("start https://agnisamooh.com");
@@ -189,6 +172,231 @@ void handle_gamepad_scene_5(int button)
                 std::cout << "Cannot Continue. Game not started." << std::endl;
             }
         }
+    default:
+        std::cout << "You pressed a non-configured keyboard input." << std::endl;
+        break;
+    }
+}
+
+void handle_gamepad_scene_11(int button)
+{
+    if (!showPrivacyPolicyPopup)
+    {
+        switch (button)
+        {
+        case SDL_CONTROLLER_BUTTON_START:
+            std::cout << "You pressed controller button: START" << std::endl;
+            break;
+        case SDL_CONTROLLER_BUTTON_DPAD_UP:
+            std::cout << "You pressed controller button: UP" << std::endl;
+            scene11submitUsernameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
+            break;
+        case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+            std::cout << "You pressed controller button: DOWN" << std::endl;
+            scene11submitUsernameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+            break;
+        case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+            std::cout << "You pressed controller button: LEFT" << std::endl;
+            scene11submitUsernameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+            break;
+        case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+            std::cout << "You pressed controller button: RIGHT" << std::endl;
+            scene11submitUsernameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+            break;
+        case SDL_CONTROLLER_BUTTON_A:
+            std::cout << "You pressed controller button: A" << std::endl;
+            if (scene11submitUsernameButton.is_selected())
+            {
+                std::cout << "You clicked: SUBMIT" << std::endl;
+                submitUsername = true;
+                scene = 13; // To multiplayer lobby
+            }
+            else if (scene11registerButton.is_selected())
+            {
+                std::cout << "You clicked: REGISTER" << std::endl;
+                showPrivacyPolicyPopup = true;
+            }
+            break;
+        default:
+            std::cout << "You pressed a non-configured keyboard input." << std::endl;
+            break;
+        }
+    }
+    if (showPrivacyPolicyPopup)
+    {
+        switch (button)
+        {
+        case SDL_CONTROLLER_BUTTON_START:
+            std::cout << "You pressed controller button: START" << std::endl;
+            break;
+        case SDL_CONTROLLER_BUTTON_DPAD_UP:
+            std::cout << "You pressed controller button: UP" << std::endl;
+            scene11acceptButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
+            break;
+        case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+            std::cout << "You pressed controller button: DOWN" << std::endl;
+            scene11acceptButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+            break;
+        case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+            std::cout << "You pressed controller button: LEFT" << std::endl;
+            scene11acceptButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+            break;
+        case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+            std::cout << "You pressed controller button: RIGHT" << std::endl;
+            scene11acceptButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+            break;
+        case SDL_CONTROLLER_BUTTON_A:
+            std::cout << "You pressed controller button: A" << std::endl;
+            if (scene11acceptButton.is_selected())
+            {
+                std::cout << "You clicked: Accept Privacy Policy" << std::endl;
+                showPrivacyPolicyPopup = false;
+                acceptedPrivacyPolicy = true;
+                scene = 13; // To multiplayer lobby
+            }
+            else if (scene11denyButton.is_selected())
+            {
+                std::cout << "You clicked: Deny Privacy Policy" << std::endl;
+                showPrivacyPolicyPopup = false;
+            }
+            break;
+        default:
+            std::cout << "You pressed a non-configured keyboard input." << std::endl;
+            break;
+        }
+    }
+}
+
+void handle_gamepad_scene_12(int button)
+{
+    switch (button)
+    {
+    case SDL_CONTROLLER_BUTTON_START:
+        std::cout << "You pressed controller button: START" << std::endl;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_UP:
+        std::cout << "You pressed controller button: UP" << std::endl;
+        scene12submitEmailPasswordButton.find_nearest_button(scene12buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+        std::cout << "You pressed controller button: DOWN" << std::endl;
+        scene12submitEmailPasswordButton.find_nearest_button(scene12buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        std::cout << "You pressed controller button: LEFT" << std::endl;
+        scene12submitEmailPasswordButton.find_nearest_button(scene12buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        std::cout << "You pressed controller button: RIGHT" << std::endl;
+        scene12submitEmailPasswordButton.find_nearest_button(scene12buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+        break;
+    case SDL_CONTROLLER_BUTTON_A:
+        std::cout << "You pressed controller button: A" << std::endl;
+        if (scene12submitEmailPasswordButton.is_selected())
+        {
+            std::cout << "You clicked: SUBMIT" << std::endl;
+            submitUsername = true;
+            scene = 13; // To Multiplayer lobby
+        }
+        else if (scene12backButton.is_selected())
+        {
+            std::cout << "You clicked: Back" << std::endl;
+            scene = 11; // back to login page
+        }
+    default:
+        std::cout << "You pressed a non-configured keyboard input." << std::endl;
+        break;
+    }
+}
+
+void handle_gamepad_scene_13(int button)
+{
+    switch (button)
+    {
+    case SDL_CONTROLLER_BUTTON_START:
+        std::cout << "You pressed controller button: START" << std::endl;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_UP:
+        std::cout << "You pressed controller button: UP" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+        std::cout << "You pressed controller button: DOWN" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        std::cout << "You pressed controller button: LEFT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        std::cout << "You pressed controller button: RIGHT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+        break;
+    case SDL_CONTROLLER_BUTTON_A:
+        std::cout << "You pressed controller button: A" << std::endl;
+        if (scene1newGameButton.is_selected())
+        {
+            std::cout << "You selected: Start Game" << std::endl;
+            // scene = 11;
+            new_game(); // uncomment this and remove scene = 11, after testing;
+        }
+        else if (scene1settingsButton.is_selected())
+        {
+            std::cout << "You selected: Settings" << std::endl;
+            scene = 2;
+        }
+        else if (scene1AchievementsButton.is_selected())
+        {
+            std::cout << "You selected: Achievements" << std::endl;
+            scene = 4;
+        }
+        else if (scene1HelpButton.is_selected())
+        {
+            std::cout << "You selected: Help" << std::endl;
+            scene = 5;
+        }
+        else if (scene1multiplayerButton.is_selected())
+        {
+            std::cout << "You selected: Online Multiplayer" << std::endl;
+            // start_game_update_1();
+        }
+        else if (scene1QuitButton.is_selected())
+        {
+            std::cout << "You selected Quit game" << std::endl;
+            // save_game();
+            exit_SDL();
+            exit(0);
+        }
+        else if (scene1DeveloperLogoLinkButton.is_selected())
+        {
+            std::cout << "You selected visit Agni Samooh logo" << std::endl;
+            if (osVersion == "Windows")
+            {
+                system("start https://agnisamooh.com");
+            }
+            else if (osVersion == "Mac OS X")
+            {
+                system("open https://agnisamooh.com");
+            }
+            else if (osVersion == "linux")
+            {
+                system("xdg-open https://agnisamooh.com");
+            }
+            else if (osVersion == "Android")
+            {
+                system("am start -a android.intent.action.VIEW -d https://agnisamooh.com");
+            }
+            else if (osVersion == "iOS")
+            {
+                system("openurl://agnisamooh.com");
+            }
+            else
+            {
+                std::cout << "OS not detected, cannot open Social media link" << std::endl;
+            }
+            find_os();
+        }
+        break;
     default:
         std::cout << "You pressed a non-configured keyboard input." << std::endl;
         break;

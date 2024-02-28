@@ -150,7 +150,7 @@ void start_curl(std::string urlPath, std::string certPath)
     if (curl)
     {
         std::cout << "Success: Curl initialised." << std::endl;
-        curl_easy_setopt(curl, CURLOPT_URL, urlPath);
+        curl_easy_setopt(curl, CURLOPT_URL, urlPath.c_str());
 
         // Step 1 - Configure curl with curl.exe path
         std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
