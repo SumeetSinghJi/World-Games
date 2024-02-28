@@ -14,7 +14,7 @@ TASKS
     * If user clicks OK on email verification, account created
     * Scene 14 - ask for login, POST to server, if server responds OK, ???
     * Profanity filter for text input
-    * Setup enet
+    * Setup boost.asio for multiplayer udp
     * Learn to make installer or CMAKE so that update_app() variables are populated to work anywhere on a system
     * In above installer or CMAKE make a shortcut of app.
     * break appart main.cpp into another source file or header file with game_engine.h functions()
@@ -35,10 +35,8 @@ BUGS
 
 FUTURE
     1. for button class
-        * Implement multi-highlight/selects
-        * Implement slider
-        * Implement checkboxs/radio buttons
-        * Implement toggle
+        * Implement multi-highlight/selects for radio buttons/checkboxes/multi-game piece selections
+        * Implement slider - for volume control, brightness
     * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
     * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
     * For the board games below, have real image backgrounds e.g. Chess is heiroglohyic image of woman playing senet

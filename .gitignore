@@ -13,3 +13,9 @@
 /src/libzip/ossfuzz/
 /src/libzip/regress/
 /src/libzip/vstudio/
+/src/asio/.github/
+/src/asio/doc/
+/src/asio/example/
+/src/asio/meta/
+/src/asio/test/
+/src/asio/tools/

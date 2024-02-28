@@ -173,7 +173,7 @@ void start_curl(std::string urlPath, std::string certPath)
         // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); // Disable SSL certificate verification
         // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L); // Disable hostname verification
         */
-        curl_easy_setopt(curl, CURLOPT_CAINFO, certPath);
+        curl_easy_setopt(curl, CURLOPT_CAINFO, certPath.c_str());
 
         // Store the response in a string
         std::string response;
@@ -329,7 +329,7 @@ void download_file(std::string urlZipPath, std::string certPath)
         // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); // Disable SSL certificate verification
         // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L); // Disable hostname verification
         */
-    curl_easy_setopt(curl, CURLOPT_CAINFO, certPath);
+    curl_easy_setopt(curl, CURLOPT_CAINFO, certPath.c_str());
 
     curl_easy_setopt(curl, CURLOPT_URL, download_link.c_str());
 
@@ -755,7 +755,7 @@ void start_game_update()
     save_path_for_zip();
     start_curl("https://github.com/SumeetSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt");
         // called in start_curl -> download_file();
-    if (!remoteVersionDouble <= currentVersionDouble)
+    if (!remoteVersionDouble > currentVersionDouble)
     {
         // Functions from header install_game.hpp
         extract_zip();
