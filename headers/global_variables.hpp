@@ -417,15 +417,74 @@ void ttt_SDL_cleanup();
 
 // from render_text
 void localisation(const std::string& language);
-extern std::string accept_txt;
-extern std::string deny_txt;
-extern std::string update_txt;
-extern std::string start_game_txt;
-extern std::string settings_txt;
-extern std::string achievements_txt;
-extern std::string help_txt;
-extern std::string online_multiplayer_txt;
-extern std::string exit_txt;
-extern std::string version_txt;
-extern std::string agnisamooh_txt;
-extern std::string world_games_txt;
+// A
+ extern std::string accept_txt;
+ extern std::string achievements_txt;
+ extern std::string agnisamooh_txt;
+
+// C
+ extern std::string called_out_bluff_txt;
+ extern std::string cheated_round_txt;
+ extern std::string continue_txt;
+
+// D
+ extern std::string deny_txt;
+
+// E
+ extern std::string enter_name_txt;
+ extern std::string exit_txt;
+
+// F
+ extern std::string font_size_txt;
+ extern std::string found_hidden_level_txt;
+ extern std::string fullscreen_txt;
+ extern std::string fps_text;
+
+// H
+ extern std::string help_txt;
+
+// K
+ extern std::string key_mapping_txt;
+
+// L
+ extern std::string language_txt;
+ extern std::string leaderboard_txt;
+ extern std::string learnt_kitsune_ken_txt;
+ extern std::string lost_a_game_txt;
+
+// M
+ extern std::string main_menu_txt;
+ extern std::string multiplayer_lobby_txt;
+
+// N
+ extern std::string never_lost_game_txt;
+
+// O
+ extern std::string online_multiplayer_txt;
+
+// P
+ extern std::string profile_txt;
+
+// R
+ extern std::string resolution_txt;
+ extern std::string reset_settings_txt;
+
+// S
+ extern std::string save_settings_txt;
+ extern std::string settings_txt;
+ extern std::string sound_txt;
+ extern std::string start_game_txt;
+
+// U
+ extern std::string update_txt;
+
+// V
+ extern std::string version_txt;
+ extern std::string visited_han_palace_txt;
+
+// W
+ extern std::string won_first_game_txt;
+ extern std::string won_game_txt;
+ extern std::string won_same_hand_txt;
+ extern std::string world_games_txt;
+ extern std::string world_map_txt;

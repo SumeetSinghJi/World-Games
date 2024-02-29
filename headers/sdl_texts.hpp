@@ -11,149 +11,234 @@ Description: read the attached help.txt file
 
 #include "global_variables.hpp"
 
+// A
 std::string accept_txt;
-std::string deny_txt;
-std::string update_txt;
-std::string world_games_txt;
-std::string start_game_txt;
-std::string settings_txt;
 std::string achievements_txt;
-std::string help_txt;
-std::string online_multiplayer_txt;
-std::string exit_txt;
-std::string version_txt;
 std::string agnisamooh_txt;
 
-void localisation(const std::string& language) {
+// C
+std::string called_out_bluff_txt;
+std::string cheated_round_txt;
+std::string continue_txt;
+
+// D
+std::string deny_txt;
+
+// E
+std::string enter_name_txt;
+std::string exit_txt;
+
+// F
+std::string font_size_txt;
+std::string found_hidden_level_txt;
+std::string fullscreen_txt;
+std::string fps_text;
+
+// H
+std::string help_txt;
+
+// K
+std::string key_mapping_txt;
+
+// L
+std::string language_txt;
+std::string leaderboard_txt;
+std::string learnt_kitsune_ken_txt;
+std::string lost_a_game_txt;
+
+// M
+std::string main_menu_txt;
+std::string multiplayer_lobby_txt;
+
+// N
+std::string never_lost_game_txt;
+
+// O
+std::string online_multiplayer_txt;
+
+// P
+std::string profile_txt;
+
+// R
+std::string resolution_txt;
+std::string reset_settings_txt;
+
+// S
+std::string save_settings_txt;
+std::string settings_txt;
+std::string sound_txt;
+std::string start_game_txt;
+
+// U
+std::string update_txt;
+
+// V
+std::string version_txt;
+std::string visited_han_palace_txt;
+
+// W
+std::string won_first_game_txt;
+std::string won_game_txt;
+std::string won_same_hand_txt;
+std::string world_games_txt;
+std::string world_map_txt;
+
+void localisation(const std::string &language)
+{
     if (language == "English")
     {
+        // A
         accept_txt = "ACCEPT";
-        deny_txt = "DENY";
-        update_txt = "Update Software";
-        start_game_txt = "Start game";
-        settings_txt = "Settings";
         achievements_txt = "Achievements";
-        help_txt = "Help";
-        online_multiplayer_txt = "Online Multiplayer";
-        exit_txt = "Exit";
-        version_txt = "version: ";
         agnisamooh_txt = "@AgniSamooh.com";
+        // C
+        called_out_bluff_txt = "4. Called out a bluff";
+        cheated_round_txt = "5. Cheated a round";
+        continue_txt = "Continue";
+        // E
+        enter_name_txt = "Enter your name:";
+        exit_txt = "Exit";
+        // F
+        font_size_txt = "Font size";
+        found_hidden_level_txt = "9. Found the hidden level";
+        fps_text = "FPS";
+        fullscreen_txt = "Fullscreen";
+        // H
+        help_txt = "Help";
+        // L
+        language_txt = "Language";
+        leaderboard_txt = "Leaderboard";
+        lost_a_game_txt = "2. Lost a game";
+        learnt_kitsune_ken_txt = "6. Learnt secret of kitsune-ken";
+        // M
+        main_menu_txt = "Main Menu";
+        multiplayer_lobby_txt = "Multiplayer lobby";
+        // N
+        never_lost_game_txt = "10. Never lost a game!";
+        // O
+        online_multiplayer_txt = "Online Multiplayer";
+        // R
+        reset_settings_txt = "Reset Settings";
+        resolution_txt = "Resolution";
+        // S
+        save_settings_txt = "Save Settings";
+        settings_txt = "Settings";
+        sound_txt = "Sound";
+        start_game_txt = "Start game";
+        // V
+        version_txt = "version: ";
+        // W
         world_games_txt = "World Games";
+        won_first_game_txt = "1. Won first game";
+        won_same_hand_txt = "3. Won with same hand";
+        won_game_txt = "8. Won the game";
+        visited_han_palace_txt = "7. Visited the Han Palace";
+        world_map_txt = "World map";
     }
     else if (language == "日本語")
     {
-        accept_txt = "受け入れる"; // ACCEPT
-        deny_txt = "拒否"; // DENY
-        update_txt = "アプリを更新します"; // Update
-        start_game_txt = "始めるゲーム"; // Start Game
-        settings_txt = "設定"; // Settings
-        achievements_txt = "業績"; // Achievements
-        help_txt = "助け"; // Help
-        online_multiplayer_txt = "オンラインマルチプレイヤー"; // Online Multiplayer
-        exit_txt = "出口"; // Exit
-        version_txt = "バージョン: "; // version:
-        agnisamooh_txt = "@AgniSamooh.com"; // @agnisamooh.com
-        world_games_txt = "世界 ゲーム"; // World Games
+        // A
+        accept_txt = "受け入れる";
+        achievements_txt = "業績";
+        agnisamooh_txt = "@AgniSamooh.com";
+        // C
+        called_out_bluff_txt = "4. ブラフを発動した";
+        cheated_round_txt = "5. ラウンドで不正行為をした";
+        continue_txt = "続く";
+        // E
+        enter_name_txt = "あなたの名前を入力してください";
+        exit_txt = "出口";
+        // F
+        font_size_txt = "字体大小";
+        found_hidden_level_txt = "9. 隠しレベルを発見";
+        fullscreen_txt = "全画面表示";
+        // H
+        help_txt = "助け";
+        // L
+        language_txt = "言語";
+        leaderboard_txt = "リーダーボード";
+        lost_a_game_txt = "2. 試合に負けた";
+        learnt_kitsune_ken_txt = "6. きつね剣の秘密を知る";
+        // M
+        main_menu_txt = "メインメニュー";
+        multiplayer_lobby_txt = "マルチプレイヤーロビー";
+        // N
+        never_lost_game_txt = "10. 試合に負けることはありません";
+        // O
+        online_multiplayer_txt = "オンラインマルチプレイヤー";
+        // R
+        reset_settings_txt = "設定をリセット";
+        resolution_txt = "解決";
+        // S
+        save_settings_txt = "設定を保存する";
+        settings_txt = "設定";
+        start_game_txt = "始めるゲーム";
+        sound_txt = "音";
+        // V
+        version_txt = "バージョン: ";
+        // W
+        world_games_txt = "世界 ゲーム";
+        won_first_game_txt = "1. 最初の試合に勝利した";
+        won_same_hand_txt = "3. 同じハンドで勝ちました";
+        won_game_txt = "8. 試合に勝った";
+        visited_han_palace_txt = "7. 漢宮殿を訪問";
+        world_map_txt = "手伝う";
     }
 }
 
 void draw_text_for_HUD_scene_1() // Main menu
 {
-        render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
+    render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
 
-        render_text(start_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
-        render_text(settings_txt, (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
-        render_text(achievements_txt, (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
-        render_text(help_txt, (windowWidth * 0.45), (windowHeight * 0.55), 255, 0);
-        render_text(online_multiplayer_txt, (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
-        render_text(exit_txt, (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
+    render_text(start_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
+    render_text(settings_txt, (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
+    render_text(achievements_txt, (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
+    render_text(help_txt, (windowWidth * 0.45), (windowHeight * 0.55), 255, 0);
+    render_text(online_multiplayer_txt, (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
+    render_text(exit_txt, (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
 
-        render_text(version_txt + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
-        render_text(agnisamooh_txt, (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
-
+    render_text(version_txt + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
+    render_text(agnisamooh_txt, (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
 }
 void draw_text_for_HUD_scene_2() // Settings
 {
-    if (language == "English")
-    {
-        render_text("Settings", (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
+    render_text(settings_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
 
-        render_text("Font size", (windowWidth * 0.2), (windowHeight * 0.2), 255, 0);
-        render_text("Sound", (windowWidth * 0.2), (windowHeight * 0.4), 255, 0);
-        render_text("Language", (windowWidth * 0.2), (windowHeight * 0.6), 255, 0);
-        render_text("FPS", (windowWidth * 0.2), (windowHeight * 0.8), 255, 0);
+    render_text(font_size_txt, (windowWidth * 0.2), (windowHeight * 0.2), 255, 0);
+    render_text(sound_txt, (windowWidth * 0.2), (windowHeight * 0.4), 255, 0);
+    render_text(language_txt, (windowWidth * 0.2), (windowHeight * 0.6), 255, 0);
+    render_text(fps_text, (windowWidth * 0.2), (windowHeight * 0.8), 255, 0);
 
-        render_text("800 x 600", (windowWidth * 0.5), (windowHeight * 0.2), 255, 0);
-        render_text("Resolution", (windowWidth * 0.5), (windowHeight * 0.3), 255, 0);
-        render_text("1366 x 768", (windowWidth * 0.5), (windowHeight * 0.4), 255, 0);
-        render_text("Resolution", (windowWidth * 0.5), (windowHeight * 0.5), 255, 0);
-        render_text("Fullscreen", (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
-        render_text("Resolution", (windowWidth * 0.5), (windowHeight * 0.7), 255, 0);
-        render_text("Key Mapping", (windowWidth * 0.5), (windowHeight * 0.8), 255, 0);
+    render_text("800 x 600", (windowWidth * 0.5), (windowHeight * 0.2), 255, 0);
+    render_text(resolution_txt, (windowWidth * 0.5), (windowHeight * 0.3), 255, 0);
+    render_text("1366 x 768", (windowWidth * 0.5), (windowHeight * 0.4), 255, 0);
+    render_text(resolution_txt, (windowWidth * 0.5), (windowHeight * 0.5), 255, 0);
+    render_text(fullscreen_txt, (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
+    render_text(resolution_txt, (windowWidth * 0.5), (windowHeight * 0.7), 255, 0);
+    render_text(key_mapping_txt, (windowWidth * 0.5), (windowHeight * 0.8), 255, 0);
 
-        render_text("Continue", (windowWidth * 0.8), (windowHeight * 0.2), 255, 0);
-        render_text("Main Menu", (windowWidth * 0.8), (windowHeight * 0.4), 255, 0);
-        render_text("Reset Settings", (windowWidth * 0.8), (windowHeight * 0.6), 255, 0);
-        render_text("Save Settings", (windowWidth * 0.8), (windowHeight * 0.8), 255, 0);
-    }
-    else if (language == "日本語")
-    {
-        render_text("設定", (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
-
-        render_text("字体大小", (windowWidth * 0.2), (windowHeight * 0.2), 255, 0);
-        render_text("音", (windowWidth * 0.2), (windowHeight * 0.4), 255, 0);
-        render_text("言語", (windowWidth * 0.2), (windowHeight * 0.6), 255, 0);
-        render_text("FPS", (windowWidth * 0.2), (windowHeight * 0.8), 255, 0);
-
-        render_text("800 x 600", (windowWidth * 0.5), (windowHeight * 0.2), 255, 0);
-        render_text("解像度", (windowWidth * 0.5), (windowHeight * 0.3), 255, 0);
-        render_text("1366 x 768", (windowWidth * 0.5), (windowHeight * 0.4), 255, 0);
-        render_text("解像度", (windowWidth * 0.5), (windowHeight * 0.5), 255, 0);
-        render_text("全画面表示", (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
-        render_text("解像度", (windowWidth * 0.5), (windowHeight * 0.7), 255, 0);
-        render_text("キーボードのキー変更", (windowWidth * 0.5), (windowHeight * 0.8), 255, 0);
-
-        render_text("続く", (windowWidth * 0.8), (windowHeight * 0.2), 255, 0);
-        render_text("メインメニュー", (windowWidth * 0.8), (windowHeight * 0.4), 255, 0);
-        render_text("設定をリセット", (windowWidth * 0.8), (windowHeight * 0.6), 255, 0);
-        render_text("設定を保存する", (windowWidth * 0.8), (windowHeight * 0.8), 255, 0);
-    }
+    render_text(continue_txt, (windowWidth * 0.8), (windowHeight * 0.2), 255, 0);
+    render_text(main_menu_txt, (windowWidth * 0.8), (windowHeight * 0.4), 255, 0);
+    render_text(reset_settings_txt, (windowWidth * 0.8), (windowHeight * 0.6), 255, 0);
+    render_text(save_settings_txt, (windowWidth * 0.8), (windowHeight * 0.8), 255, 0);
 }
 void draw_text_for_HUD_scene_4() // Achievements
 {
-    if (language == "English")
-    {
-        render_text("Achievements", (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
+    render_text(achievements_txt, (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
 
-        render_text("1. Won first game", (windowWidth * 0.1), (windowHeight * 0.2), 255, 0);
-        render_text("2. Lost a game", (windowWidth * 0.1), (windowHeight * 0.3), 255, 0);
-        render_text("3. Won with same hand", (windowWidth * 0.1), (windowHeight * 0.4), 255, 0);
-        render_text("4. Called out a bluff", (windowWidth * 0.1), (windowHeight * 0.5), 255, 0);
-        render_text("5. Cheated a round", (windowWidth * 0.1), (windowHeight * 0.6), 255, 0);
+    render_text(won_first_game_txt, (windowWidth * 0.1), (windowHeight * 0.2), 255, 0);
+    render_text(lost_a_game_txt, (windowWidth * 0.1), (windowHeight * 0.3), 255, 0);
+    render_text(won_same_hand_txt, (windowWidth * 0.1), (windowHeight * 0.4), 255, 0);
+    render_text(called_out_bluff_txt, (windowWidth * 0.1), (windowHeight * 0.5), 255, 0);
+    render_text(cheated_round_txt, (windowWidth * 0.1), (windowHeight * 0.6), 255, 0);
 
-        render_text("6. Learnt secret of kitsune-ken", (windowWidth * 0.5), (windowHeight * 0.2), 255, 0);
-        render_text("7. Visited the Han Palace", (windowWidth * 0.5), (windowHeight * 0.3), 255, 0);
-        render_text("8. Won the game", (windowWidth * 0.5), (windowHeight * 0.4), 255, 0);
-        render_text("9. Found the hidden level", (windowWidth * 0.5), (windowHeight * 0.5), 255, 0);
-        render_text("10. Never lost a game!", (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
-    }
-    else if (language == "日本語")
-    {
-        render_text("業績", (windowWidth * 0.3), (windowHeight * 0.0), 255, 0);
-
-        render_text("1. 最初の試合に勝利した", (windowWidth * 0.1), (windowHeight * 0.2), 255, 0);
-        render_text("2. 試合に負けた", (windowWidth * 0.1), (windowHeight * 0.3), 255, 0);
-        render_text("3. 同じハンドで勝ちました", (windowWidth * 0.1), (windowHeight * 0.4), 255, 0);
-        render_text("4. ブラフを発動した", (windowWidth * 0.1), (windowHeight * 0.5), 255, 0);
-        render_text("5. ラウンドで不正行為をした", (windowWidth * 0.1), (windowHeight * 0.6), 255, 0);
-
-        render_text("6. きつね剣の秘密を知る", (windowWidth * 0.5), (windowHeight * 0.2), 255, 0);
-        render_text("7. 漢宮殿を訪問", (windowWidth * 0.5), (windowHeight * 0.3), 255, 0);
-        render_text("8. 試合に勝った", (windowWidth * 0.5), (windowHeight * 0.4), 255, 0);
-        render_text("9. 隠しレベルを発見", (windowWidth * 0.5), (windowHeight * 0.5), 255, 0);
-        render_text("10. 試合に負けることはありません", (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
-    }
+    render_text(learnt_kitsune_ken_txt, (windowWidth * 0.5), (windowHeight * 0.2), 255, 0);
+    render_text(visited_han_palace_txt, (windowWidth * 0.5), (windowHeight * 0.3), 255, 0);
+    render_text(won_game_txt, (windowWidth * 0.5), (windowHeight * 0.4), 255, 0);
+    render_text(found_hidden_level_txt, (windowWidth * 0.5), (windowHeight * 0.5), 255, 0);
+    render_text(never_lost_game_txt, (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
 }
+
 void draw_text_for_HUD_scene_7() // Update Software
 {
     render_text(update_txt, (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
@@ -161,50 +246,22 @@ void draw_text_for_HUD_scene_7() // Update Software
 
 void draw_text_for_HUD_scene_8() // Multiplayer lobby
 {
-    if (language == "English")
-    {
-        render_text("Multiplayer lobby", (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
-    }
-    else if (language == "日本語")
-    {
-        render_text("マルチプレイヤーロビー", (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
-    }
+    render_text(multiplayer_lobby_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
 }
 void draw_text_for_HUD_scene_9() // Leaderboard
 {
-    if (language == "English")
-    {
-        render_text("Leaderboard", (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
-    }
-    else if (language == "日本語")
-    {
-        render_text("リーダーボード", (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
-    }
+
+    render_text(leaderboard_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
 }
 void draw_text_for_HUD_scene_11() // Profile
 {
-    if (language == "English")
-    {
-        render_text("Profile", (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
-        render_text("Enter your name:", (windowWidth * 0.3), (windowHeight * 0.3), 255, 0);
-    }
-    else if (language == "日本語")
-    {
-        render_text("プロフィール", (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
-        render_text("あなたの名前を入力してください", (windowWidth * 0.3), (windowHeight * 0.3), 255, 0);
-    }
+
+    render_text(profile_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
+    render_text(enter_name_txt, (windowWidth * 0.3), (windowHeight * 0.3), 255, 0);
 }
 
 void draw_text_for_HUD_scene_25() // World map
 {
-    if (language == "English")
-    {
-        render_text("World map", (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
-    }
-    else if (language == "日本語")
-    {
-        render_text("手伝う", (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
-    }
+
+    render_text(world_map_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
 }
-
-
