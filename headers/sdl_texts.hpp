@@ -11,6 +11,18 @@ Description: read the attached help.txt file
 
 #include "global_variables.hpp"
 
+/*  SUPPORTED LANGUAGES
+    English
+    Japanese: 日本語
+    Thai: ภาษาไทย
+    Sanskrit: संस्कृतम्
+    Traditional Chinese: 中文
+    Arabic: العربية
+    Ge'ez: ግዕዝ
+    Greek: Ελληνικά
+    Latin: Latina
+*/
+
 // A
 std::string accept_txt;
 std::string achievements_txt;
@@ -95,6 +107,10 @@ void localisation(const std::string &language)
         called_out_bluff_txt = "4. Called out a bluff";
         cheated_round_txt = "5. Cheated a round";
         continue_txt = "Continue";
+
+        // D
+        deny_txt = "DENY";
+
         // E
         enter_name_txt = "Enter your name:";
         exit_txt = "Exit";
@@ -145,6 +161,8 @@ void localisation(const std::string &language)
         called_out_bluff_txt = "4. ブラフを発動した";
         cheated_round_txt = "5. ラウンドで不正行為をした";
         continue_txt = "続く";
+        // D
+        deny_txt = "拒否";
         // E
         enter_name_txt = "あなたの名前を入力してください";
         exit_txt = "出口";
@@ -183,6 +201,377 @@ void localisation(const std::string &language)
         won_game_txt = "8. 試合に勝った";
         visited_han_palace_txt = "7. 漢宮殿を訪問";
         world_map_txt = "手伝う";
+    }
+    else if (language == "ภาษาไทย")
+    {
+        accept_txt = "ยอมรับ";
+        achievements_txt = "ความสำเร็จ";
+        agnisamooh_txt = "@AgniSamooh.com";
+        // C
+        called_out_bluff_txt = "4. กล่าวออกมาโดนเฉพาะ";
+        cheated_round_txt = "5. โกงรอบ";
+        continue_txt = "ดำเนินการต่อ";
+
+        // D
+        deny_txt = "ปฏิเสธ";
+
+        // E
+        enter_name_txt = "กรุณาใส่ชื่อของคุณ:";
+        exit_txt = "ออก";
+        // F
+        font_size_txt = "ขนาดตัวอักษร";
+        found_hidden_level_txt = "9. พบระดับที่ซ่อนอยู่";
+        fps_text = "FPS";
+        fullscreen_txt = "เต็มหน้าจอ";
+        // H
+        help_txt = "ช่วยเหลือ";
+        // L
+        language_txt = "ภาษา";
+        leaderboard_txt = "ตารางเกม";
+        lost_a_game_txt = "2. แพ้เกม";
+        learnt_kitsune_ken_txt = "6. เรียนรู้ความลับของ kitsune-ken";
+        // M
+        main_menu_txt = "เมนูหลัก";
+        multiplayer_lobby_txt = "ห้องโหลดเกมหลายคน";
+        // N
+        never_lost_game_txt = "10. ไม่เคยแพ้เกม!";
+        // O
+        online_multiplayer_txt = "โหมดเล่นหลายคนออนไลน์";
+        // R
+        reset_settings_txt = "รีเซ็ตการตั้งค่า";
+        resolution_txt = "ความละเอียด";
+        // S
+        save_settings_txt = "บันทึกการตั้งค่า";
+        settings_txt = "การตั้งค่า";
+        sound_txt = "เสียง";
+        start_game_txt = "เริ่มเกม";
+        // V
+        version_txt = "เวอร์ชัน: ";
+        // W
+        world_games_txt = "เกมโลก";
+        won_first_game_txt = "1. ชนะเกมแรก";
+        won_same_hand_txt = "3. ชนะด้วยมือเดียวกัน";
+        won_game_txt = "8. ชนะเกม";
+        visited_han_palace_txt = "7. เยี่ยมพระราชวังฮัน";
+        world_map_txt = "แผนที่โลก";
+    }
+    else if (language == "संस्कृतम्")
+    {
+        accept_txt = "स्वीकार्यम्";
+        achievements_txt = "यशः";
+        agnisamooh_txt = "@AgniSamooh.com";
+        // C
+        called_out_bluff_txt = "4. छल का उद्घाटन";
+        cheated_round_txt = "5. धोखेबाजी राउंड";
+        continue_txt = "प्रस्तुति";
+
+        // D
+        deny_txt = "अस्वीकार्यम्";
+
+        // E
+        enter_name_txt = "तव नाम प्रविष्टम्:";
+        exit_txt = "निर्गम";
+        // F
+        font_size_txt = "लिपिमान";
+        found_hidden_level_txt = "9. छिपे स्तर का पता लगाया";
+        fps_text = "फ्रेम प्रति सेकेण्ड";
+        fullscreen_txt = "पूर्ण आयाम";
+        // H
+        help_txt = "सहायता";
+        // L
+        language_txt = "भाषा";
+        leaderboard_txt = "शिखरपट्टिका";
+        lost_a_game_txt = "2. खेल हारा";
+        learnt_kitsune_ken_txt = "6. कित्सुने-केन का गुप्त रहस्य सीखा";
+        // M
+        main_menu_txt = "मुख्य मेनू";
+        multiplayer_lobby_txt = "बहुप्रयोक्ता लॉबी";
+        // N
+        never_lost_game_txt = "10. कदापि खेल न हारा!";
+        // O
+        online_multiplayer_txt = "ऑनलाइन बहुप्रयोक्ता";
+        // R
+        reset_settings_txt = "सेटिंग्स पुनः सेट करें";
+        resolution_txt = "संकल्प";
+        // S
+        save_settings_txt = "सेटिंग्स सहेजें";
+        settings_txt = "सेटिंग्स";
+        sound_txt = "ध्वनि";
+        start_game_txt = "खेल प्रारंभ करें";
+        // V
+        version_txt = "संस्करण: ";
+        // W
+        world_games_txt = "विश्व खेल";
+        won_first_game_txt = "1. पहला खेल जीता";
+        won_same_hand_txt = "3. एक ही हाथ से जीता";
+        won_game_txt = "8. खेल जीता";
+        visited_han_palace_txt = "7. हान उपासना स्थल पर गया";
+        world_map_txt = "विश्व मानचित्र";
+    }
+    else if (language == "中文")
+    {
+        accept_txt = "接受";
+        achievements_txt = "成就";
+        agnisamooh_txt = "@AgniSamooh.com";
+        // C
+        called_out_bluff_txt = "4. 揭穿虛張聲勢";
+        cheated_round_txt = "5. 作弊一輪";
+        continue_txt = "繼續";
+
+        // D
+        deny_txt = "否認";
+
+        // E
+        enter_name_txt = "輸入你的名字：";
+        exit_txt = "退出";
+        // F
+        font_size_txt = "字體大小";
+        found_hidden_level_txt = "9. 發現隱藏關卡";
+        fps_text = "FPS";
+        fullscreen_txt = "全屏";
+        // H
+        help_txt = "幫助";
+        // L
+        language_txt = "語言";
+        leaderboard_txt = "排行榜";
+        lost_a_game_txt = "2. 輸了一局";
+        learnt_kitsune_ken_txt = "6. 學會狐拳的秘密";
+        // M
+        main_menu_txt = "主菜單";
+        multiplayer_lobby_txt = "多人遊戲大廳";
+        // N
+        never_lost_game_txt = "10. 從未輸過遊戲！";
+        // O
+        online_multiplayer_txt = "在線多人遊戲";
+        // R
+        reset_settings_txt = "重置設置";
+        resolution_txt = "解析度";
+        // S
+        save_settings_txt = "保存設置";
+        settings_txt = "設置";
+        sound_txt = "音效";
+        start_game_txt = "開始遊戲";
+        // V
+        version_txt = "版本：";
+        // W
+        world_games_txt = "世界遊戲";
+        won_first_game_txt = "1. 贏得第一場比賽";
+        won_same_hand_txt = "3. 用同一手贏得";
+        won_game_txt = "8. 贏得比賽";
+        visited_han_palace_txt = "7. 參觀漢宮";
+        world_map_txt = "世界地圖";
+    }
+    else if (language == "العربية")
+    {
+        accept_txt = "قبول";
+        achievements_txt = "الإنجازات";
+        agnisamooh_txt = "@AgniSamooh.com";
+        // C
+        called_out_bluff_txt = "4. كشف الكذب";
+        cheated_round_txt = "5. خدع جولة";
+        continue_txt = "متابعة";
+
+        // D
+        deny_txt = "رفض";
+
+        // E
+        enter_name_txt = "أدخل اسمك:";
+        exit_txt = "خروج";
+        // F
+        font_size_txt = "حجم الخط";
+        found_hidden_level_txt = "9. اكتشف المستوى الخفي";
+        fps_text = "إطارات في الثانية";
+        fullscreen_txt = "شاشة كاملة";
+        // H
+        help_txt = "مساعدة";
+        // L
+        language_txt = "اللغة";
+        leaderboard_txt = "لوحة القيادة";
+        lost_a_game_txt = "2. خسر لعبة";
+        learnt_kitsune_ken_txt = "6. تعلم سر كيتسوني-كين";
+        // M
+        main_menu_txt = "القائمة الرئيسية";
+        multiplayer_lobby_txt = "غرفة اللعب الجماعي";
+        // N
+        never_lost_game_txt = "10. لم يخسر أبدًا لعبة!";
+        // O
+        online_multiplayer_txt = "لعب جماعي عبر الإنترنت";
+        // R
+        reset_settings_txt = "إعادة تعيين الإعدادات";
+        resolution_txt = "الدقة";
+        // S
+        save_settings_txt = "حفظ الإعدادات";
+        settings_txt = "الإعدادات";
+        sound_txt = "الصوت";
+        start_game_txt = "بدء اللعبة";
+        // V
+        version_txt = "النسخة: ";
+        // W
+        world_games_txt = "ألعاب العالم";
+        won_first_game_txt = "1. فاز باللعبة الأولى";
+        won_same_hand_txt = "3. فاز بنفس اليد";
+        won_game_txt = "8. فاز باللعبة";
+        visited_han_palace_txt = "7. زار القصر هان";
+        world_map_txt = "خريطة العالم";
+    }
+    else if (language == "ግዕዝ")
+    {
+        accept_txt = "ተቀበል";
+        achievements_txt = "ተሳኝ";
+        agnisamooh_txt = "@AgniSamooh.com";
+        // C
+        called_out_bluff_txt = "4. በርቀት ተገኝቷል";
+        cheated_round_txt = "5. መርጋገጥ እቅል";
+        continue_txt = "ተጨማሪ ይሆን";
+
+        // D
+        deny_txt = "አይሰሙም";
+
+        // E
+        enter_name_txt = "ስምዎን ያስገቡ:";
+        exit_txt = "ውጣ";
+        // F
+        font_size_txt = "ፎንት መጠን";
+        found_hidden_level_txt = "9. የምርጫ ሁኔታ ተገኝቷል";
+        fps_text = "መነጽሮች በሳእንት";
+        fullscreen_txt = "መረጃ ለማንበብ";
+        // H
+        help_txt = "እገዛ";
+        // L
+        language_txt = "ቋንቋ";
+        leaderboard_txt = "መረጃ ምርጫ";
+        lost_a_game_txt = "2. ጨዋታ ተወፍረዋል";
+        learnt_kitsune_ken_txt = "6. ከኪቱንዝነት ጥቅም ተማርለት";
+        // M
+        main_menu_txt = "መምሪያ ስምምነት";
+        multiplayer_lobby_txt = "የሚከተለው ሌቦች";
+        // N
+        never_lost_game_txt = "10. ጨዋታ አልተማረውም!";
+        // O
+        online_multiplayer_txt = "እችዋኖች ተጠቃሚ መጫወቻ";
+        // R
+        reset_settings_txt = "ማስተካከል አስጀምሪ";
+        resolution_txt = "ምሳሌ";
+        // S
+        save_settings_txt = "ማስታወሻ አስገባ";
+        settings_txt = "ቅንብሮች";
+        sound_txt = "ድምፅ";
+        start_game_txt = "ጨዋታ ጀምር";
+        // V
+        version_txt = "እትም: ";
+        // W
+        world_games_txt = "ዓለም ጨዋታዎች";
+        won_first_game_txt = "1. መጀመሪያ ጨዋታ ተለዋጭ";
+        won_same_hand_txt = "3. በአንድ ታንክ ተለዋጭ";
+        won_game_txt = "8. ጨዋታ ተለዋጭ";
+        visited_han_palace_txt = "7. የሐን ቦርነት ተገኝቷል";
+        world_map_txt = "ዓለም ካርታ";
+    }
+    else if (language == "Ελληνικά")
+    {
+        accept_txt = "Αποδοχή";
+        achievements_txt = "Επιτεύγματα";
+        agnisamooh_txt = "@AgniSamooh.com";
+        // C
+        called_out_bluff_txt = "4. Αποκάλυψη ψεύδους";
+        cheated_round_txt = "5. Απάτη γύρου";
+        continue_txt = "Συνέχεια";
+
+        // D
+        deny_txt = "Άρνηση";
+
+        // E
+        enter_name_txt = "Εισαγωγή ονόματος:";
+        exit_txt = "Έξοδος";
+        // F
+        font_size_txt = "Μέγεθος γραμματοσειράς";
+        found_hidden_level_txt = "9. Εύρεση κρυμμένου επιπέδου";
+        fps_text = "FPS";
+        fullscreen_txt = "Πλήρης οθόνη";
+        // H
+        help_txt = "Βοήθεια";
+        // L
+        language_txt = "Γλώσσα";
+        leaderboard_txt = "Πίνακας κατάταξης";
+        lost_a_game_txt = "2. Έχασε ένα παιχνίδι";
+        learnt_kitsune_ken_txt = "6. Μάθηση μυστικού του kitsune-ken";
+        // M
+        main_menu_txt = "Κύριο μενού";
+        multiplayer_lobby_txt = "Προθάλαμος πολλαπλών παικτών";
+        // N
+        never_lost_game_txt = "10. Ποτέ δεν έχασε παιχνίδι!";
+        // O
+        online_multiplayer_txt = "Διαδικτυακό πολλαπλών παικτών";
+        // R
+        reset_settings_txt = "Επαναφορά ρυθμίσεων";
+        resolution_txt = "Ανάλυση";
+        // S
+        save_settings_txt = "Αποθήκευση ρυθμίσεων";
+        settings_txt = "Ρυθμίσεις";
+        sound_txt = "Ήχος";
+        start_game_txt = "Έναρξη παιχνιδιού";
+        // V
+        version_txt = "Έκδοση: ";
+        // W
+        world_games_txt = "Παγκόσμια παιχνίδια";
+        won_first_game_txt = "1. Κέρδισε το πρώτο παιχνίδι";
+        won_same_hand_txt = "3. Κέρδισε με το ίδιο χέρι";
+        won_game_txt = "8. Κέρδισε το παιχνίδι";
+        visited_han_palace_txt = "7. Επισκέφθηκε το παλάτι της Χαν";
+        world_map_txt = "Παγκόσμιος χάρτης";
+    }
+    else if (language == "Latina")
+    {
+        accept_txt = "Accepta";
+        achievements_txt = "Perfectiones";
+        agnisamooh_txt = "@AgniSamooh.com";
+        // C
+        called_out_bluff_txt = "4. Detectum mendacium";
+        cheated_round_txt = "5. Fraus circuli";
+        continue_txt = "Continua";
+
+        // D
+        deny_txt = "Negare";
+
+        // E
+        enter_name_txt = "Nomine inserito:";
+        exit_txt = "Exitus";
+        // F
+        font_size_txt = "Magnitudo fontis";
+        found_hidden_level_txt = "9. Nivelem occultum inventum";
+        fps_text = "FPS";
+        fullscreen_txt = "Totus pagina";
+        // H
+        help_txt = "Auxilium";
+        // L
+        language_txt = "Lingua";
+        leaderboard_txt = "Tabula ducum";
+        lost_a_game_txt = "2. Ludum perditum";
+        learnt_kitsune_ken_txt = "6. Arcanum Kitsune-ken didicit";
+        // M
+        main_menu_txt = "Menu principalis";
+        multiplayer_lobby_txt = "Conventus multiplex";
+        // N
+        never_lost_game_txt = "10. Nunquam ludum amisit!";
+        // O
+        online_multiplayer_txt = "Ludum multiplayer online";
+        // R
+        reset_settings_txt = "Resete configurationes";
+        resolution_txt = "Resolutio";
+        // S
+        save_settings_txt = "Configurationes serva";
+        settings_txt = "Configurationes";
+        sound_txt = "Sonus";
+        start_game_txt = "Ludum incipe";
+        // V
+        version_txt = "Versio: ";
+        // W
+        world_games_txt = "Ludi mundi";
+        won_first_game_txt = "1. Primum ludum vicum";
+        won_same_hand_txt = "3. Eadem manu victum";
+        won_game_txt = "8. Ludum vicum";
+        visited_han_palace_txt = "7. Palatium Han visitavit";
+        world_map_txt = "Tabula mundi";
     }
 }
 

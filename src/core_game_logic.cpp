@@ -508,169 +508,63 @@ std::string find_os()
 }
 void help_guide_file_read()
 {
-    std::cout << "Reading contents from: help.txt" << std::endl;
+    std::cout << "Reading contents from: MANUAL.txt" << std::endl;
 
-    // Read contents from the help.txt  file
-    std::ifstream sentence_file("help.txt");
+    // Read contents from the credits.txt file
+    std::ifstream sentence_file("MANUAL.txt");
     if (!sentence_file.is_open())
     {
-        std::cerr << "Error: Failed to open help.txt" << std::endl;
+        std::cerr << "Error: Failed to open MANUAL.txt" << std::endl;
         return;
     }
-    std::string sentence_line;
-    std::string sentence_content;
-    while (std::getline(sentence_file, sentence_line))
+
+    // Render position for the first line of text
+    int renderY = static_cast<int>(windowHeight * 0.2) + scrollY;
+
+    // Read lines from the file and render them to the window
+    std::string line;
+    while (std::getline(sentence_file, line))
     {
-        sentence_content += sentence_line + "\n";
+        // Render only if the text is within the visible area of the window
+        if (renderY >= 0 && renderY < windowHeight)
+            render_text(line, static_cast<int>(windowWidth * 0.1), renderY, 255, 0);
+        
+        // Update render position for the next line of text
+        renderY += 30; // Vertical spacing between lines
     }
+
+    // Close the file
     sentence_file.close();
-
-    TTF_Font *font = nullptr;
-    if (fontSize == 24)
-    {
-        font = font_24;
-    }
-    else if (fontSize == 36)
-    {
-        font = font_36;
-    }
-    else if (fontSize == 48)
-    {
-        font = font_48;
-    }
-
-    SDL_Color sentence_textColor = {0, 0, 0}; // Black colour
-
-    // Wrap length for each section
-    int wrapLength = windowWidth / 2 + 300;
-
-    // Calculate number of sections based on text length and wrap length
-    int numSections = sentence_content.length() / wrapLength + 1;
-
-    // Height of each section
-    int sectionHeight = textHeight / numSections;
-
-    int startY = 0; // this is same as y position in x, y for rendering buttons/text anything.
-
-    for (int i = 0; i < numSections; ++i)
-    {
-        // Get a substring for each section
-        std::string section = sentence_content.substr(i * wrapLength, wrapLength);
-
-        // Render text to a surface
-        SDL_Surface *sentence_textSurface = TTF_RenderText_Blended_Wrapped(font, section.c_str(), sentence_textColor, wrapLength);
-        if (sentence_textSurface == nullptr)
-        {
-            std::cerr << "TTF_RenderText Error: " << TTF_GetError() << std::endl;
-            return;
-        }
-
-        // Calculate textWidth and textHeight using TTF_SizeText
-        int textWidth = sentence_textSurface->w;
-        int textHeight = sentence_textSurface->h;
-
-        // Create a texture from the surface
-        SDL_Texture *sentence_textTexture = SDL_CreateTextureFromSurface(renderer, sentence_textSurface);
-        SDL_FreeSurface(sentence_textSurface);
-
-        if (sentence_textTexture)
-        {
-            SDL_Rect sentence_textRect = {50, startY, textWidth, textHeight}; // Define the area to render text
-            SDL_RenderCopy(renderer, sentence_textTexture, nullptr, &sentence_textRect);
-            SDL_DestroyTexture(sentence_textTexture);
-        }
-        else
-        {
-            std::cerr << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
-            return;
-        }
-
-        // Update the startY coordinate for the next section
-        startY += textHeight;
-    }
 }
 void credits_file_read()
 {
     std::cout << "Reading contents from: credits.txt" << std::endl;
 
-    // Read contents from the Help Guide file
+    // Read contents from the credits.txt file
     std::ifstream sentence_file("credits.txt");
     if (!sentence_file.is_open())
     {
         std::cerr << "Error: Failed to open credits.txt" << std::endl;
         return;
     }
-    std::string sentence_line;
-    std::string sentence_content;
-    while (std::getline(sentence_file, sentence_line))
+
+    // Render position for the first line of text
+    int renderY = static_cast<int>(windowHeight * 0.2) + scrollY;
+
+    // Read lines from the file and render them to the window
+    std::string line;
+    while (std::getline(sentence_file, line))
     {
-        sentence_content += sentence_line + "\n";
+        // Render only if the text is within the visible area of the window
+        if (renderY >= 0 && renderY < windowHeight)
+            render_text(line, static_cast<int>(windowWidth * 0.1), renderY, 255, 0);
+        
+        // Update render position for the next line of text
+        renderY += 30; // Vertical spacing between lines
     }
+
+    // Close the file
     sentence_file.close();
-
-    TTF_Font *font = nullptr;
-    if (fontSize == 24)
-    {
-        font = font_24;
-    }
-    else if (fontSize == 36)
-    {
-        font = font_36;
-    }
-    else if (fontSize == 48)
-    {
-        font = font_48;
-    }
-
-    SDL_Color sentence_textColor = {0, 0, 0}; // Black colour
-
-    // Wrap length for each section
-    int wrapLength = windowWidth / 2 + 300;
-
-    // Calculate number of sections based on text length and wrap length
-    int numSections = sentence_content.length() / wrapLength + 1;
-
-    // Height of each section
-    int sectionHeight = textHeight / numSections;
-
-    int startY = 0; // this is same as y position in x, y for rendering buttons/text anything.
-
-    for (int i = 0; i < numSections; ++i)
-    {
-        // Get a substring for each section
-        std::string section = sentence_content.substr(i * wrapLength, wrapLength);
-
-        // Render text to a surface
-        SDL_Surface *sentence_textSurface = TTF_RenderText_Blended_Wrapped(font, section.c_str(), sentence_textColor, wrapLength);
-        if (sentence_textSurface == nullptr)
-        {
-            std::cerr << "TTF_RenderText Error: " << TTF_GetError() << std::endl;
-            return;
-        }
-
-        // Calculate textWidth and textHeight using TTF_SizeText
-        int textWidth = sentence_textSurface->w;
-        int textHeight = sentence_textSurface->h;
-
-        // Create a texture from the surface
-        SDL_Texture *sentence_textTexture = SDL_CreateTextureFromSurface(renderer, sentence_textSurface);
-        SDL_FreeSurface(sentence_textSurface);
-
-        if (sentence_textTexture)
-        {
-            SDL_Rect sentence_textRect = {50, startY, textWidth, textHeight}; // Define the area to render text
-            SDL_RenderCopy(renderer, sentence_textTexture, nullptr, &sentence_textRect);
-            SDL_DestroyTexture(sentence_textTexture);
-        }
-        else
-        {
-            std::cerr << "SDL_CreateTextureFromSurface Error: " << SDL_GetError() << std::endl;
-            return;
-        }
-
-        // Update the startY coordinate for the next section
-        startY += textHeight;
-    }
 }
 void key_remap_SDL(const std::string &newKey, SDL_Keycode &oldKey)
 {
@@ -1239,7 +1133,6 @@ void draw()
     else if (scene == 8) // tutorial
     {
         draw_text_for_HUD_scene_8();
-        draw_buttons_scene_8();
     }
     else if (scene == 9) // leaderboard
     {

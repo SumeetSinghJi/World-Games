@@ -65,14 +65,7 @@ life, to pursue a nostalgic lifelong fascination you have, as it may bring closu
 
 
 
-Game Name: World Games
-Creation: 26/09/2023
-Version: 0.1
-Description: A C++ game on traditional board and hand games from different cultures around the world.
-Author: Sumeet Singh @ www.sumeet-singh.com
-Publisher: AgniSamooh @ www.agniSamooh.com
-License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) 
-License.
+
 
 
 _________________________________________________________________________________________________________________
@@ -84,6 +77,7 @@ ________________________________________________________________________________
 
 1. Introduction
 2. License
+3. Accessibility
 3. Setup
 4. Software logic
 5. Games and Rules
@@ -125,10 +119,50 @@ Note: This project includes components licensed under different terms:
 - SDL2 TTF: See `./src/SDL2_TTF/LICENSE.txt` for details.
 
 
+_________________________________________________________________________________________________________________
+
+                                        3. ACCESSIBILITY & SUPPORT
 
 _________________________________________________________________________________________________________________
 
-                                                3. SETUP
+Game Name: World Games
+Creation: 26/09/2023
+Version: 0.1
+Description: A C++ game on traditional board and hand games from different cultures around the world.
+Author: Sumeet Singh @ www.sumeet-singh.com
+Publisher: AgniSamooh @ www.agniSamooh.com
+License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) 
+License.
+
+
+ACCESSIBILITY - LANGUAGES
+
+Game supports several languages with full language support below.
+Language can be changed from the Settings - Language (World) option in the main menu.
+1. ENGLISH
+2. 日本語 (Japanese)
+3. ภาษาไทย (Thai)
+4. संस्कृतम् (Sanskrit)
+5. 中文 (Traditional Chinese)
+6. العربية (Arabic)
+7. ግዕዝ (Ge'ez)
+8. Ελληνικά (Greek)
+9. Latina (Latin)
+
+
+ACESSIBILITY - INPUT
+
+Game supports using several key input methods to play game
+1. Mouse (Preferred)
+2. Keyboard
+3. Gamepad
+4. Touch
+
+Keybindings for Keyboard and Gamepad use default Arrow or D-Pad directional keys with ENTER or A to select.
+
+_________________________________________________________________________________________________________________
+
+                                                4. SETUP
 
 _________________________________________________________________________________________________________________
 
@@ -150,6 +184,7 @@ REQUIREMENTS
 
 
 
+
 SETUP
 
 1. Download zipped game folder from GitHub here:
@@ -165,31 +200,9 @@ For Windows: main.exe
 For Linux: main
 For MacOS: copy over this file main.bin to applications folder and accept default priviliges
 
-
-
-ACCESSIBILITY - LANGUAGES
-
-Game supports several languages with full language support below.
-Language can be changed from the Settings - Language (World) option in the main menu.
-1. ENGLISH
-2. 日本語 (JAPANESE)
-
-
-
-ACESSIBILITY - INPUT
-
-Game supports using several key input methods to play game
-1. Mouse (Preferred)
-2. Keyboard
-3. Gamepad
-4. Touch
-
-Keybindings for Keyboard and Gamepad use default Arrow or D-Pad directional keys with ENTER or A to select.
-
-
 _________________________________________________________________________________________________________________
 
-                                        4. SOFTWARE LOGIC
+                                        5. SOFTWARE LOGIC
 
 _________________________________________________________________________________________________________________
 
@@ -393,7 +406,7 @@ if needed then creating the relevant SDL links.
 
 _________________________________________________________________________________________________________________
 
-                                        5. GAMES AND RULES
+                                        6. GAMES AND RULES
                                     
 _________________________________________________________________________________________________________________
 
@@ -458,7 +471,7 @@ across the globe, proving that even the simplest of games can carry profound sig
 
 _________________________________________________________________________________________________________________
 
-                                            6. CREDITS
+                                            7. CREDITS
                                     
 _________________________________________________________________________________________________________________
 
