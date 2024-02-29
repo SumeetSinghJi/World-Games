@@ -39,7 +39,7 @@ void handle_click_scene_1(int mouseX, int mouseY)
     else if (scene1multiplayerButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Update game" << std::endl;
-        start_game_update("https://github.com/SumeetSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
+        start_game_update("https://github.com/SumeetSinghJi/world-games", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
     }
     else if (scene1QuitButton.isClicked(mousePosition))
     {
@@ -140,11 +140,13 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
         if (language == "English")
         {
             language = "日本語";
+            localisation("日本語");
             std::cout << "Language is now set to: " << language << std::endl;
         }
         else
         {
             language = "English";
+            localisation("English");
             std::cout << "Language is now set to: " << language << std::endl;
         }
     }

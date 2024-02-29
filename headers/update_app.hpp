@@ -40,57 +40,30 @@
 
 #ifdef _WIN32
 const std::string OSversion = "Windows";
+const std::string curl_path = "./src/curl/bin/curl.exe";
+const std::string certPath = "./src/curl/bin/curl-ca-bundle.crt";
 #elif __APPLE__
 const std::string OSversion = "Mac OS X";
+const std::string curl_path = "./src/curl/bin/curl.exe";
+const std::string certPath = "./src/curl/bin/curl-ca-bundle.crt";
 #elif __linux__
 const std::string OSversion = "Linux";
+const std::string curl_path = "./src/curl/bin/curl";
+const std::string certPath = "./src/curl/bin/curl-ca-bundle.crt";
 #else
 const std::string OSversion = "Unknown";
 #endif
 
 // FUNCTION PROTOTYPE
-void download_file(std::string downloadLink, std::string certPath);
+void download_file(std::string downloadLink);
 
 // GLOBAL VARIABLES
 std::string currentVersion;
 std::string zipFilePath;
 double download_progress = 0.0;
 bool show_progress = false;
-double currentVersionDouble;
-double remoteVersionDouble;
-
-/* String variables/API's for GUI text Rendering
-
- Example;:
-
- bool startCurlTextRenderFlag = false;
- std::string startCurlTextRenderString = "Starting Curl"
-
- bool downloadLinkTextRenderFlag = false;
- std::string downloadLinkTextRenderString = "Download Zip?"
-
- start_curl() {
-    startCurlTextRenderFlag = true;
-    download_link();
- }
- download_link() {
-    startCurlTextRenderFlag = false;
-    downloadLinkTextRenderFlag = true;
- }
-
- sdl_draw() {
-     if (startCurlTextRenderFlag) {
-        render_text(startCurlTextRenderString); // will render text: "Starting Curl"
-     } else if (downloadLinkTextRenderFlag) {
-        render_text(downloadLinkTextRenderString); // will render text: "Download Zip?"
-     } else if (extractZipTextRenderFlag) {
-        render_text(extractZipTextRenderString); // will render text: "Extracting Zip"
-     }
- }
-
-
- Expected output: On screen text rendering in GUI application "Starting Curl" or "Downloading Zip"
-*/
+bool clickedStartAppUpdate = false;
+bool downloadUpdateSelected = false; // if true render_text(Updating...)
 
 // This function reads the README.md to find the current version, to compare with online repo latest version
 std::string update_version_string_from_readme_file(std::string fileWithVersionString)
@@ -118,6 +91,7 @@ std::string update_version_string_from_readme_file(std::string fileWithVersionSt
     return currentVersion;
 }
 
+/*
 // Set curl executable or bin path by OS
 std::string set_curl_executable_or_bin_path()
 {
@@ -127,15 +101,17 @@ std::string set_curl_executable_or_bin_path()
 
     if (OSversion == "Windows")
     {
-        filepath_separator = '\\';
-        home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
-        curl_path = std::string(home_directory) + filepath_separator + "Documents" + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
+        // filepath_separator = '\\';
+        // home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
+        // curl_path = std::string(home_directory) + filepath_separator + "Documents" + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
+        curl_path = ".\\src\\curl\\bin\\curl.exe";
     }
     else if (OSversion == "linux" || OSversion == "Mac OS X")
     {
-        filepath_separator = '/';
-        home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
+        // filepath_separator = '/';
+        // home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
         // curl_path = std::string(home_directory) + filepath_separator + "world-games" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl";
+        curl_path = "./src/curl/bin/curl.exe";
     }
     else
     {
@@ -144,6 +120,8 @@ std::string set_curl_executable_or_bin_path()
     std::cout << "Curl binary/executable path set to: " << curl_path << std::endl;
     return curl_path;
 }
+*/
+
 
 // Set path to download game updates to
 std::string save_path_for_zip()
@@ -179,7 +157,7 @@ size_t cout_curl_response_to_terminal(void *contents, size_t size, size_t nmemb,
 }
 
 // Start Curl to world-games Github to check for updates
-void start_curl(std::string urlPath, std::string certPath, std::string downloadLink)
+void start_curl(std::string urlPath, std::string downloadLink)
 {
     /* Purpose
 
@@ -189,7 +167,6 @@ void start_curl(std::string urlPath, std::string certPath, std::string downloadL
     numbers then update the global variables remoteVersionDouble
     3. If remote version is greater then local version prompt will appear to download zip.
     4. Remainder of steps called in start_game_update()
-
     */
 
     CURL *curl;
@@ -203,26 +180,10 @@ void start_curl(std::string urlPath, std::string certPath, std::string downloadL
         curl_easy_setopt(curl, CURLOPT_URL, urlPath.c_str());
 
         // Step 1 - Configure curl with curl.exe path
-        std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
-        if (!curl_path.empty())
-        {
-            curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
-            curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
-        }
+        curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
+        curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
 
-        /*
-        Important: To prevent man in the middle attacks.
-        To enable libcurl to verify remote server SSL certificate you must point
-        curl to a existing .crt that contains a bunch of trusted famous CA's.
-
-        Curl provides one such certificate bundled within the ./bin folder e.g. here: src\curl\bin\curl-ca-bundle.crt
-        curl must be set to use this CA.
-
-        Note this can be bypassed for testing purpose only by replacing the below commands with only these 2 commands
-        which will bypass curl verifying remote server certificate
-        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); // Disable SSL certificate verification
-        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L); // Disable hostname verification
-        */
+        // Step 2 - Set CA cert path
         curl_easy_setopt(curl, CURLOPT_CAINFO, certPath.c_str());
 
         // Store the response in a string
@@ -257,8 +218,8 @@ void start_curl(std::string urlPath, std::string certPath, std::string downloadL
                 std::string versionNumber = response.substr(version_pos, non_numeric_pos - version_pos);
 
                 // Convert version strings to double
-                currentVersionDouble = stod(currentVersion);
-                remoteVersionDouble = stod(versionNumber);
+                double currentVersionDouble = stod(currentVersion);
+                double remoteVersionDouble = stod(versionNumber);
 
                 if (remoteVersionDouble <= currentVersionDouble)
                 {
@@ -275,8 +236,9 @@ void start_curl(std::string urlPath, std::string certPath, std::string downloadL
 
                     if (download_accept_char == 'Y' || download_accept_char == 'y')
                     {
+                        downloadUpdateSelected = true;
                         show_progress = true; // Enable progress display
-                        download_file(downloadLink.c_str(), certPath.c_str());
+                        download_file(downloadLink.c_str());
                         show_progress = false; // Disable progress display after download
                     }
                     else
@@ -334,7 +296,7 @@ int XferInfoCallback(void *clientp, curl_off_t dltotal, curl_off_t dlnow, curl_o
 }
 
 // download update file from start_curl() prompt
-void download_file(std::string downloadLink, std::string certPath)
+void download_file(std::string downloadLink)
 {
     std::cout << "Attempting to download updates for world-games." << std::endl;
 
@@ -359,26 +321,10 @@ void download_file(std::string downloadLink, std::string certPath)
         return;
     }
     // Step 1 - Configure curl with curl.exe path
-    std::string curl_path = set_curl_executable_or_bin_path(); // Get the curl executable path
-    if (!curl_path.empty())
-    {
-        curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
-        curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
-    }
+    curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
+    curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
 
-    /*
-        Important: To prevent man in the middle attacks.
-        To enable libcurl to verify remote server SSL certificate you must point
-        curl to a existing .crt that contains a bunch of trusted famous CA's.
-
-        Curl provides one such certificate bundled within the ./bin folder e.g. here: src\curl\bin\curl-ca-bundle.crt
-        curl must be set to use this CA.
-
-        Note this can be bypassed for testing purpose only by replacing the below commands with only these 2 commands
-        which will bypass curl verifying remote server certificate
-        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYPEER, 0L); // Disable SSL certificate verification
-        // curl_easy_setopt(curl, CURLOPT_SSL_VERIFYHOST, 0L); // Disable hostname verification
-        */
+    // Step 2 - Set CA cert path
     curl_easy_setopt(curl, CURLOPT_CAINFO, certPath.c_str());
 
     curl_easy_setopt(curl, CURLOPT_URL, downloadLink.c_str());
@@ -799,12 +745,13 @@ void game_start()
     }
 }
 
-void start_game_update(std::string urlPath, std::string certPath, std::string downloadLink)
+void start_game_update(std::string urlPath, std::string downloadLink)
 {
     // start_game_update() -> first called elsewhere e.g. in mouse_handles();
     // update_version_string_from_readme_file("README.md"); -> called in main
-    start_curl(urlPath, certPath, downloadLink); // -> will call download_link() if prompted
-    if (!remoteVersionDouble > currentVersionDouble)
+    clickedStartAppUpdate = true;
+    start_curl(urlPath, downloadLink); // -> will call download_link() if prompted
+    if (downloadUpdateSelected)
     {
         // Functions from header install_game.hpp
         extract_zip(zipFilePath);

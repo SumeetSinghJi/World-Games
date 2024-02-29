@@ -76,6 +76,28 @@ void draw_privacy_policy_popup_window()
     }
 }
 
+void draw_update_app_popup_window()
+{
+    // Draw privacy policy popup black border
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
+    SDL_Rect privacypolicyPopupBorderRect = {static_cast<int>(windowWidth * 0.1) - 2, static_cast<int>(windowHeight * 0.1) - 2, static_cast<int>(windowWidth * 0.7) + 4, static_cast<int>(windowHeight * 0.7) + 4};
+    SDL_RenderFillRect(renderer, &privacypolicyPopupBorderRect);
+
+    // draw privacy policy popup
+    SDL_SetRenderDrawColor(renderer, 144, 238, 144, 255); // RGB: Light green
+    SDL_Rect privacypolicyPopupRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1), static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7)};
+    SDL_RenderFillRect(renderer, &privacypolicyPopupRect);
+
+    if (showPrivacyPolicyPopup)
+    {
+        render_text("Read Privacy Policy below then accept or deny for online access",
+                    static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1), 255, 0);
+        scene7acceptButton.render_button_rect(renderer);
+        scene7denyButton.render_button_rect(renderer);
+    }
+}
+
+
 void draw_buttons_scene_1()
 {
     scene1newGameButton.render_button_rect(renderer);
@@ -206,43 +228,12 @@ void draw_buttons_scene_5() // Help
     SDL_RenderCopy(renderer, forwardTexture, nullptr, &forwardRect);
     SDL_RenderCopy(renderer, backwardTexture, nullptr, &backwardRect);
 }
-void draw_buttons_scene_25() // World map
+void draw_buttons_scene_7() // Help
 {
-    SDL_Rect helpRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
-    SDL_Rect settingsRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
-
-    SDL_Rect beijingRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.49), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect berlinRect = {static_cast<int>(windowWidth * 0.48), static_cast<int>(windowHeight * 0.36), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect delhiRect = {static_cast<int>(windowWidth * 0.63), static_cast<int>(windowHeight * 0.46), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect hawaiiRect = {static_cast<int>(windowWidth * 0.01), static_cast<int>(windowHeight * 0.5), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect londonRect = {static_cast<int>(windowWidth * 0.43), static_cast<int>(windowHeight * 0.3), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect parisRect = {static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.4), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect seoulRect = {static_cast<int>(windowWidth * 0.78), static_cast<int>(windowHeight * 0.4), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect shanghaiRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect singaporeRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.57), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect tokyoRect = {static_cast<int>(windowWidth * 0.83), static_cast<int>(windowHeight * 0.43), worldmapRegionWidth, worldmapRegionHeight};
-
-    SDL_Rect romeRect = {static_cast<int>(windowWidth * 0.50), static_cast<int>(windowHeight * 0.45), worldmapRegionWidth, worldmapRegionHeight};
-
-    SDL_RenderCopy(renderer, beijingTexture, nullptr, &beijingRect);
-    SDL_RenderCopy(renderer, berlinTexture, nullptr, &berlinRect);
-    SDL_RenderCopy(renderer, delhiTexture, nullptr, &delhiRect);
-    SDL_RenderCopy(renderer, hawaiiTexture, nullptr, &hawaiiRect);
-    SDL_RenderCopy(renderer, londonTexture, nullptr, &londonRect);
-    SDL_RenderCopy(renderer, parisTexture, nullptr, &parisRect);
-    SDL_RenderCopy(renderer, seoulTexture, nullptr, &seoulRect);
-    SDL_RenderCopy(renderer, shanghaiTexture, nullptr, &shanghaiRect);
-    SDL_RenderCopy(renderer, singaporeTexture, nullptr, &singaporeRect);
-    SDL_RenderCopy(renderer, tokyoTexture, nullptr, &tokyoRect);
-
-    SDL_RenderCopy(renderer, romeTexture, nullptr, &romeRect);
-
-    SDL_RenderCopy(renderer, helpTexture, nullptr, &helpRect);
-    SDL_RenderCopy(renderer, settingsTexture, nullptr, &settingsRect);
-    // SDL_RenderCopy(renderer, saveTexture, nullptr, &saveRect);
-    SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
+    scene7acceptButton.render_button_rect(renderer);
+    scene7denyButton.render_button_rect(renderer);
 }
+
 void draw_buttons_scene_8() // Multiplayer lobby
 {
     SDL_Rect joinAvailableGameRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
@@ -306,3 +297,42 @@ void draw_buttons_scene_13() // Online login
     scene13refreshButton.render_button_rect(renderer);
     scene13backButton.render_button_rect(renderer);
 }
+
+void draw_buttons_scene_25() // World map
+{
+    SDL_Rect helpRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
+    SDL_Rect settingsRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
+    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
+
+    SDL_Rect beijingRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.49), worldmapRegionWidth, worldmapRegionHeight};
+    SDL_Rect berlinRect = {static_cast<int>(windowWidth * 0.48), static_cast<int>(windowHeight * 0.36), worldmapRegionWidth, worldmapRegionHeight};
+    SDL_Rect delhiRect = {static_cast<int>(windowWidth * 0.63), static_cast<int>(windowHeight * 0.46), worldmapRegionWidth, worldmapRegionHeight};
+    SDL_Rect hawaiiRect = {static_cast<int>(windowWidth * 0.01), static_cast<int>(windowHeight * 0.5), worldmapRegionWidth, worldmapRegionHeight};
+    SDL_Rect londonRect = {static_cast<int>(windowWidth * 0.43), static_cast<int>(windowHeight * 0.3), worldmapRegionWidth, worldmapRegionHeight};
+    SDL_Rect parisRect = {static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.4), worldmapRegionWidth, worldmapRegionHeight};
+    SDL_Rect seoulRect = {static_cast<int>(windowWidth * 0.78), static_cast<int>(windowHeight * 0.4), worldmapRegionWidth, worldmapRegionHeight};
+    SDL_Rect shanghaiRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4), worldmapRegionWidth, worldmapRegionHeight};
+    SDL_Rect singaporeRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.57), worldmapRegionWidth, worldmapRegionHeight};
+    SDL_Rect tokyoRect = {static_cast<int>(windowWidth * 0.83), static_cast<int>(windowHeight * 0.43), worldmapRegionWidth, worldmapRegionHeight};
+
+    SDL_Rect romeRect = {static_cast<int>(windowWidth * 0.50), static_cast<int>(windowHeight * 0.45), worldmapRegionWidth, worldmapRegionHeight};
+
+    SDL_RenderCopy(renderer, beijingTexture, nullptr, &beijingRect);
+    SDL_RenderCopy(renderer, berlinTexture, nullptr, &berlinRect);
+    SDL_RenderCopy(renderer, delhiTexture, nullptr, &delhiRect);
+    SDL_RenderCopy(renderer, hawaiiTexture, nullptr, &hawaiiRect);
+    SDL_RenderCopy(renderer, londonTexture, nullptr, &londonRect);
+    SDL_RenderCopy(renderer, parisTexture, nullptr, &parisRect);
+    SDL_RenderCopy(renderer, seoulTexture, nullptr, &seoulRect);
+    SDL_RenderCopy(renderer, shanghaiTexture, nullptr, &shanghaiRect);
+    SDL_RenderCopy(renderer, singaporeTexture, nullptr, &singaporeRect);
+    SDL_RenderCopy(renderer, tokyoTexture, nullptr, &tokyoRect);
+
+    SDL_RenderCopy(renderer, romeTexture, nullptr, &romeRect);
+
+    SDL_RenderCopy(renderer, helpTexture, nullptr, &helpRect);
+    SDL_RenderCopy(renderer, settingsTexture, nullptr, &settingsRect);
+    // SDL_RenderCopy(renderer, saveTexture, nullptr, &saveRect);
+    SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
+}
+

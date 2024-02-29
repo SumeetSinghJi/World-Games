@@ -11,38 +11,66 @@ Description: read the attached help.txt file
 
 #include "global_variables.hpp"
 
-void draw_text_for_HUD_scene_1() // Main menu
-{
+std::string accept_txt;
+std::string deny_txt;
+std::string update_txt;
+std::string world_games_txt;
+std::string start_game_txt;
+std::string settings_txt;
+std::string achievements_txt;
+std::string help_txt;
+std::string online_multiplayer_txt;
+std::string exit_txt;
+std::string version_txt;
+std::string agnisamooh_txt;
+
+void localisation(const std::string& language) {
     if (language == "English")
     {
-        render_text("WORLD GAMES", (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
-
-        // render_text("Continue", (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
-        render_text("Start game", (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
-        render_text("Settings", (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
-        render_text("Achievements", (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
-        render_text("Help", (windowWidth * 0.45), (windowHeight * 0.55), 255, 0);
-        render_text("Online Multiplayer", (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
-        render_text("Exit", (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
-
-        render_text("version: " + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
-        render_text("@AgniSamooh.com", (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
+        accept_txt = "ACCEPT";
+        deny_txt = "DENY";
+        update_txt = "Update Software";
+        start_game_txt = "Start game";
+        settings_txt = "Settings";
+        achievements_txt = "Achievements";
+        help_txt = "Help";
+        online_multiplayer_txt = "Online Multiplayer";
+        exit_txt = "Exit";
+        version_txt = "version: ";
+        agnisamooh_txt = "@AgniSamooh.com";
+        world_games_txt = "World Games";
     }
     else if (language == "日本語")
     {
-        render_text("世界 ゲーム", (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
-
-        // render_text("続く", (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
-        render_text("始めるゲーム", (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
-        render_text("設定", (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
-        render_text("業績", (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
-        render_text("助け", (windowWidth * 0.45), (windowHeight * 0.55), 255, 0);
-        render_text("オンラインマルチプレイヤー", (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
-        render_text("出口", (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
-
-        render_text("バージョン: " + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
-        render_text("@AgniSamooh.com", (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
+        accept_txt = "受け入れる"; // ACCEPT
+        deny_txt = "拒否"; // DENY
+        update_txt = "アプリを更新します"; // Update
+        start_game_txt = "始めるゲーム"; // Start Game
+        settings_txt = "設定"; // Settings
+        achievements_txt = "業績"; // Achievements
+        help_txt = "助け"; // Help
+        online_multiplayer_txt = "オンラインマルチプレイヤー"; // Online Multiplayer
+        exit_txt = "出口"; // Exit
+        version_txt = "バージョン: "; // version:
+        agnisamooh_txt = "@AgniSamooh.com"; // @agnisamooh.com
+        world_games_txt = "世界 ゲーム"; // World Games
     }
+}
+
+void draw_text_for_HUD_scene_1() // Main menu
+{
+        render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
+
+        render_text(start_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
+        render_text(settings_txt, (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
+        render_text(achievements_txt, (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
+        render_text(help_txt, (windowWidth * 0.45), (windowHeight * 0.55), 255, 0);
+        render_text(online_multiplayer_txt, (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
+        render_text(exit_txt, (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
+
+        render_text(version_txt + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
+        render_text(agnisamooh_txt, (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
+
 }
 void draw_text_for_HUD_scene_2() // Settings
 {
@@ -126,17 +154,11 @@ void draw_text_for_HUD_scene_4() // Achievements
         render_text("10. 試合に負けることはありません", (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
     }
 }
-void draw_text_for_HUD_scene_25() // World map
+void draw_text_for_HUD_scene_7() // Update Software
 {
-    if (language == "English")
-    {
-        render_text("World map", (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
-    }
-    else if (language == "日本語")
-    {
-        render_text("手伝う", (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
-    }
+    render_text(update_txt, (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
 }
+
 void draw_text_for_HUD_scene_8() // Multiplayer lobby
 {
     if (language == "English")
@@ -172,3 +194,17 @@ void draw_text_for_HUD_scene_11() // Profile
         render_text("あなたの名前を入力してください", (windowWidth * 0.3), (windowHeight * 0.3), 255, 0);
     }
 }
+
+void draw_text_for_HUD_scene_25() // World map
+{
+    if (language == "English")
+    {
+        render_text("World map", (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
+    }
+    else if (language == "日本語")
+    {
+        render_text("手伝う", (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
+    }
+}
+
+

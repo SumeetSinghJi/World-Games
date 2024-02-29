@@ -194,7 +194,9 @@ Custom_SDL_Button scene1HelpButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1multiplayerButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1QuitButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1DeveloperLogoLinkButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
-
+// scene 7
+Custom_SDL_Button scene7acceptButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene7denyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 // Scene 11
 Custom_SDL_Button scene11submitUsernameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene11registerButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -812,6 +814,9 @@ void load_buttons_to_scene_vectors()
     scene1buttons.push_back(&scene1multiplayerButton);
     scene1buttons.push_back(&scene1QuitButton);
     scene1buttons.push_back(&scene1DeveloperLogoLinkButton);
+    // scene 7
+    scene7buttons.push_back(&scene7acceptButton);
+    scene7buttons.push_back(&scene7denyButton);
     // scene 11
     scene11buttons.push_back(&scene11submitUsernameButton);
     scene11buttons.push_back(&scene11registerButton);
@@ -895,6 +900,16 @@ void load_buttons_1()
     scene1QuitButton.set_button_texture(renderer);
     scene1DeveloperLogoLinkButton.set_button_texture(renderer);
 }
+void load_buttons_7()
+{
+    scene7acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
+                                            rectWidth, rectHeight,
+                                            accept_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+    scene7denyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35),
+                                             rectWidth, rectHeight,
+                                             deny_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+}
+
 void load_buttons_11()
 {
     scene11submitUsernameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.8),
@@ -1028,13 +1043,15 @@ void start_SDL()
     load_music(songTitle);
     load_sound();
     load_controller();
+    localisation("English");
     load_buttons_1();
+    load_buttons_7();
     load_buttons_11();
     load_buttons_12();
     load_buttons_13();
     load_buttons_25();
     load_buttons_to_scene_vectors();
-    load_buttons_to_allButtons_vector();
+    load_buttons_to_allButtons_vector();   
 }
 
 void handle_events()

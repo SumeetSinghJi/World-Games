@@ -1,5 +1,6 @@
 
 TASKS
+    * Complete ALL localisation() | alphabetise and fix for all button string inputs
     * IMPORTANT FIRST STEP - Scene 11 + 12 Implement
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS

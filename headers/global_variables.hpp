@@ -213,6 +213,9 @@ extern Custom_SDL_Button scene1HelpButton;
 extern Custom_SDL_Button scene1multiplayerButton;
 extern Custom_SDL_Button scene1QuitButton;
 extern Custom_SDL_Button scene1DeveloperLogoLinkButton;
+// scene 7
+extern Custom_SDL_Button scene7acceptButton;
+extern Custom_SDL_Button scene7denyButton;
 // Scene 11
 extern Custom_SDL_Button scene11submitUsernameButton;
 extern Custom_SDL_Button scene11registerButton;
@@ -348,7 +351,7 @@ void new_game();
 void exit_SDL();
 std::string find_os();
 void render_fps();
-void start_game_update(std::string urlPath, std::string certPath, std::string downloadLink);
+void start_game_update(std::string urlPath, std::string downloadLink);
 
 // for SDL_renders
 bool is_achievement_unlocked(int target); // For rendering Trophy icon if achievement unlocked
@@ -411,3 +414,18 @@ void ttt_mouse_handle(int mouseX, int mouseY);
 void ttt_SDL_update();
 void ttt_SDL_draw();
 void ttt_SDL_cleanup();
+
+// from render_text
+void localisation(const std::string& language);
+extern std::string accept_txt;
+extern std::string deny_txt;
+extern std::string update_txt;
+extern std::string start_game_txt;
+extern std::string settings_txt;
+extern std::string achievements_txt;
+extern std::string help_txt;
+extern std::string online_multiplayer_txt;
+extern std::string exit_txt;
+extern std::string version_txt;
+extern std::string agnisamooh_txt;
+extern std::string world_games_txt;
