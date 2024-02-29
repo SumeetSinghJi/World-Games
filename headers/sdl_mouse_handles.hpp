@@ -287,13 +287,12 @@ void handle_click_scene_5(int mouseX, int mouseY) // Help
     else if (SDL_PointInRect(&mousePosition, &forwardRect))
     {
         std::cout << "You clicked Forward" << std::endl;
-        scrollY += scrollSpeed; // Scroll down
-        
+        scrollY -= scrollSpeed; // Scroll up
     }
     else if (SDL_PointInRect(&mousePosition, &backwardRect))
     {
         std::cout << "You clicked Back" << std::endl;
-        scrollY -= scrollSpeed; // Scroll up
+        scrollY += scrollSpeed; // Scroll down
     }
     else if (SDL_PointInRect(&mousePosition, &returnGameRect))
     {
