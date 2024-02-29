@@ -4,7 +4,7 @@
     Minimum C++ Standard: C++11
     Purpose: Implementation file
     License: MIT License
-    Description: read the attached help.txt file
+    Description: read the attached MANUAL.txt file
 */
 
 #include "headers/global_variables.hpp"     // Declarations for all headers, variables and functions

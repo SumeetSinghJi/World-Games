@@ -4,7 +4,7 @@ Dated: 14/02/2024
 Minimum C++ Standard: C++11
 Purpose: Declaration/Definition file combined
 License: MIT License
-Description: read the attached help.txt file
+Description: read the attached MANUAL.txt file
 */
 
 #pragma once
@@ -287,12 +287,13 @@ void handle_click_scene_5(int mouseX, int mouseY) // Help
     else if (SDL_PointInRect(&mousePosition, &forwardRect))
     {
         std::cout << "You clicked Forward" << std::endl;
-        scrollY -= scrollSpeed; // Scroll up
+        scrollY += scrollSpeed; // Scroll down
+        
     }
     else if (SDL_PointInRect(&mousePosition, &backwardRect))
     {
         std::cout << "You clicked Back" << std::endl;
-        scrollY += scrollSpeed; // Scroll down
+        scrollY -= scrollSpeed; // Scroll up
     }
     else if (SDL_PointInRect(&mousePosition, &returnGameRect))
     {

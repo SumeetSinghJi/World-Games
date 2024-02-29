@@ -4,7 +4,7 @@
     Minimum C++ Standard: C++11
     Purpose: Class Declaration/Definition file combined
     License: MIT License
-    Description: read the attached help.txt file
+    Description: read the attached MANUAL.txt file
 */
 
 #pragma once
