@@ -1,10 +1,9 @@
 
 TASKS
-    * Complete ALL localisation() | alphabetise and fix for all button string inputs
     * IMPORTANT FIRST STEP - Scene 11 + 12 Implement
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
-    * fix update header and create a popup for it
+    * Scene 7 update
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings, new function()
     * Replace all textures with buttons
     * Key remapping option
@@ -18,13 +17,13 @@ TASKS
     * Setup boost.asio for multiplayer udp
     * Learn to make installer or CMAKE so that update_app() variables are populated to work anywhere on a system
     * In above installer or CMAKE make a shortcut of app.
-    * break appart main.cpp into another source file or header file with game_engine.h functions()
     * Build with cppcheck to see errors
     * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
     * Use AI to create victory animation
     * volume up/down slider noise
     * Implement full Keyboard controls
     * Make Tic Tac toe roman circle game
+    * Translate into Thai, Traditional Chinese, Sanskrit, Latin, Greek, Hebrew, Arabic, Amharic
     * Compile on MacOS and Ubuntu
     * Sign .exe with purchased Certificate to learn how process works and to deploy on Steam
 

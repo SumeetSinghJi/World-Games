@@ -76,28 +76,6 @@ void draw_privacy_policy_popup_window()
     }
 }
 
-void draw_update_app_popup_window()
-{
-    // Draw privacy policy popup black border
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
-    SDL_Rect privacypolicyPopupBorderRect = {static_cast<int>(windowWidth * 0.1) - 2, static_cast<int>(windowHeight * 0.1) - 2, static_cast<int>(windowWidth * 0.7) + 4, static_cast<int>(windowHeight * 0.7) + 4};
-    SDL_RenderFillRect(renderer, &privacypolicyPopupBorderRect);
-
-    // draw privacy policy popup
-    SDL_SetRenderDrawColor(renderer, 144, 238, 144, 255); // RGB: Light green
-    SDL_Rect privacypolicyPopupRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1), static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7)};
-    SDL_RenderFillRect(renderer, &privacypolicyPopupRect);
-
-    if (showPrivacyPolicyPopup)
-    {
-        render_text("Read Privacy Policy below then accept or deny for online access",
-                    static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1), 255, 0);
-        scene7acceptButton.render_button_rect(renderer);
-        scene7denyButton.render_button_rect(renderer);
-    }
-}
-
-
 void draw_buttons_scene_1()
 {
     scene1newGameButton.render_button_rect(renderer);
@@ -228,32 +206,12 @@ void draw_buttons_scene_5() // Help
     SDL_RenderCopy(renderer, forwardTexture, nullptr, &forwardRect);
     SDL_RenderCopy(renderer, backwardTexture, nullptr, &backwardRect);
 }
-void draw_buttons_scene_7() // Help
+void draw_buttons_scene_7() // Update Software
 {
     scene7acceptButton.render_button_rect(renderer);
     scene7denyButton.render_button_rect(renderer);
 }
 
-void draw_buttons_scene_8() // Multiplayer lobby
-{
-    SDL_Rect joinAvailableGameRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect createAvailableGameRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect inviteFriendToAvailableGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-
-    SDL_Rect refreshAvailableGamesRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
-    SDL_Rect returnToAvailableGamesRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
-
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
-    SDL_RenderCopy(renderer, joinAvailableGameTexture, nullptr, &joinAvailableGameRect);
-    SDL_RenderCopy(renderer, createAvailableGameTexture, nullptr, &createAvailableGameRect);
-    SDL_RenderCopy(renderer, inviteFriendToAvailableGameTexture, nullptr, &inviteFriendToAvailableGameRect);
-
-    SDL_RenderCopy(renderer, refreshAvailableGamesTexture, nullptr, &refreshAvailableGamesRect);
-    SDL_RenderCopy(renderer, returnToAvailableGamesTexture, nullptr, &returnToAvailableGamesRect);
-
-    SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
-}
 void draw_buttons_scene_9() // leaderboard
 {
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
@@ -287,8 +245,7 @@ void draw_buttons_scene_12() // Create account
     scene12submitEmailPasswordButton.render_button_rect(renderer);
     scene12backButton.render_button_rect(renderer);
 }
-
-void draw_buttons_scene_13() // Online login
+void draw_buttons_scene_13() // Multiplayer lobby
 {
     scene13hostGameButton.render_button_rect(renderer);
     scene13joinGameButton.render_button_rect(renderer);
