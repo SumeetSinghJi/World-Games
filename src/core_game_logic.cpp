@@ -285,8 +285,8 @@ bool isNight = NULL;                                                  // for bac
 bool fpsRendering = false;
 
 // README MOUSE SCROLL VARIABLES
-int scrollY = 0;      // Current scroll position
-int scrollSpeed = 20; // Speed of scrollin
+int scrollY = 0;       // Current scroll position
+int scrollSpeed = 100; // Speed of mouse wheel and forward and back button page scrolling e.g. in help scene 5
 
 // HUD VARIABLES
 int frameCount = 0;            // for FPS HUD display toggle
@@ -316,6 +316,7 @@ std::string playerPassword = "";
 bool submitUsername = false;
 bool showPrivacyPolicyPopup = false;
 bool acceptedPrivacyPolicy = false;
+bool acceptedTermsAndConditions = false;
 
 // Keyboard Remapping
 std::unordered_map<std::string, SDL_Keycode> keyMap = {
@@ -506,11 +507,11 @@ std::string find_os()
     }
     return osVersion;
 }
-void help_guide_file_read()
+void manual_file_read()
 {
     std::cout << "Reading contents from: MANUAL.txt" << std::endl;
 
-    // Read contents from the credits.txt file
+    // Read contents from the MANUAL.txt file
     std::ifstream sentence_file("MANUAL.txt");
     if (!sentence_file.is_open())
     {
@@ -525,14 +526,31 @@ void help_guide_file_read()
     std::string line;
     while (std::getline(sentence_file, line))
     {
-        // Render only if the text is within the visible area of the window
         if (renderY >= 0 && renderY < windowHeight)
-            render_text(line, static_cast<int>(windowWidth * 0.1), renderY, 255, 0);
-        
-        // Update render position for the next line of text
-        renderY += 30; // Vertical spacing between lines
-    }
+        {
+            // Render only if the text is within the visible area of the window
+            if (line.size() > 80) // Check if the line is too long
+            {
+                // Split the line into two parts
+                std::string firstHalf = line.substr(0, 60); // assuming you want to split at 40 characters
+                std::string secondHalf = line.substr(40);
 
+                // Render the first half
+                render_text(firstHalf, static_cast<int>(windowWidth * 0.1), renderY, 255, 0);
+                renderY += 30; // Vertical spacing between lines
+
+                // Render the second half
+                render_text(secondHalf, static_cast<int>(windowWidth * 0.1), renderY, 255, 0);
+                renderY += 30; // Vertical spacing between lines
+            }
+            else
+            {
+                render_text(line, static_cast<int>(windowWidth * 0.1), renderY, 255, 0);
+                // Update render position for the next line of text
+                renderY += 30; // Vertical spacing between lines
+            }
+        }
+    }
     // Close the file
     sentence_file.close();
 }
@@ -540,8 +558,8 @@ void credits_file_read()
 {
     std::cout << "Reading contents from: credits.txt" << std::endl;
 
-    // Read contents from the credits.txt file
-    std::ifstream sentence_file("credits.txt");
+    // Read contents from the CREDITS.txt file
+    std::ifstream sentence_file("CREDITS.txt");
     if (!sentence_file.is_open())
     {
         std::cerr << "Error: Failed to open credits.txt" << std::endl;
@@ -558,7 +576,7 @@ void credits_file_read()
         // Render only if the text is within the visible area of the window
         if (renderY >= 0 && renderY < windowHeight)
             render_text(line, static_cast<int>(windowWidth * 0.1), renderY, 255, 0);
-        
+
         // Update render position for the next line of text
         renderY += 30; // Vertical spacing between lines
     }
@@ -566,6 +584,67 @@ void credits_file_read()
     // Close the file
     sentence_file.close();
 }
+void privacy_policy_file_read()
+{
+    std::cout << "Reading contents from: PRIVACY_POLICY.txt" << std::endl;
+
+    // Read contents from the PRIVACY_POLICY.txt file
+    std::ifstream sentence_file("PRIVACY_POLICY.txt");
+    if (!sentence_file.is_open())
+    {
+        std::cerr << "Error: Failed to open PRIVACY_POLICY.txt" << std::endl;
+        return;
+    }
+
+    // Render position for the first line of text
+    int renderY = static_cast<int>(windowHeight * 0.2) + scrollY;
+
+    // Read lines from the file and render them to the window
+    std::string line;
+    while (std::getline(sentence_file, line))
+    {
+        // Render only if the text is within the visible area of the window
+        if (renderY >= 0 && renderY < windowHeight)
+            render_text(line, static_cast<int>(windowWidth * 0.1), renderY, 255, 0);
+
+        // Update render position for the next line of text
+        renderY += 30; // Vertical spacing between lines
+    }
+
+    // Close the file
+    sentence_file.close();
+}
+void terms_and_conditions_file_read()
+{
+    std::cout << "Reading contents from: TERMS_AND_CONDITIONS.txt" << std::endl;
+
+    // Read contents from the TERMS_AND_CONDITIONS.txt file
+    std::ifstream sentence_file("TERMS_AND_CONDITIONS.txt");
+    if (!sentence_file.is_open())
+    {
+        std::cerr << "Error: Failed to open TERMS_AND_CONDITIONS.txt" << std::endl;
+        return;
+    }
+
+    // Render position for the first line of text
+    int renderY = static_cast<int>(windowHeight * 0.2) + scrollY;
+
+    // Read lines from the file and render them to the window
+    std::string line;
+    while (std::getline(sentence_file, line))
+    {
+        // Render only if the text is within the visible area of the window
+        if (renderY >= 0 && renderY < windowHeight)
+            render_text(line, static_cast<int>(windowWidth * 0.1), renderY, 255, 0);
+
+        // Update render position for the next line of text
+        renderY += 30; // Vertical spacing between lines
+    }
+
+    // Close the file
+    sentence_file.close();
+}
+
 void key_remap_SDL(const std::string &newKey, SDL_Keycode &oldKey)
 {
     auto it = keyMap.find(newKey);
@@ -778,8 +857,8 @@ void load_buttons_1()
                                          rectWidth, rectHeight,
                                          "", 144, 238, 144, 255, "assets/graphics/buttons/settings/update-button.png", false); // RGB: Light green
     scene1multiplayerButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65),
-                                               rectWidth, rectHeight,
-                                               "", 144, 238, 144, 255, "assets/graphics/buttons/settings/help-button.png", false); // RGB: Light green
+                                                rectWidth, rectHeight,
+                                                "", 144, 238, 144, 255, "assets/graphics/buttons/settings/help-button.png", false); // RGB: Light green
     scene1QuitButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75),
                                          rectWidth, rectHeight,
                                          "", 144, 238, 144, 255, "assets/graphics/buttons/settings/quit-button.png", false); // RGB: Light green
@@ -797,11 +876,11 @@ void load_buttons_1()
 void load_buttons_7()
 {
     scene7acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
-                                            rectWidth, rectHeight,
-                                            accept_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+                                           rectWidth, rectHeight,
+                                           accept_txt, 144, 238, 144, 255, "", false); // RGB: Light green
     scene7denyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35),
-                                             rectWidth, rectHeight,
-                                             deny_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+                                         rectWidth, rectHeight,
+                                         deny_txt, 144, 238, 144, 255, "", false); // RGB: Light green
 }
 
 void load_buttons_11()
@@ -945,7 +1024,7 @@ void start_SDL()
     load_buttons_13();
     load_buttons_25();
     load_buttons_to_scene_vectors();
-    load_buttons_to_allButtons_vector();   
+    load_buttons_to_allButtons_vector();
 }
 
 void handle_events()
@@ -1112,7 +1191,7 @@ void draw()
     {
         std::cout << "You won the game!" << std::endl;
         draw_buttons_scene_3();
-        credits_file_read(); // render txt output of credits.txt to screen
+        credits_file_read(); // render txt output of CREDITS.txt to screen
     }
     else if (scene == 4) // achievements
     {
@@ -1122,7 +1201,7 @@ void draw()
     else if (scene == 5) // help
     {
         draw_buttons_scene_5();
-        help_guide_file_read(); // render txt output of help.txt to screen
+        manual_file_read(); // render txt output of MANUAL.txt to screen
     }
     else if (scene == 25) // world map
     {

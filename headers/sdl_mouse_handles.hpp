@@ -399,8 +399,13 @@ void handle_click_scene_11(int mouseX, int mouseY)
         if (scene11acceptButton.isClicked(mousePosition))
         {
             std::cout << "You clicked: Accept Privacy Policy" << std::endl;
-            showPrivacyPolicyPopup = false;
-            acceptedPrivacyPolicy = true;
+            if (!acceptedPrivacyPolicy) {
+                acceptedPrivacyPolicy = true;
+            }
+            if (acceptedPrivacyPolicy) {
+                acceptedTermsAndConditions = true;
+                showPrivacyPolicyPopup = false;
+            }
             scene = 13; // To multiplayer lobby
         }
         else if (scene11denyButton.isClicked(mousePosition))

@@ -55,7 +55,7 @@ void draw_password_textbox()
     SDL_RenderFillRect(renderer, &textInputRect);
 }
 
-void draw_privacy_policy_popup_window()
+void draw_policies_popup_window()
 {
     // Draw privacy policy popup black border
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
@@ -71,6 +71,12 @@ void draw_privacy_policy_popup_window()
     {
         render_text("Read Privacy Policy below then accept or deny for online access",
                     static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1), 255, 0);
+                    if (!acceptedPrivacyPolicy) {
+                        privacy_policy_file_read();
+                    } else {
+                        terms_and_conditions_file_read();
+                    }
+        
         scene11acceptButton.render_button_rect(renderer);
         scene11denyButton.render_button_rect(renderer);
     }
@@ -227,7 +233,7 @@ void draw_buttons_scene_11() // Online login
 {
     if (showPrivacyPolicyPopup)
     {
-        draw_privacy_policy_popup_window();
+        draw_policies_popup_window();
     }
     else if (!showPrivacyPolicyPopup)
     {
