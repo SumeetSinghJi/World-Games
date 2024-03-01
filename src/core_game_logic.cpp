@@ -194,6 +194,9 @@ Custom_SDL_Button scene1HelpButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1multiplayerButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1QuitButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1DeveloperLogoLinkButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene1overwriteGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene1continueButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
 // scene 2
 Custom_SDL_Button fontButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button soundButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -899,7 +902,16 @@ void load_buttons_1()
                                          "", 144, 238, 144, 255, "assets/graphics/buttons/settings/quit-button.png", false); // RGB: Light green
     scene1DeveloperLogoLinkButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.73), static_cast<int>(windowHeight * 0.73),
                                                       (windowWidth) / 6, (windowHeight) / 6,
-                                                      "", 144, 238, 144, 255, "assets/graphics/developer_images/AgniSamooh-HD-logo.png", false);
+                                                      "", 144, 238, 144, 255, "assets/graphics/developer_images/AgniSamooh-4k-logo.png", false);
+    scene1overwriteGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.3), static_cast<int>(windowHeight * 0.6),
+                                                      (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
+                                                      "OVERWRITE", 144, 238, 144, 255, "", false);
+    scene1continueButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.6),
+                                                      (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
+                                                      "LOAD GAME", 144, 238, 144, 255, "", false);
+    
+    scene1overwriteGameButton.set_button_texture(renderer, "");
+    scene1continueButton.set_button_texture(renderer, "");
     scene1LoadGameButton.set_button_texture(renderer, "");
     scene1newGameButton.set_button_texture(renderer, "");
     scene1settingsButton.set_button_texture(renderer, "");
@@ -1302,8 +1314,13 @@ void draw()
     if (scene == 1) // menu
     {
         SDL_RenderCopy(renderer, menuBackgroundTexture, NULL, NULL);
+        
+        if (savefileExists) {
+            draw_does_save_file_exist();
+        } else {
+            draw_buttons_scene_1();
+        }
         draw_text_for_HUD_scene_1();
-        draw_buttons_scene_1();
     }
     else if (scene == 2) // settings
     {

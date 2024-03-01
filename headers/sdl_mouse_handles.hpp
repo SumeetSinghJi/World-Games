@@ -15,74 +15,90 @@ void handle_click_scene_1(int mouseX, int mouseY)
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
-    if (scene1LoadGameButton.isClicked(mousePosition))
+    if (savefileExists)
     {
-        std::cout << "You clicked Load Game" << std::endl;
-        load_game();
-        scene = 25;
-    }
-    else if (scene1newGameButton.isClicked(mousePosition))
-    {
-        std::cout << "You clicked Start Game" << std::endl;
-        // does_save_file_exist();
-        new_game();
-        scene = 25;
-    }
-    else if (scene1settingsButton.isClicked(mousePosition))
-    {
-        std::cout << "You clicked Settings" << std::endl;
-        scene = 2;
-    }
-    else if (scene1AchievementsButton.isClicked(mousePosition))
-    {
-        std::cout << "You clicked Achievements" << std::endl;
-        scene = 4;
-    }
-    else if (scene1HelpButton.isClicked(mousePosition))
-    {
-        std::cout << "You clicked Help" << std::endl;
-        scene = 5;
-    }
-    else if (scene1multiplayerButton.isClicked(mousePosition))
-    {
-        std::cout << "You clicked Update game" << std::endl;
-        start_application_update("https://github.com/SumeetSinghJi/world-games", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
-    }
-    else if (scene1QuitButton.isClicked(mousePosition))
-    {
-        std::cout << "You clicked Quit game" << std::endl;
-        save_game();
-        exit_SDL();
-        exit(0);
-    }
-    else if (scene1DeveloperLogoLinkButton.isClicked(mousePosition))
-    {
-        std::cout << "You clicked visit Agni Samooh logo" << std::endl;
-        if (osVersion == "Windows")
+        if (scene1continueButton.isClicked(mousePosition))
         {
-            system("start https://agnisamooh.com");
+            std::cout << "You clicked: Load Game" << std::endl;
+            load_game();
+            scene = 25;
         }
-        else if (osVersion == "Mac OS X")
+        else if (scene1overwriteGameButton.isClicked(mousePosition))
         {
-            system("open https://agnisamooh.com");
+            std::cout << "You clicked: Overwrite Game" << std::endl;
+            overwriteGame = 1;
+            does_save_file_exist();
         }
-        else if (osVersion == "linux")
+    }
+    else
+    {
+        if (scene1LoadGameButton.isClicked(mousePosition))
         {
-            system("xdg-open https://agnisamooh.com");
+            std::cout << "You clicked Load Game" << std::endl;
+            load_game();
+            scene = 25;
         }
-        else if (osVersion == "Android")
+        else if (scene1newGameButton.isClicked(mousePosition))
         {
-            system("am start -a android.intent.action.VIEW -d https://agnisamooh.com");
+            std::cout << "You clicked Start Game" << std::endl;
+            does_save_file_exist();
         }
-        else if (osVersion == "iOS")
+        else if (scene1settingsButton.isClicked(mousePosition))
         {
-            system("openurl://agnisamooh.com");
+            std::cout << "You clicked Settings" << std::endl;
+            scene = 2;
         }
-        else
+        else if (scene1AchievementsButton.isClicked(mousePosition))
         {
-            std::cout << "OS not detected, cannot open Social media link" << std::endl;
+            std::cout << "You clicked Achievements" << std::endl;
+            scene = 4;
         }
-        find_os();
+        else if (scene1HelpButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked Help" << std::endl;
+            scene = 5;
+        }
+        else if (scene1multiplayerButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked Update game" << std::endl;
+            start_application_update("https://github.com/SumeetSinghJi/world-games", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
+        }
+        else if (scene1QuitButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked Quit game" << std::endl;
+            save_game();
+            exit_SDL();
+            exit(0);
+        }
+        else if (scene1DeveloperLogoLinkButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked visit Agni Samooh logo" << std::endl;
+            if (osVersion == "Windows")
+            {
+                system("start https://agnisamooh.com");
+            }
+            else if (osVersion == "Mac OS X")
+            {
+                system("open https://agnisamooh.com");
+            }
+            else if (osVersion == "linux")
+            {
+                system("xdg-open https://agnisamooh.com");
+            }
+            else if (osVersion == "Android")
+            {
+                system("am start -a android.intent.action.VIEW -d https://agnisamooh.com");
+            }
+            else if (osVersion == "iOS")
+            {
+                system("openurl://agnisamooh.com");
+            }
+            else
+            {
+                std::cout << "OS not detected, cannot open Social media link" << std::endl;
+            }
+            find_os();
+        }
     }
 }
 

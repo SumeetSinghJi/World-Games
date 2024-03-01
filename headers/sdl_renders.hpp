@@ -18,6 +18,22 @@ void render_fireworks_animation()
     std::cout << "Animation is playing" << std::endl;
 }
 
+void draw_does_save_file_exist()
+{
+    // Draw text input rect black border
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
+    SDL_Rect borderRect = {static_cast<int>(windowWidth * 0.2) - 2, static_cast<int>(windowHeight * 0.1) - 2, static_cast<int>(windowWidth * 0.7) + 4, static_cast<int>(windowHeight * 0.7) + 4};
+    SDL_RenderFillRect(renderer, &borderRect);
+
+    // draw text input rect
+    SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255); // RGB: Light grey
+    SDL_Rect textInputRect = {static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1), static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7)};
+    SDL_RenderFillRect(renderer, &textInputRect);
+
+    scene1overwriteGameButton.render_button_rect(renderer);
+    scene1continueButton.render_button_rect(renderer);
+}
+
 void draw_username_textbox()
 {
     // Draw text input rect black border

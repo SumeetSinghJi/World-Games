@@ -1,16 +1,15 @@
 
 TASKS
-    * does_save_file_exist() - draw as popup, then put for new game handle
+    * savefile is outputing unlocked achievements as empty string so on load_game() crashes.
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
-    * Scene 7 update software render
+    * Scene 7 update software popup
     * new settings button to save settings, new function to save settings, and update load_game() to load settings
     * Replace all textures with buttons
     * Find a font that supports all languages
     * Key remapping option
     * Draw win frequency
     * Refractor update_app.hpp to accept parameters in all functions and a way to call them, may require splitting game_update();
-    * Popup for start_curl() cout's  
     * In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
     * server responds with verification email.
     * If user clicks OK on email verification, account created
@@ -18,8 +17,8 @@ TASKS
     * Profanity filter for text input
     * New Settings button for changing scroll speed, important for reading help guide forward and back buttons too slow 
     * Setup boost.asio for multiplayer udp
-    * Learn to make installer or CMAKE so that update_app() variables are populated to work anywhere on a system
-    * In above installer or CMAKE make a shortcut of app.
+    * Create .exe installer and have parameter for variable: UpdateApp_sourceDirectory
+    * With installer set icon
     * Build with cppcheck to see errors
     * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
     * Use AI to create victory animation
@@ -27,13 +26,12 @@ TASKS
     * Implement full Keyboard controls
     * Make Tic Tac toe roman circle game
     * Compile on MacOS and Ubuntu
-    * Sign .exe with purchased Certificate to learn how process works and to deploy on Steam
 
 BUGS
     * High Risk - Computer crashing, replicate on Tic Tac Toe game computer starting first and winning
-    * High Risk - Windows Defender Trojan warning (after memory leak above)
+    * High Risk - Game take unreasonable time to quit, requires profiling
     * High Risk - Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
-    * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix afte rimplementing button class
+    * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix after rimplementing button class
 
 FUTURE
     1. for button class Implement multi-highlight/selects for radio buttons/checkboxes/multi-game piece selections

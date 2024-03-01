@@ -85,6 +85,8 @@
 
 // S
  extern std::string save_settings_txt;
+ extern std::string sentence_overwrite_or_load_game_1_txt;
+ extern std::string sentence_overwrite_or_load_game_2_txt;
  extern std::string settings_txt;
  extern std::string sound_txt;
  extern std::string start_game_txt;
@@ -288,6 +290,8 @@ extern Custom_SDL_Button scene1HelpButton;
 extern Custom_SDL_Button scene1multiplayerButton;
 extern Custom_SDL_Button scene1QuitButton;
 extern Custom_SDL_Button scene1DeveloperLogoLinkButton;
+extern Custom_SDL_Button scene1overwriteGameButton;
+extern Custom_SDL_Button scene1continueButton;
 // scene 2
 extern Custom_SDL_Button fontButton;
 extern Custom_SDL_Button soundButton;
@@ -427,6 +431,11 @@ extern bool submitUsername;
 extern bool showPrivacyPolicyPopup;
 extern bool acceptedPrivacyPolicy;
 extern bool acceptedTermsAndConditions;
+
+// sdl_renders.hpp variables
+extern bool savefileExists; // for drawing in scene 1 if you click new game and save game already exists
+extern int overwriteGame; // set in mouse handle if overwrite button, will set to delete existing save game and new game
+void draw_does_save_file_exist();
 
 extern std::unordered_map<std::string, SDL_Keycode> keyMap;
 

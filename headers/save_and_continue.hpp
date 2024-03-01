@@ -11,6 +11,9 @@ Description: read the attached MANUAL.txt file
 
 #include "global_variables.hpp"
 
+bool savefileExists = false;
+int overwriteGame = 0;
+
 void new_game();
 
 void save_settings() {
@@ -107,15 +110,15 @@ void does_save_file_exist()
   std::string filename = "world-games_save.txt";
   if (std::ifstream(filename))
   {
-    std::cout << "Save file exists" << filename << "Do you want to delete it? (y/n)";
-    char response;
-    std::cin >> response;
-    if (response == 'y' || response == 'Y')
+    std::cout << "Save file exists: " << filename << "Do you want to delete it? (y/n)";
+    savefileExists = true;
+    if (overwriteGame == 1)
     {
       std::remove(filename.c_str());
       new_game();
+      scene = 25;
     }
-    else
+    else if (overwriteGame == 2)
     {
       std::cout << "Save game not deleted. Loading saved game..." << std::endl;
       load_game();
@@ -125,5 +128,6 @@ void does_save_file_exist()
   {
     std::cout << "Save game doesn't exist." << std::endl;
     new_game();
+    scene = 25;
   }
 }

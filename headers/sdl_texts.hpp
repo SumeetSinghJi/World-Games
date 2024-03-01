@@ -78,6 +78,8 @@ std::string reset_settings_txt;
 
 // S
 std::string save_settings_txt;
+std::string sentence_overwrite_or_load_game_1_txt;
+std::string sentence_overwrite_or_load_game_2_txt;
 std::string settings_txt;
 std::string sound_txt;
 std::string start_game_txt;
@@ -128,7 +130,7 @@ void localisation(const std::string &language)
         learnt_kitsune_ken_txt = "6. Learnt secret of kitsune-ken";
         load_game_txt = "Load Game";
         lost_a_game_txt = "2. Lost a game";
-        
+
         // M
         main_menu_txt = "Main Menu";
         multiplayer_lobby_txt = "Multiplayer lobby";
@@ -141,6 +143,8 @@ void localisation(const std::string &language)
         resolution_txt = "Resolution";
         // S
         save_settings_txt = "Save Settings";
+        sentence_overwrite_or_load_game_1_txt = "Existing save file exists, do you want to";
+        sentence_overwrite_or_load_game_2_txt = "load it, or delete and start a new game?";
         settings_txt = "Settings";
         sound_txt = "Sound";
         start_game_txt = "Start game";
@@ -181,7 +185,7 @@ void localisation(const std::string &language)
         learnt_kitsune_ken_txt = "6. きつね剣の秘密を知る";
         load_game_txt = "ゲームを読み込む";
         lost_a_game_txt = "2. 試合に負けた";
-        
+
         // M
         main_menu_txt = "メインメニュー";
         multiplayer_lobby_txt = "マルチプレイヤーロビー";
@@ -194,6 +198,8 @@ void localisation(const std::string &language)
         resolution_txt = "解決";
         // S
         save_settings_txt = "設定を保存する";
+        sentence_overwrite_or_load_game_1_txt = "既存のセーブファイルが存在します。それをロードしますか、";
+        sentence_overwrite_or_load_game_2_txt = "それとも削除して新しいゲームを開始しますか。";
         settings_txt = "設定";
         start_game_txt = "始めるゲーム";
         sound_txt = "音";
@@ -236,7 +242,7 @@ void localisation(const std::string &language)
         learnt_kitsune_ken_txt = "6. เรียนรู้ความลับของ kitsune-ken";
         load_game_txt = "โหลดเกม";
         lost_a_game_txt = "2. แพ้เกม";
-        
+
         // M
         main_menu_txt = "เมนูหลัก";
         multiplayer_lobby_txt = "ห้องโหลดเกมหลายคน";
@@ -249,6 +255,8 @@ void localisation(const std::string &language)
         resolution_txt = "ความละเอียด";
         // S
         save_settings_txt = "บันทึกการตั้งค่า";
+        sentence_overwrite_or_load_game_1_txt = "มีไฟล์เซฟที่มีอยู่แล้ว ";
+        sentence_overwrite_or_load_game_2_txt = "คุณต้องการโหลดหรือลบและเริ่มเกมใหม่";
         settings_txt = "การตั้งค่า";
         sound_txt = "เสียง";
         start_game_txt = "เริ่มเกม";
@@ -303,6 +311,8 @@ void localisation(const std::string &language)
         resolution_txt = "संकल्प";
         // S
         save_settings_txt = "सेटिंग्स सहेजें";
+        sentence_overwrite_or_load_game_1_txt = "अस्तित्वान्तरं सुरक्षणफाइलः अस्ति, तदानीं अन्वेषयसि";
+        sentence_overwrite_or_load_game_2_txt = "वा, अथवा हन्तुमुद्यमः प्रारंभ्यताम् इति च प्रश्नः";
         settings_txt = "सेटिंग्स";
         sound_txt = "ध्वनि";
         start_game_txt = "खेल प्रारंभ करें";
@@ -345,7 +355,7 @@ void localisation(const std::string &language)
         learnt_kitsune_ken_txt = "6. 學會狐拳的秘密";
         load_game_txt = "載入遊戲";
         lost_a_game_txt = "2. 輸了一局";
-        
+
         // M
         main_menu_txt = "主菜單";
         multiplayer_lobby_txt = "多人遊戲大廳";
@@ -358,6 +368,8 @@ void localisation(const std::string &language)
         resolution_txt = "解析度";
         // S
         save_settings_txt = "保存設置";
+        sentence_overwrite_or_load_game_1_txt = "現有的存檔存在，你要載入它";
+        sentence_overwrite_or_load_game_2_txt = "還是刪除並開始一個新遊戲";
         settings_txt = "設置";
         sound_txt = "音效";
         start_game_txt = "開始遊戲";
@@ -397,7 +409,7 @@ void localisation(const std::string &language)
         // L
         language_txt = "اللغة";
         leaderboard_txt = "لوحة القيادة";
-        learnt_kitsune_ken_txt = "6. تعلم سر كيتسوني-كين";        
+        learnt_kitsune_ken_txt = "6. تعلم سر كيتسوني-كين";
         load_game_txt = "تحميل اللعبة";
         lost_a_game_txt = "2. خسر لعبة";
         // M
@@ -412,6 +424,8 @@ void localisation(const std::string &language)
         resolution_txt = "الدقة";
         // S
         save_settings_txt = "حفظ الإعدادات";
+        sentence_overwrite_or_load_game_1_txt = "تحميله، أم حذفه وبدء لعبة جديدة؟";
+        sentence_overwrite_or_load_game_2_txt = "يوجد ملف حفظ قائم، هل تريد";
         settings_txt = "الإعدادات";
         sound_txt = "الصوت";
         start_game_txt = "بدء اللعبة";
@@ -466,6 +480,8 @@ void localisation(const std::string &language)
         resolution_txt = "ምሳሌ";
         // S
         save_settings_txt = "ማስታወሻ አስገባ";
+        sentence_overwrite_or_load_game_1_txt = "አንደኛ የታቀደ ወደ እርስዎ ይጠቀሙታል፣ ወይም";
+        sentence_overwrite_or_load_game_2_txt = "አንድ ነገር የሚከተሉትን ስሌት እና አድርጉት የሚጀምሩትን እርስዎ ይጠቀሙታል።";
         settings_txt = "ቅንብሮች";
         sound_txt = "ድምፅ";
         start_game_txt = "ጨዋታ ጀምር";
@@ -520,6 +536,8 @@ void localisation(const std::string &language)
         resolution_txt = "Ανάλυση";
         // S
         save_settings_txt = "Αποθήκευση ρυθμίσεων";
+        sentence_overwrite_or_load_game_1_txt = "Υπάρχει υπάρχει αρχείο αποθήκευσης, θέλετε να το";
+        sentence_overwrite_or_load_game_2_txt = "φορτώσετε, ή να το διαγράψετε και να ξεκινήσετε ένα νέο παιχνίδι;";
         settings_txt = "Ρυθμίσεις";
         sound_txt = "Ήχος";
         start_game_txt = "Έναρξη παιχνιδιού";
@@ -572,6 +590,8 @@ void localisation(const std::string &language)
         resolution_txt = "Resolutio";
         // S
         save_settings_txt = "Configurationes serva";
+        sentence_overwrite_or_load_game_1_txt = "Est fasciculus conservationis, vis eum adfari";
+        sentence_overwrite_or_load_game_2_txt = "an deleantur et ludum novum incipiant?";
         settings_txt = "Configurationes";
         sound_txt = "Sonus";
         start_game_txt = "Ludum incipe";
@@ -589,18 +609,26 @@ void localisation(const std::string &language)
 
 void draw_text_for_HUD_scene_1() // Main menu
 {
-    render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
+    if (savefileExists)
+    {
+        render_text(sentence_overwrite_or_load_game_1_txt, (windowWidth * 0.35), (windowHeight * 0.1), 255, 0);
+        render_text(sentence_overwrite_or_load_game_2_txt, (windowWidth * 0.35), (windowHeight * 0.2), 255, 0);
+    }
+    else
+    {
+        render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
 
-    render_text(load_game_txt, (windowWidth * 0.45), (windowHeight * 0.15), 255, 0);
-    render_text(start_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
-    render_text(settings_txt, (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
-    render_text(achievements_txt, (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
-    render_text(help_txt, (windowWidth * 0.45), (windowHeight * 0.55), 255, 0);
-    render_text(online_multiplayer_txt, (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
-    render_text(exit_txt, (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
+        render_text(load_game_txt, (windowWidth * 0.45), (windowHeight * 0.15), 255, 0);
+        render_text(start_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
+        render_text(settings_txt, (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
+        render_text(achievements_txt, (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
+        render_text(help_txt, (windowWidth * 0.45), (windowHeight * 0.55), 255, 0);
+        render_text(online_multiplayer_txt, (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
+        render_text(exit_txt, (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
 
-    render_text(version_txt + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
-    render_text(agnisamooh_txt, (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
+        render_text(version_txt + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
+        render_text(agnisamooh_txt, (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
+    }
 }
 void draw_text_for_HUD_scene_2() // Settings
 {
