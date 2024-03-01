@@ -24,7 +24,6 @@
 #pragma once
 
 #include <iostream>
-#include "global_variables.hpp"
 #include <curl.h>  // for downloading latest game from Github
 #include <cstdio>  // for curl functions
 #include <cstring> // for curl functions
@@ -64,6 +63,18 @@ double download_progress = 0.0;
 bool show_progress = false;
 bool clickedStartAppUpdate = false;
 bool downloadUpdateSelected = false; // if true render_text(Updating...)
+
+// flags set to true after each function.
+// if all true game successfully updated and set_game_updated() will save record string: gameUpdated = True in save file
+bool curlSuccessfull = false;
+bool fileDownloaded = false;
+bool extractZip = false;
+bool copySaveToExtractedFolder = false;
+bool exitGame = false;
+bool deleteOriginalGameDirectorySubdirectories = false;
+bool renameExtractedFolder = false;
+bool CMAKEbuild = false;
+bool gameUpdated = false;
 
 // This function reads the README.md to find the current version, to compare with online repo latest version
 std::string update_version_string_from_readme_file(std::string fileWithVersionString)
@@ -121,7 +132,6 @@ std::string set_curl_executable_or_bin_path()
     return curl_path;
 }
 */
-
 
 // Set path to download game updates to
 std::string save_path_for_zip()
@@ -237,6 +247,7 @@ void start_curl(std::string urlPath, std::string downloadLink)
                     if (download_accept_char == 'Y' || download_accept_char == 'y')
                     {
                         downloadUpdateSelected = true;
+                        curlSuccessfull = true;
                         show_progress = true; // Enable progress display
                         download_file(downloadLink.c_str());
                         show_progress = false; // Disable progress display after download
@@ -346,6 +357,7 @@ void download_file(std::string downloadLink)
     if (res == CURLE_OK)
     {
         std::cout << "Download successful." << std::endl;
+        fileDownloaded = true;
     }
     else
     {
@@ -462,6 +474,7 @@ bool extract_zip(std::string zipFilePath)
     }
 
     std::cout << "Game updates unzipped successful." << std::endl;
+    extractZip = true;
 
     // Close the zip archive
     zip_close(zip_archive);
@@ -547,6 +560,7 @@ void copy_save_to_extracted_folder()
             std::filesystem::copy_file(sourcePath, destinationPath, std::filesystem::copy_options::overwrite_existing);
 
             std::cout << "File copied successfully." << std::endl;
+            copySaveToExtractedFolder = true;
         }
         else
         {
@@ -574,6 +588,7 @@ void exit_game()
     {
         system(unix_terrinate_process_command.c_str());
     }
+    exitGame = true;
 }
 
 // Function to delete a directory and its contents using the rmdir command
@@ -658,6 +673,7 @@ void delete_original_game_directory_subdirectories()
 
     // Call the recursive delete_directory function
     delete_directory(existing_game_folder_path);
+    deleteOriginalGameDirectorySubdirectories = true;
 }
 
 // Delete original game directory
@@ -696,6 +712,7 @@ void rename_extracted_folder()
     {
         rename(worldgames_master_folder_path_old_name.c_str(), worldgames_master_folder_path_new_name.c_str());
         std::cout << "Unzipped folder sucessfully rename from 'world-games-master' to 'world-games'." << std::endl;
+        renameExtractedFolder = true;
     }
     catch (const std::filesystem::filesystem_error &e)
     {
@@ -707,23 +724,7 @@ void rename_extracted_folder()
 void CMAKE_build()
 {
     std::cout << "Running CMAKE build steps to copy shortcuts to desktop" << std::endl;
-    if (OSversion == "Windows")
-    {
-        std::string scriptPath = "windows-add-icon.ps1";
-        int result = system(("powershell.exe -ExecutionPolicy Bypass -File " + std::string(scriptPath)).c_str());
-        if (result == 0)
-        {
-            std::cout << "Succesfully copied shortcut to users desktop" << std::endl;
-        }
-        else
-        {
-            std::cout << "Error: Failed to copy shortcut to users desktop" << std::endl;
-        }
-    }
-    else if (OSversion == "linux" || OSversion == "Mac OS X")
-    {
-        std::cout << "CMAKE for Linux/MacOS Work in progress" << std::endl;
-    }
+    CMAKEbuild = true;
 }
 
 // TEST THEN DEPLOY - Open new game executable or binary to complete update game step
@@ -745,6 +746,39 @@ void game_start()
     }
 }
 
+void set_game_updated()
+{
+    if (curlSuccessfull &&
+        fileDownloaded &&
+        extractZip &&
+        copySaveToExtractedFolder &&
+        exitGame &&
+        deleteOriginalGameDirectorySubdirectories &&
+        renameExtractedFolder &&
+        CMAKEbuild)
+    {
+        gameUpdated = true;
+        std::cout << "All game update steps successfully completed" << std::endl;
+    }
+
+    std::string currentVersion = update_version_string_from_readme_file("README.md");
+
+    if (gameUpdated)
+    {
+        std::ofstream savefile_object("world-games_save.txt");
+
+        if (savefile_object.is_open())
+        {
+            savefile_object << "Game successfully updated to version: " << currentVersion;
+            savefile_object.close();
+        }
+        else
+        {
+            std::cerr << "Error: Unable to open save file." << std::endl;
+        }
+    }
+}
+
 void start_game_update(std::string urlPath, std::string downloadLink)
 {
     // start_game_update() -> first called elsewhere e.g. in mouse_handles();
@@ -760,6 +794,7 @@ void start_game_update(std::string urlPath, std::string downloadLink)
         delete_original_game_directory_subdirectories();
         rename_extracted_folder();
         CMAKE_build();
+        set_game_updated();
         game_start();
     }
 }

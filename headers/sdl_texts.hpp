@@ -591,7 +591,7 @@ void draw_text_for_HUD_scene_1() // Main menu
 {
     render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
 
-    render_text(load_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
+    render_text(load_game_txt, (windowWidth * 0.45), (windowHeight * 0.15), 255, 0);
     render_text(start_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
     render_text(settings_txt, (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
     render_text(achievements_txt, (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);

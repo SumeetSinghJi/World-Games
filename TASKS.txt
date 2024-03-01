@@ -6,7 +6,7 @@ TASKS
     * Scene 7 update software render
     * new settings button to save settings, new function to save settings, and update load_game() to load settings
     * Replace all textures with buttons
-    * in mouse/keyboard/controller, cycling through language sets button path to that flag
+    * Find a font that supports all languages
     * Key remapping option
     * Draw win frequency
     * Refractor update_app.hpp to accept parameters in all functions and a way to call them, may require splitting game_update();
