@@ -626,7 +626,7 @@ void draw_text_for_HUD_scene_1() // Main menu
         render_text(online_multiplayer_txt, (windowWidth * 0.45), (windowHeight * 0.65), 255, 0);
         render_text(exit_txt, (windowWidth * 0.45), (windowHeight * 0.75), 255, 0);
 
-        render_text(version_txt + currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
+        render_text(version_txt + updateApp_currentVersion, (windowWidth * 0.05), (windowHeight * 0.9), 255, 0);
         render_text(agnisamooh_txt, (windowWidth * 0.7), (windowHeight * 0.9), 255, 0);
     }
 }

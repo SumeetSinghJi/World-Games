@@ -16,7 +16,7 @@
     2. call function: update_version_string_from_readme_file(std::string fileWithVersionString); with parameters below
     fileWithVersionString = local file e.g. .txt/.md with string "Version: " to populate return variable currenVersion;
     3. call function: start_application_update(std::string urlPath, std::string downloadLink); with 2 parameters;
-    urlPath = remote file e.g. .txt/.md with string "Version: " to curl and compare remoteVersion with currentVersion;
+    urlPath = remote file e.g. .txt/.md with string "Version: " to curl and compare remoteVersion with updateApp_currentVersion;
     downloadLink = full .zip file URL of app
     e.g. start_application_update("https://github.com/SumeetSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
 */
@@ -57,7 +57,7 @@ std::string UpdateApp_sourceDirectory  = ""; // Game installation path set in ma
 std::string updateApp_zipFilePath = ""; // set by set_zip_file_name();
 std::string UpdateApp_sourceParentDirectory = ""; // set by set_parent_directory_file_path();
 std::string UpdateApp_downloadLink = "";
-std::string currentVersion; // API for rendering current version of app to console/screen
+std::string updateApp_currentVersion; // API for rendering current version of app to console/screen
 bool updateApp_newVersionAvailable = false; // API to render to console/screen "new version available" then set "updateApp_startUpdate = true" to start update.
 bool updateApp_startUpdate = false; // API that works together with variable above "updateApp_newVersionAvailable"
 double updateApp_downloadProgress = 0.0;
@@ -109,8 +109,8 @@ std::string update_version_string_from_readme_file(std::string fileWithVersionSt
         while (std::getline(readme_object, line))
         {
             if (line.find("Version: ") != std::string::npos)
-                currentVersion = line.substr(9);
-            std::cout << "Current Version is: " << currentVersion << std::endl;
+                updateApp_currentVersion = line.substr(9);
+            std::cout << "Current Version is: " << updateApp_currentVersion << std::endl;
         }
 
         readme_object.close();
@@ -120,7 +120,7 @@ std::string update_version_string_from_readme_file(std::string fileWithVersionSt
     {
         std::cerr << "Error: Unable to open: " << fileWithVersionString << " file to find version number string" << std::endl;
     }
-    return currentVersion;
+    return updateApp_currentVersion;
 }
 
 // Start Curl to world-games Github to check for updates
@@ -128,7 +128,7 @@ bool start_curl(std::string urlPath)
 {
     /* Purpose
 
-    1. Function update_version_string_from_readme_file() called to populate global variable: currentVersion
+    1. Function update_version_string_from_readme_file() called to populate global variable: updateApp_currentVersion
     from reading existing directory readme.md string version number
     2. This function will connect to a website, and search for string "Version: " and find the trailing
     numbers then update the global variables remoteVersionDouble
@@ -185,18 +185,18 @@ bool start_curl(std::string urlPath)
                 std::string versionNumber = response.substr(version_pos, non_numeric_pos - version_pos);
 
                 // Convert version strings to double
-                double currentVersionDouble = stod(currentVersion);
+                double updateApp_currentVersionDouble = stod(updateApp_currentVersion);
                 double remoteVersionDouble = stod(versionNumber);
 
-                if (remoteVersionDouble <= currentVersionDouble)
+                if (remoteVersionDouble <= updateApp_currentVersionDouble)
                 {
-                    std::cout << "Current version: " << currentVersionDouble << " , is already up to date." << std::endl;
+                    std::cout << "Current version: " << updateApp_currentVersionDouble << " , is already up to date." << std::endl;
                     updateApp_newVersionAvailable = false;
                 }
                 else
                 {
                     // 1 - If the application is out of date, prompt to download the latest version
-                    std::cout << "Current version is: " << currentVersionDouble << ", New version available is: " << remoteVersionDouble << std::endl;
+                    std::cout << "Current version is: " << updateApp_currentVersionDouble << ", New version available is: " << remoteVersionDouble << std::endl;
                     updateApp_newVersionAvailable = true;
                 }
                 curl_easy_cleanup(curl);
@@ -669,13 +669,13 @@ bool application_start()
 // If all functions return true, write to save-file, applicationupdated
 void set_application_updated_variable()
 {
-    std::string currentVersion = update_version_string_from_readme_file("README.md");
+    std::string updateApp_currentVersion = update_version_string_from_readme_file("README.md");
 
     std::ofstream savefile_object("world-games_save.txt");
 
     if (savefile_object.is_open())
     {
-        savefile_object << "application successfully updated to version: " << currentVersion;
+        savefile_object << "application successfully updated to version: " << updateApp_currentVersion;
         savefile_object.close();
     }
     else

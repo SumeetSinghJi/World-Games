@@ -378,7 +378,6 @@ extern int textWidth;            // for font
 extern int textHeight;           // for font
 extern int fontSize;             // for font
 extern int scene;                // for scene to display
-extern std::string currentVersionTextRender; // for rendering text version on main menu when game starts
 
 // PLAYER VARIABLES
 extern std::string username; // Multiplayer - Multiplayer players username
@@ -396,7 +395,7 @@ extern bool isNight;            // for background cosmetics
 extern bool fpsRendering;
 
 // GAME UPDATE
-extern std::string currentVersion;
+extern std::string updateApp_currentVersion;
 
 // README MOUSE SCROLL VARIABLES
 extern int scrollY;     // Current scroll position
