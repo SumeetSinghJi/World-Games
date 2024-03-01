@@ -77,7 +77,6 @@ ________________________________________________________________________________
 
 1. Introduction
 2. License
-3. Accessibility
 3. Setup
 4. Software logic
 5. Games and Rules
@@ -121,9 +120,12 @@ Note: This project includes components licensed under different terms:
 
 _________________________________________________________________________________________________________________
 
-                                        3. ACCESSIBILITY & SUPPORT
+                                                3. SETUP
 
 _________________________________________________________________________________________________________________
+
+
+GAME DETAILS
 
 Game Name: World Games
 Creation: 26/09/2023
@@ -133,6 +135,21 @@ Author: Sumeet Singh @ www.sumeet-singh.com
 Publisher: AgniSamooh @ www.agniSamooh.com
 License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) 
 License.
+
+
+HELP
+
+Found in game by clicking on "Help" (Book) option in main menu or read README.txt file
+
+
+
+REQUIREMENTS
+
+* Supported OS: Windows 10+ (untested on older or different Operating Systems)
+* Processor: at least 7th gen Intel Core i3 or AMD equivalent
+* RAM: 4 GB RAM
+* Graphics: Either CPU's dedicated GPU, or an HD capable GPU
+* Storage: 5 GB available space
 
 
 ACCESSIBILITY - LANGUAGES
@@ -160,29 +177,6 @@ Game supports using several key input methods to play game
 
 Keybindings for Keyboard and Gamepad use default Arrow or D-Pad directional keys with ENTER or A to select.
 
-_________________________________________________________________________________________________________________
-
-                                                4. SETUP
-
-_________________________________________________________________________________________________________________
-
-
-
-HELP
-
-Found in game by clicking on "Help" (Book) option in main menu or read README.txt file
-
-
-
-REQUIREMENTS
-
-* Supported OS: Windows 10+ (untested on older or different Operating Systems)
-* Processor: at least 7th gen Intel Core i3 or AMD equivalent
-* RAM: 4 GB RAM
-* Graphics: Either CPU's dedicated GPU, or an HD capable GPU
-* Storage: 5 GB available space
-
-
 
 
 SETUP
@@ -200,9 +194,11 @@ For Windows: main.exe
 For Linux: main
 For MacOS: copy over this file main.bin to applications folder and accept default priviliges
 
+
+
 _________________________________________________________________________________________________________________
 
-                                        5. SOFTWARE LOGIC
+                                        4. SOFTWARE LOGIC
 
 _________________________________________________________________________________________________________________
 
@@ -406,7 +402,7 @@ if needed then creating the relevant SDL links.
 
 _________________________________________________________________________________________________________________
 
-                                        6. GAMES AND RULES
+                                            5. GAMES AND RULES
                                     
 _________________________________________________________________________________________________________________
 
@@ -471,7 +467,7 @@ across the globe, proving that even the simplest of games can carry profound sig
 
 _________________________________________________________________________________________________________________
 
-                                            7. CREDITS
+                                            6. CREDITS
                                     
 _________________________________________________________________________________________________________________
 
