@@ -4,7 +4,7 @@
     Minimum C++ Standard: C++11
     Purpose: Declaration/Definition file combined
     License: MIT License
-    Description: Declaration and Definition file for using curl to read website i.e, World Games github
+    Description: Declaration and Definition file for using curl to read website i.e, World games github
     then find the version number from the README.md string "Version: x.x". Compare the version number
     online with local offline version then prompt user if offline software out of date to update.
     curl.h will download the git .zip file, then zip.h will extract. Remainder of code related to
@@ -12,69 +12,90 @@
     the old directory and starting the new folder executable.
 
     Example:
-
-    1. Populate valuable for variable currentVersion by calling function: update_version_string_from_readme_file();
-    2. Populate variable OSversion with value matching "Windows" "linux" or "Mac OS X"
-    3. Call function: start_game_update(); to update game, with parameters for URL of website with the string "Version: "
-    to match with offline version, and second parameter of local trusted CA certificate proving remote sites authenticity.
-    3rd parameter string is the full zip path to download.
-    e.g. start_game_update("https://github.com/SumeetSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
+    1. Set variable UpdateApp_sourceDirectory to existing game directory e.g. UpdateApp_sourceDirectory = "C:/Users/Sumeet/Documents/World-Games";
+    2. call function: update_version_string_from_readme_file(std::string fileWithVersionString); with parameters below
+    fileWithVersionString = local file e.g. .txt/.md with string "Version: " to populate return variable currenVersion;
+    3. call function: start_application_update(std::string urlPath, std::string downloadLink); with 2 parameters;
+    urlPath = remote file e.g. .txt/.md with string "Version: " to curl and compare remoteVersion with currentVersion;
+    downloadLink = full .zip file URL of app
+    e.g. start_application_update("https://github.com/SumeetSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
 */
 
 #pragma once
 
 #include <iostream>
-#include <curl.h>  // for downloading latest game from Github
+#include <curl.h>  // for downloading latest application from Github
 #include <cstdio>  // for curl functions
 #include <cstring> // for curl functions
 #include <cstdlib> // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,
 #ifdef _WIN32
 #include <winsock2.h> // For curling on Windows
 #endif
-#include <zip.h>      // for unzipping downloaded game from GitHub/source repo
+#include <zip.h>      // for unzipping downloaded application from GitHub/source repo
 #include <fstream>    // multiplatform method for for file open read write objects
 #include <filesystem> // multiplatform method for creating and deleting directories (folders)
 #include <string>     // For getline()
 #include <cstdlib>    // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,
 
 #ifdef _WIN32
-const std::string OSversion = "Windows";
-const std::string curl_path = "./src/curl/bin/curl.exe";
-const std::string certPath = "./src/curl/bin/curl-ca-bundle.crt";
+const std::string updateApp_OSversion = "Windows";
+const std::string updateApp_curl_bin_path = "./src/curl/bin/curl.exe";
 #elif __APPLE__
-const std::string OSversion = "Mac OS X";
-const std::string curl_path = "./src/curl/bin/curl.exe";
-const std::string certPath = "./src/curl/bin/curl-ca-bundle.crt";
+const std::string updateApp_OSversion = "Mac OS X";
+const std::string updateApp_curl_bin_path = "./src/curl/bin/curl.bin";
 #elif __linux__
-const std::string OSversion = "Linux";
-const std::string curl_path = "./src/curl/bin/curl";
-const std::string certPath = "./src/curl/bin/curl-ca-bundle.crt";
+const std::string updateApp_OSversion = "Linux";
+const std::string updateApp_curl_bin_path = "./src/curl/bin/curl";
 #else
-const std::string OSversion = "Unknown";
+const std::string updateApp_OSversion = "Unknown";
+const std::string updateApp_curl_bin_path = "./src/curl/bin/curl.exe";
 #endif
 
-// FUNCTION PROTOTYPE
-void download_file(std::string downloadLink);
-
 // GLOBAL VARIABLES
-std::string currentVersion;
-std::string zipFilePath;
-double download_progress = 0.0;
-bool show_progress = false;
-bool clickedStartAppUpdate = false;
-bool downloadUpdateSelected = false; // if true render_text(Updating...)
+const std::string updateApp_certPath = "./src/curl/bin/curl-ca-bundle.crt";
+std::string UpdateApp_sourceDirectory  = ""; // Game installation path set in main code
+std::string updateApp_zipFilePath = ""; // set by set_zip_file_name();
+std::string UpdateApp_sourceParentDirectory = ""; // set by set_parent_directory_file_path();
+std::string UpdateApp_downloadLink = "";
+std::string currentVersion; // API for rendering current version of app to console/screen
+bool updateApp_newVersionAvailable = false; // API to render to console/screen "new version available" then set "updateApp_startUpdate = true" to start update.
+bool updateApp_startUpdate = false; // API that works together with variable above "updateApp_newVersionAvailable"
+double updateApp_downloadProgress = 0.0;
+bool updateApp_showProgress = false;
 
-// flags set to true after each function.
-// if all true game successfully updated and set_game_updated() will save record string: gameUpdated = True in save file
-bool curlSuccessfull = false;
-bool fileDownloaded = false;
-bool extractZip = false;
-bool copySaveToExtractedFolder = false;
-bool exitGame = false;
-bool deleteOriginalGameDirectorySubdirectories = false;
-bool renameExtractedFolder = false;
-bool CMAKEbuild = false;
-bool gameUpdated = false;
+// Callback function to handle the response received from the website
+size_t cout_curl_response_to_terminal(void *contents, size_t size, size_t nmemb, std::string *output)
+{
+    size_t total_size = size * nmemb;
+    output->append(static_cast<char *>(contents), total_size);
+    return total_size;
+}
+
+// Callback function to write the downloaded data to a file
+size_t WriteCallback(void *contents, size_t size, size_t nmemb, FILE *file)
+{
+    return fwrite(contents, size, nmemb, file);
+}
+
+// Callback function to display progress
+int XferInfoCallback(void *clientp, curl_off_t dltotal, curl_off_t dlnow, curl_off_t ultotal, curl_off_t ulnow)
+{
+    if (updateApp_showProgress)
+    {
+        if (dltotal <= 0)
+        {
+            std::cout << "Download progress: " << dlnow / (1024 * 1024) << " MB downloaded (Unknown total size)" << std::endl;
+        }
+        else
+        {
+            double total = static_cast<double>(dltotal) / (1024 * 1024);
+            double downloaded = static_cast<double>(dlnow) / (1024 * 1024);
+            std::cout << "Download progress: " << static_cast<long long>(downloaded) << " MB / " << static_cast<long long>(total) << " MB ("
+                      << (downloaded / total) * 100.0 << "%/100% complete)" << std::endl;
+        }
+    }
+    return 0;
+}
 
 // This function reads the README.md to find the current version, to compare with online repo latest version
 std::string update_version_string_from_readme_file(std::string fileWithVersionString)
@@ -102,72 +123,8 @@ std::string update_version_string_from_readme_file(std::string fileWithVersionSt
     return currentVersion;
 }
 
-/*
-// Set curl executable or bin path by OS
-std::string set_curl_executable_or_bin_path()
-{
-    std::string filepath_separator = "";
-    std::string curl_path = "";
-    const char *home_directory = nullptr;
-
-    if (OSversion == "Windows")
-    {
-        // filepath_separator = '\\';
-        // home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
-        // curl_path = std::string(home_directory) + filepath_separator + "Documents" + filepath_separator + "world-games" + filepath_separator + "src" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl.exe";
-        curl_path = ".\\src\\curl\\bin\\curl.exe";
-    }
-    else if (OSversion == "linux" || OSversion == "Mac OS X")
-    {
-        // filepath_separator = '/';
-        // home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
-        // curl_path = std::string(home_directory) + filepath_separator + "world-games" + filepath_separator + "curl" + filepath_separator + "bin" + filepath_separator + "curl";
-        curl_path = "./src/curl/bin/curl.exe";
-    }
-    else
-    {
-        std::cout << "Error: Host OS Home directory folder cannot be found" << std::endl;
-    }
-    std::cout << "Curl binary/executable path set to: " << curl_path << std::endl;
-    return curl_path;
-}
-*/
-
-// Set path to download game updates to
-std::string save_path_for_zip()
-{
-    std::string filepath_separator = "";
-    const char *home_directory = nullptr;
-
-    if (OSversion == "Windows")
-    {
-        filepath_separator = '\\';
-        home_directory = getenv("USERPROFILE"); // Windows uses USERPROFILE for the home directory
-        std::string zipFilePath = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
-    }
-    else if (OSversion == "linux" || OSversion == "Mac OS X")
-    {
-        filepath_separator = '/';
-        home_directory = getenv("HOME"); // linux and macOS use HOME for the home directory
-        std::string zipFilePath = std::string(home_directory) + filepath_separator + "world-games_updates.zip";
-    }
-    else
-    {
-        std::cout << "Error: Host OS Home directory folder cannot be found" << std::endl;
-    }
-    return zipFilePath;
-}
-
-// Callback function to handle the response received from the website
-size_t cout_curl_response_to_terminal(void *contents, size_t size, size_t nmemb, std::string *output)
-{
-    size_t total_size = size * nmemb;
-    output->append(static_cast<char *>(contents), total_size);
-    return total_size;
-}
-
 // Start Curl to world-games Github to check for updates
-void start_curl(std::string urlPath, std::string downloadLink)
+bool start_curl(std::string urlPath)
 {
     /* Purpose
 
@@ -176,7 +133,7 @@ void start_curl(std::string urlPath, std::string downloadLink)
     2. This function will connect to a website, and search for string "Version: " and find the trailing
     numbers then update the global variables remoteVersionDouble
     3. If remote version is greater then local version prompt will appear to download zip.
-    4. Remainder of steps called in start_game_update()
+    4. Remainder of steps called in start_application_update()
     */
 
     CURL *curl;
@@ -191,10 +148,10 @@ void start_curl(std::string urlPath, std::string downloadLink)
 
         // Step 1 - Configure curl with curl.exe path
         curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
-        curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
+        curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, updateApp_curl_bin_path.c_str());
 
         // Step 2 - Set CA cert path
-        curl_easy_setopt(curl, CURLOPT_CAINFO, certPath.c_str());
+        curl_easy_setopt(curl, CURLOPT_CAINFO, updateApp_certPath.c_str());
 
         // Store the response in a string
         std::string response;
@@ -234,92 +191,50 @@ void start_curl(std::string urlPath, std::string downloadLink)
                 if (remoteVersionDouble <= currentVersionDouble)
                 {
                     std::cout << "Current version: " << currentVersionDouble << " , is already up to date." << std::endl;
+                    updateApp_newVersionAvailable = false;
                 }
                 else
                 {
-                    // 1 - If the game is out of date, prompt to download the latest version
+                    // 1 - If the application is out of date, prompt to download the latest version
                     std::cout << "Current version is: " << currentVersionDouble << ", New version available is: " << remoteVersionDouble << std::endl;
-                    std::cout << "Would you like to update to the latest version? (Enter 'Y' for Yes or 'N' for No.): ";
-                    char download_accept_char;
-                    std::cin.get() >> download_accept_char;
-                    std::cin.ignore(); // Ignore the newline character left in the buffer
-
-                    if (download_accept_char == 'Y' || download_accept_char == 'y')
-                    {
-                        downloadUpdateSelected = true;
-                        curlSuccessfull = true;
-                        show_progress = true; // Enable progress display
-                        download_file(downloadLink.c_str());
-                        show_progress = false; // Disable progress display after download
-                    }
-                    else
-                    {
-                        std::cout << "Stopped check for updates." << std::endl;
-                    }
+                    updateApp_newVersionAvailable = true;
                 }
+                curl_easy_cleanup(curl);
+                curl_global_cleanup();
+                return true;
             }
             else
             {
-                std::cout << "Couldn't find string 'Version: ' in online repo README.md game update stopping." << std::endl;
+                std::cout << "Couldn't find string 'Version: ' in online repo README.md application update stopping." << std::endl;
             }
         }
         else
         {
             std::cout << "Error: curl failed: " << curl_easy_strerror(res) << std::endl;
-            std::cout << "Manually download latest game version from here: " << downloadLink << std::endl;
         }
-
-        curl_easy_cleanup(curl);
     }
     else
     {
         std::cout << "Error: Failed to initialize curl." << std::endl;
-        std::cout << "Manually download latest game version from here: https://github.com/SumeetSinghJi/world-games" << std::endl;
     }
-
+    curl_easy_cleanup(curl);
     curl_global_cleanup();
-}
-
-// Callback function to write the downloaded data to a file
-size_t WriteCallback(void *contents, size_t size, size_t nmemb, FILE *file)
-{
-    return fwrite(contents, size, nmemb, file);
-}
-
-// Callback function to display progress
-int XferInfoCallback(void *clientp, curl_off_t dltotal, curl_off_t dlnow, curl_off_t ultotal, curl_off_t ulnow)
-{
-    if (show_progress)
-    {
-        if (dltotal <= 0)
-        {
-            std::cout << "Download progress: " << dlnow / (1024 * 1024) << " MB downloaded (Unknown total size)" << std::endl;
-        }
-        else
-        {
-            double total = static_cast<double>(dltotal) / (1024 * 1024);
-            double downloaded = static_cast<double>(dlnow) / (1024 * 1024);
-            std::cout << "Download progress: " << static_cast<long long>(downloaded) << " MB / " << static_cast<long long>(total) << " MB ("
-                      << (downloaded / total) * 100.0 << "%/100% complete)" << std::endl;
-        }
-    }
-    return 0;
+    return false;
 }
 
 // download update file from start_curl() prompt
-void download_file(std::string downloadLink)
+bool download_file(std::string downloadLink)
 {
     std::cout << "Attempting to download updates for world-games." << std::endl;
 
     CURL *curl;
     CURLcode res;
-    std::string zipFilePath = save_path_for_zip();
-    FILE *file = fopen(zipFilePath.c_str(), "wb");
+    FILE *file = fopen(updateApp_zipFilePath.c_str(), "wb");
 
     if (!file)
     {
         std::cout << "Error: Cannot open file for writing." << std::endl;
-        return;
+        return false;
     }
 
     curl_global_init(CURL_GLOBAL_ALL);
@@ -329,14 +244,14 @@ void download_file(std::string downloadLink)
     {
         std::cout << "Error: Cannot initialize curl." << std::endl;
         fclose(file);
-        return;
+        return false;
     }
     // Step 1 - Configure curl with curl.exe path
     curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, 1L); // Set this to avoid converting slashes
-    curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, curl_path.c_str());
+    curl_easy_setopt(curl, CURLOPT_PATH_AS_IS, updateApp_curl_bin_path.c_str());
 
     // Step 2 - Set CA cert path
-    curl_easy_setopt(curl, CURLOPT_CAINFO, certPath.c_str());
+    curl_easy_setopt(curl, CURLOPT_CAINFO, updateApp_certPath.c_str());
 
     curl_easy_setopt(curl, CURLOPT_URL, downloadLink.c_str());
 
@@ -357,33 +272,41 @@ void download_file(std::string downloadLink)
     if (res == CURLE_OK)
     {
         std::cout << "Download successful." << std::endl;
-        fileDownloaded = true;
+        curl_easy_cleanup(curl);
+        curl_global_cleanup();
+        return true;
     }
     else
     {
         std::cout << "Download failed: " << curl_easy_strerror(res) << std::endl;
+        curl_easy_cleanup(curl);
+        curl_global_cleanup();
+        return false;
     }
 
     // Clean up
-    curl_easy_cleanup(curl);
-    curl_global_cleanup();
+    // curl_easy_cleanup(curl);
+    // curl_global_cleanup();
 }
 
-// Extract Zip of downloaded game update from curl of Github repo
-bool extract_zip(std::string zipFilePath)
+// Extract Zip of downloaded application update from curl of Github repo
+bool extract_zip()
 {
     struct zip *zip_archive;
     struct zip_file *zip_file;
     struct zip_stat zip_stat;
     char buf[100];
 
+    // Construct the full path to the zip file
+    std::string full_zip_file_path = UpdateApp_sourceParentDirectory + updateApp_zipFilePath;
+
     // Get the directory path from the zip_file_path
-    std::filesystem::path zip_directory = std::filesystem::path(zipFilePath).parent_path();
+    std::filesystem::path zip_directory = std::filesystem::path(full_zip_file_path).parent_path();
 
     std::cout << "Starting Extract Zip function..." << std::endl;
 
     // Open the zip archive
-    zip_archive = zip_open(zipFilePath.c_str(), ZIP_RDONLY, nullptr);
+    zip_archive = zip_open(full_zip_file_path.c_str(), ZIP_RDONLY, nullptr);
     if (zip_archive == nullptr)
     {
         std::cout << "Error opening zip archive." << std::endl;
@@ -473,74 +396,66 @@ bool extract_zip(std::string zipFilePath)
         }
     }
 
-    std::cout << "Game updates unzipped successful." << std::endl;
-    extractZip = true;
+    std::cout << "application updates unzipped successful." << std::endl;
 
     // Close the zip archive
     zip_close(zip_archive);
     return true;
 }
 
-// Getting filepath to existing non updated folder "world-games"
-std::string get_existing_game_folder_path()
-{
-    std::string filepath_separator = "";
-    const char *home_directory = nullptr;
-    std::string existing_game_directory_path = "";
+// Get parent directory from sourceDirectory
+bool set_parent_directory_file_path() {
+    // Assuming UpdateApp_sourceDirectory is "C:/Users/Sumeet/Documents/World-Games"
+    size_t lastSeparatorPos = UpdateApp_sourceDirectory.find_last_of("/\\");
 
-    if (OSversion == "Windows")
-    {
-        filepath_separator = '\\';
-        home_directory = getenv("USERPROFILE");
-        existing_game_directory_path = std::string(home_directory) + filepath_separator + "world-games";
+    // Check if the separator was found
+    if (lastSeparatorPos != std::string::npos) {
+        // Remove everything after the last separator (including the separator itself)
+        UpdateApp_sourceParentDirectory = UpdateApp_sourceDirectory.substr(0, lastSeparatorPos);
     }
-    else if (OSversion == "linux" || OSversion == "Mac OS X")
-    {
-        filepath_separator = '/';
-        home_directory = getenv("HOME");
-        existing_game_directory_path = std::string(home_directory) + filepath_separator + "world-games";
-    }
-    else
-    {
-        std::cout << "Error: filepath to 'world-games' under users Home directory not found! " << std::endl;
-    }
-    return existing_game_directory_path;
+    return true;
 }
 
-// Getting filepath to unzipped folder "world-games-master"
-std::string get_unzipped_game_destination_path()
-{
-    std::string filepath_separator = "";
-    const char *home_directory = nullptr;
-    std::string unzipped_game_destination_path = "";
+// Get zip file name from downloadLink
+bool set_zip_file_name(std::string downloadLink) {
+    // Assuming UpdateApp_sourceDirectory is "C:/Users/Sumeet/Documents/World-Games"
+    size_t lastSeparatorPos = downloadLink.find_last_of("/\\");
 
-    if (OSversion == "Windows")
-    {
-        filepath_separator = '\\';
-        home_directory = getenv("USERPROFILE");
-        unzipped_game_destination_path = std::string(home_directory) + filepath_separator + "world-games-master";
+    // Check if the separator was found
+    if (lastSeparatorPos != std::string::npos) {
+        // Remove everything after the last separator (including the separator itself)
+        updateApp_zipFilePath = UpdateApp_sourceDirectory.substr(0, lastSeparatorPos);
     }
-    else if (OSversion == "linux" || OSversion == "Mac OS X")
-    {
-        filepath_separator = '/';
-        home_directory = getenv("HOME");
-        unzipped_game_destination_path = std::string(home_directory) + filepath_separator + "world-games-master";
-    }
-    else
-    {
-        std::cout << "Error: filepath to 'world-games-master' unzipped updated game folder under users Home directory not found! " << std::endl;
-    }
-    return unzipped_game_destination_path;
+    return true;
 }
 
-// Copy save from original game directory "world-games" to unzipped folder "world-games-master"
-void copy_save_to_extracted_folder()
+// from UpdateApp_sourceDirectory set UpdateApp_destinationDirectory
+std::string get_unzipped_application_file_path()
 {
-    std::cout << "STARTING - copy save from original directory to unzipped new updated game folder" << std::endl;
+    // Assuming UpdateApp_sourceDirectory is "C:/Users/Sumeet/Documents/World-Games"
+    std::string UpdateApp_destinationDirectory = UpdateApp_sourceDirectory;
 
-    std::filesystem::path sourceDirectory = get_existing_game_folder_path();
-    std::filesystem::path sourcePath = sourceDirectory / "world-games_save.txt";
-    std::filesystem::path destinationDirectory = get_unzipped_game_destination_path();
+    // Find the last occurrence of the directory separator
+    size_t lastSeparatorPos = UpdateApp_destinationDirectory.find_last_of("/\\");
+    
+    // Check if the separator was found
+    if (lastSeparatorPos != std::string::npos) {
+        // Remove everything after the last separator (including the separator itself)
+        UpdateApp_destinationDirectory = UpdateApp_destinationDirectory.substr(0, lastSeparatorPos);
+    }
+    // Append "world-games-master" to the destination directory
+    UpdateApp_destinationDirectory += "/world-games-master";
+
+    return UpdateApp_destinationDirectory;
+}
+
+// Copy save from original application directory "world-games" to unzipped folder "world-games-master"
+bool copy_save_to_extracted_folder()
+{
+    std::cout << "STARTING - copy save from original directory to unzipped new updated application folder" << std::endl;
+
+    std::filesystem::path sourcePath = std::filesystem::path(UpdateApp_sourceDirectory) / "world-games_save.txt";
+    std::filesystem::path destinationDirectory = get_unzipped_application_file_path();
     std::filesystem::path destinationPath = destinationDirectory / "world-games_save.txt"; // Include the filename
 
     try
@@ -560,27 +475,29 @@ void copy_save_to_extracted_folder()
             std::filesystem::copy_file(sourcePath, destinationPath, std::filesystem::copy_options::overwrite_existing);
 
             std::cout << "File copied successfully." << std::endl;
-            copySaveToExtractedFolder = true;
+            return true;
         }
         else
         {
-            std::cerr << "Existing save file from non updated game directory not found." << std::endl;
+            std::cerr << "Existing save file from non updated application directory not found." << std::endl;
+            return false;
         }
     }
     catch (const std::exception &e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
+        return false;
     }
 }
 
 // Close existing world-games executable
-void exit_game()
+bool exit_application()
 {
-    std::cout << "STARTING - Close game" << std::endl;
+    std::cout << "STARTING - Close application" << std::endl;
     std::string windows_terrinate_process_command = "taskkill /F /IM main.exe";
     std::string unix_terrinate_process_command = "pkill main";
 
-    if (OSversion == "Windows")
+    if (updateApp_OSversion == "Windows")
     {
         system(windows_terrinate_process_command.c_str());
     }
@@ -588,11 +505,11 @@ void exit_game()
     {
         system(unix_terrinate_process_command.c_str());
     }
-    exitGame = true;
+    return true;
 }
 
 // Function to delete a directory and its contents using the rmdir command
-void delete_directory(const std::string &folderPath)
+bool delete_directory(const std::string &folderPath)
 {
     for (const auto &entry : std::filesystem::directory_iterator(folderPath))
     {
@@ -634,7 +551,7 @@ void delete_directory(const std::string &folderPath)
 
     // Use the rmdir command to delete the current directory
 
-    if (OSversion == "Windows")
+    if (updateApp_OSversion == "Windows")
     {
         std::string command = "rmdir /s /q \"" + folderPath + "\"";
         int result = system(command.c_str());
@@ -642,10 +559,12 @@ void delete_directory(const std::string &folderPath)
         if (result == 0)
         {
             std::cout << "Directory deleted: " << folderPath << std::endl;
+            return true;
         }
         else
         {
             std::cerr << "Error deleting directory: " << folderPath << std::endl;
+            return false;
         }
     }
     else
@@ -656,145 +575,133 @@ void delete_directory(const std::string &folderPath)
         if (result == 0)
         {
             std::cout << "Directory deleted: " << folderPath << std::endl;
+            return true;
         }
         else
         {
             std::cerr << "Error deleting directory: " << folderPath << std::endl;
+            return false;
         }
     }
 }
 
-// Delete original game directory and its subdirectories
-void delete_original_game_directory_subdirectories()
+// Delete original application directory and its subdirectories
+bool delete_original_application_directory_subdirectories()
 {
-    std::cout << "STARTING - delete original game directory - subdirectories" << std::endl;
-    std::cout << "Existing game folder to be deleted is: " << get_existing_game_folder_path() << std::endl;
-    std::string existing_game_folder_path = get_existing_game_folder_path();
+    std::cout << "STARTING - delete original application directory - subdirectories" << std::endl;
+    std::cout << "Existing application folder to be deleted is: " << UpdateApp_sourceDirectory << std::endl;
 
     // Call the recursive delete_directory function
-    delete_directory(existing_game_folder_path);
-    deleteOriginalGameDirectorySubdirectories = true;
+    delete_directory(UpdateApp_sourceDirectory);
+    return true;
 }
 
-// Delete original game directory
-void delete_original_game_folder()
+// Delete original application directory
+bool delete_original_application_folder()
 {
-    std::cout << "STARTING - delete original game directory" << std::endl;
-    std::cout << "Existing game folder to be deleted is: " << get_existing_game_folder_path() << std::endl;
-    std::string existing_game_folder_path = get_existing_game_folder_path();
+    std::cout << "STARTING - delete original application directory" << std::endl;
+    std::cout << "Existing application folder to be deleted is: " << UpdateApp_sourceDirectory << std::endl;
 
-    if (OSversion == "Windows")
+    if (updateApp_OSversion == "Windows")
     {
         try
         {
-            std::filesystem::remove_all(existing_game_folder_path); // Use remove_all to delete hidden folders as well
-            std::cout << "Original game directory deleted." << std::endl;
+            std::filesystem::remove_all(UpdateApp_sourceDirectory); // Use remove_all to delete hidden folders as well
+            std::cout << "Original application directory deleted." << std::endl;
         }
         catch (const std::filesystem::filesystem_error &exception)
         {
-            std::cout << "Error deleting original game directory: " << exception.what() << std::endl;
+            std::cout << "Error deleting original application directory: " << exception.what() << std::endl;
         }
     }
-    else if (OSversion == "linux" || OSversion == "Mac OS X")
+    else if (updateApp_OSversion == "linux" || updateApp_OSversion == "Mac OS X")
     {
-        std::cout << "delete original game directory Work in progress" << std::endl;
+        std::cout << "delete original application directory Work in progress" << std::endl;
     }
+    return true;
 }
 
-// Rename unzipped new updated game folder "world-games-master" to "world-games"
-void rename_extracted_folder()
+// Rename unzipped new updated application folder "world-games-master" to "world-games"
+bool rename_extracted_folder()
 {
-    std::string worldgames_master_folder_path_old_name = get_unzipped_game_destination_path();
-    std::string worldgames_master_folder_path_new_name = get_existing_game_folder_path();
+    std::string newDirectory = get_unzipped_application_file_path();
 
     std::cout << "STARTING - rename unzipped folder to world-games" << std::endl;
     try
     {
-        rename(worldgames_master_folder_path_old_name.c_str(), worldgames_master_folder_path_new_name.c_str());
-        std::cout << "Unzipped folder sucessfully rename from 'world-games-master' to 'world-games'." << std::endl;
-        renameExtractedFolder = true;
+        rename(newDirectory.c_str(), UpdateApp_sourceDirectory.c_str());
+        std::cout << "Unzipped folder sucessfully renamed from 'world-games-master' to 'world-games'." << std::endl;
     }
     catch (const std::filesystem::filesystem_error &e)
     {
         std::cerr << "Error renaming Unzipped folder from 'world-games-master' to 'world-games': " << e.what() << std::endl;
     }
+    return true;
 }
 
-// TEST THEN DEPLOY - Run CMAKE, to copy shortcut to desktop
-void CMAKE_build()
+// FUTURE DEVELOPMENT - Run CMAKE, to copy shortcut to desktop
+bool CMAKE_build()
 {
     std::cout << "Running CMAKE build steps to copy shortcuts to desktop" << std::endl;
-    CMAKEbuild = true;
+    return true;
 }
 
-// TEST THEN DEPLOY - Open new game executable or binary to complete update game step
-void game_start()
+// Open new application executable or binary to complete update application step
+bool application_start()
 {
-    std::cout << "STARTING - Opening game executable or binary" << std::endl;
-    std::string new_game_directory_path = get_existing_game_folder_path();
+    std::cout << "STARTING - Opening application executable or binary" << std::endl;
+    std::string new_application_directory_path = UpdateApp_sourceDirectory;
     std::string start_command;
 
-    if (OSversion == "Windows")
+    if (updateApp_OSversion == "Windows")
     {
-        start_command = "start \"\" \"" + new_game_directory_path + "\\world-games.exe\"";
+        start_command = "start \"\" \"" + new_application_directory_path + "\\world-games.exe\"";
         system(start_command.c_str());
     }
     else
     {
-        start_command = "chmod +x \"" + new_game_directory_path + "/world-games.bin\"";
+        start_command = "chmod +x \"" + new_application_directory_path + "/world-games.bin\"";
         system(start_command.c_str());
     }
+    return true;
 }
 
-void set_game_updated()
+// If all functions return true, write to save-file, applicationupdated
+void set_application_updated_variable()
 {
-    if (curlSuccessfull &&
-        fileDownloaded &&
-        extractZip &&
-        copySaveToExtractedFolder &&
-        exitGame &&
-        deleteOriginalGameDirectorySubdirectories &&
-        renameExtractedFolder &&
-        CMAKEbuild)
-    {
-        gameUpdated = true;
-        std::cout << "All game update steps successfully completed" << std::endl;
-    }
-
     std::string currentVersion = update_version_string_from_readme_file("README.md");
 
-    if (gameUpdated)
-    {
-        std::ofstream savefile_object("world-games_save.txt");
+    std::ofstream savefile_object("world-games_save.txt");
 
-        if (savefile_object.is_open())
-        {
-            savefile_object << "Game successfully updated to version: " << currentVersion;
-            savefile_object.close();
-        }
-        else
-        {
-            std::cerr << "Error: Unable to open save file." << std::endl;
-        }
+    if (savefile_object.is_open())
+    {
+        savefile_object << "application successfully updated to version: " << currentVersion;
+        savefile_object.close();
+    }
+    else
+    {
+        std::cerr << "Error: Unable to open save file." << std::endl;
     }
 }
 
-void start_game_update(std::string urlPath, std::string downloadLink)
+// Call to start program after setting UpdateApp_sourceDirectory = "" && update_version_string_from_readme_file("");
+void start_application_update(std::string urlPath, std::string downloadLink)
 {
-    // start_game_update() -> first called elsewhere e.g. in mouse_handles();
-    // update_version_string_from_readme_file("README.md"); -> called in main
-    clickedStartAppUpdate = true;
-    start_curl(urlPath, downloadLink); // -> will call download_link() if prompted
-    if (downloadUpdateSelected)
+    start_curl(urlPath);
+    if (updateApp_startUpdate)
     {
-        // Functions from header install_game.hpp
-        extract_zip(zipFilePath);
-        copy_save_to_extracted_folder();
-        exit_game();
-        delete_original_game_directory_subdirectories();
-        rename_extracted_folder();
-        CMAKE_build();
-        set_game_updated();
-        game_start();
+        if (set_parent_directory_file_path() &&
+            set_zip_file_name(downloadLink) &&
+            download_file(downloadLink) &&
+            extract_zip() &&
+            copy_save_to_extracted_folder() &&
+            exit_application() &&
+            delete_original_application_directory_subdirectories() &&
+            rename_extracted_folder() &&
+            CMAKE_build() &&
+            application_start())
+        {
+            set_application_updated_variable();
+        }
     }
 }

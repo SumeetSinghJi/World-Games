@@ -1568,4 +1568,6 @@ void exit_SDL()
     TTF_Quit();
     IMG_Quit();
     SDL_Quit();
+
+    SDL_GetNumAllocations(); // Included to see if any SDL object hasn't cleared memory allocation.
 }

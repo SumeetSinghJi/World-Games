@@ -392,7 +392,6 @@ extern bool isNight;            // for background cosmetics
 extern bool fpsRendering;
 
 // GAME UPDATE
-extern std::string zipFilePath;
 extern std::string currentVersion;
 
 // README MOUSE SCROLL VARIABLES
@@ -442,7 +441,7 @@ void new_game();
 void exit_SDL();
 std::string find_os();
 void render_fps();
-void start_game_update(std::string urlPath, std::string downloadLink);
+void start_application_update(std::string urlPath, std::string downloadLink);
 
 // for SDL_renders
 bool is_achievement_unlocked(int target); // For rendering Trophy icon if achievement unlocked

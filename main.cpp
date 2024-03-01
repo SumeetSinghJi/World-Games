@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
 {
     srand(static_cast<unsigned int>(time(0))); // Seed random time function for gameplay randomisation
     find_os(); // Find host OS for OS specific functions
-    update_version_string_from_readme_file("README.md"); // populate the headers currentVersion variable in update_app.hpp
+    update_version_string_from_readme_file("README.md"); // populate variable currentVersion in update_app.hpp
+    UpdateApp_sourceDirectory = "C:/Users/Sumeet/Documents/World-Games"; // populate variable in update_app.hpp 
 
     start_SDL(); // Start game
 
@@ -32,7 +33,6 @@ int main(int argc, char *argv[])
 
     run_SDL(); // Run Game
     exit_SDL(); // Quit Game
-    // SDL_GetNumAllocations(); // Included to see if any SDL object hasn't cleared memory allocation. Debug use only.
 
     return 0;
 }
