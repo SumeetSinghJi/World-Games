@@ -3,7 +3,7 @@ TASKS
     * IMPORTANT FIRST STEP - Scene 11 + 12 Implement
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
-    * Scene 7 update
+    * Scene 7 update software render
     * on settingsSaveRect in mouse handle save settings, popup asking to save settings, new function()
     * Replace all textures with buttons
     * Key remapping option
@@ -15,14 +15,14 @@ TASKS
     * If user clicks OK on email verification, account created
     * Scene 14 - ask for login, POST to server, if server responds OK, ???
     * Profanity filter for text input
-    * Settings button to change scroll speed, important for reading help guide forward and back buttons too slow 
+    * New Settings button for changing scroll speed, important for reading help guide forward and back buttons too slow 
     * Setup boost.asio for multiplayer udp
     * Learn to make installer or CMAKE so that update_app() variables are populated to work anywhere on a system
     * In above installer or CMAKE make a shortcut of app.
     * Build with cppcheck to see errors
     * After creating all buttons - Use profiler to identify what's taking soo long to quit game OR change resolution
     * Use AI to create victory animation
-    * volume up/down slider noise
+    * new settings button - volume up/down slider - with noise
     * Implement full Keyboard controls
     * Make Tic Tac toe roman circle game
     * Compile on MacOS and Ubuntu
@@ -35,9 +35,7 @@ BUGS
     * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix afte rimplementing button class
 
 FUTURE
-    1. for button class
-        * Implement multi-highlight/selects for radio buttons/checkboxes/multi-game piece selections
-        * Implement slider - for volume control, brightness
+    1. for button class Implement multi-highlight/selects for radio buttons/checkboxes/multi-game piece selections
     * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
     * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
     * For the board games below, have real image backgrounds e.g. Chess is heiroglohyic image of woman playing senet
@@ -48,5 +46,5 @@ FUTURE
 
 REQUIRED ASSISTANCE
     * tests.cpp building not working correctly
-    * CMAKElists.txt not working for main and tests
+    * CMAKElists.txt not working for main and tests + setup boost
     * Get advice from professional on how to improve code, including refractoring, segregating and security

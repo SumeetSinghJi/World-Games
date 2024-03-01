@@ -484,64 +484,77 @@ ________________________________________________________________________________
 
                                         BACKGROUND IMAGES
 
-                Background scenes created by A.I. art from creator.nightcafe.studio
+                Background scenes created by A.I. art @ creator.nightcafe.studio
 
 
                                                SOUNDS
 
-                                Music taken from pixabay.com
-                                Sound effects taken from pixabay.com
+                                Music @ pixabay.com
+                                Sound effects @ pixabay.com
 
 
                                         SETTINGS BUTTONS
+                    achievement-button.png by MD BADSHA MEAH @ icon-icons.com
+                    back-button.png by Google @ icon-icons.com
+                    book-button.png by ChrisL21 (Chris) @ icon-icons.com
+                    Business-target-Icon.png by AomAm @ icon-icons.com
+                    computer-button.png by Vexels @ icon-icons.com
+                    difficulty-button.png by Icons8 @ icon-icons.com
+                    Font-button.png by Ant design @ icon-icons.com
+                    forward-button.png by Google @ icon-icons.com
+                    human-button.png by Bryn Taylor @ icon-icons.com
+                    internet-button.png by Treetog ArtWork @ icon-icons.com
+                    Keyboard-button.png by Google Noto Emoji Objects @ icon-icons.com
+                    language-button.png by Google @ icon-icons.com
+                    load-button.png by Nick Frost and Greg Lapin @ icon-icons.com
+                    newgame-button.png by Royyan Wijaya @ icon-icons.com
+                    quit-button.png by Icomoon @ icon-icons.com
+                    resolution-1300x768-button.png by Neuicons @ icon-icons.com
+                    resolution-800x600-button.png by Neuicons @ icon-icons.com
+                    resolution-Full-Screen-button.png by Steve Schoger @ icon-icons.com
+                    restart-button.png by Radhika Paghdal @ icon-icons.com
+                    return-button.png by Becris @ icon-icons.com
+                    save-button.png by Nick Frost and Greg Lapin @ icon-icons.com
+                    sound-off-button.png by Kreasi Kanvas @ icon-icons.com
+                    sound-on-button.png by Maria & Guillem @ icon-icons.com
+                    star.png by Gianni Polito @ icon-icons.com
+                    swap-button.png by Webalys @ icon-icons.com
 
-                    save button by Nick Frost and Greg Lapin taken from icon-icons.com
-                    update button by Nick Frost and Greg Lapin taken from icon-icons.com
-                    Keyboard button by Google Noto Emoji Objects taken from icon-icons.com
-                    load button by Nick Frost and Greg Lapin taken from icon-icons.com
-                    star button by Gianni Polito taken from icon-icons.com
-                    coin button by iconpacks taken from icon-icons.com
-                    restart button by Radhika Paghdal taken from icon-icons.com
-                    Font, size icon by Ant design from icon-icons.com
-                    book icon by ChrisL21 (Chris) from icon-icons.com
-                    Human button by Bryn Taylor from  icon-icons.com
-                    Computer button by Vexels from icon-icons.com
-                    Keyboard realistic Image by juicy_fish on Freepik.com
-                    Keyboard cartoon Image by juicy_fish on Freepik.com
-                    controller image by user; nicefrog on opengameart.org
-                    computer mouse image taken from monkeypen.com
-                  All images with missing attributions taken from respective
-                        authors from icon-icons.com, or FreePik.com
+                  All button images with missing attributions @ respective
+                        authors @ icon-icons.com, or FreePik.com
+
+
+                                        BOX BUTTONS
+                    computer_mouse.png @ monkeypen.com
+                    game_controller.png by user; nicefrog @ opengameart.org
+                    keyboard_cartoon.png by juicy_fish @ Freepik.com
+                    keyboard_realistic.png by juicy_fish @ Freepik.com
                     
-
-
+                    
                                         COUNTRY BUTTONS
 
-                    England map icon by Bart Kowalski from icon-icons.com
-                    Beijing/China map icon by Rokey from icon-icons.com
-                    Shanghai map icon by Google from icon-icons.com
-                    Seoul map icon by maxicons from icon-icons.com
-                    Japan map icon by maxicons from icon-icons.com
-                    Hawaii map icon by Zulfa Mahendra from icon-icons.com
-                    Berlin map icon by Manthana Chaiwong from icon-icons.com
-                    Paris map icon by Oleksandr Yershov from icon-icons.com
-                    Delhi map icon by Jemis Mali from icon-icons.com
-                    Singapore map icon by Icons-Land from icon-icons.com
-                    Rome colosseum map icon by Iconka from from icon-icons.com
+                    England map icon by Bart Kowalski @ icon-icons.com
+                    Beijing/China map icon by Rokey @ icon-icons.com
+                    Shanghai map icon by Google @ icon-icons.com
+                    Seoul map icon by maxicons @ icon-icons.com
+                    Japan map icon by maxicons @ icon-icons.com
+                    Hawaii map icon by Zulfa Mahendra @ icon-icons.com
+                    Berlin map icon by Manthana Chaiwong @ icon-icons.com
+                    Paris map icon by Oleksandr Yershov @ icon-icons.com
+                    Delhi map icon by Jemis Mali @ icon-icons.com
+                    Singapore map icon by Icons-Land @ icon-icons.com
+                    Rome colosseum map icon by Iconka @ icon-icons.com
 
 
-                                        IN GAME GRAPHICS
+                                        BOARD GAME GRAPHICS
 
-                    Scissor image icon By Author: Gulraiz from Freepik.com
-                    Paper icon by Vexels from icon-icons.com
-                    stone icon by ChrisL21 (Chris) from icon-icons.com
-                    Playing cards - https://opengameart.org/content/playing-cards-vector-png
+                    Soltaire Playing cards - https://opengameart.org/content/playing-cards-vector-png
                     Senet board image - https://thiefontheflats.blogspot.com/2012/01/printable-senet-boards.html
 
 
                                             ANIMATIONS
 
-                    Fireworks animation by @haenaillust taken from giphy.com
+                    Fireworks animation by @haenaillust @ giphy.com
 
 
 

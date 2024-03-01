@@ -187,6 +187,7 @@ SDL_Event event;                          // event loop object initialise
 // Global variables automatically destroyed at end of main() no need to manual destroy
 
 // Scene 1 buttons
+Custom_SDL_Button scene1LoadGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1newGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1settingsButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1AchievementsButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -194,6 +195,7 @@ Custom_SDL_Button scene1HelpButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1multiplayerButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1QuitButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1DeveloperLogoLinkButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
 // scene 7
 Custom_SDL_Button scene7acceptButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene7denyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -491,7 +493,6 @@ void new_game()
     gameWon = NULL;
     unlockedScenes.clear();
     unlockedAchievements.clear();
-    scene = 25;
 }
 std::string find_os()
 {
@@ -780,6 +781,7 @@ void draw_lives(int lives)
 void load_buttons_to_scene_vectors()
 {
     // scene 1
+    scene1buttons.push_back(&scene1LoadGameButton);
     scene1buttons.push_back(&scene1newGameButton);
     scene1buttons.push_back(&scene1settingsButton);
     scene1buttons.push_back(&scene1AchievementsButton);
@@ -846,6 +848,9 @@ void load_buttons_1()
 {
     scene1newGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
                                             rectWidth, rectHeight,
+                                            "", 144, 238, 144, 255, "assets/graphics/buttons/settings/load-button.png", false); // RGB: Light green
+    scene1newGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
+                                            rectWidth, rectHeight,
                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/newgame-button.png", false); // RGB: Light green
     scene1settingsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35),
                                              rectWidth, rectHeight,
@@ -855,7 +860,7 @@ void load_buttons_1()
                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/settings/achievement-button.png", false); // RGB: Light green
     scene1HelpButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55),
                                          rectWidth, rectHeight,
-                                         "", 144, 238, 144, 255, "assets/graphics/buttons/settings/update-button.png", false); // RGB: Light green
+                                         "", 144, 238, 144, 255, "assets/graphics/buttons/settings/internet-button.png", false); // RGB: Light green
     scene1multiplayerButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65),
                                                 rectWidth, rectHeight,
                                                 "", 144, 238, 144, 255, "assets/graphics/buttons/settings/help-button.png", false); // RGB: Light green
