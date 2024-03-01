@@ -17,7 +17,8 @@
 #include "headers/sdl_keyboard_handles.hpp" // SDL Keyboard keypresses
 #include "headers/sdl_gamepad_handles.hpp"  // SDL Gamepad controller keypresses
 #include "headers/update_app.hpp"           // For downloading and installing latest game update
-#include "headers/tic_tac_toe.hpp"          // Scene 32 - Rome - Tic Tac Toe
+#include "headers/senet.hpp"                // Scene 34 - Cairo - Senet game
+#include "headers/tic_tac_toe.hpp"          // Scene 40 - Rome - Tic Tac Toe game
 #include "headers/custom_SDL_button.hpp"    // Custom SDL Button class for creating buttons for handles
 
 int main(int argc, char *argv[])

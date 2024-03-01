@@ -394,6 +394,10 @@ extern int lastScene;           // Settings - return to last game scene
 extern bool isNight;            // for background cosmetics
 extern bool fpsRendering;
 
+// GAMES
+extern SDL_Texture *xTexture;
+extern SDL_Texture *oTexture;
+
 // GAME UPDATE
 extern std::string updateApp_currentVersion;
 

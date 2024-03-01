@@ -19,6 +19,8 @@
     urlPath = remote file e.g. .txt/.md with string "Version: " to curl and compare remoteVersion with updateApp_currentVersion;
     downloadLink = full .zip file URL of app
     e.g. start_application_update("https://github.com/SumeetSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
+    4. variable/API updateApp_newVersionAvailable will trigger true during start_application_update() if new update available
+    5. Manually setting variable updateApp_startUpdate to true will continue remainder of update process, closing app, copying save, and restarting
 */
 
 #pragma once

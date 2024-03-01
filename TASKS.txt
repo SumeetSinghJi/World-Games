@@ -9,7 +9,6 @@ TASKS
     * Find a font that supports all languages
     * Key remapping option
     * Draw win frequency
-    * Refractor update_app.hpp to accept parameters in all functions and a way to call them, may require splitting game_update();
     * In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
     * server responds with verification email.
     * If user clicks OK on email verification, account created

@@ -354,7 +354,7 @@ scene 30 = _____UNUSED_____
 scene 31 - beijing - shoushiling (traditional 手勢令), frog 蛙, snake 蛇, centipede 蜈蜙
 scene 32 = london - Scissors Paper Rock
 scene 33 = paris
-scene 34 = berlin
+scene 34 = Cairo
 scene 35 = delhi
 scene 36 = hawaii
 scene 37 = tokyo
@@ -367,7 +367,7 @@ scene 43 - Athens
 scene 44 - Manilla
 scene 45 - Tehran
 scene 46 - Tel Aviv
-scene 47 - Cairo
+scene 47 - berlin
 scene 48 - Bangkok
 scene 49 - Kathmandu
 scene 50 - Alaska
