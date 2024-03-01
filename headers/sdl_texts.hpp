@@ -56,6 +56,7 @@ std::string key_mapping_txt;
 std::string language_txt;
 std::string leaderboard_txt;
 std::string learnt_kitsune_ken_txt;
+std::string load_game_txt;
 std::string lost_a_game_txt;
 
 // M
@@ -124,8 +125,10 @@ void localisation(const std::string &language)
         // L
         language_txt = "Language";
         leaderboard_txt = "Leaderboard";
-        lost_a_game_txt = "2. Lost a game";
         learnt_kitsune_ken_txt = "6. Learnt secret of kitsune-ken";
+        load_game_txt = "Load Game";
+        lost_a_game_txt = "2. Lost a game";
+        
         // M
         main_menu_txt = "Main Menu";
         multiplayer_lobby_txt = "Multiplayer lobby";
@@ -175,8 +178,10 @@ void localisation(const std::string &language)
         // L
         language_txt = "言語";
         leaderboard_txt = "リーダーボード";
-        lost_a_game_txt = "2. 試合に負けた";
         learnt_kitsune_ken_txt = "6. きつね剣の秘密を知る";
+        load_game_txt = "ゲームを読み込む";
+        lost_a_game_txt = "2. 試合に負けた";
+        
         // M
         main_menu_txt = "メインメニュー";
         multiplayer_lobby_txt = "マルチプレイヤーロビー";
@@ -228,8 +233,10 @@ void localisation(const std::string &language)
         // L
         language_txt = "ภาษา";
         leaderboard_txt = "ตารางเกม";
-        lost_a_game_txt = "2. แพ้เกม";
         learnt_kitsune_ken_txt = "6. เรียนรู้ความลับของ kitsune-ken";
+        load_game_txt = "โหลดเกม";
+        lost_a_game_txt = "2. แพ้เกม";
+        
         // M
         main_menu_txt = "เมนูหลัก";
         multiplayer_lobby_txt = "ห้องโหลดเกมหลายคน";
@@ -281,8 +288,9 @@ void localisation(const std::string &language)
         // L
         language_txt = "भाषा";
         leaderboard_txt = "शिखरपट्टिका";
-        lost_a_game_txt = "2. खेल हारा";
         learnt_kitsune_ken_txt = "6. कित्सुने-केन का गुप्त रहस्य सीखा";
+        load_game_txt = "खेलं लोड्";
+        lost_a_game_txt = "2. खेल हारा";
         // M
         main_menu_txt = "मुख्य मेनू";
         multiplayer_lobby_txt = "बहुप्रयोक्ता लॉबी";
@@ -334,8 +342,10 @@ void localisation(const std::string &language)
         // L
         language_txt = "語言";
         leaderboard_txt = "排行榜";
-        lost_a_game_txt = "2. 輸了一局";
         learnt_kitsune_ken_txt = "6. 學會狐拳的秘密";
+        load_game_txt = "載入遊戲";
+        lost_a_game_txt = "2. 輸了一局";
+        
         // M
         main_menu_txt = "主菜單";
         multiplayer_lobby_txt = "多人遊戲大廳";
@@ -387,8 +397,9 @@ void localisation(const std::string &language)
         // L
         language_txt = "اللغة";
         leaderboard_txt = "لوحة القيادة";
+        learnt_kitsune_ken_txt = "6. تعلم سر كيتسوني-كين";        
+        load_game_txt = "تحميل اللعبة";
         lost_a_game_txt = "2. خسر لعبة";
-        learnt_kitsune_ken_txt = "6. تعلم سر كيتسوني-كين";
         // M
         main_menu_txt = "القائمة الرئيسية";
         multiplayer_lobby_txt = "غرفة اللعب الجماعي";
@@ -440,8 +451,9 @@ void localisation(const std::string &language)
         // L
         language_txt = "ቋንቋ";
         leaderboard_txt = "መረጃ ምርጫ";
-        lost_a_game_txt = "2. ጨዋታ ተወፍረዋል";
         learnt_kitsune_ken_txt = "6. ከኪቱንዝነት ጥቅም ተማርለት";
+        load_game_txt = "ግዕዝ ጨዋታ";
+        lost_a_game_txt = "2. ጨዋታ ተወፍረዋል";
         // M
         main_menu_txt = "መምሪያ ስምምነት";
         multiplayer_lobby_txt = "የሚከተለው ሌቦች";
@@ -493,8 +505,9 @@ void localisation(const std::string &language)
         // L
         language_txt = "Γλώσσα";
         leaderboard_txt = "Πίνακας κατάταξης";
-        lost_a_game_txt = "2. Έχασε ένα παιχνίδι";
         learnt_kitsune_ken_txt = "6. Μάθηση μυστικού του kitsune-ken";
+        load_game_txt = "Φόρτωση παιχνιδιού";
+        lost_a_game_txt = "2. Έχασε ένα παιχνίδι";
         // M
         main_menu_txt = "Κύριο μενού";
         multiplayer_lobby_txt = "Προθάλαμος πολλαπλών παικτών";
@@ -529,10 +542,8 @@ void localisation(const std::string &language)
         called_out_bluff_txt = "4. Detectum mendacium";
         cheated_round_txt = "5. Fraus circuli";
         continue_txt = "Continua";
-
         // D
         deny_txt = "Negare";
-
         // E
         enter_name_txt = "Nomine inserito:";
         exit_txt = "Exitus";
@@ -546,8 +557,9 @@ void localisation(const std::string &language)
         // L
         language_txt = "Lingua";
         leaderboard_txt = "Tabula ducum";
-        lost_a_game_txt = "2. Ludum perditum";
         learnt_kitsune_ken_txt = "6. Arcanum Kitsune-ken didicit";
+        load_game_txt = "Lusum onerare";
+        lost_a_game_txt = "2. Ludum perditum";
         // M
         main_menu_txt = "Menu principalis";
         multiplayer_lobby_txt = "Conventus multiplex";
@@ -579,6 +591,7 @@ void draw_text_for_HUD_scene_1() // Main menu
 {
     render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 0);
 
+    render_text(load_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
     render_text(start_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
     render_text(settings_txt, (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
     render_text(achievements_txt, (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);

@@ -1,11 +1,12 @@
 
 TASKS
-    * IMPORTANT FIRST STEP - Scene 11 + 12 Implement
+    * does_save_file_exist() - draw as popup, then put for new game handle
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * Scene 7 update software render
-    * on settingsSaveRect in mouse handle save settings, popup asking to save settings, new function()
+    * new settings button to save settings, new function to save settings, and update load_game() to load settings
     * Replace all textures with buttons
+    * in mouse/keyboard/controller, cycling through language sets button path to that flag
     * Key remapping option
     * Draw win frequency
     * Refractor update_app.hpp to accept parameters in all functions and a way to call them, may require splitting game_update();

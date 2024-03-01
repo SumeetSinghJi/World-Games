@@ -62,8 +62,7 @@ journey emulating my shareware era developer heroes I admired when younger.
 Thus, I hope this story and game evoke similar enjoyable moments for you. I encourage you, at least once in your 
 life, to pursue a nostalgic lifelong fascination you have, as it may bring closure to subconscious desires."
 
-
-
+                                      Sumeet Singh, February 2024.
 
 
 
@@ -78,7 +77,7 @@ ________________________________________________________________________________
 1. Introduction
 2. License
 3. Setup
-4. Software logic
+4. Program logic
 5. Games and Rules
 6. Credits
 
@@ -116,6 +115,7 @@ Note: This project includes components licensed under different terms:
 - SDL2 image: See `./src/SDL2_image/LICENSE.txt` for details.
 - SDL2 Mixer: See `./src/SDL2_Mixer/LICENSE.txt` for details.
 - SDL2 TTF: See `./src/SDL2_TTF/LICENSE.txt` for details.
+- Boost.asio: See __________FILL ME______________ for details.
 
 
 _________________________________________________________________________________________________________________
@@ -137,6 +137,7 @@ License: Source Code License: MIT License. Graphical Assets License: Creative Co
 License.
 
 
+
 HELP
 
 Found in game by clicking on "Help" (Book) option in main menu or read README.txt file
@@ -148,14 +149,18 @@ REQUIREMENTS
 * Supported OS: Windows 10+ (untested on older or different Operating Systems)
 * Processor: at least 7th gen Intel Core i3 or AMD equivalent
 * RAM: 4 GB RAM
-* Graphics: Either CPU's dedicated GPU, or an HD capable GPU
+* Graphics: Either CPU's dedicated GPU, or any HD output capable GPU
 * Storage: 5 GB available space
 
 
-ACCESSIBILITY - LANGUAGES
 
-Game supports several languages with full language support below.
-Language can be changed from the Settings - Language (World) option in the main menu.
+ACCESSIBILITY
+
+* Supported full controllers: Mouse, Keyboard, Gamepad, Touch
+(Key bindings can be changed via in game settings, key bindings button)
+
+* Supported full languages:
+(Languages can be changed via in game settings, language button)
 1. ENGLISH
 2. 日本語 (Japanese)
 3. ภาษาไทย (Thai)
@@ -165,17 +170,6 @@ Language can be changed from the Settings - Language (World) option in the main 
 7. ግዕዝ (Ge'ez)
 8. Ελληνικά (Greek)
 9. Latina (Latin)
-
-
-ACESSIBILITY - INPUT
-
-Game supports using several key input methods to play game
-1. Mouse (Preferred)
-2. Keyboard
-3. Gamepad
-4. Touch
-
-Keybindings for Keyboard and Gamepad use default Arrow or D-Pad directional keys with ENTER or A to select.
 
 
 
@@ -198,7 +192,7 @@ For MacOS: copy over this file main.bin to applications folder and accept defaul
 
 _________________________________________________________________________________________________________________
 
-                                        4. SOFTWARE LOGIC
+                                        4. PROGRAM LOGIC
 
 _________________________________________________________________________________________________________________
 
@@ -207,15 +201,16 @@ ENVIRONMENT
 
 Game uses the following third party libraries.
 
-1. SDL2 (https://github.com/libsdl-org/SDL)- Used for creating a Window and rendering buttons and key inputs
-2. SDL2_image (https://github.com/libsdl-org/SDL_image) - Library for adding non images JPG/PNG etc., to a SDL2 
+1. SDL2: https://github.com/libsdl-org/SDL - Used for creating a Window and rendering buttons and key inputs
+2. SDL2_image: https://github.com/libsdl-org/SDL_image - Library for adding non images JPG/PNG etc., to a SDL2 
 Applicaiton
-3. SDL2_Mixer (https://github.com/libsdl-org/SDL_mixer) - Library for adding sound/music to a SDL2 application
-4. SDL2_TTF (https://github.com/libsdl-org/SDL_ttf) - Library for rendering text/font to SDL2 Window
-5. CURL - (https://github.com/curl/curl) - Library for web content gathering and posting for online services 
+3. SDL2_Mixer: https://github.com/libsdl-org/SDL_mixer - Library for adding sound/music to a SDL2 application
+4. SDL2_TTF: https://github.com/libsdl-org/SDL_ttf - Library for rendering text/font to SDL2 Window
+5. CURL: https://github.com/curl/curl - Library for web content gathering and posting for online services 
 and multiplayer
-6. libzip - (https://github.com/nih-at/libzip) - Library for extracting Zip files used for extracting 
+6. libzip: https://github.com/nih-at/libzip - Library for extracting Zip files used for extracting 
 downloaded game zip from source repository
+7. Boost.asio: https://www.boost.org/ - For multiplayer online gameplay
 
 
 FILES

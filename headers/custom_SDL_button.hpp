@@ -42,6 +42,26 @@ EXAMPLE:
 
 INITIALISATION
 
+0. Explanation of variable parameters
+e.g. submitEmailPasswordButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.8),
+                                                  static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
+                                                  "SUBMIT", 144, 238, 144, 255, "", false); // RGB: Light green
+
+1st parameter = type: int x  = rect x pos in window  e.g. static_cast<int>(windowWidth * 0.2)
+2nd parameter = type: int y = rect y pos in window e.g. static_cast<int>(windowHeight * 0.8)
+3rd parameter = type: int width = button width rect size e.g. static_cast<int>(windowWidth * 0.2)
+4th parameter = type: int height = button height rect size e.g. static_cast<int>(windowHeight * 0.1)
+5th parameter = type: const std::string &text = Text label to appear over button (in between 3rd/4th parameters)
+6th parameter = type: Uint8 r = button rgb red colour value e.g. 144 = combined with rgb = light green button colour
+7th parameter = type: Uint8 g = button rgb green colour value e.g. 238 = combined with rgb = light green button colour
+8th parameter = type: Uint8 b = button rgb blue colour value e.g. 144 = combined with rgb = light green button colour
+9th parameter = type: Uint8 alpha = transperancy of font, low number means more transparent font e.g. 255 
+10th parameter = type: std::string path = string path of asset to load e.g. (example not shown above but an real use case would
+look like this) "assets/graphics/buttons/settings/save-button.png"
+11th parameter = type: bool selected = used by find_euclidean_distance() to find selected button or called in handles to 
+select buttons = e.g. false
+
+
 1. create global variable e.g;
 
 Custom_SDL_Button submitUsernameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -60,7 +80,7 @@ void load_buttons_to_vector()
 }
 
 2. In a function or main populate variables e.g;
-Note: If there is an image/texture to load for the button image enter the string path.
+Note: If there is an texture to load instead of text, call function .set_button_texture(renderer);
 
 void load_buttons_2()
 {
@@ -69,7 +89,7 @@ void load_buttons_2()
                                                   "SUBMIT", 144, 238, 144, 255, "", false); // RGB: Light green
     backButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
                                    static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
-                                   "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
+                                   "", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
     backButton.set_button_texture(renderer);                                                                               // load button texture at runtime to stop infinite file access in rendercopy() loop
 }
 
@@ -217,8 +237,11 @@ public:
         selectedButton = this;
     }
 
-    void set_button_texture(SDL_Renderer *renderer)
+    void set_button_texture(SDL_Renderer *renderer, std::string customButtonPath)
     {
+        if (!customButtonPath.empty()) {
+            buttonPath = customButtonPath;
+        }
         buttonTexture = IMG_LoadTexture(renderer, buttonPath.c_str());
         if (buttonTexture == nullptr)
         {

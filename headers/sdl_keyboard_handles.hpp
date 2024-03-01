@@ -105,6 +105,224 @@ void handle_keyboard_scene_1(SDL_Event event)
         break;
     }
 }
+void handle_keyboard_scene_2(SDL_Event event)
+{
+    switch (event.key.keysym.sym)
+    {
+    case SDLK_ESCAPE:
+        std::cout << "You pressed button: ESC" << std::endl;
+        quitEventLoop = true;
+        break;
+    case SDLK_UP:
+        std::cout << "You clicked button: UP" << std::endl;
+        fontButton.find_nearest_button(scene2buttons, SDLK_UP, 0);
+        break;
+    case SDLK_DOWN:
+        std::cout << "You clicked button: DOWN" << std::endl;
+        fontButton.find_nearest_button(scene2buttons, SDLK_DOWN, 0);
+        break;
+    case SDLK_LEFT:
+        std::cout << "You clicked button: LEFT" << std::endl;
+        fontButton.find_nearest_button(scene2buttons, SDLK_LEFT, 0);
+        break;
+    case SDLK_RIGHT:
+        std::cout << "You clicked button: RIGHT" << std::endl;
+        fontButton.find_nearest_button(scene2buttons, SDLK_RIGHT, 0);
+        break;
+    case SDLK_RETURN:
+        std::cout << "You pressed button: RETURN | ENTER" << std::endl;
+        if (fontButton.is_selected())
+        {
+            std::cout << "You clicked font toggle" << std::endl;
+            if (fontSize == 24)
+            {
+                fontSize = 36;
+                std::cout << "Font size set to: " << fontSize << std::endl;
+            }
+            else if (fontSize == 36)
+            {
+                fontSize = 48;
+                std::cout << "Font size set to: " << fontSize << std::endl;
+            }
+            else if (fontSize == 48)
+            {
+                fontSize = 24;
+                std::cout << "Font size set to: " << fontSize << std::endl;
+            }
+        }
+        else if (soundButton.is_selected())
+        {
+            std::cout << "You clicked: Sound toggle" << std::endl;
+            if (isMusicPlaying)
+            {
+                Mix_PauseMusic();
+                isMusicPlaying = false;
+                std::cout << "Music is: " << isMusicPlaying << std::endl;
+            }
+            else
+            {
+                Mix_ResumeMusic();
+                isMusicPlaying = true;
+                std::cout << "Music is: " << isMusicPlaying << std::endl;
+            }
+        }
+        else if (languageButton.is_selected())
+        {
+            std::cout << "You clicked change Language" << std::endl;
+            if (language == "English")
+            {
+                language = "日本語";
+                localisation("日本語");
+                std::cout << "Language is now set to: " << language << std::endl;
+            }
+            else if (language == "日本語")
+            {
+                language = "ภาษาไทย";
+                localisation("ภาษาไทย");
+                std::cout << "Language is now set to: " << language << std::endl;
+            }
+            else if (language == "ภาษาไทย")
+            {
+                language = "संस्कृतम्";
+                localisation("संस्कृतम्");
+                std::cout << "Language is now set to: " << language << std::endl;
+            }
+            else if (language == "संस्कृतम्")
+            {
+                language = "中文";
+                localisation("中文");
+                std::cout << "Language is now set to: " << language << std::endl;
+            }
+            else if (language == "中文")
+            {
+                language = "العربية";
+                localisation("العربية");
+                std::cout << "Language is now set to: " << language << std::endl;
+            }
+            else if (language == "العربية")
+            {
+                language = "ግዕዝ";
+                localisation("ግዕዝ");
+                std::cout << "Language is now set to: " << language << std::endl;
+            }
+            else if (language == "ግዕዝ")
+            {
+                language = "Ελληνικά";
+                localisation("Ελληνικά");
+                std::cout << "Language is now set to: " << language << std::endl;
+            }
+            else if (language == "Ελληνικά")
+            {
+                language = "Latina";
+                localisation("Latina");
+                std::cout << "Language is now set to: " << language << std::endl;
+            }
+            else if (language == "Latina")
+            {
+                language = "English";
+                localisation("English");
+                std::cout << "Language is now set to: " << language << std::endl;
+            }
+        }
+        else if (fpsButton.is_selected())
+        {
+            std::cout << "You clicked FPS toggle" << std::endl;
+            render_fps();
+            fpsRendering = true;
+        }
+        else if (keyRemapButton.is_selected())
+        {
+            std::cout << "You clicked: Key Remap" << std::endl;
+        }
+        else if (resolution800x600Button.is_selected())
+        {
+            std::cout << "You clicked: set to 800 x 600 resolution" << std::endl;
+            change_resolution(800, 600);
+            fontSize = 24;
+            for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+            {
+                button->set_font_size(24);
+            }
+        }
+        else if (resolution1366x768Button.is_selected())
+        {
+            std::cout << "You clicked: set to 1366 x 768 resolution" << std::endl;
+            change_resolution(1366, 768);
+            fontSize = 36;
+            for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+            {
+                button->set_font_size(36);
+            }
+        }
+        else if (resolutionFullScreenButton.is_selected())
+        {
+            std::cout << "You clicked: Full Screen to Windowed resolution" << std::endl;
+
+            int borderFlag = SDL_GetWindowFlags(window);
+            bool isFullscreen = (borderFlag & SDL_WINDOW_FULLSCREEN_DESKTOP) != 0;
+            if (isFullscreen)
+            {
+                SDL_SetWindowFullscreen(window, 0);
+            }
+            else
+            {
+                SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+            }
+
+            SDL_GetWindowSize(window, &windowWidth, &windowHeight);
+            change_resolution(windowWidth, windowHeight);
+
+            fontSize = 48;
+            for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+            {
+                button->set_font_size(48);
+            }
+        }
+        else if (returnGameButton.is_selected())
+        {
+            std::cout << "You clicked Return to game" << std::endl;
+            if (gameStarted)
+            {
+                scene = lastScene;
+            }
+            else
+            {
+                std::cout << "Cannot Continue. Game not started." << std::endl;
+            }
+        }
+        else if (returnTitleButton.is_selected())
+        {
+            std::cout << "You clicked Return to title toggle" << std::endl;
+            scene = 1;
+        }
+        else if (settingsResetButton.is_selected())
+        {
+            std::cout << "You clicked: Reset settings" << std::endl;
+            change_resolution(1366, 768);
+            fontSize = 36;
+            for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+            {
+                button->set_font_size(36);
+            }
+            if (!isMusicPlaying)
+            {
+                Mix_ResumeMusic();
+            }
+            if (fpsRendering)
+            {
+                render_fps();
+            }
+            language = "English";
+        }
+        else if (settingsSaveButton.is_selected())
+        {
+            std::cout << "You clicked: Save settings" << std::endl;
+        }
+    default:
+        std::cout << "You pressed a non-configured keyboard input." << std::endl;
+        break;
+    }
+}
 
 void handle_keyboard_scene_5(SDL_Event event)
 {

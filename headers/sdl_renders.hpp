@@ -84,6 +84,7 @@ void draw_policies_popup_window()
 
 void draw_buttons_scene_1()
 {
+    scene1LoadGameButton.render_button_rect(renderer);
     scene1newGameButton.render_button_rect(renderer);
     scene1settingsButton.render_button_rect(renderer);
     scene1AchievementsButton.render_button_rect(renderer);
@@ -95,47 +96,31 @@ void draw_buttons_scene_1()
 
 void draw_buttons_scene_2() // Settings
 {
-    SDL_Rect fontRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
-    SDL_Rect soundRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
-    SDL_Rect languageRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect fpsRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
 
-    SDL_Rect resolution800x600Rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
-    SDL_Rect resolution1366x768Rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
-    SDL_Rect resolutionFullScreenRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect keyRemapRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
+    fontButton.render_button_rect(renderer);
+    soundButton.render_button_rect(renderer);
+    languageButton.render_button_rect(renderer);
+    fpsButton.render_button_rect(renderer);
 
-    SDL_Rect returnGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
-    SDL_Rect settingsResetRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect settingsSaveRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
+    resolution800x600Button.render_button_rect(renderer);
+    resolution1366x768Button.render_button_rect(renderer);
+    resolutionFullScreenButton.render_button_rect(renderer);
+    keyRemapButton.render_button_rect(renderer);
 
-    extern SDL_Texture *keyboardRealisticTexture;
-    extern SDL_Texture *keyboardCartoonTexture;
-    extern SDL_Texture *gameControllerTexture;
-    extern SDL_Texture *computerMouseTexture;
+    returnGameButton.render_button_rect(renderer);
+    returnTitleButton.render_button_rect(renderer);
+    settingsResetButton.render_button_rect(renderer);
+    settingsSaveButton.render_button_rect(renderer);
 
-    SDL_RenderCopy(renderer, fontTexture, nullptr, &fontRect);
     if (isMusicPlaying)
     {
-        SDL_RenderCopy(renderer, soundOnTexture, nullptr, &soundRect);
+        soundButton.set_button_texture(renderer, "assets/graphics/buttons/settings/sound-on-button.png");
     }
     else
     {
-        SDL_RenderCopy(renderer, soundOffTexture, nullptr, &soundRect);
+        soundButton.set_button_texture(renderer, "assets/graphics/buttons/settings/sound-off-button.png");
     }
-    SDL_RenderCopy(renderer, languageTexture, nullptr, &languageRect);
-    SDL_RenderCopy(renderer, fpsTexture, nullptr, &fpsRect);
 
-    SDL_RenderCopy(renderer, resolution800x600Texture, nullptr, &resolution800x600Rect);
-    SDL_RenderCopy(renderer, resolution1366x768Texture, nullptr, &resolution1366x768Rect);
-    SDL_RenderCopy(renderer, resolutionFullScreenTexture, nullptr, &resolutionFullScreenRect);
-    SDL_RenderCopy(renderer, keyRemapTexture, nullptr, &keyRemapRect);
-
-    SDL_RenderCopy(renderer, returnGameTexture, nullptr, &returnGameRect);
-    SDL_RenderCopy(renderer, settingsResetTexture, nullptr, &settingsResetRect);
-    SDL_RenderCopy(renderer, settingsSaveTexture, nullptr, &settingsSaveRect);
-    SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
 }
 void draw_buttons_scene_3() // Credits
 {

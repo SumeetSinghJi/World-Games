@@ -63,6 +63,7 @@
  extern std::string language_txt;
  extern std::string leaderboard_txt;
  extern std::string learnt_kitsune_ken_txt;
+ extern std::string load_game_txt;
  extern std::string lost_a_game_txt;
 
 // M
@@ -279,6 +280,7 @@ extern SDL_Event event;                // event loop object initialise
 
 
 // Scene 1 buttons
+extern Custom_SDL_Button scene1LoadGameButton;
 extern Custom_SDL_Button scene1newGameButton;
 extern Custom_SDL_Button scene1settingsButton;
 extern Custom_SDL_Button scene1AchievementsButton;
@@ -286,6 +288,21 @@ extern Custom_SDL_Button scene1HelpButton;
 extern Custom_SDL_Button scene1multiplayerButton;
 extern Custom_SDL_Button scene1QuitButton;
 extern Custom_SDL_Button scene1DeveloperLogoLinkButton;
+// scene 2
+extern Custom_SDL_Button fontButton;
+extern Custom_SDL_Button soundButton;
+extern Custom_SDL_Button languageButton;
+extern Custom_SDL_Button fpsButton;
+
+extern Custom_SDL_Button resolution800x600Button;
+extern Custom_SDL_Button resolution1366x768Button;
+extern Custom_SDL_Button resolutionFullScreenButton;
+extern Custom_SDL_Button keyRemapButton;
+
+extern Custom_SDL_Button returnGameButton;
+extern Custom_SDL_Button returnTitleButton;
+extern Custom_SDL_Button settingsResetButton;
+extern Custom_SDL_Button settingsSaveButton;
 // scene 7
 extern Custom_SDL_Button scene7acceptButton;
 extern Custom_SDL_Button scene7denyButton;

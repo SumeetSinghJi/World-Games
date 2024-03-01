@@ -15,11 +15,18 @@ void handle_click_scene_1(int mouseX, int mouseY)
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
-    if (scene1newGameButton.isClicked(mousePosition))
+    if (scene1LoadGameButton.isClicked(mousePosition))
+    {
+        std::cout << "You clicked Load Game" << std::endl;
+        load_game();
+        scene = 25;
+    }
+    else if (scene1newGameButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Start Game" << std::endl;
-        // scene = 11;
-        new_game(); // uncomment this and remove scene = 11, after testing;
+        // does_save_file_exist();
+        new_game();
+        scene = 25;
     }
     else if (scene1settingsButton.isClicked(mousePosition))
     {
@@ -44,7 +51,7 @@ void handle_click_scene_1(int mouseX, int mouseY)
     else if (scene1QuitButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Quit game" << std::endl;
-        // save_game();
+        save_game();
         exit_SDL();
         exit(0);
     }
@@ -81,25 +88,10 @@ void handle_click_scene_1(int mouseX, int mouseY)
 
 void handle_click_scene_2(int mouseX, int mouseY) // Settings
 {
-    SDL_Rect fontRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
-    SDL_Rect soundRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
-    SDL_Rect languageRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect fpsRect = {static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
-    SDL_Rect resolution800x600Rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
-    SDL_Rect resolution1366x768Rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
-    SDL_Rect resolutionFullScreenRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect keyRemapRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
-    SDL_Rect returnGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
-    SDL_Rect settingsResetRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect settingsSaveRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
     SDL_Point mousePosition = {mouseX, mouseY};
 
     // Settings Buttons
-    if (SDL_PointInRect(&mousePosition, &fontRect))
+    if (fontButton.isClicked(mousePosition))
     {
         std::cout << "You clicked font toggle" << std::endl;
         if (fontSize == 24)
@@ -118,7 +110,7 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
             std::cout << "Font size set to: " << fontSize << std::endl;
         }
     }
-    else if (SDL_PointInRect(&mousePosition, &soundRect))
+    else if (soundButton.isClicked(mousePosition))
     {
         std::cout << "You clicked: Sound toggle" << std::endl;
         if (isMusicPlaying)
@@ -134,7 +126,7 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
             std::cout << "Music is: " << isMusicPlaying << std::endl;
         }
     }
-    else if (SDL_PointInRect(&mousePosition, &languageRect))
+    else if (languageButton.isClicked(mousePosition))
     {
         std::cout << "You clicked change Language" << std::endl;
         if (language == "English")
@@ -143,64 +135,66 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
             localisation("日本語");
             std::cout << "Language is now set to: " << language << std::endl;
         }
-        else
+        else if (language == "日本語")
+        {
+            language = "ภาษาไทย";
+            localisation("ภาษาไทย");
+            std::cout << "Language is now set to: " << language << std::endl;
+        }
+        else if (language == "ภาษาไทย")
+        {
+            language = "संस्कृतम्";
+            localisation("संस्कृतम्");
+            std::cout << "Language is now set to: " << language << std::endl;
+        }
+        else if (language == "संस्कृतम्")
+        {
+            language = "中文";
+            localisation("中文");
+            std::cout << "Language is now set to: " << language << std::endl;
+        }
+        else if (language == "中文")
+        {
+            language = "العربية";
+            localisation("العربية");
+            std::cout << "Language is now set to: " << language << std::endl;
+        }
+        else if (language == "العربية")
+        {
+            language = "ግዕዝ";
+            localisation("ግዕዝ");
+            std::cout << "Language is now set to: " << language << std::endl;
+        }
+        else if (language == "ግዕዝ")
+        {
+            language = "Ελληνικά";
+            localisation("Ελληνικά");
+            std::cout << "Language is now set to: " << language << std::endl;
+        }
+        else if (language == "Ελληνικά")
+        {
+            language = "Latina";
+            localisation("Latina");
+            std::cout << "Language is now set to: " << language << std::endl;
+        }
+        else if (language == "Latina")
         {
             language = "English";
             localisation("English");
             std::cout << "Language is now set to: " << language << std::endl;
         }
     }
-    else if (SDL_PointInRect(&mousePosition, &fpsRect))
+    else if (fpsButton.isClicked(mousePosition))
     {
         std::cout << "You clicked FPS toggle" << std::endl;
         render_fps();
         fpsRendering = true;
     }
-    else if (SDL_PointInRect(&mousePosition, &keyRemapRect))
+    else if (keyRemapButton.isClicked(mousePosition))
     {
         std::cout << "You clicked: Key Remap" << std::endl;
     }
-    else if (SDL_PointInRect(&mousePosition, &settingsResetRect))
-    {
-        std::cout << "You clicked: Reset settings" << std::endl;
-        change_resolution(1366, 768);
-        fontSize = 36;
-        for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
-        {
-            button->set_font_size(36);
-        }
-        if (!isMusicPlaying)
-        {
-            Mix_ResumeMusic();
-        }
-        if (fpsRendering)
-        {
-            render_fps();
-        }
-        language = "English";
-    }
-    else if (SDL_PointInRect(&mousePosition, &settingsSaveRect))
-    {
-        std::cout << "You clicked: Save settings" << std::endl;
-    }
-    else if (SDL_PointInRect(&mousePosition, &returnGameRect))
-    {
-        std::cout << "You clicked Return to game" << std::endl;
-        if (gameStarted)
-        {
-            scene = lastScene;
-        }
-        else
-        {
-            std::cout << "Cannot Continue. Game not started." << std::endl;
-        }
-    }
-    else if (SDL_PointInRect(&mousePosition, &returnTitleRect))
-    {
-        std::cout << "You clicked Return to title toggle" << std::endl;
-        scene = 1;
-    }
-    else if (SDL_PointInRect(&mousePosition, &resolution800x600Rect))
+    else if (resolution800x600Button.isClicked(mousePosition))
     {
         std::cout << "You clicked: set to 800 x 600 resolution" << std::endl;
         change_resolution(800, 600);
@@ -210,7 +204,7 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
             button->set_font_size(24);
         }
     }
-    else if (SDL_PointInRect(&mousePosition, &resolution1366x768Rect))
+    else if (resolution1366x768Button.isClicked(mousePosition))
     {
         std::cout << "You clicked: set to 1366 x 768 resolution" << std::endl;
         change_resolution(1366, 768);
@@ -220,7 +214,7 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
             button->set_font_size(36);
         }
     }
-    else if (SDL_PointInRect(&mousePosition, &resolutionFullScreenRect))
+    else if (resolutionFullScreenButton.isClicked(mousePosition))
     {
         std::cout << "You clicked: Full Screen to Windowed resolution" << std::endl;
 
@@ -243,6 +237,46 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
         {
             button->set_font_size(48);
         }
+    }
+    else if (returnGameButton.isClicked(mousePosition))
+    {
+        std::cout << "You clicked Return to game" << std::endl;
+        if (gameStarted)
+        {
+            scene = lastScene;
+        }
+        else
+        {
+            std::cout << "Cannot Continue. Game not started." << std::endl;
+        }
+    }
+    else if (returnTitleButton.isClicked(mousePosition))
+    {
+        std::cout << "You clicked Return to title toggle" << std::endl;
+        scene = 1;
+    }
+    else if (settingsResetButton.isClicked(mousePosition))
+    {
+        std::cout << "You clicked: Reset settings" << std::endl;
+        change_resolution(1366, 768);
+        fontSize = 36;
+        for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+        {
+            button->set_font_size(36);
+        }
+        if (!isMusicPlaying)
+        {
+            Mix_ResumeMusic();
+        }
+        if (fpsRendering)
+        {
+            render_fps();
+        }
+        language = "English";
+    }
+    else if (settingsSaveButton.isClicked(mousePosition))
+    {
+        std::cout << "You clicked: Save settings" << std::endl;
     }
 }
 void handle_click_scene_3(int mouseX, int mouseY) // Credits
@@ -399,10 +433,12 @@ void handle_click_scene_11(int mouseX, int mouseY)
         if (scene11acceptButton.isClicked(mousePosition))
         {
             std::cout << "You clicked: Accept Privacy Policy" << std::endl;
-            if (!acceptedPrivacyPolicy) {
+            if (!acceptedPrivacyPolicy)
+            {
                 acceptedPrivacyPolicy = true;
             }
-            if (acceptedPrivacyPolicy) {
+            if (acceptedPrivacyPolicy)
+            {
                 acceptedTermsAndConditions = true;
                 showPrivacyPolicyPopup = false;
             }
