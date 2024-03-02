@@ -13,8 +13,6 @@ Description: read the attached MANUAL.txt file
 
 // Tic Tac Toe - Textures
 
-SDL_Texture *playerJackals = nullptr;
-SDL_Texture *opponentJackals = nullptr;
 SDL_Texture *fidhchellDiceFront = nullptr;
 SDL_Texture *fidhchellDiceback = nullptr;
 SDL_Texture *fidhchellBoardTexture = nullptr;
@@ -53,8 +51,6 @@ void exit_SDL();                                                                
 // Tic Tac Toe - Draws
 void fidhchell_load_textures()
 {
-    playerJackals = load_texture("assets/graphics/buttons/fidhchell/playerJackals.png", "Player Jackals");
-    opponentJackals = load_texture("assets/graphics/buttons/fidhchell/opponentJackals.png", "Opponent Jackals");
     fidhchellDiceFront = load_texture("assets/graphics/buttons/fidhchell/fidhchellDiceFront.png", "fidhchell dice front");
     fidhchellDiceback = load_texture("assets/graphics/buttons/fidhchell/fidhchellDiceback.png", "fidhchell dice back");
     fidhchellBoardTexture = load_texture("assets/graphics/boards/fidhchell/fidhchell-board.png", "fidhchell Board");

@@ -358,8 +358,8 @@ scene 35 = Delhi (Aryavarta) - Pachisi
 scene 36 = Tehran (Persia) - Backgammon
 scene 37 = Mexico - Patolli
 scene 38 = Baghdad (Babylonian) - Royal game of Ur
-scene 39 = Greece - The oldest European game record in Homer's Iliad called petteia.
-scene 40 - Rome - terni lapilli (three pebbles at a time) Tic Tac Toe
+scene 39 = Greece - Petteia
+scene 40 - Rome - terni lapilli
 scene 41 - _____UNUSED_____
 scene 42 - _____UNUSED_____
 scene 43 - _____UNUSED_____

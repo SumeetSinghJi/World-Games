@@ -13,8 +13,6 @@ Description: read the attached MANUAL.txt file
 
 // Tic Tac Toe - Textures
 
-SDL_Texture *playerJackals = nullptr;
-SDL_Texture *opponentJackals = nullptr;
 SDL_Texture *backgammonDiceFront = nullptr;
 SDL_Texture *backgammonDiceback = nullptr;
 SDL_Texture *backgammonBoardTexture = nullptr;
@@ -53,8 +51,6 @@ void exit_SDL();                                                                
 // Tic Tac Toe - Draws
 void backgammon_load_textures()
 {
-    playerJackals = load_texture("assets/graphics/buttons/backgammon/playerJackals.png", "Player Jackals");
-    opponentJackals = load_texture("assets/graphics/buttons/backgammon/opponentJackals.png", "Opponent Jackals");
     backgammonDiceFront = load_texture("assets/graphics/buttons/backgammon/backgammonDiceFront.png", "backgammon dice front");
     backgammonDiceback = load_texture("assets/graphics/buttons/backgammon/backgammonDiceback.png", "backgammon dice back");
     backgammonBoardTexture = load_texture("assets/graphics/boards/backgammon/backgammon-board.png", "backgammon Board");

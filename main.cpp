@@ -17,22 +17,32 @@
 #include "headers/sdl_keyboard_handles.hpp" // SDL Keyboard keypresses
 #include "headers/sdl_gamepad_handles.hpp"  // SDL Gamepad controller keypresses
 #include "headers/update_app.hpp"           // For downloading and installing latest game update
-#include "headers/senet.hpp"                // Scene 34 - Cairo - Senet game
-#include "headers/tic_tac_toe.hpp"          // Scene 40 - Rome - Tic Tac Toe game
-#include "headers/custom_SDL_button.hpp"    // Custom SDL Button class for creating buttons for handles
+
+#include "headers/go.hpp"               // scene 31 - beijing - Go
+#include "headers/fidhchell.hpp"        // scene 32 = london (Celtic)- Fidhchell
+#include "headers/mancala.hpp"          // scene 33 = Ethiopia (Yeha) - Mancala
+#include "headers/senet.hpp"            // scene 34 = Cairo - Senet
+#include "headers/pachisi.hpp"          // scene 35 = Delhi (Aryavarta) - Pachisi
+#include "headers/backgammon.hpp"       // scene 36 = Tehran (Persia) - Backgammon
+#include "headers/patolli.hpp"          // scene 37 = Mexico - Patolli
+#include "headers/royal_game_of_ur.hpp" // scene 38 = Baghdad (Babylonian) - Royal game of Ur
+#include "headers/petteia.hpp"          // scene 39 = Greece - Petteia
+#include "headers/terni_lapilli.hpp"    // scene 40 - Rome - terni lapilli
+
+#include "headers/custom_SDL_button.hpp" // Custom SDL Button class for creating buttons for handles
 
 int main(int argc, char *argv[])
 {
-    srand(static_cast<unsigned int>(time(0))); // Seed random time function for gameplay randomisation
-    find_os(); // Find host OS for OS specific functions
-    update_version_string_from_readme_file("README.md"); // populate variable currentVersion in update_app.hpp
-    UpdateApp_sourceDirectory = "C:/Users/Sumeet/Documents/World-Games"; // populate variable in update_app.hpp 
+    srand(static_cast<unsigned int>(time(0)));                           // Seed random time function for gameplay randomisation
+    find_os();                                                           // Find host OS for OS specific functions
+    update_version_string_from_readme_file("README.md");                 // populate variable currentVersion in update_app.hpp
+    UpdateApp_sourceDirectory = "C:/Users/Sumeet/Documents/World-Games"; // populate variable in update_app.hpp
 
     start_SDL(); // Start game
 
     play_developer_splash_screen(); // Render promotional image of developer before game starts
 
-    run_SDL(); // Run Game
+    run_SDL();  // Run Game
     exit_SDL(); // Quit Game
 
     return 0;

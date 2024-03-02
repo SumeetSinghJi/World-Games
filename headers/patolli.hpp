@@ -15,8 +15,6 @@ Description: read the attached MANUAL.txt file
 
 // Tic Tac Toe - Textures
 
-SDL_Texture *playerJackals = nullptr;
-SDL_Texture *opponentJackals = nullptr;
 SDL_Texture *patolliDiceFront = nullptr;
 SDL_Texture *patolliDiceback = nullptr;
 SDL_Texture *patolliBoardTexture = nullptr;
@@ -55,8 +53,6 @@ void exit_SDL();                                                                
 // Tic Tac Toe - Draws
 void patolli_load_textures()
 {
-    playerJackals = load_texture("assets/graphics/buttons/patolli/playerJackals.png", "Player Jackals");
-    opponentJackals = load_texture("assets/graphics/buttons/patolli/opponentJackals.png", "Opponent Jackals");
     patolliDiceFront = load_texture("assets/graphics/buttons/patolli/patolliDiceFront.png", "patolli dice front");
     patolliDiceback = load_texture("assets/graphics/buttons/patolli/patolliDiceback.png", "patolli dice back");
     patolliBoardTexture = load_texture("assets/graphics/boards/patolli/patolli-board.png", "patolli Board");

@@ -1,5 +1,6 @@
 
 TASKS
+    * VS has a inbuilt profiler performance live chart, build project using it to test
     * savefile is outputing unlocked achievements as empty string so on load_game() crashes.
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS

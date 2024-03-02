@@ -15,8 +15,6 @@ Description: read the attached MANUAL.txt file
 
 // Tic Tac Toe - Textures
 
-SDL_Texture *playerJackals = nullptr;
-SDL_Texture *opponentJackals = nullptr;
 SDL_Texture *petteiaDiceFront = nullptr;
 SDL_Texture *petteiaDiceback = nullptr;
 SDL_Texture *petteiaBoardTexture = nullptr;
@@ -55,8 +53,6 @@ void exit_SDL();                                                                
 // Tic Tac Toe - Draws
 void petteia_load_textures()
 {
-    playerJackals = load_texture("assets/graphics/buttons/petteia/playerJackals.png", "Player Jackals");
-    opponentJackals = load_texture("assets/graphics/buttons/petteia/opponentJackals.png", "Opponent Jackals");
     petteiaDiceFront = load_texture("assets/graphics/buttons/petteia/petteiaDiceFront.png", "petteia dice front");
     petteiaDiceback = load_texture("assets/graphics/buttons/petteia/petteiaDiceback.png", "petteia dice back");
     petteiaBoardTexture = load_texture("assets/graphics/boards/petteia/petteia-board.png", "petteia Board");

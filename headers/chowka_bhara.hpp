@@ -15,8 +15,6 @@ Description: read the attached MANUAL.txt file
 
 // Tic Tac Toe - Textures
 
-SDL_Texture *playerJackals = nullptr;
-SDL_Texture *opponentJackals = nullptr;
 SDL_Texture *chowka_bharaDiceFront = nullptr;
 SDL_Texture *chowka_bharaDiceback = nullptr;
 SDL_Texture *chowka_bharaBoardTexture = nullptr;
@@ -55,8 +53,6 @@ void exit_SDL();                                                                
 // Tic Tac Toe - Draws
 void chowka_bhara_load_textures()
 {
-    playerJackals = load_texture("assets/graphics/buttons/chowka_bhara/playerJackals.png", "Player Jackals");
-    opponentJackals = load_texture("assets/graphics/buttons/chowka_bhara/opponentJackals.png", "Opponent Jackals");
     chowka_bharaDiceFront = load_texture("assets/graphics/buttons/chowka_bhara/chowka_bharaDiceFront.png", "chowka_bhara dice front");
     chowka_bharaDiceback = load_texture("assets/graphics/buttons/chowka_bhara/chowka_bharaDiceback.png", "chowka_bhara dice back");
     chowka_bharaBoardTexture = load_texture("assets/graphics/boards/chowka_bhara/chowka_bhara-board.png", "chowka_bhara Board");

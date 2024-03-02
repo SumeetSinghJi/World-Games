@@ -15,8 +15,6 @@ Description: read the attached MANUAL.txt file
 
 // Tic Tac Toe - Textures
 
-SDL_Texture *playerJackals = nullptr;
-SDL_Texture *opponentJackals = nullptr;
 SDL_Texture *pachisiDiceFront = nullptr;
 SDL_Texture *pachisiDiceback = nullptr;
 SDL_Texture *pachisiBoardTexture = nullptr;
@@ -55,8 +53,6 @@ void exit_SDL();                                                                
 // Tic Tac Toe - Draws
 void pachisi_load_textures()
 {
-    playerJackals = load_texture("assets/graphics/buttons/pachisi/playerJackals.png", "Player Jackals");
-    opponentJackals = load_texture("assets/graphics/buttons/pachisi/opponentJackals.png", "Opponent Jackals");
     pachisiDiceFront = load_texture("assets/graphics/buttons/pachisi/pachisiDiceFront.png", "pachisi dice front");
     pachisiDiceback = load_texture("assets/graphics/buttons/pachisi/pachisiDiceback.png", "pachisi dice back");
     pachisiBoardTexture = load_texture("assets/graphics/boards/pachisi/pachisi-board.png", "pachisi Board");
