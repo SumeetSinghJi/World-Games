@@ -280,8 +280,9 @@ extern SDL_Texture *newyorkNightBackgroundTexture;    // scene 49
 extern SDL_GameController *controller; // gamepad object initialise
 extern SDL_Event event;                // event loop object initialise
 
-
-// Scene 1 buttons
+// Buttoms defined in ./src/core_game_logic.cpp and initialised as global variables
+// and member variables populated in load_buttons_xx(), then loaded on game startup during start_SDL()
+// Scene 1 - Main menu
 extern Custom_SDL_Button scene1LoadGameButton;
 extern Custom_SDL_Button scene1newGameButton;
 extern Custom_SDL_Button scene1settingsButton;
@@ -292,7 +293,7 @@ extern Custom_SDL_Button scene1QuitButton;
 extern Custom_SDL_Button scene1DeveloperLogoLinkButton;
 extern Custom_SDL_Button scene1overwriteGameButton;
 extern Custom_SDL_Button scene1continueButton;
-// scene 2
+// scene 2 - settings
 extern Custom_SDL_Button fontButton;
 extern Custom_SDL_Button soundButton;
 extern Custom_SDL_Button languageButton;
@@ -307,36 +308,39 @@ extern Custom_SDL_Button returnGameButton;
 extern Custom_SDL_Button returnTitleButton;
 extern Custom_SDL_Button settingsResetButton;
 extern Custom_SDL_Button settingsSaveButton;
-// scene 3
+// scene 3 - credits
 extern Custom_SDL_Button scene3returnTitleButton;
-// scene 4
+// scene 4 - achievements
 extern Custom_SDL_Button scene4returnTitleButton;
-// scene 5
+// scene 5 - help
 extern Custom_SDL_Button scene5forwardButton;
 extern Custom_SDL_Button scene5backButton;
 extern Custom_SDL_Button scene5continueButton;
 extern Custom_SDL_Button scene5returnTitleButton;
+// scene 6 - leaderboard
+extern Custom_SDL_Button scene6returnTitleButton;
 // scene 7
-extern Custom_SDL_Button scene7acceptButton;
-extern Custom_SDL_Button scene7denyButton;
-// Scene 11
+extern Custom_SDL_Button scene7returnTitleButton;
+// scene 10 - key mapping
+extern Custom_SDL_Button scene10acceptButton;
+extern Custom_SDL_Button scene10denyButton;
+// Scene 11 - online login
 extern Custom_SDL_Button scene11submitUsernameButton;
 extern Custom_SDL_Button scene11registerButton;
 extern Custom_SDL_Button scene11acceptButton;
 extern Custom_SDL_Button scene11denyButton;
-// Scene 12
+// Scene 12 - create account
 extern Custom_SDL_Button scene12submitEmailPasswordButton;
 extern Custom_SDL_Button scene12backButton;
-// Scene 13
+// Scene 13 - multiplayer
 extern Custom_SDL_Button scene13hostGameButton;
 extern Custom_SDL_Button scene13joinGameButton;
 extern Custom_SDL_Button scene13searchGamesButton;
 extern Custom_SDL_Button scene13searchFriendsGamesButton;
 extern Custom_SDL_Button scene13refreshButton;
 extern Custom_SDL_Button scene13backButton;
-// Scene 25
+// Scene 25 - World map
 extern Custom_SDL_Button scene25backusernameButton;
-
 extern Custom_SDL_Button scene25helpButton;
 extern Custom_SDL_Button scene25settingsButton;
 extern Custom_SDL_Button scene25returnTitleButton;

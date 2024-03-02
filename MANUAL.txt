@@ -318,7 +318,6 @@ Uses headers;
 
 
 
-
 SCENES
 
 scene 1 = Main menu
@@ -359,9 +358,7 @@ scene 35 = Delhi (Aryavarta) - Pachisi
 scene 36 = Tehran (Persia) - Backgammon
 scene 37 = Mexico - Patolli
 scene 38 = Baghdad (Babylonian) - Royal game of Ur
-scene 39 = Greece - The oldest records of board gaming in Europe date back to Homer's Iliad (written
-                    in the 8th century BC), in which he mentions the Ancient Greek game of petteia.[17] This game of 
-                    petteia would later evolve into the Roman ludus latrunculorum.
+scene 39 = Greece - The oldest European game record in Homer's Iliad called petteia.
 scene 40 - Rome - terni lapilli (three pebbles at a time) Tic Tac Toe
 scene 41 - _____UNUSED_____
 scene 42 - _____UNUSED_____

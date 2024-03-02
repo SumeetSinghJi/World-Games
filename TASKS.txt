@@ -22,6 +22,7 @@ TASKS
     * Use AI to create victory animation
     * new settings button - volume up/down slider - with noise
     * Fix keyboard up and down movement to different buttons
+    * Full voice acting in each language
     * Clean up unused textures
     * Make Tic Tac toe roman circle game
     * Compile on MacOS and Ubuntu

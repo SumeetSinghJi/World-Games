@@ -208,13 +208,19 @@ void draw_buttons_scene_5() // Help
     scene5continueButton.render_button_rect(renderer);
     scene5returnTitleButton.render_button_rect(renderer);
 }
-void draw_buttons_scene_7() // Update Software
+void draw_buttons_scene_6() // Leaderboard
 {
-    scene7acceptButton.render_button_rect(renderer);
-    scene7denyButton.render_button_rect(renderer);
+    scene6returnTitleButton.render_button_rect(renderer);
 }
-
-void draw_buttons_scene_9() // leaderboard
+void draw_buttons_scene_7() // 
+{
+    scene7returnTitleButton.render_button_rect(renderer);
+}
+void draw_buttons_scene_8() //
+{
+    // scene7returnTitleButton.render_button_rect(renderer);
+}
+void draw_buttons_scene_9() // 
 {
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
 
@@ -222,9 +228,10 @@ void draw_buttons_scene_9() // leaderboard
 }
 void draw_buttons_scene_10() // Keybindings
 {
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, returnTitleTexture, nullptr, &returnTitleRect);
+    scene10acceptButton.render_button_rect(renderer);
+    scene10denyButton.render_button_rect(renderer);
 }
+
 void draw_buttons_scene_11() // Online login
 {
     if (showPrivacyPolicyPopup)

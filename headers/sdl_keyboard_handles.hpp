@@ -11,7 +11,7 @@ Description: read the attached MANUAL.txt file
 
 #include "global_variables.hpp"
 
-void handle_keyboard_scene_1(SDL_Event event)
+void handle_keyboard_scene_1(SDL_Event event) // Main menu
 {
     switch (event.key.keysym.sym)
     {
@@ -105,7 +105,7 @@ void handle_keyboard_scene_1(SDL_Event event)
         break;
     }
 }
-void handle_keyboard_scene_2(SDL_Event event)
+void handle_keyboard_scene_2(SDL_Event event) // Settings
 {
     switch (event.key.keysym.sym)
     {
@@ -323,7 +323,7 @@ void handle_keyboard_scene_2(SDL_Event event)
         break;
     }
 }
-void handle_keyboard_scene_3(SDL_Event event)
+void handle_keyboard_scene_3(SDL_Event event) // Credits
 {
     switch (event.key.keysym.sym)
     {
@@ -359,7 +359,7 @@ void handle_keyboard_scene_3(SDL_Event event)
         break;
     }
 }
-void handle_keyboard_scene_4(SDL_Event event)
+void handle_keyboard_scene_4(SDL_Event event) // Achievements
 {
     switch (event.key.keysym.sym)
     {
@@ -385,7 +385,7 @@ void handle_keyboard_scene_4(SDL_Event event)
         break;
     case SDLK_RETURN:
         std::cout << "You pressed button: RETURN | ENTER" << std::endl;
-        // Settings Buttons
+
         if (scene4returnTitleButton.is_selected())
         {
             std::cout << "You clicked Return to title" << std::endl;
@@ -396,7 +396,7 @@ void handle_keyboard_scene_4(SDL_Event event)
         break;
     }
 }
-void handle_keyboard_scene_5(SDL_Event event)
+void handle_keyboard_scene_5(SDL_Event event) // Help
 {
     switch (event.key.keysym.sym)
     {
@@ -422,42 +422,228 @@ void handle_keyboard_scene_5(SDL_Event event)
         break;
     case SDLK_RETURN:
         std::cout << "You pressed button: RETURN | ENTER" << std::endl;
-        // Settings Buttons
+
         if (scene5backButton.is_selected())
-    {
-        std::cout << "You clicked Back" << std::endl;
-        scrollY += scrollSpeed; // Scroll down
-    }
-    else if (scene5forwardButton.is_selected())
-    {
-        std::cout << "You clicked Forward" << std::endl;
-        scrollY -= scrollSpeed; // Scroll up
-    }
-    else if (scene5continueButton.is_selected())
-    {
-        std::cout << "You clicked Return to game" << std::endl;
-        if (gameStarted)
         {
-            scene = lastScene;
+            std::cout << "You clicked Back" << std::endl;
+            scrollY += scrollSpeed; // Scroll down
         }
-        else
+        else if (scene5forwardButton.is_selected())
         {
-            std::cout << "Cannot Continue. Game not started." << std::endl;
+            std::cout << "You clicked Forward" << std::endl;
+            scrollY -= scrollSpeed; // Scroll up
         }
+        else if (scene5continueButton.is_selected())
+        {
+            std::cout << "You clicked Return to game" << std::endl;
+            if (gameStarted)
+            {
+                scene = lastScene;
+            }
+            else
+            {
+                std::cout << "Cannot Continue. Game not started." << std::endl;
+            }
+        }
+        else if (scene5returnTitleButton.is_selected())
+        {
+            std::cout << "You clicked Return to title" << std::endl;
+            scene = 1;
+        }
+    default:
+        std::cout << "You pressed: a non-configured keyboard input." << std::endl;
+        break;
     }
-    else if (scene5returnTitleButton.is_selected())
+}
+void handle_keyboard_scene_6(SDL_Event event) // Leaderboard
+{
+    switch (event.key.keysym.sym)
     {
-        std::cout << "You clicked Return to title" << std::endl;
-        scene = 1;
+    case SDLK_ESCAPE:
+        std::cout << "You pressed button: ESC" << std::endl;
+        quitEventLoop = true;
+        break;
+    case SDLK_UP:
+        std::cout << "You clicked button: UP" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_UP, 0);
+        break;
+    case SDLK_DOWN:
+        std::cout << "You clicked button: DOWN" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_DOWN, 0);
+        break;
+    case SDLK_LEFT:
+        std::cout << "You clicked button: LEFT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_LEFT, 0);
+        break;
+    case SDLK_RIGHT:
+        std::cout << "You clicked button: RIGHT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_RIGHT, 0);
+        break;
+    case SDLK_RETURN:
+        std::cout << "You pressed button: RETURN | ENTER" << std::endl;
+
+        if (scene4returnTitleButton.is_selected())
+        {
+            std::cout << "You clicked Return to title" << std::endl;
+            scene = 1;
+        }
+    default:
+        std::cout << "You pressed: a non-configured keyboard input." << std::endl;
+        break;
     }
+}
+void handle_keyboard_scene_7(SDL_Event event) //
+{
+    switch (event.key.keysym.sym)
+    {
+    case SDLK_ESCAPE:
+        std::cout << "You pressed button: ESC" << std::endl;
+        quitEventLoop = true;
+        break;
+    case SDLK_UP:
+        std::cout << "You clicked button: UP" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_UP, 0);
+        break;
+    case SDLK_DOWN:
+        std::cout << "You clicked button: DOWN" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_DOWN, 0);
+        break;
+    case SDLK_LEFT:
+        std::cout << "You clicked button: LEFT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_LEFT, 0);
+        break;
+    case SDLK_RIGHT:
+        std::cout << "You clicked button: RIGHT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_RIGHT, 0);
+        break;
+    case SDLK_RETURN:
+        std::cout << "You pressed button: RETURN | ENTER" << std::endl;
+
+        if (scene4returnTitleButton.is_selected())
+        {
+            std::cout << "You clicked Return to title" << std::endl;
+            scene = 1;
+        }
+    default:
+        std::cout << "You pressed: a non-configured keyboard input." << std::endl;
+        break;
+    }
+}
+void handle_keyboard_scene_8(SDL_Event event) //
+{
+    switch (event.key.keysym.sym)
+    {
+    case SDLK_ESCAPE:
+        std::cout << "You pressed button: ESC" << std::endl;
+        quitEventLoop = true;
+        break;
+    case SDLK_UP:
+        std::cout << "You clicked button: UP" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_UP, 0);
+        break;
+    case SDLK_DOWN:
+        std::cout << "You clicked button: DOWN" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_DOWN, 0);
+        break;
+    case SDLK_LEFT:
+        std::cout << "You clicked button: LEFT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_LEFT, 0);
+        break;
+    case SDLK_RIGHT:
+        std::cout << "You clicked button: RIGHT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_RIGHT, 0);
+        break;
+    case SDLK_RETURN:
+        std::cout << "You pressed button: RETURN | ENTER" << std::endl;
+
+        if (scene4returnTitleButton.is_selected())
+        {
+            std::cout << "You clicked Return to title" << std::endl;
+            scene = 1;
+        }
+    default:
+        std::cout << "You pressed: a non-configured keyboard input." << std::endl;
+        break;
+    }
+}
+void handle_keyboard_scene_9(SDL_Event event) //
+{
+    switch (event.key.keysym.sym)
+    {
+    case SDLK_ESCAPE:
+        std::cout << "You pressed button: ESC" << std::endl;
+        quitEventLoop = true;
+        break;
+    case SDLK_UP:
+        std::cout << "You clicked button: UP" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_UP, 0);
+        break;
+    case SDLK_DOWN:
+        std::cout << "You clicked button: DOWN" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_DOWN, 0);
+        break;
+    case SDLK_LEFT:
+        std::cout << "You clicked button: LEFT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_LEFT, 0);
+        break;
+    case SDLK_RIGHT:
+        std::cout << "You clicked button: RIGHT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_RIGHT, 0);
+        break;
+    case SDLK_RETURN:
+        std::cout << "You pressed button: RETURN | ENTER" << std::endl;
+
+        if (scene4returnTitleButton.is_selected())
+        {
+            std::cout << "You clicked Return to title" << std::endl;
+            scene = 1;
+        }
+    default:
+        std::cout << "You pressed: a non-configured keyboard input." << std::endl;
+        break;
+    }
+}
+void handle_keyboard_scene_10(SDL_Event event) // Key mapping
+{
+    switch (event.key.keysym.sym)
+    {
+    case SDLK_ESCAPE:
+        std::cout << "You pressed button: ESC" << std::endl;
+        quitEventLoop = true;
+        break;
+    case SDLK_UP:
+        std::cout << "You clicked button: UP" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_UP, 0);
+        break;
+    case SDLK_DOWN:
+        std::cout << "You clicked button: DOWN" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_DOWN, 0);
+        break;
+    case SDLK_LEFT:
+        std::cout << "You clicked button: LEFT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_LEFT, 0);
+        break;
+    case SDLK_RIGHT:
+        std::cout << "You clicked button: RIGHT" << std::endl;
+        scene3returnTitleButton.find_nearest_button(scene3buttons, SDLK_RIGHT, 0);
+        break;
+    case SDLK_RETURN:
+        std::cout << "You pressed button: RETURN | ENTER" << std::endl;
+        if (scene10acceptButton.is_selected())
+        {
+            std::cout << "You clicked: ACCEPT" << std::endl;
+        }
+        else if (scene10denyButton.is_selected())
+        {
+            std::cout << "You clicked: DENY" << std::endl;
+        }
     default:
         std::cout << "You pressed: a non-configured keyboard input." << std::endl;
         break;
     }
 }
 
-
-void keyboard_handles_11(SDL_Event event)
+void keyboard_handles_11(SDL_Event event) // Online login
 {
     if (!showPrivacyPolicyPopup)
     {
@@ -547,7 +733,7 @@ void keyboard_handles_11(SDL_Event event)
         }
     }
 }
-void keyboard_handles_12(SDL_Event event)
+void keyboard_handles_12(SDL_Event event) // Create account
 {
     switch (event.key.keysym.sym)
     {
@@ -589,11 +775,11 @@ void keyboard_handles_12(SDL_Event event)
         break;
     }
 }
-void keyboard_handles_13(SDL_Event event)
+void keyboard_handles_13(SDL_Event event) // Multiplayer lobby
 {
 }
 
-void keyboard_handles_25(SDL_Event event)
+void keyboard_handles_25(SDL_Event event) // World map
 {
     switch (event.key.keysym.sym)
     {
@@ -710,4 +896,3 @@ void keyboard_handles_25(SDL_Event event)
         break;
     }
 }
-

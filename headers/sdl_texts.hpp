@@ -124,6 +124,10 @@ void localisation(const std::string &language)
         fullscreen_txt = "Fullscreen";
         // H
         help_txt = "Help";
+        // I
+        // J
+        // K
+        key_mapping_txt = "Key Mapping";
         // L
         language_txt = "Language";
         leaderboard_txt = "Leaderboard";
@@ -179,6 +183,10 @@ void localisation(const std::string &language)
         fullscreen_txt = "全画面表示";
         // H
         help_txt = "助け";
+        // I
+        // J
+        // K
+        key_mapping_txt = "キーマッピング";
         // L
         language_txt = "言語";
         leaderboard_txt = "リーダーボード";
@@ -236,13 +244,16 @@ void localisation(const std::string &language)
         fullscreen_txt = "เต็มหน้าจอ";
         // H
         help_txt = "ช่วยเหลือ";
+        // I
+        // J
+        // K
+        key_mapping_txt = "การกำหนดคีย์";
         // L
         language_txt = "ภาษา";
         leaderboard_txt = "ตารางเกม";
         learnt_kitsune_ken_txt = "6. เรียนรู้ความลับของ kitsune-ken";
         load_game_txt = "โหลดเกม";
         lost_a_game_txt = "2. แพ้เกม";
-
         // M
         main_menu_txt = "เมนูหลัก";
         multiplayer_lobby_txt = "ห้องโหลดเกมหลายคน";
@@ -293,6 +304,10 @@ void localisation(const std::string &language)
         fullscreen_txt = "पूर्ण आयाम";
         // H
         help_txt = "सहायता";
+        // I
+        // J
+        // K
+        key_mapping_txt = "की मानचित्रणं";
         // L
         language_txt = "भाषा";
         leaderboard_txt = "शिखरपट्टिका";
@@ -349,6 +364,10 @@ void localisation(const std::string &language)
         fullscreen_txt = "全屏";
         // H
         help_txt = "幫助";
+        // I
+        // J
+        // K
+        key_mapping_txt = "鍵盤映射";
         // L
         language_txt = "語言";
         leaderboard_txt = "排行榜";
@@ -406,6 +425,10 @@ void localisation(const std::string &language)
         fullscreen_txt = "شاشة كاملة";
         // H
         help_txt = "مساعدة";
+        // I
+        // J
+        // K
+        key_mapping_txt = " تعيين المفاتيح";
         // L
         language_txt = "اللغة";
         leaderboard_txt = "لوحة القيادة";
@@ -462,6 +485,10 @@ void localisation(const std::string &language)
         fullscreen_txt = "መረጃ ለማንበብ";
         // H
         help_txt = "እገዛ";
+        // I
+        // J
+        // K
+        key_mapping_txt = "የቁልፍ ምልክት";
         // L
         language_txt = "ቋንቋ";
         leaderboard_txt = "መረጃ ምርጫ";
@@ -518,6 +545,10 @@ void localisation(const std::string &language)
         fullscreen_txt = "Πλήρης οθόνη";
         // H
         help_txt = "Βοήθεια";
+        // I
+        // J
+        // K
+        key_mapping_txt = "Χαρτογράφηση πλήκτρων";
         // L
         language_txt = "Γλώσσα";
         leaderboard_txt = "Πίνακας κατάταξης";
@@ -572,6 +603,10 @@ void localisation(const std::string &language)
         fullscreen_txt = "Totus pagina";
         // H
         help_txt = "Auxilium";
+        // I
+        // J
+        // K
+        key_mapping_txt = "Clavis Mapping";
         // L
         language_txt = "Lingua";
         leaderboard_txt = "Tabula ducum";
@@ -672,22 +707,47 @@ void draw_text_for_HUD_scene_4() // Achievements
     render_text(found_hidden_level_txt, (windowWidth * 0.5), (windowHeight * 0.5), 255, 0);
     render_text(never_lost_game_txt, (windowWidth * 0.5), (windowHeight * 0.6), 255, 0);
 }
-
-void draw_text_for_HUD_scene_7() // Update Software
-{
-    render_text(update_txt, (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
-}
-
-void draw_text_for_HUD_scene_8() // Multiplayer lobby
-{
-    render_text(multiplayer_lobby_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
-}
-void draw_text_for_HUD_scene_9() // Leaderboard
+void draw_text_for_HUD_scene_5() // Help
 {
 
     render_text(leaderboard_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
 }
-void draw_text_for_HUD_scene_11() // Profile
+void draw_text_for_HUD_scene_6() // Leaderboard
+{
+
+    render_text(leaderboard_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
+}
+void draw_text_for_HUD_scene_7() // 
+{
+    render_text(update_txt, (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
+}
+void draw_text_for_HUD_scene_8() // 
+{
+    render_text(multiplayer_lobby_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
+}
+void draw_text_for_HUD_scene_9() // 
+{
+
+    render_text(leaderboard_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
+}
+void draw_text_for_HUD_scene_10() // Key mappings
+{
+    render_text(key_mapping_txt, (windowWidth * 0.35), (windowHeight * 0.1), 255, 0);
+}
+
+void draw_text_for_HUD_scene_11() // Online login
+{
+
+    render_text(profile_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
+    render_text(enter_name_txt, (windowWidth * 0.3), (windowHeight * 0.3), 255, 0);
+}
+void draw_text_for_HUD_scene_12() // Create account
+{
+
+    render_text(profile_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
+    render_text(enter_name_txt, (windowWidth * 0.3), (windowHeight * 0.3), 255, 0);
+}
+void draw_text_for_HUD_scene_13() // Multiplayer lobby
 {
 
     render_text(profile_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);

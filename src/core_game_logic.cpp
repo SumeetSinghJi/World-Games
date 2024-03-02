@@ -215,25 +215,37 @@ Custom_SDL_Button settingsSaveButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false
 
 // scene 3
 Custom_SDL_Button scene3returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
 // scene 4
 Custom_SDL_Button scene4returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
 // scene 5
 Custom_SDL_Button scene5backButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene5forwardButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene5continueButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene5returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 
+// scene 6
+Custom_SDL_Button scene6returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
 // scene 7
-Custom_SDL_Button scene7acceptButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
-Custom_SDL_Button scene7denyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene7returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
+// scene 10
+Custom_SDL_Button scene10acceptButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene10denyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
 // Scene 11
+
 Custom_SDL_Button scene11submitUsernameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene11registerButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene11acceptButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene11denyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
 // Scene 12
 Custom_SDL_Button scene12submitEmailPasswordButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene12backButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
 // Scene 13
 Custom_SDL_Button scene13hostGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene13joinGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -241,7 +253,6 @@ Custom_SDL_Button scene13searchGamesButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "",
 Custom_SDL_Button scene13searchFriendsGamesButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene13refreshButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene13backButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
-// Scene 14
 
 // Scene 25
 Custom_SDL_Button scene25helpButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -857,10 +868,13 @@ void load_buttons_to_scene_vectors()
     scene5buttons.push_back(&scene5forwardButton);
     scene5buttons.push_back(&scene5continueButton);
     scene5buttons.push_back(&scene5returnTitleButton);
-
+    // scene 6
+    scene7buttons.push_back(&scene6returnTitleButton);
     // scene 7
-    scene7buttons.push_back(&scene7acceptButton);
-    scene7buttons.push_back(&scene7denyButton);
+    scene7buttons.push_back(&scene7returnTitleButton);
+    // scene 10
+    scene10buttons.push_back(&scene10acceptButton);
+    scene10buttons.push_back(&scene10denyButton);
     // scene 11
     scene11buttons.push_back(&scene11submitUsernameButton);
     scene11buttons.push_back(&scene11registerButton);
@@ -1060,24 +1074,33 @@ void load_buttons_5()
 }
 void load_buttons_6()
 {
-    scene7acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
+    scene6returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
                                            rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+                                           accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+    scene6returnTitleButton.set_button_texture(renderer, "");
 }
 void load_buttons_7()
 {
-    scene7acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
+    scene7returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
                                            rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "", false); // RGB: Light green
-    scene7denyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35),
-                                         rectWidth, rectHeight,
-                                         deny_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+                                           accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+    scene7returnTitleButton.set_button_texture(renderer, "");
 }
 void load_buttons_8()
 {
-    scene7acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
+}
+void load_buttons_10()
+{
+    scene10acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.7),
                                            rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+                                           accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+
+    scene10denyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.7),
+                                           rectWidth, rectHeight,
+                                           accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+    
+    scene10acceptButton.set_button_texture(renderer, "");
+    scene10denyButton.set_button_texture(renderer, "");
 }
 
 void load_buttons_11()

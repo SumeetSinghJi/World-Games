@@ -11,36 +11,36 @@ Description: read the attached MANUAL.txt file
 
 #include "global_variables.hpp"
 
-// Read more here: https://en.wikipedia.org/wiki/Chowka_bhara
+// Read more here: read more here: https://en.wikipedia.org/wiki/Go_(game)
 
 // Tic Tac Toe - Textures
 
 SDL_Texture *playerJackals = nullptr;
 SDL_Texture *opponentJackals = nullptr;
-SDL_Texture *chowka_bharaDiceFront = nullptr;
-SDL_Texture *chowka_bharaDiceback = nullptr;
-SDL_Texture *chowka_bharaBoardTexture = nullptr;
+SDL_Texture *patolliDiceFront = nullptr;
+SDL_Texture *patolliDiceback = nullptr;
+SDL_Texture *patolliBoardTexture = nullptr;
 
 // Tic Tac Toe - Global variables
-int chowka_bhara_ROWS = 3;                           // Core Logic
-int chowka_bhara_COLUMNS = 10;                       // Core Logic
-int chowka_bhara_player_choice = 3;                  // Core Logic - 0 = O, 1 = X, 3 = garbage value
-int chowka_bhara_opponent_choice = 3;                // Core Logic - 0 = O, 1 = X, 3 = garbage value
-std::vector<int> chowka_bhara_positions = {3, 10};   // Core Logic - 3 rows of 10 columns
-int chowka_bhara_winner = 0;                         // Core Logic - 1 = player, 2 = opponent, 3 = Draw
-bool chowka_bhara_game_over = false;                 // Core Logic - after any players turn check _update_win_logic() to see if game over true
-bool chowka_bhara_opponentsTurn = false;             // Core Logic - after players turn, this turns true;
-bool chowka_bhara_showPopup = true;                  // Popup - toggle close after selections below with mouse_handle
-bool chowka_bhara_player_choose_x_or_o = false;      // Popup - Choose X or O
-int chowka_bhara_rounds = 0;                         // Popup - choose rounds
-bool chowka_bhara_choose_rounds = false;             // Popup - Choose rounds
-bool chowka_bhara_starting_player_chosen = false;    // Popup - starting player
-bool chowka_bhara_starting_player_is_x = false;      // Popup - starting player
-bool chowka_bhara_choose_human_or_computer = false;  // Popup - play against human or computer
-bool chowka_bhara_play_against_human = false;        // Popup - play against human or computer
-bool chowka_bhara_timer_set = false;                 // Popup - Timer
-std::vector<int> chowka_bhara_winner_history;        // HUD - winners frequency rect
-std::vector<int> chowka_bhara_winner_choice_history; // HUD - winners frequency rect
+int patolli_ROWS = 3;                           // Core Logic
+int patolli_COLUMNS = 10;                       // Core Logic
+int patolli_player_choice = 3;                  // Core Logic - 0 = O, 1 = X, 3 = garbage value
+int patolli_opponent_choice = 3;                // Core Logic - 0 = O, 1 = X, 3 = garbage value
+std::vector<int> patolli_positions = {3, 10};   // Core Logic - 3 rows of 10 columns
+int patolli_winner = 0;                         // Core Logic - 1 = player, 2 = opponent, 3 = Draw
+bool patolli_game_over = false;                 // Core Logic - after any players turn check _update_win_logic() to see if game over true
+bool patolli_opponentsTurn = false;             // Core Logic - after players turn, this turns true;
+bool patolli_showPopup = true;                  // Popup - toggle close after selections below with mouse_handle
+bool patolli_player_choose_x_or_o = false;      // Popup - Choose X or O
+int patolli_rounds = 0;                         // Popup - choose rounds
+bool patolli_choose_rounds = false;             // Popup - Choose rounds
+bool patolli_starting_player_chosen = false;    // Popup - starting player
+bool patolli_starting_player_is_x = false;      // Popup - starting player
+bool patolli_choose_human_or_computer = false;  // Popup - play against human or computer
+bool patolli_play_against_human = false;        // Popup - play against human or computer
+bool patolli_timer_set = false;                 // Popup - Timer
+std::vector<int> patolli_winner_history;        // HUD - winners frequency rect
+std::vector<int> patolli_winner_choice_history; // HUD - winners frequency rect
 
 // FUNCTION PROTOTYPES - Functions called from main.cpp
 SDL_Texture *load_texture(const char *path, const char *name);                                   // In main.cpp
@@ -49,49 +49,49 @@ void draw_timer();                                                              
 void draw_lives(int lives);                                                                      // In main.cpp
 void draw_win_frequency(const std::vector<int> &winners, const std::vector<int> &winnersChoice); // In main.cpp
 void toggle_countdown(bool &subGameSettingsShowPopup, bool &subGameOver, int &subGameWinner);    // In main.cpp
-void chowka_bhara_SDL_cleanup();                                                                        // keyboard_handle - ESC = quit
+void patolli_SDL_cleanup();                                                                        // keyboard_handle - ESC = quit
 void exit_SDL();                                                                                 // keyboard_handle - ESC = quit
 
 // Tic Tac Toe - Draws
-void chowka_bhara_load_textures()
+void patolli_load_textures()
 {
-    playerJackals = load_texture("assets/graphics/buttons/chowka_bhara/playerJackals.png", "Player Jackals");
-    opponentJackals = load_texture("assets/graphics/buttons/chowka_bhara/opponentJackals.png", "Opponent Jackals");
-    chowka_bharaDiceFront = load_texture("assets/graphics/buttons/chowka_bhara/chowka_bharaDiceFront.png", "chowka_bhara dice front");
-    chowka_bharaDiceback = load_texture("assets/graphics/buttons/chowka_bhara/chowka_bharaDiceback.png", "chowka_bhara dice back");
-    chowka_bharaBoardTexture = load_texture("assets/graphics/boards/chowka_bhara/chowka_bhara-board.png", "chowka_bhara Board");
+    playerJackals = load_texture("assets/graphics/buttons/patolli/playerJackals.png", "Player Jackals");
+    opponentJackals = load_texture("assets/graphics/buttons/patolli/opponentJackals.png", "Opponent Jackals");
+    patolliDiceFront = load_texture("assets/graphics/buttons/patolli/patolliDiceFront.png", "patolli dice front");
+    patolliDiceback = load_texture("assets/graphics/buttons/patolli/patolliDiceback.png", "patolli dice back");
+    patolliBoardTexture = load_texture("assets/graphics/boards/patolli/patolli-board.png", "patolli Board");
 }
-void chowka_bhara_draw_field()
+void patolli_draw_field()
 {
     // Play area
     SDL_SetRenderDrawColor(renderer, 100, 100, 100, 64); // RGB value: light grey, last digit (Alpha value = 256 / 4) (75% transparency)
-    SDL_Rect chowka_bhara_rect = {(windowWidth / 4), (windowHeight / 4), (windowWidth / 2), (windowHeight / 2)};
-    SDL_RenderFillRect(renderer, &chowka_bhara_rect);
+    SDL_Rect patolli_rect = {(windowWidth / 4), (windowHeight / 4), (windowWidth / 2), (windowHeight / 2)};
+    SDL_RenderFillRect(renderer, &patolli_rect);
 
     // Grid lines
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB value: Black
 
     // Calculate the number of squares inside the Tic Tac Toe rectangle
-    int innerchowka_bhara_COLUMNS = chowka_bhara_COLUMNS;
-    int innerchowka_bhara_ROWS = chowka_bhara_ROWS;
+    int innerpatolli_COLUMNS = patolli_COLUMNS;
+    int innerpatolli_ROWS = patolli_ROWS;
 
     // Calculate the size of each square
-    int squareWidth = chowka_bhara_rect.w / chowka_bhara_COLUMNS;
-    int squareHeight = chowka_bhara_rect.h / chowka_bhara_ROWS;
+    int squareWidth = patolli_rect.w / patolli_COLUMNS;
+    int squareHeight = patolli_rect.h / patolli_ROWS;
 
     // Draw vertical lines within the Tic Tac Toe rectangle
-    for (int i = 1; i < innerchowka_bhara_COLUMNS; ++i)
+    for (int i = 1; i < innerpatolli_COLUMNS; ++i)
     {
-        SDL_RenderDrawLine(renderer, chowka_bhara_rect.x + i * squareWidth, chowka_bhara_rect.y, chowka_bhara_rect.x + i * squareWidth, chowka_bhara_rect.y + chowka_bhara_rect.h);
+        SDL_RenderDrawLine(renderer, patolli_rect.x + i * squareWidth, patolli_rect.y, patolli_rect.x + i * squareWidth, patolli_rect.y + patolli_rect.h);
     }
 
     // Draw horizontal lines within the Tic Tac Toe rectangle
-    for (int i = 1; i < innerchowka_bhara_ROWS; ++i)
+    for (int i = 1; i < innerpatolli_ROWS; ++i)
     {
-        SDL_RenderDrawLine(renderer, chowka_bhara_rect.x, chowka_bhara_rect.y + i * squareHeight, chowka_bhara_rect.x + chowka_bhara_rect.w, chowka_bhara_rect.y + i * squareHeight);
+        SDL_RenderDrawLine(renderer, patolli_rect.x, patolli_rect.y + i * squareHeight, patolli_rect.x + patolli_rect.w, patolli_rect.y + i * squareHeight);
     }
 }
-void chowka_bhara_draw_setup_game_popup_window()
+void patolli_draw_setup_game_popup_window()
 {
     // Draw popup black border
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
@@ -123,13 +123,13 @@ void chowka_bhara_draw_setup_game_popup_window()
         Choose X or O
 
     */
-    if (!chowka_bhara_player_choose_x_or_o)
+    if (!patolli_player_choose_x_or_o)
     {
         render_text("Choose: Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.2), 255, 0);
     }
     else // after picking choice advise player what they choose
     {
-        if (chowka_bhara_player_choice == 0)
+        if (patolli_player_choice == 0)
         {
             render_text("You choose: 0", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.2), 255, 0);
             // highlight selected rect, and in if condition dont hide, so player can repick.
@@ -142,18 +142,18 @@ void chowka_bhara_draw_setup_game_popup_window()
     }
 
     // Button - for choose X
-    SDL_Rect chowka_bhara_XbuttonRect = {static_cast<int>(windowWidth * 0.26) - buttonXOffset, static_cast<int>(windowHeight * 0.26) - buttonYOffset, buttonWidth, buttonHeight};
-    SDL_RenderCopy(renderer, buttonTexture, nullptr, &chowka_bhara_XbuttonRect);
+    SDL_Rect patolli_XbuttonRect = {static_cast<int>(windowWidth * 0.26) - buttonXOffset, static_cast<int>(windowHeight * 0.26) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_RenderCopy(renderer, buttonTexture, nullptr, &patolli_XbuttonRect);
 
-    SDL_Rect chowka_bhara_X_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, xTexture, nullptr, &chowka_bhara_X_rect);
+    SDL_Rect patolli_X_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
+    SDL_RenderCopy(renderer, xTexture, nullptr, &patolli_X_rect);
 
     // Button - for choose O
-    SDL_Rect chowka_bhara_ObuttonRect = {static_cast<int>(windowWidth * 0.36) - buttonXOffset, static_cast<int>(windowHeight * 0.26) - buttonYOffset, buttonWidth, buttonHeight};
-    SDL_RenderCopy(renderer, buttonTexture, nullptr, &chowka_bhara_ObuttonRect);
+    SDL_Rect patolli_ObuttonRect = {static_cast<int>(windowWidth * 0.36) - buttonXOffset, static_cast<int>(windowHeight * 0.26) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_RenderCopy(renderer, buttonTexture, nullptr, &patolli_ObuttonRect);
 
-    SDL_Rect chowka_bhara_O_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, oTexture, nullptr, &chowka_bhara_O_rect);
+    SDL_Rect patolli_O_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
+    SDL_RenderCopy(renderer, oTexture, nullptr, &patolli_O_rect);
 
     /*
 
@@ -161,35 +161,35 @@ void chowka_bhara_draw_setup_game_popup_window()
 
     */
 
-    if (!chowka_bhara_starting_player_chosen)
+    if (!patolli_starting_player_chosen)
     {
         render_text("Who starts first: X or 0", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255, 0);
     }
     else
     {
-        if (!chowka_bhara_starting_player_is_x)
+        if (!patolli_starting_player_is_x)
         {
             render_text("You choose: Starting player O", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255, 0);
         }
-        else if (chowka_bhara_starting_player_is_x)
+        else if (patolli_starting_player_is_x)
         {
             render_text("You choose: Starting player X", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255, 0);
         }
     }
 
     // player starts first
-    SDL_Rect chowka_bhara_player_start_first_button_Rect = {static_cast<int>(windowWidth * 0.26) - buttonXOffset, static_cast<int>(windowHeight * 0.40) - buttonYOffset, buttonWidth, buttonHeight};
-    SDL_RenderCopy(renderer, buttonTexture, nullptr, &chowka_bhara_player_start_first_button_Rect);
+    SDL_Rect patolli_player_start_first_button_Rect = {static_cast<int>(windowWidth * 0.26) - buttonXOffset, static_cast<int>(windowHeight * 0.40) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_RenderCopy(renderer, buttonTexture, nullptr, &patolli_player_start_first_button_Rect);
 
-    SDL_Rect chowka_bhara_player_start_first_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, xTexture, nullptr, &chowka_bhara_player_start_first_rect);
+    SDL_Rect patolli_player_start_first_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
+    SDL_RenderCopy(renderer, xTexture, nullptr, &patolli_player_start_first_rect);
 
     // Opponent starts first
-    SDL_Rect chowka_bhara_opponent_start_first_button_Rect = {static_cast<int>(windowWidth * 0.36) - buttonXOffset, static_cast<int>(windowHeight * 0.40) - buttonYOffset, buttonWidth, buttonHeight};
-    SDL_RenderCopy(renderer, buttonTexture, nullptr, &chowka_bhara_opponent_start_first_button_Rect);
+    SDL_Rect patolli_opponent_start_first_button_Rect = {static_cast<int>(windowWidth * 0.36) - buttonXOffset, static_cast<int>(windowHeight * 0.40) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_RenderCopy(renderer, buttonTexture, nullptr, &patolli_opponent_start_first_button_Rect);
 
-    SDL_Rect chowka_bhara_opponent_start_first_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
-    SDL_RenderCopy(renderer, oTexture, nullptr, &chowka_bhara_opponent_start_first_rect);
+    SDL_Rect patolli_opponent_start_first_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
+    SDL_RenderCopy(renderer, oTexture, nullptr, &patolli_opponent_start_first_rect);
 
     /*
 
@@ -197,13 +197,13 @@ void chowka_bhara_draw_setup_game_popup_window()
 
     */
 
-    if (!chowka_bhara_choose_human_or_computer)
+    if (!patolli_choose_human_or_computer)
     {
         render_text("Play against: Human or Computer", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.50), 255, 0);
     }
     else
     {
-        if (chowka_bhara_play_against_human)
+        if (patolli_play_against_human)
         {
             render_text("You choose: Play against Human", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.50), 255, 0);
         }
@@ -214,15 +214,15 @@ void chowka_bhara_draw_setup_game_popup_window()
     }
 
     // player starts first
-    SDL_Rect chowka_bhara_humanButtonRect = {static_cast<int>(windowWidth * 0.26) - buttonXOffset, static_cast<int>(windowHeight * 0.56) - buttonYOffset, buttonWidth, buttonHeight};
-    SDL_RenderCopy(renderer, buttonTexture, nullptr, &chowka_bhara_humanButtonRect);
+    SDL_Rect patolli_humanButtonRect = {static_cast<int>(windowWidth * 0.26) - buttonXOffset, static_cast<int>(windowHeight * 0.56) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_RenderCopy(renderer, buttonTexture, nullptr, &patolli_humanButtonRect);
 
     SDL_Rect humanRect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.56), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, humanTexture, nullptr, &humanRect);
 
     // Opponent starts first
-    SDL_Rect chowka_bhara_computerButtonRect = {static_cast<int>(windowWidth * 0.36) - buttonXOffset, static_cast<int>(windowHeight * 0.56) - buttonYOffset, buttonWidth, buttonHeight};
-    SDL_RenderCopy(renderer, buttonTexture, nullptr, &chowka_bhara_computerButtonRect);
+    SDL_Rect patolli_computerButtonRect = {static_cast<int>(windowWidth * 0.36) - buttonXOffset, static_cast<int>(windowHeight * 0.56) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_RenderCopy(renderer, buttonTexture, nullptr, &patolli_computerButtonRect);
 
     SDL_Rect computerRect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.56), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, computerTexture, nullptr, &computerRect);
@@ -233,13 +233,13 @@ void chowka_bhara_draw_setup_game_popup_window()
 
     */
 
-    if (!chowka_bhara_choose_rounds)
+    if (!patolli_choose_rounds)
     {
         render_text("Rounds: 1, 3, 5, custom", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.66), 255, 0);
     }
     else
     {
-        std::string renderRounds = "You choose: " + std::to_string(chowka_bhara_rounds) + " rounds";
+        std::string renderRounds = "You choose: " + std::to_string(patolli_rounds) + " rounds";
         render_text(renderRounds, static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.66), 255, 0);
     }
 
@@ -277,7 +277,7 @@ void chowka_bhara_draw_setup_game_popup_window()
 
     */
 
-    if (!chowka_bhara_timer_set)
+    if (!patolli_timer_set)
     {
         render_text("Timer: 10s, 30s, 1m, 5m, 10m, 30m, 1hr, custom (s) ", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.82), 255, 0);
     }
@@ -342,7 +342,7 @@ void chowka_bhara_draw_setup_game_popup_window()
     SDL_Rect seconds3600Rect = {static_cast<int>(windowWidth * 0.56), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, oTexture, nullptr, &seconds3600Rect);
 }
-void chowka_bhara_draw_X_or_O()
+void patolli_draw_X_or_O()
 {
     std::vector<SDL_Rect> positionRects = {
         {static_cast<int>(windowWidth * 0.25), static_cast<int>(windowHeight * 0.25), (windowWidth / 8), (windowHeight / 8)},
@@ -354,23 +354,23 @@ void chowka_bhara_draw_X_or_O()
         {static_cast<int>(windowWidth * 0.25), static_cast<int>(windowHeight * 0.6), (windowWidth / 8), (windowHeight / 8)},
         {static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.6), (windowWidth / 8), (windowHeight / 8)},
         {static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.6), (windowWidth / 8), (windowHeight / 8)}};
-    for (size_t i = 0; i < chowka_bhara_positions.size(); ++i)
+    for (size_t i = 0; i < patolli_positions.size(); ++i)
     {
-        if (chowka_bhara_positions[i] == 0)
+        if (patolli_positions[i] == 0)
         {
             SDL_RenderCopy(renderer, oTexture, nullptr, &positionRects[i]);
         }
-        else if (chowka_bhara_positions[i] == 1)
+        else if (patolli_positions[i] == 1)
         {
             SDL_RenderCopy(renderer, xTexture, nullptr, &positionRects[i]);
         }
-        else if (chowka_bhara_positions[i] == 2)
+        else if (patolli_positions[i] == 2)
         {
             // Do nothing for position 2
         }
     }
 }
-void chowka_bhara_draw_settings_buttons()
+void patolli_draw_settings_buttons()
 {
     SDL_Rect helpRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.3), rectWidth, rectHeight};
     SDL_Rect restartRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
@@ -384,29 +384,29 @@ void chowka_bhara_draw_settings_buttons()
 }
 
 // Tic Tac Toe - Updates
-std::vector<int> chowka_bhara_update_ai_check_available_moves(std::vector<int> &chowka_bhara_positions)
+std::vector<int> patolli_update_ai_check_available_moves(std::vector<int> &patolli_positions)
 {
     /*
         A vector function that accepts the 9 int vector postitions
         finds any available spaces and returns them;
     */
     std::vector<int> moves;
-    for (int i = 0; i < chowka_bhara_positions.size(); ++i)
+    for (int i = 0; i < patolli_positions.size(); ++i)
     {
-        if (chowka_bhara_positions[i] == 2)
+        if (patolli_positions[i] == 2)
         {
             moves.push_back(i);
         }
     }
     return moves;
 }
-int chowka_bhara_update_possible_winning_moves(std::vector<int> chowka_bhara_positions, int player)
+int patolli_update_possible_winning_moves(std::vector<int> patolli_positions, int player)
 {
-    for (int i = 0; i < chowka_bhara_positions.size(); ++i)
+    for (int i = 0; i < patolli_positions.size(); ++i)
     {
-        if (chowka_bhara_positions[i] == 2)
+        if (patolli_positions[i] == 2)
         {
-            std::vector<int> testBoard = chowka_bhara_positions;
+            std::vector<int> testBoard = patolli_positions;
             testBoard[i] = player; // pretend this free space on board is any player
 
             for (int j = 0; j < 3; ++j)
@@ -426,7 +426,7 @@ int chowka_bhara_update_possible_winning_moves(std::vector<int> chowka_bhara_pos
     }
     return -1;
 }
-int chowka_bhara_update_find_winning_moves(std::vector<int> chowka_bhara_positions, int chowka_bhara_opponent_choice, int chowka_bhara_player_choice)
+int patolli_update_find_winning_moves(std::vector<int> patolli_positions, int patolli_opponent_choice, int patolli_player_choice)
 {
     /*
         Check for winning moves for the AI and Player
@@ -436,19 +436,19 @@ int chowka_bhara_update_find_winning_moves(std::vector<int> chowka_bhara_positio
         3. Make a random move if neither above condition is true
     */
 
-    int aiWinningMove = chowka_bhara_update_possible_winning_moves(chowka_bhara_positions, chowka_bhara_opponent_choice); // AI check winning moves
+    int aiWinningMove = patolli_update_possible_winning_moves(patolli_positions, patolli_opponent_choice); // AI check winning moves
     if (aiWinningMove != -1)
     {
         return aiWinningMove;
     }
 
-    int humanWinningMove = chowka_bhara_update_possible_winning_moves(chowka_bhara_positions, chowka_bhara_player_choice); // Human check winning moves
+    int humanWinningMove = patolli_update_possible_winning_moves(patolli_positions, patolli_player_choice); // Human check winning moves
     if (humanWinningMove != -1)
     {
         return humanWinningMove;
     }
 
-    std::vector<int> moves = chowka_bhara_update_ai_check_available_moves(chowka_bhara_positions);
+    std::vector<int> moves = patolli_update_ai_check_available_moves(patolli_positions);
     if (!moves.empty())
     {
         return moves[rand() % moves.size()];
@@ -456,7 +456,7 @@ int chowka_bhara_update_find_winning_moves(std::vector<int> chowka_bhara_positio
 
     return -1;
 }
-void chowka_bhara_update_winning_logic()
+void patolli_update_winning_logic()
 {
     /* Tic Tac Toe field positioning
     1 | 2 | 3
@@ -466,144 +466,144 @@ void chowka_bhara_update_winning_logic()
     7 | 8 | 9 */
 
     // Player win condition
-    if ((chowka_bhara_positions[0] == chowka_bhara_player_choice && chowka_bhara_positions[1] == chowka_bhara_player_choice && chowka_bhara_positions[2] == chowka_bhara_player_choice) || // Top row
-        (chowka_bhara_positions[3] == chowka_bhara_player_choice && chowka_bhara_positions[4] == chowka_bhara_player_choice && chowka_bhara_positions[5] == chowka_bhara_player_choice) || // Middle row
-        (chowka_bhara_positions[6] == chowka_bhara_player_choice && chowka_bhara_positions[7] == chowka_bhara_player_choice && chowka_bhara_positions[8] == chowka_bhara_player_choice) || // Bottom row
-        (chowka_bhara_positions[0] == chowka_bhara_player_choice && chowka_bhara_positions[3] == chowka_bhara_player_choice && chowka_bhara_positions[6] == chowka_bhara_player_choice) || // Left column
-        (chowka_bhara_positions[1] == chowka_bhara_player_choice && chowka_bhara_positions[4] == chowka_bhara_player_choice && chowka_bhara_positions[7] == chowka_bhara_player_choice) || // Middle column
-        (chowka_bhara_positions[2] == chowka_bhara_player_choice && chowka_bhara_positions[5] == chowka_bhara_player_choice && chowka_bhara_positions[8] == chowka_bhara_player_choice) || // Right column
-        (chowka_bhara_positions[0] == chowka_bhara_player_choice && chowka_bhara_positions[4] == chowka_bhara_player_choice && chowka_bhara_positions[8] == chowka_bhara_player_choice) || // Diagonal 1
-        (chowka_bhara_positions[2] == chowka_bhara_player_choice && chowka_bhara_positions[4] == chowka_bhara_player_choice && chowka_bhara_positions[6] == chowka_bhara_player_choice))   // Diagonal 2
+    if ((patolli_positions[0] == patolli_player_choice && patolli_positions[1] == patolli_player_choice && patolli_positions[2] == patolli_player_choice) || // Top row
+        (patolli_positions[3] == patolli_player_choice && patolli_positions[4] == patolli_player_choice && patolli_positions[5] == patolli_player_choice) || // Middle row
+        (patolli_positions[6] == patolli_player_choice && patolli_positions[7] == patolli_player_choice && patolli_positions[8] == patolli_player_choice) || // Bottom row
+        (patolli_positions[0] == patolli_player_choice && patolli_positions[3] == patolli_player_choice && patolli_positions[6] == patolli_player_choice) || // Left column
+        (patolli_positions[1] == patolli_player_choice && patolli_positions[4] == patolli_player_choice && patolli_positions[7] == patolli_player_choice) || // Middle column
+        (patolli_positions[2] == patolli_player_choice && patolli_positions[5] == patolli_player_choice && patolli_positions[8] == patolli_player_choice) || // Right column
+        (patolli_positions[0] == patolli_player_choice && patolli_positions[4] == patolli_player_choice && patolli_positions[8] == patolli_player_choice) || // Diagonal 1
+        (patolli_positions[2] == patolli_player_choice && patolli_positions[4] == patolli_player_choice && patolli_positions[6] == patolli_player_choice))   // Diagonal 2
     {
-        if (!chowka_bhara_game_over)
+        if (!patolli_game_over)
         {
             std::cout << "Player wins" << std::endl;
-            toggle_countdown(chowka_bhara_showPopup, chowka_bhara_game_over, chowka_bhara_winner);
-            chowka_bhara_game_over = true;
-            chowka_bhara_winner = 1;
-            chowka_bhara_opponentsTurn = false;
+            toggle_countdown(patolli_showPopup, patolli_game_over, patolli_winner);
+            patolli_game_over = true;
+            patolli_winner = 1;
+            patolli_opponentsTurn = false;
             Mix_PlayChannel(-1, winGameSound, 0);
         }
     }
 
     // Opponent win condition
-    if ((chowka_bhara_positions[0] == chowka_bhara_opponent_choice && chowka_bhara_positions[1] == chowka_bhara_opponent_choice && chowka_bhara_positions[2] == chowka_bhara_opponent_choice) || // Top row
-        (chowka_bhara_positions[3] == chowka_bhara_opponent_choice && chowka_bhara_positions[4] == chowka_bhara_opponent_choice && chowka_bhara_positions[5] == chowka_bhara_opponent_choice) || // Middle row
-        (chowka_bhara_positions[6] == chowka_bhara_opponent_choice && chowka_bhara_positions[7] == chowka_bhara_opponent_choice && chowka_bhara_positions[8] == chowka_bhara_opponent_choice) || // Bottom row
-        (chowka_bhara_positions[0] == chowka_bhara_opponent_choice && chowka_bhara_positions[3] == chowka_bhara_opponent_choice && chowka_bhara_positions[6] == chowka_bhara_opponent_choice) || // Left column
-        (chowka_bhara_positions[1] == chowka_bhara_opponent_choice && chowka_bhara_positions[4] == chowka_bhara_opponent_choice && chowka_bhara_positions[7] == chowka_bhara_opponent_choice) || // Middle column
-        (chowka_bhara_positions[2] == chowka_bhara_opponent_choice && chowka_bhara_positions[5] == chowka_bhara_opponent_choice && chowka_bhara_positions[8] == chowka_bhara_opponent_choice) || // Right column
-        (chowka_bhara_positions[0] == chowka_bhara_opponent_choice && chowka_bhara_positions[4] == chowka_bhara_opponent_choice && chowka_bhara_positions[8] == chowka_bhara_opponent_choice) || // Diagonal 1
-        (chowka_bhara_positions[2] == chowka_bhara_opponent_choice && chowka_bhara_positions[4] == chowka_bhara_opponent_choice && chowka_bhara_positions[6] == chowka_bhara_opponent_choice))   // Diagonal 2
+    if ((patolli_positions[0] == patolli_opponent_choice && patolli_positions[1] == patolli_opponent_choice && patolli_positions[2] == patolli_opponent_choice) || // Top row
+        (patolli_positions[3] == patolli_opponent_choice && patolli_positions[4] == patolli_opponent_choice && patolli_positions[5] == patolli_opponent_choice) || // Middle row
+        (patolli_positions[6] == patolli_opponent_choice && patolli_positions[7] == patolli_opponent_choice && patolli_positions[8] == patolli_opponent_choice) || // Bottom row
+        (patolli_positions[0] == patolli_opponent_choice && patolli_positions[3] == patolli_opponent_choice && patolli_positions[6] == patolli_opponent_choice) || // Left column
+        (patolli_positions[1] == patolli_opponent_choice && patolli_positions[4] == patolli_opponent_choice && patolli_positions[7] == patolli_opponent_choice) || // Middle column
+        (patolli_positions[2] == patolli_opponent_choice && patolli_positions[5] == patolli_opponent_choice && patolli_positions[8] == patolli_opponent_choice) || // Right column
+        (patolli_positions[0] == patolli_opponent_choice && patolli_positions[4] == patolli_opponent_choice && patolli_positions[8] == patolli_opponent_choice) || // Diagonal 1
+        (patolli_positions[2] == patolli_opponent_choice && patolli_positions[4] == patolli_opponent_choice && patolli_positions[6] == patolli_opponent_choice))   // Diagonal 2
     {
-        if (!chowka_bhara_game_over)
+        if (!patolli_game_over)
         {
             std::cout << "Opponent wins" << std::endl;
-            toggle_countdown(chowka_bhara_showPopup, chowka_bhara_game_over, chowka_bhara_winner);
-            chowka_bhara_game_over = true;
-            chowka_bhara_winner = 2;
-            chowka_bhara_opponentsTurn = false;
+            toggle_countdown(patolli_showPopup, patolli_game_over, patolli_winner);
+            patolli_game_over = true;
+            patolli_winner = 2;
+            patolli_opponentsTurn = false;
             Mix_PlayChannel(-1, loseGameSound, 0);
         }
     }
 
     // Draw condition
-    if (!chowka_bhara_showPopup && !chowka_bhara_game_over) // If game has started and not over (to not keep cout "it's a draw")
+    if (!patolli_showPopup && !patolli_game_over) // If game has started and not over (to not keep cout "it's a draw")
     {
-        bool chowka_bhara_all_positions_used = true;
-        for (int i = 0; i < chowka_bhara_positions.size(); ++i)
+        bool patolli_all_positions_used = true;
+        for (int i = 0; i < patolli_positions.size(); ++i)
         {
 
-            if (chowka_bhara_positions[i] == 2) // Check for any empty position
+            if (patolli_positions[i] == 2) // Check for any empty position
             {
-                chowka_bhara_all_positions_used = false; // no empty positions
+                patolli_all_positions_used = false; // no empty positions
                 break;
             }
         }
 
-        if (chowka_bhara_all_positions_used && chowka_bhara_winner != 1 && chowka_bhara_winner != 2)
+        if (patolli_all_positions_used && patolli_winner != 1 && patolli_winner != 2)
         {
-            toggle_countdown(chowka_bhara_showPopup, chowka_bhara_game_over, chowka_bhara_winner);
+            toggle_countdown(patolli_showPopup, patolli_game_over, patolli_winner);
             std::cout << "It's a Draw." << std::endl;
-            chowka_bhara_opponentsTurn = false;
-            chowka_bhara_game_over = true;
-            chowka_bhara_winner = 3;
+            patolli_opponentsTurn = false;
+            patolli_game_over = true;
+            patolli_winner = 3;
             Mix_PlayChannel(-1, loseGameSound, 0);
         }
     }
 
-    if (chowka_bhara_game_over) // Add winner and combination to Frequency rect
+    if (patolli_game_over) // Add winner and combination to Frequency rect
     {
-        chowka_bhara_winner_history.push_back(chowka_bhara_winner);
+        patolli_winner_history.push_back(patolli_winner);
 
-        if (chowka_bhara_winner == 1)
+        if (patolli_winner == 1)
         {
-            chowka_bhara_winner_choice_history.push_back(chowka_bhara_player_choice);
+            patolli_winner_choice_history.push_back(patolli_player_choice);
         }
-        else if (chowka_bhara_winner == 2)
+        else if (patolli_winner == 2)
         {
-            chowka_bhara_winner_choice_history.push_back(chowka_bhara_opponent_choice);
+            patolli_winner_choice_history.push_back(patolli_opponent_choice);
         }
-        else if (chowka_bhara_winner == 3)
+        else if (patolli_winner == 3)
         {
-            chowka_bhara_winner_choice_history.push_back(2); // Draw
+            patolli_winner_choice_history.push_back(2); // Draw
         }
     }
 }
-void chowka_bhara_update_new_game_reset_variables()
+void patolli_update_new_game_reset_variables()
 {
-    chowka_bhara_player_choice = 3;
-    chowka_bhara_opponent_choice = 3;
-    chowka_bhara_positions = {2, 2, 2, 2, 2, 2, 2, 2, 2};
-    chowka_bhara_player_choose_x_or_o = false;
-    chowka_bhara_winner = 0;
-    chowka_bhara_game_over = false;
-    chowka_bhara_opponentsTurn = false;
-    chowka_bhara_showPopup = true;
-    chowka_bhara_play_against_human = false;
-    chowka_bhara_choose_human_or_computer = false;
-    chowka_bhara_rounds = 0;
-    chowka_bhara_choose_rounds = false;
-    chowka_bhara_starting_player_is_x = false;
-    chowka_bhara_starting_player_chosen = false;
-    chowka_bhara_timer_set = false;
+    patolli_player_choice = 3;
+    patolli_opponent_choice = 3;
+    patolli_positions = {2, 2, 2, 2, 2, 2, 2, 2, 2};
+    patolli_player_choose_x_or_o = false;
+    patolli_winner = 0;
+    patolli_game_over = false;
+    patolli_opponentsTurn = false;
+    patolli_showPopup = true;
+    patolli_play_against_human = false;
+    patolli_choose_human_or_computer = false;
+    patolli_rounds = 0;
+    patolli_choose_rounds = false;
+    patolli_starting_player_is_x = false;
+    patolli_starting_player_chosen = false;
+    patolli_timer_set = false;
 
     // Restart timer - generic function
     timerRunning = false;
     countdownStarted = false;
     countdownSeconds = 300;
 }
-void chowka_bhara_update_is_position_taken(int index)
+void patolli_update_is_position_taken(int index)
 {
     int gridPosition = index + 1;
-    std::string competitor = chowka_bhara_opponentsTurn ? "Opponent" : "Player";
+    std::string competitor = patolli_opponentsTurn ? "Opponent" : "Player";
 
-    if (chowka_bhara_positions[index] == 2)
+    if (patolli_positions[index] == 2)
     {
-        int choice = (competitor == "Player") ? chowka_bhara_player_choice : chowka_bhara_opponent_choice;
-        chowka_bhara_positions[index] = choice;
+        int choice = (competitor == "Player") ? patolli_player_choice : patolli_opponent_choice;
+        patolli_positions[index] = choice;
 
-        chowka_bhara_opponentsTurn = !chowka_bhara_opponentsTurn;
+        patolli_opponentsTurn = !patolli_opponentsTurn;
     }
     else
     {
         std::cout << competitor << ", Position: " << gridPosition << " is taken. Try again." << std::endl;
     }
 }
-void chowka_bhara_update_ai_logic()
+void patolli_update_ai_logic()
 {
-    while (chowka_bhara_opponentsTurn)
+    while (patolli_opponentsTurn)
     {
-        int aiMoveIndex = chowka_bhara_update_find_winning_moves(chowka_bhara_positions, chowka_bhara_opponent_choice, chowka_bhara_player_choice);
+        int aiMoveIndex = patolli_update_find_winning_moves(patolli_positions, patolli_opponent_choice, patolli_player_choice);
         if (aiMoveIndex != -1)
         {
-            chowka_bhara_update_is_position_taken(aiMoveIndex);
+            patolli_update_is_position_taken(aiMoveIndex);
         }
     }
 }
 
 // Tic Tac Toe - Handles
-void chowka_bhara_mouse_handle(int mouseX, int mouseY)
+void patolli_mouse_handle(int mouseX, int mouseY)
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
@@ -630,10 +630,10 @@ void chowka_bhara_mouse_handle(int mouseX, int mouseY)
 
     // Popup - Buttons
     SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.68), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
-    SDL_Rect chowka_bhara_X_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
-    SDL_Rect chowka_bhara_O_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
-    SDL_Rect chowka_bhara_player_start_first_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
-    SDL_Rect chowka_bhara_opponent_start_first_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
+    SDL_Rect patolli_X_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
+    SDL_Rect patolli_O_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
+    SDL_Rect patolli_player_start_first_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
+    SDL_Rect patolli_opponent_start_first_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
     SDL_Rect humanRect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.56), rectWidth, rectHeight};
     SDL_Rect computerRect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.56), rectWidth, rectHeight};
     SDL_Rect heartRounds1Rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.72), rectWidth, rectHeight};
@@ -649,9 +649,9 @@ void chowka_bhara_mouse_handle(int mouseX, int mouseY)
     SDL_Rect seconds3600Rect = {static_cast<int>(windowWidth * 0.56), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
 
     // Choose X or O to start
-    if (!chowka_bhara_game_over)
+    if (!patolli_game_over)
     {
-        if (!chowka_bhara_showPopup) // main game code
+        if (!patolli_showPopup) // main game code
         {
             for (int i = 0; i < positionRects.size(); ++i)
             {
@@ -659,7 +659,7 @@ void chowka_bhara_mouse_handle(int mouseX, int mouseY)
                 {
                     int gridPosition = i + 1;
                     std::cout << "Player choose Position: " << gridPosition << std::endl;
-                    chowka_bhara_update_is_position_taken(i);
+                    patolli_update_is_position_taken(i);
                 }
             }
         }
@@ -667,137 +667,137 @@ void chowka_bhara_mouse_handle(int mouseX, int mouseY)
         {
             if (SDL_PointInRect(&mousePosition, &closeButtonRect))
             {
-                if (chowka_bhara_player_choose_x_or_o && chowka_bhara_starting_player_chosen && chowka_bhara_choose_human_or_computer && chowka_bhara_choose_rounds && chowka_bhara_timer_set)
+                if (patolli_player_choose_x_or_o && patolli_starting_player_chosen && patolli_choose_human_or_computer && patolli_choose_rounds && patolli_timer_set)
                 {
                     std::cout << "You clicked Close Popup window" << std::endl;
-                    chowka_bhara_showPopup = false;
-                    toggle_countdown(chowka_bhara_showPopup, chowka_bhara_game_over, chowka_bhara_winner);
+                    patolli_showPopup = false;
+                    toggle_countdown(patolli_showPopup, patolli_game_over, patolli_winner);
                 }
                 else
                 {
                     std::cout << "Error: Cannot close popup without choosing new game settings" << std::endl;
                 }
             }
-            else if (SDL_PointInRect(&mousePosition, &chowka_bhara_X_rect))
+            else if (SDL_PointInRect(&mousePosition, &patolli_X_rect))
             {
                 std::cout << "You choose: X" << std::endl;
-                chowka_bhara_player_choice = 1;
-                chowka_bhara_opponent_choice = 0;
-                chowka_bhara_player_choose_x_or_o = true;
+                patolli_player_choice = 1;
+                patolli_opponent_choice = 0;
+                patolli_player_choose_x_or_o = true;
             }
-            else if (SDL_PointInRect(&mousePosition, &chowka_bhara_O_rect))
+            else if (SDL_PointInRect(&mousePosition, &patolli_O_rect))
             {
                 std::cout << "You choose: O" << std::endl;
-                chowka_bhara_player_choice = 0;
-                chowka_bhara_opponent_choice = 1;
-                chowka_bhara_player_choose_x_or_o = true;
+                patolli_player_choice = 0;
+                patolli_opponent_choice = 1;
+                patolli_player_choose_x_or_o = true;
             }
-            else if (SDL_PointInRect(&mousePosition, &chowka_bhara_player_start_first_rect))
+            else if (SDL_PointInRect(&mousePosition, &patolli_player_start_first_rect))
             {
                 std::cout << "You choose: Starting player X" << std::endl;
-                if (chowka_bhara_player_choice == 1)
+                if (patolli_player_choice == 1)
                 {
-                    chowka_bhara_opponentsTurn = false;
+                    patolli_opponentsTurn = false;
                 }
-                else if (chowka_bhara_player_choice == 0)
+                else if (patolli_player_choice == 0)
                 {
-                    chowka_bhara_opponentsTurn = true;
+                    patolli_opponentsTurn = true;
                 }
-                chowka_bhara_starting_player_is_x = true;
-                chowka_bhara_starting_player_chosen = true;
+                patolli_starting_player_is_x = true;
+                patolli_starting_player_chosen = true;
             }
-            else if (SDL_PointInRect(&mousePosition, &chowka_bhara_opponent_start_first_rect))
+            else if (SDL_PointInRect(&mousePosition, &patolli_opponent_start_first_rect))
             {
                 std::cout << "You choose: Starting player O" << std::endl;
-                if (chowka_bhara_player_choice == 0)
+                if (patolli_player_choice == 0)
                 {
-                    chowka_bhara_opponentsTurn = false;
+                    patolli_opponentsTurn = false;
                 }
-                else if (chowka_bhara_player_choice == 1)
+                else if (patolli_player_choice == 1)
                 {
-                    chowka_bhara_opponentsTurn = true;
+                    patolli_opponentsTurn = true;
                 }
-                chowka_bhara_starting_player_is_x = false;
+                patolli_starting_player_is_x = false;
                 ;
-                chowka_bhara_starting_player_chosen = true;
+                patolli_starting_player_chosen = true;
             }
             else if (SDL_PointInRect(&mousePosition, &humanRect))
             {
                 std::cout << "You choose: Play against Human" << std::endl;
-                chowka_bhara_play_against_human = true;
-                chowka_bhara_choose_human_or_computer = true;
+                patolli_play_against_human = true;
+                patolli_choose_human_or_computer = true;
             }
             else if (SDL_PointInRect(&mousePosition, &computerRect))
             {
                 std::cout << "You choose: Play against Computer" << std::endl;
-                chowka_bhara_play_against_human = false;
-                chowka_bhara_choose_human_or_computer = true;
+                patolli_play_against_human = false;
+                patolli_choose_human_or_computer = true;
             }
             else if (SDL_PointInRect(&mousePosition, &heartRounds1Rect))
             {
                 std::cout << "You choose: Play 1 round" << std::endl;
-                chowka_bhara_choose_rounds = true;
-                chowka_bhara_rounds = 1;
+                patolli_choose_rounds = true;
+                patolli_rounds = 1;
             }
             else if (SDL_PointInRect(&mousePosition, &heartRounds3Rect))
             {
                 std::cout << "You choose: Play 3 rounds" << std::endl;
-                chowka_bhara_choose_rounds = true;
-                chowka_bhara_rounds = 3;
+                patolli_choose_rounds = true;
+                patolli_rounds = 3;
             }
             else if (SDL_PointInRect(&mousePosition, &heartRounds5Rect))
             {
                 std::cout << "You choose: Play 5 rounds" << std::endl;
-                chowka_bhara_choose_rounds = true;
-                chowka_bhara_rounds = 5;
+                patolli_choose_rounds = true;
+                patolli_rounds = 5;
             }
             else if (SDL_PointInRect(&mousePosition, &heartRounds10Rect))
             {
                 std::cout << "You choose: Play 10 rounds" << std::endl;
-                chowka_bhara_choose_rounds = true;
-                chowka_bhara_rounds = 10;
+                patolli_choose_rounds = true;
+                patolli_rounds = 10;
             }
             else if (SDL_PointInRect(&mousePosition, &seconds10Rect))
             {
                 std::cout << "You choose: 10 second timer" << std::endl;
                 countdownSeconds = 10;
-                chowka_bhara_timer_set = true;
+                patolli_timer_set = true;
             }
             else if (SDL_PointInRect(&mousePosition, &seconds30Rect))
             {
                 std::cout << "You choose: 30 second timer" << std::endl;
                 countdownSeconds = 30;
-                chowka_bhara_timer_set = true;
+                patolli_timer_set = true;
             }
             else if (SDL_PointInRect(&mousePosition, &seconds60Rect))
             {
                 std::cout << "You choose: 60 second timer" << std::endl;
                 countdownSeconds = 60;
-                chowka_bhara_timer_set = true;
+                patolli_timer_set = true;
             }
             else if (SDL_PointInRect(&mousePosition, &seconds300Rect))
             {
                 std::cout << "You choose: 5 minutes timer" << std::endl;
                 countdownSeconds = 300;
-                chowka_bhara_timer_set = true;
+                patolli_timer_set = true;
             }
             else if (SDL_PointInRect(&mousePosition, &seconds600Rect))
             {
                 std::cout << "You choose: 10 minutes timer" << std::endl;
                 countdownSeconds = 600;
-                chowka_bhara_timer_set = true;
+                patolli_timer_set = true;
             }
             else if (SDL_PointInRect(&mousePosition, &seconds1800Rect))
             {
                 std::cout << "You choose: 30 minutes timer" << std::endl;
                 countdownSeconds = 1800;
-                chowka_bhara_timer_set = true;
+                patolli_timer_set = true;
             }
             else if (SDL_PointInRect(&mousePosition, &seconds3600Rect))
             {
                 std::cout << "You choose: 1 hour timer" << std::endl;
                 countdownSeconds = 3600;
-                chowka_bhara_timer_set = true;
+                patolli_timer_set = true;
             }
         }
     }
@@ -812,7 +812,7 @@ void chowka_bhara_mouse_handle(int mouseX, int mouseY)
     else if (SDL_PointInRect(&mousePosition, &restartRect))
     {
         std::cout << "You clicked Restart" << std::endl;
-        chowka_bhara_update_new_game_reset_variables();
+        patolli_update_new_game_reset_variables();
     }
     else if (SDL_PointInRect(&mousePosition, &settingsRect))
     {
@@ -830,13 +830,13 @@ void chowka_bhara_mouse_handle(int mouseX, int mouseY)
     else if (SDL_PointInRect(&mousePosition, &timerRect))
     {
         std::cout << "You clicked: Restart Timer" << std::endl;
-        toggle_countdown(chowka_bhara_showPopup, chowka_bhara_game_over, chowka_bhara_winner);
+        toggle_countdown(patolli_showPopup, patolli_game_over, patolli_winner);
     }
 }
-void chowka_bhara_keyboard_handle(SDL_Event event)
+void patolli_keyboard_handle(SDL_Event event)
 {
-    SDL_Rect chowka_bhara_X_rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
-    SDL_Rect chowka_bhara_O_rect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
+    SDL_Rect patolli_X_rect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
+    SDL_Rect patolli_O_rect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.5), (windowWidth / 10), (windowHeight / 10)};
 
     std::vector<SDL_Rect> positionRects = {
         {static_cast<int>(windowWidth * 0.25), static_cast<int>(windowHeight * 0.25), (windowWidth / 8), (windowHeight / 8)},
@@ -866,7 +866,7 @@ void chowka_bhara_keyboard_handle(SDL_Event event)
     {
     case SDLK_ESCAPE:
         std::cout << "You clicked button: ESC" << std::endl;
-        chowka_bhara_SDL_cleanup();
+        patolli_SDL_cleanup();
         exit_SDL();
         break;
     case SDLK_UP:
@@ -882,12 +882,12 @@ void chowka_bhara_keyboard_handle(SDL_Event event)
         if (SDL_PointInRect(&selectedPoint, &restartRect))
         {
             std::cout << "You clicked: Restart game" << std::endl;
-            chowka_bhara_update_new_game_reset_variables();
+            patolli_update_new_game_reset_variables();
         }
         else if (SDL_PointInRect(&selectedPoint, &closeButtonRect))
         {
             std::cout << "You clicked: Close popup" << std::endl;
-            chowka_bhara_showPopup = false;
+            patolli_showPopup = false;
         }
         break;
     default:
@@ -895,60 +895,60 @@ void chowka_bhara_keyboard_handle(SDL_Event event)
         break;
     }
 }
-void chowka_bhara_gamepad_handle(int button)
+void patolli_gamepad_handle(int button)
 {
 }
 
 // Tic Tac Toe - SDL Integration
-void chowka_bhara_SDL_draw()
+void patolli_SDL_draw()
 {
     SDL_RenderCopy(renderer, romeDayBackgroundTexture, NULL, NULL);
     render_text("Ancient Rome - Tic Tac Toe", static_cast<int>(windowWidth * 0.37), static_cast<int>(windowHeight * 0.1), 255, 0);
 
     // HUD Buttons
     draw_timer();
-    chowka_bhara_draw_settings_buttons();
-    draw_win_frequency(chowka_bhara_winner_history, chowka_bhara_winner_choice_history);
-    draw_lives(chowka_bhara_rounds);
+    patolli_draw_settings_buttons();
+    draw_win_frequency(patolli_winner_history, patolli_winner_choice_history);
+    draw_lives(patolli_rounds);
 
-    chowka_bhara_draw_field();
+    patolli_draw_field();
 
-    if (chowka_bhara_showPopup)
+    if (patolli_showPopup)
     {
-        chowka_bhara_draw_setup_game_popup_window();
+        patolli_draw_setup_game_popup_window();
     }
     else
     {
-        chowka_bhara_draw_X_or_O();
+        patolli_draw_X_or_O();
     }
 
-    if (chowka_bhara_winner == 1)
+    if (patolli_winner == 1)
     {
         render_text("player wins", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8), 255, 0);
     }
-    else if (chowka_bhara_winner == 2)
+    else if (patolli_winner == 2)
     {
         render_text("Opponent wins", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8), 255, 0);
     }
-    else if (chowka_bhara_winner == 3)
+    else if (patolli_winner == 3)
     {
         render_text("It's a Draw.", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.8), 255, 0);
     }
 }
-void chowka_bhara_SDL_update()
+void patolli_SDL_update()
 {
-    chowka_bhara_update_winning_logic();
-    if (!chowka_bhara_play_against_human && chowka_bhara_choose_human_or_computer)
+    patolli_update_winning_logic();
+    if (!patolli_play_against_human && patolli_choose_human_or_computer)
     {
-        chowka_bhara_update_ai_logic();
+        patolli_update_ai_logic();
     }
-    chowka_bhara_update_winning_logic();
+    patolli_update_winning_logic();
     songTitle = "assets/sounds/music/Old Rome - PianoAmor.mp3";
     load_music(songTitle);
 }
-void chowka_bhara_SDL_cleanup()
+void patolli_SDL_cleanup()
 {
-    // chowka_bhara_textures
+    // patolli_textures
     SDL_DestroyTexture(xTexture);
     SDL_DestroyTexture(oTexture);
 }
