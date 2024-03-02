@@ -213,6 +213,7 @@ downloaded game zip from source repository
 7. Boost.asio: https://www.boost.org/ - For multiplayer online gameplay
 
 
+
 FILES
 
 The below files are contained in the downloaded game directory
@@ -318,7 +319,6 @@ Uses headers;
 
 
 
-
 SCENES
 
 scene 1 = Main menu
@@ -351,28 +351,28 @@ scene 27 = Tutorial
 scene 28 = _____UNUSED_____
 scene 29 = _____UNUSED_____
 scene 30 = _____UNUSED_____
-scene 31 - beijing - shoushiling (traditional 手勢令), frog 蛙, snake 蛇, centipede 蜈蜙
-scene 32 = london - Scissors Paper Rock
-scene 33 = paris
-scene 34 = Cairo
-scene 35 = delhi
-scene 36 = hawaii
-scene 37 = tokyo
-scene 38 = seoul
-scene 39 = shanghai
-scene 40 - Rome - Tic Tac Toe
-scene 41 - Kenya
-scene 42 - Moscow
-scene 43 - Athens
-scene 44 - Manilla
-scene 45 - Tehran
-scene 46 - Tel Aviv
-scene 47 - berlin
-scene 48 - Bangkok
-scene 49 - Kathmandu
-scene 50 - Alaska
-scene 51 - _____UNUSED_____
-
+scene 31 - beijing - Go
+scene 32 = london (Celtic)- Fidhchell
+scene 33 = Ethiopia (Yeha) - Mancala
+scene 34 = Cairo - Senet
+scene 35 = Delhi (Aryavarta) - Pachisi
+scene 36 = Tehran (Persia) - Backgammon
+scene 37 = Mexico - Patolli
+scene 38 = Baghdad (Babylonian) - Royal game of Ur
+scene 39 = Greece - The oldest records of board gaming in Europe date back to Homer's Iliad (written
+                    in the 8th century BC), in which he mentions the Ancient Greek game of petteia.[17] This game of 
+                    petteia would later evolve into the Roman ludus latrunculorum.
+scene 40 - Rome - terni lapilli (three pebbles at a time) Tic Tac Toe
+scene 41 - _____UNUSED_____
+scene 42 - _____UNUSED_____
+scene 43 - _____UNUSED_____
+scene 44 - _____UNUSED_____
+scene 45 - _____UNUSED_____
+scene 46 - _____UNUSED_____
+scene 47 - _____UNUSED_____
+scene 48 - _____UNUSED_____
+scene 49 - _____UNUSED_____
+scene 50 - _____UNUSED_____
 
 
 

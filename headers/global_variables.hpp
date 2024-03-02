@@ -307,6 +307,15 @@ extern Custom_SDL_Button returnGameButton;
 extern Custom_SDL_Button returnTitleButton;
 extern Custom_SDL_Button settingsResetButton;
 extern Custom_SDL_Button settingsSaveButton;
+// scene 3
+extern Custom_SDL_Button scene3returnTitleButton;
+// scene 4
+extern Custom_SDL_Button scene4returnTitleButton;
+// scene 5
+extern Custom_SDL_Button scene5forwardButton;
+extern Custom_SDL_Button scene5backButton;
+extern Custom_SDL_Button scene5continueButton;
+extern Custom_SDL_Button scene5returnTitleButton;
 // scene 7
 extern Custom_SDL_Button scene7acceptButton;
 extern Custom_SDL_Button scene7denyButton;
@@ -327,6 +336,24 @@ extern Custom_SDL_Button scene13refreshButton;
 extern Custom_SDL_Button scene13backButton;
 // Scene 25
 extern Custom_SDL_Button scene25backusernameButton;
+
+extern Custom_SDL_Button scene25helpButton;
+extern Custom_SDL_Button scene25settingsButton;
+extern Custom_SDL_Button scene25returnTitleButton;
+
+extern Custom_SDL_Button scene25beijingButton;
+extern Custom_SDL_Button scene25berlinButton;
+extern Custom_SDL_Button scene25delhiButton;
+extern Custom_SDL_Button scene25hawaiiButton;
+extern Custom_SDL_Button scene25londonButton;
+
+extern Custom_SDL_Button scene25parisButton;
+extern Custom_SDL_Button scene25seoulButton;
+extern Custom_SDL_Button scene25shanghaiButton;
+extern Custom_SDL_Button scene25singaporeButton;
+extern Custom_SDL_Button scene25tokyoButton;
+
+extern Custom_SDL_Button scene25romeButton;
 
 // For SDL_Custom_button find_nearest() to find nearest button through kb handle arrow direction keys for GUI navigation
 extern std::vector<Custom_SDL_Button *> scene1buttons;

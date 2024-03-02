@@ -652,6 +652,10 @@ void draw_text_for_HUD_scene_2() // Settings
     render_text(reset_settings_txt, (windowWidth * 0.8), (windowHeight * 0.6), 255, 0);
     render_text(save_settings_txt, (windowWidth * 0.8), (windowHeight * 0.8), 255, 0);
 }
+void draw_text_for_HUD_scene_3() // Credits
+{
+    render_text(help_txt, (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
+}
 void draw_text_for_HUD_scene_4() // Achievements
 {
     render_text(achievements_txt, (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);

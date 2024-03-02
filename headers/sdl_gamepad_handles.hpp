@@ -322,63 +322,114 @@ void handle_gamepad_scene_2(int button)
         break;
     }
 }
-
-void handle_gamepad_scene_5(int button)
+void handle_gamepad_scene_3(int button)
 {
-    SDL_Rect backwardRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-    SDL_Rect forwardRect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-    SDL_Rect returnGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
-    // Highlight the selected option for keyboard arrow key and gamepad d pad key input
-    SDL_Rect selectedRect = {
-        static_cast<int>(windowWidth * 0.35),
-        static_cast<int>(windowHeight * 0.25) + selectedOption * 100, // Spacing (must be bigger then sdl_renders.h same rect)
-        rectWidth,
-        rectHeight};
-
-    SDL_Point selectedPoint = {selectedRect.x, selectedRect.y}; // This is the selectedRect which overlaps the button rects
-
     switch (button)
     {
-    case SDLK_ESCAPE:
-        std::cout << "You pressed button: ESC" << std::endl;
-        quitEventLoop = true;
+    case SDL_CONTROLLER_BUTTON_START:
+        std::cout << "You pressed controller button: START" << std::endl;
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_UP:
-        std::cout << "You pressed button: UP" << std::endl;
-        selectedOption = (selectedOption - 1 + menuTotalOptions) % menuTotalOptions;
+        std::cout << "You pressed controller button: UP" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
-        std::cout << "You pressed button: DOWN" << std::endl;
-        selectedOption = (selectedOption + 1) % menuTotalOptions;
+        std::cout << "You pressed controller button: DOWN" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-        std::cout << "You pressed button: LEFT" << std::endl;
-        scrollY -= scrollSpeed; // Scroll up
+        std::cout << "You pressed controller button: LEFT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
         break;
     case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
-        std::cout << "You pressed button: RIGHT" << std::endl;
-        scrollY += scrollSpeed; // Scroll down
+        std::cout << "You pressed controller button: RIGHT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
         break;
     case SDL_CONTROLLER_BUTTON_A:
-        std::cout << "You pressed button: RETURN | ENTER" << std::endl;
-        if (SDL_PointInRect(&selectedPoint, &returnTitleRect))
+        std::cout << "You pressed controller button: A" << std::endl;
+        if (scene3returnTitleButton.is_selected())
         {
             std::cout << "You clicked Return to title" << std::endl;
             scene = 1;
         }
-        else if (SDL_PointInRect(&selectedPoint, &forwardRect))
+    default:
+        std::cout << "You pressed: a non-configured keyboard input." << std::endl;
+        break;
+    }
+}
+void handle_gamepad_scene_4(int button)
+{
+    switch (button)
+    {
+    case SDL_CONTROLLER_BUTTON_START:
+        std::cout << "You pressed controller button: START" << std::endl;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_UP:
+        std::cout << "You pressed controller button: UP" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+        std::cout << "You pressed controller button: DOWN" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        std::cout << "You pressed controller button: LEFT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        std::cout << "You pressed controller button: RIGHT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+        break;
+    case SDL_CONTROLLER_BUTTON_A:
+        std::cout << "You pressed controller button: A" << std::endl;
+        // Settings Buttons
+        if (scene4returnTitleButton.is_selected())
         {
-            std::cout << "You clicked Forward" << std::endl;
-            scrollY -= scrollSpeed; // Scroll up
+            std::cout << "You clicked Return to title" << std::endl;
+            scene = 1;
         }
-        else if (SDL_PointInRect(&selectedPoint, &backwardRect))
+    default:
+        std::cout << "You pressed: a non-configured keyboard input." << std::endl;
+        break;
+    }
+}
+void handle_gamepad_scene_5(int button)
+{
+    switch (button)
+    {
+    case SDL_CONTROLLER_BUTTON_START:
+        std::cout << "You pressed controller button: START" << std::endl;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_UP:
+        std::cout << "You pressed controller button: UP" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+        std::cout << "You pressed controller button: DOWN" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        std::cout << "You pressed controller button: LEFT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        std::cout << "You pressed controller button: RIGHT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+        break;
+    case SDL_CONTROLLER_BUTTON_A:
+        std::cout << "You pressed controller button: A" << std::endl;
+        // Settings Buttons
+        if (scene5backButton.is_selected())
         {
             std::cout << "You clicked Back" << std::endl;
             scrollY += scrollSpeed; // Scroll down
         }
-        else if (SDL_PointInRect(&selectedPoint, &returnGameRect))
+        else if (scene5forwardButton.is_selected())
+        {
+            std::cout << "You clicked Forward" << std::endl;
+            scrollY -= scrollSpeed; // Scroll up
+        }
+        else if (scene5continueButton.is_selected())
         {
             std::cout << "You clicked Return to game" << std::endl;
             if (gameStarted)
@@ -390,8 +441,13 @@ void handle_gamepad_scene_5(int button)
                 std::cout << "Cannot Continue. Game not started." << std::endl;
             }
         }
+        else if (scene5returnTitleButton.is_selected())
+        {
+            std::cout << "You clicked Return to title" << std::endl;
+            scene = 1;
+        }
     default:
-        std::cout << "You pressed a non-configured keyboard input." << std::endl;
+        std::cout << "You pressed: a non-configured keyboard input." << std::endl;
         break;
     }
 }
@@ -617,6 +673,123 @@ void handle_gamepad_scene_13(int button)
         break;
     default:
         std::cout << "You pressed a non-configured keyboard input." << std::endl;
+        break;
+    }
+}
+
+void handle_gamepad_scene_25(int button)
+{
+    switch (button)
+    {
+    case SDL_CONTROLLER_BUTTON_START:
+        std::cout << "You pressed controller button: START" << std::endl;
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_UP:
+        std::cout << "You pressed controller button: UP" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+        std::cout << "You pressed controller button: DOWN" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+        std::cout << "You pressed controller button: LEFT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+        break;
+    case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+        std::cout << "You pressed controller button: RIGHT" << std::endl;
+        scene1newGameButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+        break;
+    case SDL_CONTROLLER_BUTTON_A:
+        std::cout << "You pressed controller button: A" << std::endl;
+        if (scene25helpButton.is_selected())
+        {
+            lastScene = scene;
+            std::cout << "You clicked Help" << std::endl;
+            scene = 5;
+        }
+        else if (scene25settingsButton.is_selected())
+        {
+            lastScene = scene;
+            std::cout << "You clicked Settings" << std::endl;
+            scene = 2;
+        }
+        else if (scene25returnTitleButton.is_selected())
+        {
+            std::cout << "You clicked Return to title" << std::endl;
+            scene = 1;
+        }
+        else if (scene25beijingButton.is_selected())
+        {
+            std::cout << "You clicked Beijing" << std::endl;
+            int target = 20;
+            is_scene_unlocked(target);
+        }
+        else if (scene25berlinButton.is_selected())
+        {
+            std::cout << "You clicked London" << std::endl;
+            int target = 21;
+            is_scene_unlocked(target);
+        }
+        else if (scene25delhiButton.is_selected())
+        {
+            std::cout << "You clicked Paris" << std::endl;
+            int target = 22;
+            is_scene_unlocked(target);
+        }
+        else if (scene25hawaiiButton.is_selected())
+        {
+            std::cout << "You clicked Berlin" << std::endl;
+
+            int target = 23;
+            is_scene_unlocked(target);
+        }
+        else if (scene25londonButton.is_selected())
+        {
+            std::cout << "You clicked Dehli" << std::endl;
+
+            int target = 24;
+            is_scene_unlocked(target);
+        }
+        else if (scene25parisButton.is_selected())
+        {
+            std::cout << "You clicked Singapore" << std::endl;
+
+            int target = 25;
+            is_scene_unlocked(target);
+        }
+        else if (scene25seoulButton.is_selected())
+        {
+            std::cout << "You clicked Hawaii" << std::endl;
+            int target = 26;
+            is_scene_unlocked(target);
+        }
+        else if (scene25shanghaiButton.is_selected())
+        {
+            std::cout << "You clicked Tokyo" << std::endl;
+            int target = 27;
+            is_scene_unlocked(target);
+        }
+        else if (scene25singaporeButton.is_selected())
+        {
+            std::cout << "You clicked Seoul" << std::endl;
+            int target = 28;
+            is_scene_unlocked(target);
+        }
+        else if (scene25tokyoButton.is_selected())
+        {
+            std::cout << "You clicked Shanghai" << std::endl;
+            int target = 29;
+            is_scene_unlocked(target);
+        }
+        else if (scene25romeButton.is_selected())
+        {
+            std::cout << "You clicked Rome" << std::endl;
+            int target = 32;
+            is_scene_unlocked(target);
+        }
+    default:
+        std::cout << "You pressed: a non-configured keyboard input." << std::endl;
         break;
     }
 }

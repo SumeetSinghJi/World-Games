@@ -213,6 +213,16 @@ Custom_SDL_Button returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false)
 Custom_SDL_Button settingsResetButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button settingsSaveButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 
+// scene 3
+Custom_SDL_Button scene3returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+// scene 4
+Custom_SDL_Button scene4returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+// scene 5
+Custom_SDL_Button scene5backButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene5forwardButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene5continueButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene5returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
 // scene 7
 Custom_SDL_Button scene7acceptButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene7denyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -234,7 +244,23 @@ Custom_SDL_Button scene13backButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false)
 // Scene 14
 
 // Scene 25
-Custom_SDL_Button scene25backusernameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25helpButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25settingsButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25returnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
+Custom_SDL_Button scene25beijingButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25berlinButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25delhiButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25hawaiiButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25londonButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
+Custom_SDL_Button scene25parisButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25seoulButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25shanghaiButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25singaporeButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene25tokyoButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+
+Custom_SDL_Button scene25romeButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 
 // For SDL_Custom_button find_nearest() to find nearest button through kb handle arrow direction keys for GUI navigation
 std::vector<Custom_SDL_Button *> scene1buttons;
@@ -821,6 +847,16 @@ void load_buttons_to_scene_vectors()
     scene2buttons.push_back(&returnTitleButton);
     scene2buttons.push_back(&settingsResetButton);
     scene2buttons.push_back(&settingsSaveButton);
+    
+    // scene 3
+    scene3buttons.push_back(&scene3returnTitleButton);
+    // scene 4
+    scene4buttons.push_back(&scene4returnTitleButton);
+    // scene 5
+    scene5buttons.push_back(&scene5backButton);
+    scene5buttons.push_back(&scene5forwardButton);
+    scene5buttons.push_back(&scene5continueButton);
+    scene5buttons.push_back(&scene5returnTitleButton);
 
     // scene 7
     scene7buttons.push_back(&scene7acceptButton);
@@ -841,7 +877,24 @@ void load_buttons_to_scene_vectors()
     scene13buttons.push_back(&scene13refreshButton);
     scene13buttons.push_back(&scene13backButton);
     // scene 25
-    scene25buttons.push_back(&scene25backusernameButton);
+    scene25buttons.push_back(&scene25helpButton);
+    scene25buttons.push_back(&scene25settingsButton);
+    scene25buttons.push_back(&scene25returnTitleButton);
+
+    scene25buttons.push_back(&scene25beijingButton);
+    scene25buttons.push_back(&scene25berlinButton);
+    scene25buttons.push_back(&scene25delhiButton);
+    scene25buttons.push_back(&scene25hawaiiButton);
+    scene25buttons.push_back(&scene25londonButton);
+
+    scene25buttons.push_back(&scene25parisButton);
+    scene25buttons.push_back(&scene25seoulButton);
+    scene25buttons.push_back(&scene25shanghaiButton);
+    scene25buttons.push_back(&scene25singaporeButton);
+    scene25buttons.push_back(&scene25tokyoButton);
+
+    scene25buttons.push_back(&scene25romeButton);
+
 }
 void load_buttons_to_allButtons_vector()
 {
@@ -974,21 +1027,36 @@ void load_buttons_2()
 }
 void load_buttons_3()
 {
-    scene7acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
+    scene3returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
                                            rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+    scene3returnTitleButton.set_button_texture(renderer, "");
 }
 void load_buttons_4()
 {
-    scene7acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
+    scene4returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
                                            rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+    scene4returnTitleButton.set_button_texture(renderer, "");
 }
 void load_buttons_5()
 {
-    scene7acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
+    scene5backButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8),
                                            rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "", false); // RGB: Light green
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
+    scene5forwardButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.8),
+                                           rectWidth, rectHeight,
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/forward-button.png", false); // RGB: Light green
+    scene5continueButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8),
+                                           rectWidth, rectHeight,
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/continue-button.png", false); // RGB: Light green
+    scene5returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8),
+                                           rectWidth, rectHeight,
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+    scene5backButton.set_button_texture(renderer, "");
+    scene5forwardButton.set_button_texture(renderer, "");
+    scene5continueButton.set_button_texture(renderer, "");
+    scene5returnTitleButton.set_button_texture(renderer, "");
 }
 void load_buttons_6()
 {
@@ -1061,10 +1129,69 @@ void load_buttons_13()
 }
 void load_buttons_25()
 {
-    scene25backusernameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
-                                                  static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
-                                                  "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
-    scene25backusernameButton.set_button_texture(renderer, "");
+    scene25helpButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.7),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/settings/help-button.png", false); // RGB: Light green
+    scene25settingsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.7),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/settings/settings-button.png", false); // RGB: Light green    
+    scene25returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.55), static_cast<int>(windowHeight * 0.7),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/settings/return-button.png", false); // RGB: Light green
+
+    scene25beijingButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.49),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/beijing-button.png", false); // RGB: Light green
+    scene25berlinButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.48), static_cast<int>(windowHeight * 0.36),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/berlin-button.png", false); // RGB: Light green    
+    scene25delhiButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.63), static_cast<int>(windowHeight * 0.46),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/delhi-button.png", false); // RGB: Light green
+    scene25hawaiiButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.01), static_cast<int>(windowHeight * 0.5),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/hawaii-button.png", false); // RGB: Light green                                                  
+    scene25londonButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.43), static_cast<int>(windowHeight * 0.3),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/london-button.png", false); // RGB: Light green
+    
+    scene25parisButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.4),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/paris-button.png", false); // RGB: Light green    
+    scene25seoulButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.78), static_cast<int>(windowHeight * 0.4),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/seoul-button.png", false); // RGB: Light green
+    scene25shanghaiButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/shanghai-button.png", false); // RGB: Light green    
+    scene25singaporeButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.57),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/singapore-button.png", false); // RGB: Light green
+    scene25tokyoButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.83), static_cast<int>(windowHeight * 0.43),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/tokyo-button.png", false); // RGB: Light green    
+    
+    scene25romeButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.50), static_cast<int>(windowHeight * 0.45),
+                                                  rectWidth, rectHeight,
+                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/rome-button.png", false); // RGB: Light green
+    
+    scene25helpButton.set_button_texture(renderer, "");
+    scene25settingsButton.set_button_texture(renderer, "");
+    scene25returnTitleButton.set_button_texture(renderer, "");
+
+    scene25beijingButton.set_button_texture(renderer, "");
+    scene25berlinButton.set_button_texture(renderer, "");
+    scene25delhiButton.set_button_texture(renderer, "");
+    scene25hawaiiButton.set_button_texture(renderer, "");
+    scene25londonButton.set_button_texture(renderer, "");
+
+    scene25parisButton.set_button_texture(renderer, "");
+    scene25seoulButton.set_button_texture(renderer, "");
+    scene25shanghaiButton.set_button_texture(renderer, "");
+    scene25singaporeButton.set_button_texture(renderer, "");
+    scene25tokyoButton.set_button_texture(renderer, "");
+    
+    scene25romeButton.set_button_texture(renderer, "");
 }
 
 // SDL CODE FUNCTIONS

@@ -298,10 +298,8 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
 void handle_click_scene_3(int mouseX, int mouseY) // Credits
 {
     SDL_Point mousePosition = {mouseX, mouseY};
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
     // Settings Buttons
-    if (SDL_PointInRect(&mousePosition, &returnTitleRect))
+    if (scene3returnTitleButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Return to title" << std::endl;
         scene = 1;
@@ -311,10 +309,8 @@ void handle_click_scene_4(int mouseX, int mouseY) // Achievements
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
     // Settings Buttons
-    if (SDL_PointInRect(&mousePosition, &returnTitleRect))
+    if (scene4returnTitleButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Return to title" << std::endl;
         scene = 1;
@@ -324,27 +320,17 @@ void handle_click_scene_5(int mouseX, int mouseY) // Help
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
-    SDL_Rect backwardRect = {static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-    SDL_Rect forwardRect = {static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-    SDL_Rect returnGameRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
-
-    if (SDL_PointInRect(&mousePosition, &returnTitleRect))
-    {
-        std::cout << "You clicked Return to title" << std::endl;
-        scene = 1;
-    }
-    else if (SDL_PointInRect(&mousePosition, &forwardRect))
-    {
-        std::cout << "You clicked Forward" << std::endl;
-        scrollY -= scrollSpeed; // Scroll up
-    }
-    else if (SDL_PointInRect(&mousePosition, &backwardRect))
+    if (scene5backButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Back" << std::endl;
         scrollY += scrollSpeed; // Scroll down
     }
-    else if (SDL_PointInRect(&mousePosition, &returnGameRect))
+    else if (scene5forwardButton.isClicked(mousePosition))
+    {
+        std::cout << "You clicked Forward" << std::endl;
+        scrollY -= scrollSpeed; // Scroll up
+    }
+    else if (scene5continueButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Return to game" << std::endl;
         if (gameStarted)
@@ -355,6 +341,11 @@ void handle_click_scene_5(int mouseX, int mouseY) // Help
         {
             std::cout << "Cannot Continue. Game not started." << std::endl;
         }
+    }
+    else if (scene5returnTitleButton.isClicked(mousePosition))
+    {
+        std::cout << "You clicked Return to title" << std::endl;
+        scene = 1;
     }
 }
 
@@ -492,105 +483,87 @@ void handle_click_scene_25(int mouseX, int mouseY) // World map
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
-    SDL_Rect helpRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.4), rectWidth, rectHeight};
-    SDL_Rect settingsRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.6), rectWidth, rectHeight};
-    SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.95), static_cast<int>(windowHeight * 0.7), rectWidth, rectHeight};
-
-    SDL_Rect beijingRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.49), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect berlinRect = {static_cast<int>(windowWidth * 0.48), static_cast<int>(windowHeight * 0.36), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect delhiRect = {static_cast<int>(windowWidth * 0.63), static_cast<int>(windowHeight * 0.46), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect hawaiiRect = {static_cast<int>(windowWidth * 0.01), static_cast<int>(windowHeight * 0.5), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect londonRect = {static_cast<int>(windowWidth * 0.43), static_cast<int>(windowHeight * 0.3), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect parisRect = {static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.4), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect seoulRect = {static_cast<int>(windowWidth * 0.78), static_cast<int>(windowHeight * 0.4), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect shanghaiRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect singaporeRect = {static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.57), worldmapRegionWidth, worldmapRegionHeight};
-    SDL_Rect tokyoRect = {static_cast<int>(windowWidth * 0.83), static_cast<int>(windowHeight * 0.43), worldmapRegionWidth, worldmapRegionHeight};
-
-    SDL_Rect romeRect = {static_cast<int>(windowWidth * 0.50), static_cast<int>(windowHeight * 0.45), worldmapRegionWidth, worldmapRegionHeight};
-
-    // Settings Buttons
-    if (SDL_PointInRect(&mousePosition, &helpRect))
+    if (scene25helpButton.isClicked(mousePosition))
     {
         lastScene = scene;
         std::cout << "You clicked Help" << std::endl;
         scene = 5;
     }
-    else if (SDL_PointInRect(&mousePosition, &settingsRect))
+    else if (scene25settingsButton.isClicked(mousePosition))
     {
         lastScene = scene;
         std::cout << "You clicked Settings" << std::endl;
         scene = 2;
     }
-    else if (SDL_PointInRect(&mousePosition, &returnTitleRect))
+    else if (scene25returnTitleButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Return to title" << std::endl;
         scene = 1;
     }
-    else if (SDL_PointInRect(&mousePosition, &beijingRect))
+    else if (scene25beijingButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Beijing" << std::endl;
         int target = 20;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &londonRect))
+    else if (scene25berlinButton.isClicked(mousePosition))
     {
         std::cout << "You clicked London" << std::endl;
         int target = 21;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &parisRect))
+    else if (scene25delhiButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Paris" << std::endl;
         int target = 22;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &berlinRect))
+    else if (scene25hawaiiButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Berlin" << std::endl;
 
         int target = 23;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &delhiRect))
+    else if (scene25londonButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Dehli" << std::endl;
 
         int target = 24;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &singaporeRect))
+    else if (scene25parisButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Singapore" << std::endl;
 
         int target = 25;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &hawaiiRect))
+    else if (scene25seoulButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Hawaii" << std::endl;
         int target = 26;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &tokyoRect))
+    else if (scene25shanghaiButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Tokyo" << std::endl;
         int target = 27;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &seoulRect))
+    else if (scene25singaporeButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Seoul" << std::endl;
         int target = 28;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &shanghaiRect))
+    else if (scene25tokyoButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Shanghai" << std::endl;
         int target = 29;
         is_scene_unlocked(target);
     }
-    else if (SDL_PointInRect(&mousePosition, &romeRect))
+    else if (scene25romeButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Rome" << std::endl;
         int target = 32;

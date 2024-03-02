@@ -29,6 +29,6 @@ linux and MacOS use HOME for the home directory, e.g: /home/sumeet
 
 # INSTRUCTIONS
 
-The README.txt file contains instructions on gameplay and development. 
+The MANUAL.txt file contains instructions on gameplay and development. 
 File may also be found in game using the Book (Help) icon option.
 
