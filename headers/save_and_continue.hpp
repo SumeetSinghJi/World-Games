@@ -89,8 +89,8 @@ bool load_settings()
 bool save_game()
 {
   // fstream replaces ifstream (reading) and ofstream (writing) for both
-  // , std::fstream::out indicates to create the file if it doesn't exist
-  std::fstream savefileObject(saveFileName, std::fstream::out); 
+  // , std::fstream::app indicates to create the file if it doesn't exist
+  std::fstream savefileObject(saveFileName, std::fstream::app);
   if (!savefileObject.is_open())
   {
     std::cerr << "Error: Unable to open save file." << std::endl;
@@ -190,11 +190,13 @@ void does_save_file_exist()
       std::remove(saveFileName.c_str());
       new_game();
       scene = 25;
+      overwriteGame = 0;
     }
     else if (overwriteGame == 2)
     {
       std::cout << "Save game not deleted. Loading saved game..." << std::endl;
       load_game();
+      overwriteGame = 0;
     }
   }
   else

@@ -1150,15 +1150,16 @@ void load_buttons_13()
                                           "BACK", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
     scene13backButton.set_button_texture(renderer, "");
 }
+
 void load_buttons_25()
 {
-    scene25helpButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.7),
+    scene25helpButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.2),
                                                   rectWidth, rectHeight,
                                                   "", 144, 238, 144, 255, "assets/graphics/buttons/settings/help-button.png", false); // RGB: Light green
-    scene25settingsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.7),
+    scene25settingsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4),
                                                   rectWidth, rectHeight,
                                                   "", 144, 238, 144, 255, "assets/graphics/buttons/settings/settings-button.png", false); // RGB: Light green    
-    scene25returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.55), static_cast<int>(windowHeight * 0.7),
+    scene25returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8),
                                                   rectWidth, rectHeight,
                                                   "", 144, 238, 144, 255, "assets/graphics/buttons/settings/return-button.png", false); // RGB: Light green
 

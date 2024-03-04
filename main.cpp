@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     srand(static_cast<unsigned int>(time(0)));                           // Seed random time function for gameplay randomisation
     find_os();                                                           // Find host OS for OS specific functions
     update_version_string_from_readme_file("README.md");                 // populate variable currentVersion in update_app.hpp
-    UpdateApp_sourceDirectory = "C:/Users/Sumeet/Documents/World-Games"; // populate variable in update_app.hpp
+    UpdateApp_sourceDirectory = "C:/Users/Sumeet/Documents/World-Games"; // populate variable in update_app.hpp for .exe/.msi/bin installer
 
     start_SDL(); // Start game
 
