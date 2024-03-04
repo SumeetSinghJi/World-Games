@@ -1023,7 +1023,7 @@ void load_buttons_2()
         settingsResetButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6),
                                              rectWidth, rectHeight,
                                              "", 144, 238, 144, 255, "assets/graphics/buttons/settings/load-button.png", false); // RGB: Light green
-        settingsSaveButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
+        settingsSaveButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8),
                                              rectWidth, rectHeight,
                                              "", 144, 238, 144, 255, "assets/graphics/buttons/settings/save-button.png", false); // RGB: Light green
         fontButton.set_button_texture(renderer, "");

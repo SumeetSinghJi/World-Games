@@ -1,21 +1,20 @@
-# Build folders - 
-# must include "/" backslash character at end e.g. "/build/" to exclude directory
-/build/
-/tests/build/
-/src/curl/build/
+# Excluded folders to upload to Git
+/build
+/tests/build
+/src/curl/build
 /src/googletest/.github
-/src/googletest/ci/
-/src/googletest/googlemock/
+/src/googletest/ci
+/src/googletest/googlemock
 /src/libzip/.githhub
-/src/libzip/android/
-/src/libzip/examples/
-/src/libzip/man/
-/src/libzip/ossfuzz/
-/src/libzip/regress/
-/src/libzip/vstudio/
-/src/asio/.github/
-/src/asio/doc/
-/src/asio/example/
-/src/asio/meta/
-/src/asio/test/
-/src/asio/tools/
+/src/libzip/android
+/src/libzip/examples
+/src/libzip/man
+/src/libzip/ossfuzz
+/src/libzip/regress
+/src/libzip/vstudio
+/src/asio/.github
+/src/asio/doc
+/src/asio/example
+/src/asio/meta
+/src/asio/test
+/src/asio/tools

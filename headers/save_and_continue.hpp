@@ -11,61 +11,137 @@ Description: read the attached MANUAL.txt file
 
 #include "global_variables.hpp"
 
-bool savefileExists = false;
+bool savefileExists = false; // used in SDL_mouse_handles.hpp
 int overwriteGame = 0;
+std::string saveFileName = "world-games_save.txt";
 
 void new_game();
 
-void save_settings() {
-  // on settingsSaveRect in mouse handle save settings
+bool save_settings() {
+    std::fstream file(saveFileName); // replaces ifstream (reading) and ofstream (writing) for both
+    if (!file.is_open()) {
+        std::cerr << "Error: Unable to open save file." << std::endl;
+        return false;
+    }
+
+    // Read the entire file into a string
+    std::string fileContents;
+    std::string line;
+    while (std::getline(file, line)) {
+        fileContents += line + '\n';
+    }
+
+    // Find and replace the lines containing strings, e.g., "Language: " and "Font size: ", with the updated lines
+    size_t pos_language = fileContents.find("Language: ");
+    size_t pos_fontsize = fileContents.find("Font size: ");
+    if (pos_language != std::string::npos && pos_fontsize != std::string::npos) {
+        size_t end_language = fileContents.find("\n", pos_language);
+        size_t end_fontsize = fileContents.find("\n", pos_fontsize);
+        fileContents.replace(pos_language, end_language - pos_language, "Language: " + language);
+        fileContents.replace(pos_fontsize, end_fontsize - pos_fontsize, "Font size: " + fontSize);
+    } else {
+        // If the lines "Language: " or "Font size: " don't exist, add them
+        if (pos_language == std::string::npos) {
+            fileContents = "Language: " + language + '\n' + fileContents;
+        }
+        if (pos_fontsize == std::string::npos) {
+            fileContents = "Font size: " + fontSize + '\n' + fileContents;
+        }
+    }
+
+    // Reset file pointer to the beginning and write the modified contents back to the file
+    file.clear(); // Clear any error flags
+    file.seekp(0, std::ios::beg); // Move to the beginning of the file
+    file << fileContents;
+    file.close(); // Close the file
+
+    return true;
 }
 
-void save_game()
+bool load_settings()
 {
-  std::ofstream savefile_object("world-games_save.txt");
-
-  if (savefile_object.is_open())
-  {
-    savefile_object << "unlockedScenes: ";
-    for (size_t i = 0; i < unlockedScenes.size(); ++i)
-    {
-      savefile_object << unlockedScenes[i];
-      if (i != unlockedScenes.size() - 1)
-      {
-        savefile_object << ",";
-      }
-    }
-    savefile_object << "\n";
-    savefile_object << "unlockedAchievements: ";
-    for (size_t i = 0; i < unlockedAchievements.size(); ++i)
-    {
-      savefile_object << unlockedAchievements[i];
-      if (i != unlockedAchievements.size() - 1)
-      {
-        savefile_object << ",";
-      }
-    }
-    savefile_object << "\n";
-
-    savefile_object.close();
-    std::cout << "Game saved" << std::endl;
-  }
-  else
+  // The purpose of this is to load variables from save_settings()
+  std::ifstream file(saveFileName);
+  if (!file.is_open())
   {
     std::cerr << "Error: Unable to open save file." << std::endl;
+    return false;
   }
+
+  std::string line;
+  while (std::getline(file, line))
+  {
+    if (line.find("Language: ") != std::string::npos)
+    {
+
+      std::istringstream iss(line);
+      std::string word;
+      // Extract the second word after "Language: "
+      if (iss >> word && iss >> word)
+      {
+        language = word;
+      }
+    }
+  }
+  return true;
 }
 
-void load_game()
+bool save_game()
 {
-  std::ifstream savefile_object("world-games_save.txt");
+  // fstream replaces ifstream (reading) and ofstream (writing) for both
+  // , std::fstream::out indicates to create the file if it doesn't exist
+  std::fstream savefileObject(saveFileName, std::fstream::out); 
+  if (!savefileObject.is_open())
+  {
+    std::cerr << "Error: Unable to open save file." << std::endl;
+    return false;
+  }
 
-  if (savefile_object.is_open())
+  if (savefileObject.is_open())
+  {
+    savefileObject << "unlockedScenes: ";
+    for (size_t i = 0; i < unlockedScenes.size(); ++i)
+    {
+      savefileObject << unlockedScenes[i];
+      if (i != unlockedScenes.size() - 1)
+      {
+        savefileObject << ",";
+      }
+    }
+    savefileObject << "\n";
+    savefileObject << "unlockedAchievements: ";
+    for (size_t i = 0; i < unlockedAchievements.size(); ++i)
+    {
+      savefileObject << unlockedAchievements[i];
+      if (i != unlockedAchievements.size() - 1)
+      {
+        savefileObject << ",";
+      }
+    }
+    savefileObject << "\n";
+
+    savefileObject.close();
+    std::cout << "Game saved" << std::endl;
+  }
+  return true;
+}
+
+bool load_game()
+{
+  // The purpose of this is to load variables from save_game()
+  std::fstream savefileObject(saveFileName); // replaces ifstream (reading) and ofstream (writing) for both
+  if (!savefileObject.is_open())
+  {
+    std::cerr << "Error: Unable to open save file." << std::endl;
+    return false;
+  }
+
+  if (savefileObject.is_open())
   {
     std::cout << "Loading save..." << std::endl;
     std::string line;
 
-    while (getline(savefile_object, line))
+    while (getline(savefileObject, line))
     {
       std::istringstream iss(line);
       std::string key;
@@ -95,26 +171,23 @@ void load_game()
         }
       }
     }
-    savefile_object.close();
+    savefileObject.close();
     std::cout << "Save loaded..." << std::endl;
   }
-  else
-  {
-    std::cerr << "Error: Unable to open save file." << std::endl;
-  }
+  return true;
 }
 
 void does_save_file_exist()
 {
   std::cout << "Checking to see if any saves exist" << std::endl;
-  std::string filename = "world-games_save.txt";
-  if (std::ifstream(filename))
+
+  if (std::ifstream(saveFileName))
   {
-    std::cout << "Save file exists: " << filename << "Do you want to delete it? (y/n)";
+    std::cout << "Save file exists: " << saveFileName << "Do you want to delete it? (y/n)";
     savefileExists = true;
     if (overwriteGame == 1)
     {
-      std::remove(filename.c_str());
+      std::remove(saveFileName.c_str());
       new_game();
       scene = 25;
     }

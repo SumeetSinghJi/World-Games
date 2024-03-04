@@ -317,6 +317,7 @@ void handle_keyboard_scene_2(SDL_Event event) // Settings
         else if (settingsSaveButton.is_selected())
         {
             std::cout << "You clicked: Save settings" << std::endl;
+            save_settings();
         }
     default:
         std::cout << "You pressed a non-configured keyboard input." << std::endl;

@@ -292,6 +292,7 @@ void handle_click_scene_2(int mouseX, int mouseY) // Settings
     else if (settingsSaveButton.isClicked(mousePosition))
     {
         std::cout << "You clicked: Save settings" << std::endl;
+        save_settings();
     }
 }
 void handle_click_scene_3(int mouseX, int mouseY) // Credits

@@ -1,6 +1,5 @@
 
 TASKS
-    * VS has a inbuilt profiler performance live chart, build project using it to test
     * savefile is outputing unlocked achievements as empty string so on load_game() crashes.
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
@@ -25,6 +24,7 @@ TASKS
     * Fix keyboard up and down movement to different buttons
     * Full voice acting in each language
     * Clean up unused textures
+    * VS has a inbuilt profiler performance live chart, build project using it to test
     * Make Tic Tac toe roman circle game
     * Compile on MacOS and Ubuntu
 
@@ -46,5 +46,5 @@ FUTURE
 
 REQUIRED ASSISTANCE
     * tests.cpp building not working correctly
-    * CMAKElists.txt not working for main and tests + setup boost
+    * CMAKElists.txt not working for main and tests + setup boost + have it create visual studio sln file
     * Get advice from professional on how to improve code, including refractoring, segregating and security

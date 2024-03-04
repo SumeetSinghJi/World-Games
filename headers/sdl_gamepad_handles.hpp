@@ -316,6 +316,7 @@ void handle_gamepad_scene_2(int button) // Settings
         else if (settingsSaveButton.is_selected())
         {
             std::cout << "You clicked: Save settings" << std::endl;
+            save_settings();
         }
     default:
         std::cout << "You pressed a non-configured controller input." << std::endl;
