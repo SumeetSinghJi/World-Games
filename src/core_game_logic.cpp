@@ -380,9 +380,9 @@ std::unordered_map<std::string, SDL_Keycode> keyMap = {
     {"s", SDLK_DOWN},
     {"a", SDLK_LEFT},
     {"d", SDLK_RIGHT},
-    {"d", SDLK_ESCAPE},
-    {"d", SDLK_SPACE},
-    {"d", SDLK_RETURN},
+    {"esc", SDLK_ESCAPE},
+    {"space", SDLK_SPACE},
+    {"return", SDLK_RETURN},
 };
 
 SDL_Texture *load_texture(const char *path, const char *name)
