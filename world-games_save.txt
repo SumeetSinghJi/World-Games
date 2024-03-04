@@ -1,2 +1,6 @@
+Font size: 36
+Language: English
+unlockedScenes: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+unlockedAchievements: 0,0,0,0,0,0,0,0,0,0
 unlockedScenes: 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 unlockedAchievements: 0,0,0,0,0,0,0,0,0,0

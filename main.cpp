@@ -38,6 +38,9 @@ int main(int argc, char *argv[])
     update_version_string_from_readme_file("README.md");                 // populate variable currentVersion in update_app.hpp
     UpdateApp_sourceDirectory = "C:/Users/Sumeet/Documents/World-Games"; // populate variable in update_app.hpp for .exe/.msi/bin installer
 
+    create_save_file_if_doesnt_exist();
+    load_settings(); // load settings will call create_save_file_if_missing();
+
     start_SDL(); // Start game
 
     play_developer_splash_screen(); // Render promotional image of developer before game starts
