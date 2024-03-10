@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
     update_version_string_from_readme_file("README.md");                 // populate variable currentVersion in update_app.hpp
     UpdateApp_sourceDirectory = "C:/Users/Sumeet/Documents/World-Games"; // populate variable in update_app.hpp for .exe/.msi/bin installer
 
-    create_save_file_if_doesnt_exist();
+    create_save_file_if_doesnt_exist(); // if game downloaded with no existing save file this function will create
     load_settings(); // load settings will call create_save_file_if_missing();
 
     start_SDL(); // Start game

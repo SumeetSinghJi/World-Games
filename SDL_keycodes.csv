@@ -1,77 +1,80 @@
-﻿Key,SDL_Keycode
-0,SDLK_0
-1,SDLK_1
-2,SDLK_2
-3,SDLK_3
-4,SDLK_4
-5,SDLK_5
-6,SDLK_6
-7,SDLK_7
-8,SDLK_8
-9,SDLK_9
-A,SDLK_a
-B,SDLK_b
-"\ (Located at the lower left of the return key on ISO keyboards and at the right end of the QWERTY row on ANSI keyboards. Produces REVERSE SOLIDUS (backslash) and VERTICAL LINE in a US layout, REVERSE SOLIDUS and VERTICAL LINE in a UK Mac layout, NUMBER SIGN and TILDE in a UK Windows layout, DOLLAR SIGN and POUND SIGN in a Swiss German layout, NUMBER SIGN and APOSTROPHE in a German layout, GRAVE ACCENT and POUND SIGN in a French Mac layout, and ASTERISK and MICRO SIGN in a French Windows layout.)",SDLK_BACKSLASH
-Backspace,SDLK_BACKSPACE
-C,SDLK_c
-",",SDLK_COMMA
-D,SDLK_d
-Delete,SDLK_DELETE
-Down (the Down arrow key (navigation keypad)),SDLK_DOWN
-E,SDLK_e
-=,SDLK_EQUALS
-Escape (the Esc key),SDLK_ESCAPE
-F,SDLK_f
-F1,SDLK_F1
-F10,SDLK_F10
-F11,SDLK_F11
-F12,SDLK_F12
-F2,SDLK_F2
-F3,SDLK_F3
-F4,SDLK_F4
-F5,SDLK_F5
-F6,SDLK_F6
-F7,SDLK_F7
-F8,SDLK_F8
-F9,SDLK_F9
-G,SDLK_g
-H,SDLK_h
-I,SDLK_i
-J,SDLK_j
-K,SDLK_k
-L,SDLK_l
-Left Alt,SDLK_LALT
-Left Ctrl,SDLK_LCTRL
-Left (the Left arrow key (navigation keypad)),SDLK_LEFT
-[,SDLK_LEFTBRACKET
-Left Shift,SDLK_LSHIFT
-M,SDLK_m
--,SDLK_MINUS
-N,SDLK_n
-Numlock (the Num Lock key (PC) / the Clear key (Mac)),SDLK_NUMLOCKCLEAR
-O,SDLK_o
-P,SDLK_p
-PageDown,SDLK_PAGEDOWN
-PageUp,SDLK_PAGEUP
-.,SDLK_PERIOD
-Q,SDLK_q
-R,SDLK_r
-"Right Alt (alt gr, option)",SDLK_RALT
-Right Ctrl,SDLK_RCTRL
-Return (the Enter key (main keyboard)),SDLK_RETURN
-Return,SDLK_RETURN2
-Right (the Right arrow key (navigation keypad)),SDLK_RIGHT
-],SDLK_RIGHTBRACKET
-Right Shift,SDLK_RSHIFT
-S,SDLK_s
-/,SDLK_SLASH
-Space (the Space Bar key(s)),SDLK_SPACE
-T,SDLK_t
-Tab (the Tab key),SDLK_TAB
-U,SDLK_u
-Up (the Up arrow key (navigation keypad)),SDLK_UP
-V,SDLK_v
-W,SDLK_w
-X,SDLK_x
-Y,SDLK_y
-Z,SDLK_z
+﻿Key Name,SDL_Scancode Value,SDL_Keycode Value
+"""0""",SDL_SCANCODE_0,SDLK_0
+"""1""",SDL_SCANCODE_1,SDLK_1
+"""2""",SDL_SCANCODE_2,SDLK_2
+"""3""",SDL_SCANCODE_3,SDLK_3
+"""4""",SDL_SCANCODE_4,SDLK_4
+"""5""",SDL_SCANCODE_5,SDLK_5
+"""6""",SDL_SCANCODE_6,SDLK_6
+"""7""",SDL_SCANCODE_7,SDLK_7
+"""8""",SDL_SCANCODE_8,SDLK_8
+"""9""",SDL_SCANCODE_9,SDLK_9
+"""A""",SDL_SCANCODE_A,SDLK_a
+"""'""",SDL_SCANCODE_APOSTROPHE,SDLK_QUOTE
+"""B""",SDL_SCANCODE_B,SDLK_b
+"""\"" (Located at the lower left of the return key on ISO keyboards and at the right end of the QWERTY row on ANSI keyboards. Produces REVERSE SOLIDUS (backslash) and VERTICAL LINE in a US layout, REVERSE SOLIDUS and VERTICAL LINE in a UK Mac layout, NUMBER SIGN and TILDE in a UK Windows layout, DOLLAR SIGN and POUND SIGN in a Swiss German layout, NUMBER SIGN and APOSTROPHE in a German layout, GRAVE ACCENT and POUND SIGN in a French Mac layout, and ASTERISK and MICRO SIGN in a French Windows layout.)",SDL_SCANCODE_BACKSLASH,SDLK_BACKSLASH
+"""Backspace""",SDL_SCANCODE_BACKSPACE,SDLK_BACKSPACE
+"""C""",SDL_SCANCODE_C,SDLK_c
+"""CapsLock""",SDL_SCANCODE_CAPSLOCK,SDLK_CAPSLOCK
+""",""",SDL_SCANCODE_COMMA,SDLK_COMMA
+"""D""",SDL_SCANCODE_D,SDLK_d
+"""Down"" (the Down arrow key (navigation keypad))",SDL_SCANCODE_DOWN,SDLK_DOWN
+"""E""",SDL_SCANCODE_E,SDLK_e
+"""=""",SDL_SCANCODE_EQUALS,SDLK_EQUALS
+"""F""",SDL_SCANCODE_F,SDLK_f
+"""F1""",SDL_SCANCODE_F1,SDLK_F1
+"""F10""",SDL_SCANCODE_F10,SDLK_F10
+"""F11""",SDL_SCANCODE_F11,SDLK_F11
+"""F12""",SDL_SCANCODE_F12,SDLK_F12
+"""F2""",SDL_SCANCODE_F2,SDLK_F2
+"""F3""",SDL_SCANCODE_F3,SDLK_F3
+"""F4""",SDL_SCANCODE_F4,SDLK_F4
+"""F5""",SDL_SCANCODE_F5,SDLK_F5
+"""F6""",SDL_SCANCODE_F6,SDLK_F6
+"""F7""",SDL_SCANCODE_F7,SDLK_F7
+"""F8""",SDL_SCANCODE_F8,SDLK_F8
+"""F9""",SDL_SCANCODE_F9,SDLK_F9
+"""G""",SDL_SCANCODE_G,SDLK_g
+"""`"" (Located in the top left corner (on both ANSI and ISO keyboards). Produces GRAVE ACCENT and TILDE in a US Windows layout and in US and UK Mac layouts on ANSI keyboards, GRAVE ACCENT and NOT SIGN in a UK Windows layout, SECTION SIGN and PLUS-MINUS SIGN in US and UK Mac layouts on ISO keyboards, SECTION SIGN and DEGREE SIGN in a Swiss German layout (Mac: only on ISO keyboards), CIRCUMFLEX ACCENT and DEGREE SIGN in a German layout (Mac: only on ISO keyboards), SUPERSCRIPT TWO and TILDE in a French Windows layout, COMMERCIAL AT and NUMBER SIGN in a French Mac layout on ISO keyboards, and LESS-THAN SIGN and GREATER-THAN SIGN in a Swiss German, German, or French Mac layout on ANSI keyboards.)",SDL_SCANCODE_GRAVE,SDLK_BACKQUOTE
+"""H""",SDL_SCANCODE_H,SDLK_h
+"""I""",SDL_SCANCODE_I,SDLK_i
+"""J""",SDL_SCANCODE_J,SDLK_j
+"""K""",SDL_SCANCODE_K,SDLK_k
+"""L""",SDL_SCANCODE_L,SDLK_l
+"""Left Alt""",SDL_SCANCODE_LALT,SDLK_LALT
+"""Left Ctrl""",SDL_SCANCODE_LCTRL,SDLK_LCTRL
+"""Left"" (the Left arrow key (navigation keypad))",SDL_SCANCODE_LEFT,SDLK_LEFT
+"""[""",SDL_SCANCODE_LEFTBRACKET,SDLK_LEFTBRACKET
+"""Left GUI"" (windows, command (apple), meta)",SDL_SCANCODE_LGUI,SDLK_LGUI
+"""Left Shift""",SDL_SCANCODE_LSHIFT,SDLK_LSHIFT
+"""M""",SDL_SCANCODE_M,SDLK_m
+"""-""",SDL_SCANCODE_MINUS,SDLK_MINUS
+"""N""",SDL_SCANCODE_N,SDLK_n
+"""Numlock"" (the Num Lock key (PC) / the Clear key (Mac))",SDL_SCANCODE_NUMLOCKCLEAR,SDLK_NUMLOCKCLEAR
+"""O""",SDL_SCANCODE_O,SDLK_o
+"""P""",SDL_SCANCODE_P,SDLK_p
+"""PageDown""",SDL_SCANCODE_PAGEDOWN,SDLK_PAGEDOWN
+"""PageUp""",SDL_SCANCODE_PAGEUP,SDLK_PAGEUP
+""".""",SDL_SCANCODE_PERIOD,SDLK_PERIOD
+"""Q""",SDL_SCANCODE_Q,SDLK_q
+"""R""",SDL_SCANCODE_R,SDLK_r
+"""Right Alt"" (alt gr, option)",SDL_SCANCODE_RALT,SDLK_RALT
+"""Right Ctrl""",SDL_SCANCODE_RCTRL,SDLK_RCTRL
+"""Return"" (the Enter key (main keyboard))",SDL_SCANCODE_RETURN,SDLK_RETURN
+"""Return""",SDL_SCANCODE_RETURN2,SDLK_RETURN2
+"""Right"" (the Right arrow key (navigation keypad))",SDL_SCANCODE_RIGHT,SDLK_RIGHT
+"""]""",SDL_SCANCODE_RIGHTBRACKET,SDLK_RIGHTBRACKET
+"""Right Shift""",SDL_SCANCODE_RSHIFT,SDLK_RSHIFT
+"""S""",SDL_SCANCODE_S,SDLK_s
+""";""",SDL_SCANCODE_SEMICOLON,SDLK_SEMICOLON
+"""/""",SDL_SCANCODE_SLASH,SDLK_SLASH
+"""Space"" (the Space Bar key(s))",SDL_SCANCODE_SPACE,SDLK_SPACE
+"""T""",SDL_SCANCODE_T,SDLK_t
+"""Tab"" (the Tab key)",SDL_SCANCODE_TAB,SDLK_TAB
+"""U""",SDL_SCANCODE_U,SDLK_u
+"""Up"" (the Up arrow key (navigation keypad))",SDL_SCANCODE_UP,SDLK_UP
+"""V""",SDL_SCANCODE_V,SDLK_v
+"""W""",SDL_SCANCODE_W,SDLK_w
+"""X""",SDL_SCANCODE_X,SDLK_x
+"""Y""",SDL_SCANCODE_Y,SDLK_y
+"""Z""",SDL_SCANCODE_Z,SDLK_z

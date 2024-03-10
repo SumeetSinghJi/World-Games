@@ -146,7 +146,7 @@ Found in game by clicking on "Help" (Book) option in main menu or read README.tx
 
 REQUIREMENTS
 
-* Supported OS: Windows 10+ (untested on older or different Operating Systems)
+* Supported OS: Windows 7+
 * Processor: at least 7th gen Intel Core i3 or AMD equivalent
 * RAM: 4 GB RAM
 * Graphics: Either CPU's dedicated GPU, or any HD output capable GPU
