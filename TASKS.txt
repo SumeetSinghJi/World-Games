@@ -4,6 +4,7 @@ TASKS
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * Scene 7 update software popup
+    * Settings button continue gives popup game not started if not started
     * new settings button to save settings, new function to save settings, and update load_game() to load settings
     * Find a font that supports all languages
     * Key remapping option
