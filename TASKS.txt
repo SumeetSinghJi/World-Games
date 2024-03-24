@@ -3,6 +3,7 @@ TASKS
     * savefile is outputing unlocked achievements as empty string so on load_game() crashes.
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
+    * If languages is different load correct localisation of documentation
     * Scene 7 update software popup
     * Settings button continue gives popup game not started if not started
     * new settings button to save settings, new function to save settings, and update load_game() to load settings
@@ -23,16 +24,16 @@ TASKS
     * Use AI to create victory animation
     * new settings button - volume up/down slider - with noise
     * Fix keyboard up and down movement to different buttons
-    * Full voice acting in each language
     * Clean up unused textures
-    * Compile game in ubuntu
     * Compile game outside of linux VM, instead use WSL (Windows Subsystem for Linux for learning workplace purposes)
     * VS has a inbuilt profiler performance live chart, build project using it to test
     * Make Tic Tac toe roman circle game
+    * Translate MANUAL, PRIVACY POLICY, TERMS AND CONDITIONS, CREDITS in all languages
     * Compile on MacOS and Ubuntu - Untested: Mac OS X 10.11 or higher | Ubuntu 18.04+
+    * Somehow come up with a Machine Learning tool to click on rects, and simulate games in Python
 
 BUGS
-    * High Risk - Computer crashing, replicate on Tic Tac Toe game computer starting first and winning
+    * High Risk - On Tic Tac Toe game computer starting first and winning game crashes
     * High Risk - Game take unreasonable time to quit, requires profiling
     * High Risk - Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
     * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix after rimplementing button class

@@ -8,6 +8,7 @@ Version: 0.1
 * License: This project is licensed under the MIT License.
 Full license terms can be found in the `./MANUAL.txt` file.
 
+
 ![Promotional Screenshot 1](assets/graphics/promotional_artwork/promo%20screenshot%201.png)
 
 ![Promotional Screenshot 2](assets/graphics/promotional_artwork/promo%20screenshot%202.png)
@@ -37,4 +38,6 @@ linux and MacOS use HOME for the home directory, e.g: /home/sumeet
 
 The MANUAL.txt file contains instructions on gameplay and development. 
 File may also be found in game using the Book (Help) icon option.
+
+Translations of MANUAL.txt can be found within the ./documentations folder
 
