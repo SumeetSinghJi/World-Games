@@ -25,6 +25,8 @@ TASKS
     * Fix keyboard up and down movement to different buttons
     * Full voice acting in each language
     * Clean up unused textures
+    * Compile game in ubuntu
+    * Compile game outside of linux VM, instead use WSL (Windows Subsystem for Linux for learning workplace purposes)
     * VS has a inbuilt profiler performance live chart, build project using it to test
     * Make Tic Tac toe roman circle game
     * Compile on MacOS and Ubuntu - Untested: Mac OS X 10.11 or higher | Ubuntu 18.04+
