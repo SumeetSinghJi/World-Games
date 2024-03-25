@@ -11,6 +11,7 @@ TASKS
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * If languages is different load correct localisation of documentation
     * Scene 7 update software popup
+    * put the button image around buttons, to make it more phone/app/visually friendly
     * Settings button continue gives popup game not started if not started
     * new settings button to save settings, new function to save settings, and update load_game() to load settings
     * Find a font that supports all languages

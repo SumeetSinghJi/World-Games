@@ -779,7 +779,7 @@ void draw_timer()
             75 seconds / 60 = remainder 15 seconds
         render_text(1:15)
     */
-    SDL_Rect timerRect = {static_cast<int>(windowWidth * 0.05), static_cast<int>(windowHeight * 0.05), (windowWidth / 4), (windowHeight / 8)};
+    SDL_Rect timerRect = {static_cast<int>(windowWidth * 0.05), static_cast<int>(windowHeight * 0.03), (windowWidth / 5), (windowHeight / 8)};
     SDL_RenderCopy(renderer, timerTexture, nullptr, &timerRect);
 
     int minutes = countdownSeconds / 60;

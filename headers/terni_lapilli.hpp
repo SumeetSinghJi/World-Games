@@ -89,27 +89,26 @@ void ttt_draw_setup_game_popup_window()
 {
     // Draw popup black border
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
-    SDL_Rect borderRect = {(windowWidth / 4) - 2, (windowHeight / 6) - 2, (windowWidth / 2) + 4, static_cast<int>(windowHeight * 0.8) + 4};
+    SDL_Rect borderRect = {static_cast<int>(windowWidth * 0.15) - 2, static_cast<int>(windowHeight * 0.15) - 2, static_cast<int>(windowWidth * 0.7) + 4, static_cast<int>(windowHeight * 0.8) + 4};
     SDL_RenderFillRect(renderer, &borderRect);
 
     // draw popup
     SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255); // RGB: Light grey
-    SDL_Rect popupRect = {(windowWidth / 4), (windowHeight / 6), (windowWidth / 2), static_cast<int>(windowHeight * 0.8)};
+    SDL_Rect popupRect = {static_cast<int>(windowWidth * 0.15), static_cast<int>(windowHeight * 0.15), static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8)};
     SDL_RenderFillRect(renderer, &popupRect);
 
-    // Draw a close button
     // close button - grey square background black border
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
-    SDL_Rect closeButtonBorderLineRect = {static_cast<int>(windowWidth * 0.68) - 4, static_cast<int>(windowHeight * 0.2) - 4, rectWidth + 8, rectHeight + 8};
+    SDL_Rect closeButtonBorderLineRect = {static_cast<int>(windowWidth * 0.75) - 4, static_cast<int>(windowHeight * 0.2) - 4, rectWidth + 8, rectHeight + 8};
     SDL_RenderFillRect(renderer, &closeButtonBorderLineRect);
 
     // close button - grey square background
     SDL_SetRenderDrawColor(renderer, 192, 192, 192, 255); // RGB: Light grey
-    SDL_Rect closeButtonBorderRect = {static_cast<int>(windowWidth * 0.68) - 2, static_cast<int>(windowHeight * 0.2) - 2, rectWidth + 4, rectHeight + 4};
+    SDL_Rect closeButtonBorderRect = {static_cast<int>(windowWidth * 0.75) - 2, static_cast<int>(windowHeight * 0.2) - 2, rectWidth + 4, rectHeight + 4};
     SDL_RenderFillRect(renderer, &closeButtonBorderRect);
 
     // close button
-    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.68), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
+    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.75), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, xTexture, nullptr, &closeButtonRect);
 
     /*
@@ -119,18 +118,18 @@ void ttt_draw_setup_game_popup_window()
     */
     if (!ttt_player_choose_x_or_o)
     {
-        render_text("Choose: Crosses (X) or Naughts (0)", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.18), 255, 0);
+        render_text("Choose: Cross (X) or Naughts (0)", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.16), 255, 0);
     }
     else // after picking choice advise player what they choose
     {
         if (ttt_player_choice == 0)
         {
-            render_text("You choose: 0", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.18), 255, 0);
+            render_text("You choose: 0", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.16), 255, 0);
             // highlight selected rect, and in if condition dont hide, so player can repick.
         }
         else
         {
-            render_text("You choose: X", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.2), 255, 0);
+            render_text("You choose: X", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.16), 255, 0);
             // highlight selected rect, and in if condition dont hide, so player can repick.
         }
     }
@@ -157,17 +156,17 @@ void ttt_draw_setup_game_popup_window()
 
     if (!ttt_starting_player_chosen)
     {
-        render_text("Who starts first: X or 0", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.32), 255, 0);
+        render_text("Who starts first: X or 0", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.30), 255, 0);
     }
     else
     {
         if (!ttt_starting_player_is_x)
         {
-            render_text("You choose: Starting player O", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.32), 255, 0);
+            render_text("You choose: Starting player O", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.30), 255, 0);
         }
         else if (ttt_starting_player_is_x)
         {
-            render_text("You choose: Starting player X", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.34), 255, 0);
+            render_text("You choose: Starting player X", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.30), 255, 0);
         }
     }
 
@@ -193,17 +192,17 @@ void ttt_draw_setup_game_popup_window()
 
     if (!ttt_choose_human_or_computer)
     {
-        render_text("Play against: Human or Computer", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.48), 255, 0);
+        render_text("Play against: Human or Computer", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.46), 255, 0);
     }
     else
     {
         if (ttt_play_against_human)
         {
-            render_text("You choose: Play against Human", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.48), 255, 0);
+            render_text("You choose: Play against Human", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.46), 255, 0);
         }
         else
         {
-            render_text("You choose: Play against Computer", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.50), 255, 0);
+            render_text("You choose: Play against Computer", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.46), 255, 0);
         }
     }
 
@@ -229,12 +228,12 @@ void ttt_draw_setup_game_popup_window()
 
     if (!ttt_choose_rounds)
     {
-        render_text("Rounds: 1, 3, 5, custom", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.64), 255, 0);
+        render_text("Rounds: 1, 3, 5, custom", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.62), 255, 0);
     }
     else
     {
         std::string renderRounds = "You choose: " + std::to_string(ttt_rounds) + " rounds";
-        render_text(renderRounds, static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.64), 255, 0);
+        render_text(renderRounds, static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.62), 255, 0);
     }
 
     // 1 Round
@@ -273,7 +272,7 @@ void ttt_draw_setup_game_popup_window()
 
    if (!ttt_timer_set)
     {
-        render_text("Timer: 10s, 30s, 1m, 5m, 10m, 30m, 1hr, custom (s) ", static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.80), 255, 0);
+        render_text("Timer: 10s, 30s, 1m, 5m, 10m, 30m, 1hr, custom (s) ", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.78), 255, 0);
     }
     else
     {
@@ -284,22 +283,22 @@ void ttt_draw_setup_game_popup_window()
         std::string renderTimer = "You chose: " + std::to_string(hours) + " h, " +
             std::to_string(minutes) + " m, " +
             std::to_string(seconds) + " s";
-        render_text(renderTimer, static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.80), 255, 0);
+        render_text(renderTimer, static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.78), 255, 0);
     }
 
     
     // 10 seconds
-    SDL_Rect seconds10ButtonRect = {static_cast<int>(windowWidth * 0.26) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_Rect seconds10ButtonRect = {static_cast<int>(windowWidth * 0.16) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds10ButtonRect);
 
-    SDL_Rect seconds10Rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
+    SDL_Rect seconds10Rect = {static_cast<int>(windowWidth * 0.16), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, oTexture, nullptr, &seconds10Rect);
 
     // 30 seconds
-    SDL_Rect seconds30ButtonRect = {static_cast<int>(windowWidth * 0.31) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_Rect seconds30ButtonRect = {static_cast<int>(windowWidth * 0.26) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds30ButtonRect);
 
-    SDL_Rect seconds30Rect = {static_cast<int>(windowWidth * 0.31), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
+    SDL_Rect seconds30Rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, oTexture, nullptr, &seconds30Rect);
 
     // 1 minute
@@ -310,31 +309,31 @@ void ttt_draw_setup_game_popup_window()
     SDL_RenderCopy(renderer, oTexture, nullptr, &seconds60Rect);
 
     // 5 minute
-    SDL_Rect seconds300ButtonRect = {static_cast<int>(windowWidth * 0.41) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_Rect seconds300ButtonRect = {static_cast<int>(windowWidth * 0.46) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds300ButtonRect);
 
-    SDL_Rect seconds300Rect = {static_cast<int>(windowWidth * 0.41), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
+    SDL_Rect seconds300Rect = {static_cast<int>(windowWidth * 0.46), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, oTexture, nullptr, &seconds300Rect);
 
     // 10 minute
-    SDL_Rect seconds600ButtonRect = {static_cast<int>(windowWidth * 0.46) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_Rect seconds600ButtonRect = {static_cast<int>(windowWidth * 0.56) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds600ButtonRect);
 
-    SDL_Rect seconds600Rect = {static_cast<int>(windowWidth * 0.46), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
+    SDL_Rect seconds600Rect = {static_cast<int>(windowWidth * 0.56), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, oTexture, nullptr, &seconds600Rect);
 
     // 30 minute
-    SDL_Rect seconds1800ButtonRect = {static_cast<int>(windowWidth * 0.51) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_Rect seconds1800ButtonRect = {static_cast<int>(windowWidth * 0.66) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds1800ButtonRect);
 
-    SDL_Rect seconds1800Rect = {static_cast<int>(windowWidth * 0.51), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
+    SDL_Rect seconds1800Rect = {static_cast<int>(windowWidth * 0.66), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, oTexture, nullptr, &seconds1800Rect);
 
     // 1 hour
-    SDL_Rect seconds3600ButtonRect = {static_cast<int>(windowWidth * 0.56) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
+    SDL_Rect seconds3600ButtonRect = {static_cast<int>(windowWidth * 0.76) - buttonXOffset, static_cast<int>(windowHeight * 0.88) - buttonYOffset, buttonWidth, buttonHeight};
     SDL_RenderCopy(renderer, buttonTexture, nullptr, &seconds3600ButtonRect);
 
-    SDL_Rect seconds3600Rect = {static_cast<int>(windowWidth * 0.56), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
+    SDL_Rect seconds3600Rect = {static_cast<int>(windowWidth * 0.76), static_cast<int>(windowHeight * 0.88), rectWidth, rectHeight};
     SDL_RenderCopy(renderer, oTexture, nullptr, &seconds3600Rect);
 }
 void ttt_draw_X_or_O()
@@ -900,7 +899,7 @@ void ttt_gamepad_handle(int button)
 void ttt_SDL_draw()
 {
     SDL_RenderCopy(renderer, romeDayBackgroundTexture, NULL, NULL);
-    render_text("Ancient Rome - Tic Tac Toe", static_cast<int>(windowWidth * 0.37), static_cast<int>(windowHeight * 0.1), 255, 0);
+    render_text("Ancient Rome - Tic Tac Toe", static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.05), 255, 0);
 
     // HUD Buttons
     draw_timer();
