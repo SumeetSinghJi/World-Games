@@ -53,6 +53,7 @@ void handle_click_scene_1(int mouseX, int mouseY) // Main menu
         {
             std::cout << "You clicked Achievements" << std::endl;
             scene = 4;
+            coutAchievements = true;
         }
         else if (scene1HelpButton.isClicked(mousePosition))
         {
@@ -314,6 +315,7 @@ void handle_click_scene_4(int mouseX, int mouseY) // Achievements
     if (scene4returnTitleButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Return to title" << std::endl;
+        coutAchievements = true; // To show Achievements again when back in this scene once
         scene = 1;
     }
 }

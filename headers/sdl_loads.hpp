@@ -112,6 +112,9 @@ void load_textures()
     forwardTexture = load_texture("assets/graphics/buttons/settings/forward-button.png", "Forward Button");
     backwardTexture = load_texture("assets/graphics/buttons/settings/back-button.png", "Back Button");
 
+    // Scene 4 textures
+    achievementsTexture = load_texture("assets/graphics/buttons/settings/achievement-button.png", "Scene 4 - Achievement texture"); 
+
     // Scene 6 buttons
     beijingTexture = load_texture("assets/graphics/buttons/countries/beijing-button.png", "Beijing Button");
     berlinTexture = load_texture("assets/graphics/buttons/countries/berlin-button.png", "Berlin Button");

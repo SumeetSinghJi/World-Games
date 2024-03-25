@@ -22,7 +22,7 @@ TTF_Font *font_48 = nullptr;
 SDL_Texture *textTexture = nullptr;
 SDL_Texture *texture = nullptr;
 
-// Main Menu buttons
+// Scene 1 - Main menu
 SDL_Texture *menuBackgroundTexture = nullptr;
 SDL_Texture *menuNewGameTexture = nullptr;
 SDL_Texture *menuLoadGameTexture = nullptr;
@@ -33,7 +33,7 @@ SDL_Texture *menuUpdateGameTexture = nullptr;
 SDL_Texture *menuQuitTexture = nullptr;
 SDL_Texture *AgniSamoohLogoTexture = nullptr;
 
-// Settings buttons
+// Scene 2 - Settings buttons
 SDL_Texture *settingsTexture = nullptr;
 SDL_Texture *settingsResetTexture = nullptr;
 SDL_Texture *settingsSaveTexture = nullptr;
@@ -48,6 +48,9 @@ SDL_Texture *resolution1366x768Texture = nullptr;
 SDL_Texture *resolutionFullScreenTexture = nullptr;
 SDL_Texture *returnGameTexture = nullptr;
 SDL_Texture *returnTitleTexture = nullptr;
+
+// Scene 4 - Achievements
+SDL_Texture *achievementsTexture = nullptr;
 
 // Keyboard remapping texture
 SDL_Texture *keyboardRealisticTexture = nullptr;
@@ -365,6 +368,9 @@ int menuTotalOptions = 6;                     // For Keyboard arrow key or Gamep
 int SettingsTotalOptions = 10;                // For Keyboard arrow key or Gamepad d-pad selection
 int GameTotalOptions = 10;                    // For Keyboard arrow key or Gamepad d-pad selection
 
+// Scene 4 - Achievements
+bool coutAchievements = true; // For scene 4 is_achievement_unlocked() to only cout unlocked achievements once to prevent memory leak
+
 // Multiplayer variables
 std::string playerUsername = "";
 std::string playerEmail = "";
@@ -495,11 +501,6 @@ void is_scene_unlocked(int target)
 }
 bool is_achievement_unlocked(int target)
 {
-    for (int y : unlockedAchievements)
-    {
-        std::cout << y << ", ";
-    }
-
     bool found = false;
     for (int i : unlockedAchievements)
     {
@@ -514,6 +515,27 @@ bool is_achievement_unlocked(int target)
     }
     return false;
 }
+void show_unlocked_achievements()
+{
+    std::cout << "Unlocked Achievements: " << std::endl;
+
+    for (int i : unlockedAchievements)
+    {
+        std::cout << i << ", ";
+    }
+    std::cout << std::endl;
+}
+void unlocked_achievement(int i)
+{
+    // for unlocking achievement 1. Won first game, then cout to debug
+    if (unlockedAchievements[i] != 1)
+    {
+        std::cout << "Unlocked Achievement: Won game" << std::endl;
+        unlockedAchievements[i] = 1;
+        show_unlocked_achievements();
+    }
+}
+
 void render_fps()
 {
     if (!fpsCondition)
@@ -858,7 +880,7 @@ void load_buttons_to_scene_vectors()
     scene2buttons.push_back(&returnTitleButton);
     scene2buttons.push_back(&settingsResetButton);
     scene2buttons.push_back(&settingsSaveButton);
-    
+
     // scene 3
     scene3buttons.push_back(&scene3returnTitleButton);
     // scene 4
@@ -908,7 +930,6 @@ void load_buttons_to_scene_vectors()
     scene25buttons.push_back(&scene25tokyoButton);
 
     scene25buttons.push_back(&scene25romeButton);
-
 }
 void load_buttons_to_allButtons_vector()
 {
@@ -971,12 +992,12 @@ void load_buttons_1()
                                                       (windowWidth) / 6, (windowHeight) / 6,
                                                       "", 144, 238, 144, 255, "assets/graphics/developer_images/AgniSamooh-4k-logo.png", false);
     scene1overwriteGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.3), static_cast<int>(windowHeight * 0.6),
-                                                      (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
-                                                      "OVERWRITE", 144, 238, 144, 255, "", false);
+                                                  (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
+                                                  "OVERWRITE", 144, 238, 144, 255, "", false);
     scene1continueButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.6),
-                                                      (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
-                                                      "LOAD GAME", 144, 238, 144, 255, "", false);
-    
+                                             (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
+                                             "LOAD GAME", 144, 238, 144, 255, "", false);
+
     scene1overwriteGameButton.set_button_texture(renderer, "");
     scene1continueButton.set_button_texture(renderer, "");
     scene1LoadGameButton.set_button_texture(renderer, "");
@@ -990,83 +1011,83 @@ void load_buttons_1()
 }
 void load_buttons_2()
 {
-        fontButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/font-button.png", false); // RGB: Light green
-        soundButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.4),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/sound-on-button.png", false); // RGB: Light green
-        languageButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/language-button.png", false); // RGB: Light green
-        fpsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.8),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/Business-target-Icon-button.png", false); // RGB: Light green
-        resolution800x600Button = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.2),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/resolution-800x600-button.png", false); // RGB: Light green
-        resolution1366x768Button = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.4),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/resolution-1300x768-button.png", false); // RGB: Light green
-        resolutionFullScreenButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/resolution-Full-Screen-button.png", false); // RGB: Light green
-        keyRemapButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/keyboard-button.png", false); // RGB: Light green
-        returnGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.2),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/return-button.png", false); // RGB: Light green
-        returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
-        settingsResetButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/load-button.png", false); // RGB: Light green
-        settingsSaveButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8),
-                                             rectWidth, rectHeight,
-                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/save-button.png", false); // RGB: Light green
-        fontButton.set_button_texture(renderer, "");
-        soundButton.set_button_texture(renderer, "");
-        languageButton.set_button_texture(renderer, "");
-        fpsButton.set_button_texture(renderer, "");
-        resolution800x600Button.set_button_texture(renderer, "");
-        resolution1366x768Button.set_button_texture(renderer, "");
-        resolutionFullScreenButton.set_button_texture(renderer, "");
-        keyRemapButton.set_button_texture(renderer, "");
-        returnGameButton.set_button_texture(renderer, "");
-        returnTitleButton.set_button_texture(renderer, "");
-        settingsResetButton.set_button_texture(renderer, "");
-        settingsSaveButton.set_button_texture(renderer, "");
+    fontButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2),
+                                   rectWidth, rectHeight,
+                                   "", 144, 238, 144, 255, "assets/graphics/buttons/settings/font-button.png", false); // RGB: Light green
+    soundButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.4),
+                                    rectWidth, rectHeight,
+                                    "", 144, 238, 144, 255, "assets/graphics/buttons/settings/sound-on-button.png", false); // RGB: Light green
+    languageButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.6),
+                                       rectWidth, rectHeight,
+                                       "", 144, 238, 144, 255, "assets/graphics/buttons/settings/language-button.png", false); // RGB: Light green
+    fpsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.8),
+                                  rectWidth, rectHeight,
+                                  "", 144, 238, 144, 255, "assets/graphics/buttons/settings/Business-target-Icon-button.png", false); // RGB: Light green
+    resolution800x600Button = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.2),
+                                                rectWidth, rectHeight,
+                                                "", 144, 238, 144, 255, "assets/graphics/buttons/settings/resolution-800x600-button.png", false); // RGB: Light green
+    resolution1366x768Button = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.4),
+                                                 rectWidth, rectHeight,
+                                                 "", 144, 238, 144, 255, "assets/graphics/buttons/settings/resolution-1300x768-button.png", false); // RGB: Light green
+    resolutionFullScreenButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.6),
+                                                   rectWidth, rectHeight,
+                                                   "", 144, 238, 144, 255, "assets/graphics/buttons/settings/resolution-Full-Screen-button.png", false); // RGB: Light green
+    keyRemapButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8),
+                                       rectWidth, rectHeight,
+                                       "", 144, 238, 144, 255, "assets/graphics/buttons/settings/keyboard-button.png", false); // RGB: Light green
+    returnGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.2),
+                                         rectWidth, rectHeight,
+                                         "", 144, 238, 144, 255, "assets/graphics/buttons/settings/return-button.png", false); // RGB: Light green
+    returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4),
+                                          rectWidth, rectHeight,
+                                          "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+    settingsResetButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.6),
+                                            rectWidth, rectHeight,
+                                            "", 144, 238, 144, 255, "assets/graphics/buttons/settings/load-button.png", false); // RGB: Light green
+    settingsSaveButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8),
+                                           rectWidth, rectHeight,
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/save-button.png", false); // RGB: Light green
+    fontButton.set_button_texture(renderer, "");
+    soundButton.set_button_texture(renderer, "");
+    languageButton.set_button_texture(renderer, "");
+    fpsButton.set_button_texture(renderer, "");
+    resolution800x600Button.set_button_texture(renderer, "");
+    resolution1366x768Button.set_button_texture(renderer, "");
+    resolutionFullScreenButton.set_button_texture(renderer, "");
+    keyRemapButton.set_button_texture(renderer, "");
+    returnGameButton.set_button_texture(renderer, "");
+    returnTitleButton.set_button_texture(renderer, "");
+    settingsResetButton.set_button_texture(renderer, "");
+    settingsSaveButton.set_button_texture(renderer, "");
 }
 void load_buttons_3()
 {
     scene3returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
-                                           rectWidth, rectHeight,
-                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+                                                rectWidth, rectHeight,
+                                                "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
     scene3returnTitleButton.set_button_texture(renderer, "");
 }
 void load_buttons_4()
 {
     scene4returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
-                                           rectWidth, rectHeight,
-                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+                                                rectWidth, rectHeight,
+                                                "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
     scene4returnTitleButton.set_button_texture(renderer, "");
 }
 void load_buttons_5()
 {
     scene5backButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.8),
-                                           rectWidth, rectHeight,
-                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
+                                         rectWidth, rectHeight,
+                                         "", 144, 238, 144, 255, "assets/graphics/buttons/settings/back-button.png", false); // RGB: Light green
     scene5forwardButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.5), static_cast<int>(windowHeight * 0.8),
-                                           rectWidth, rectHeight,
-                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/forward-button.png", false); // RGB: Light green
+                                            rectWidth, rectHeight,
+                                            "", 144, 238, 144, 255, "assets/graphics/buttons/settings/forward-button.png", false); // RGB: Light green
     scene5continueButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.8),
-                                           rectWidth, rectHeight,
-                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/continue-button.png", false); // RGB: Light green
+                                             rectWidth, rectHeight,
+                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/continue-button.png", false); // RGB: Light green
     scene5returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8),
-                                           rectWidth, rectHeight,
-                                           "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+                                                rectWidth, rectHeight,
+                                                "", 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
     scene5backButton.set_button_texture(renderer, "");
     scene5forwardButton.set_button_texture(renderer, "");
     scene5continueButton.set_button_texture(renderer, "");
@@ -1075,15 +1096,15 @@ void load_buttons_5()
 void load_buttons_6()
 {
     scene6returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
-                                           rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+                                                rectWidth, rectHeight,
+                                                accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
     scene6returnTitleButton.set_button_texture(renderer, "");
 }
 void load_buttons_7()
 {
     scene7returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.7),
-                                           rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+                                                rectWidth, rectHeight,
+                                                accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
     scene7returnTitleButton.set_button_texture(renderer, "");
 }
 void load_buttons_8()
@@ -1092,13 +1113,13 @@ void load_buttons_8()
 void load_buttons_10()
 {
     scene10acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.4), static_cast<int>(windowHeight * 0.7),
-                                           rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+                                            rectWidth, rectHeight,
+                                            accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
 
     scene10denyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.7),
-                                           rectWidth, rectHeight,
-                                           accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
-    
+                                          rectWidth, rectHeight,
+                                          accept_txt, 144, 238, 144, 255, "assets/graphics/buttons/settings/home-button.png", false); // RGB: Light green
+
     scene10acceptButton.set_button_texture(renderer, "");
     scene10denyButton.set_button_texture(renderer, "");
 }
@@ -1154,51 +1175,51 @@ void load_buttons_13()
 void load_buttons_25()
 {
     scene25helpButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.2),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/settings/help-button.png", false); // RGB: Light green
+                                          rectWidth, rectHeight,
+                                          "", 144, 238, 144, 255, "assets/graphics/buttons/settings/help-button.png", false); // RGB: Light green
     scene25settingsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.4),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/settings/settings-button.png", false); // RGB: Light green    
+                                              rectWidth, rectHeight,
+                                              "", 144, 238, 144, 255, "assets/graphics/buttons/settings/settings-button.png", false); // RGB: Light green
     scene25returnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/settings/return-button.png", false); // RGB: Light green
+                                                 rectWidth, rectHeight,
+                                                 "", 144, 238, 144, 255, "assets/graphics/buttons/settings/return-button.png", false); // RGB: Light green
 
     scene25beijingButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.49),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/beijing-button.png", false); // RGB: Light green
+                                             rectWidth, rectHeight,
+                                             "", 144, 238, 144, 255, "assets/graphics/buttons/countries/beijing-button.png", false); // RGB: Light green
     scene25berlinButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.48), static_cast<int>(windowHeight * 0.36),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/berlin-button.png", false); // RGB: Light green    
+                                            rectWidth, rectHeight,
+                                            "", 144, 238, 144, 255, "assets/graphics/buttons/countries/berlin-button.png", false); // RGB: Light green
     scene25delhiButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.63), static_cast<int>(windowHeight * 0.46),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/delhi-button.png", false); // RGB: Light green
+                                           rectWidth, rectHeight,
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/countries/delhi-button.png", false); // RGB: Light green
     scene25hawaiiButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.01), static_cast<int>(windowHeight * 0.5),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/hawaii-button.png", false); // RGB: Light green                                                  
+                                            rectWidth, rectHeight,
+                                            "", 144, 238, 144, 255, "assets/graphics/buttons/countries/hawaii-button.png", false); // RGB: Light green
     scene25londonButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.43), static_cast<int>(windowHeight * 0.3),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/london-button.png", false); // RGB: Light green
-    
+                                            rectWidth, rectHeight,
+                                            "", 144, 238, 144, 255, "assets/graphics/buttons/countries/london-button.png", false); // RGB: Light green
+
     scene25parisButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.45), static_cast<int>(windowHeight * 0.4),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/paris-button.png", false); // RGB: Light green    
+                                           rectWidth, rectHeight,
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/countries/paris-button.png", false); // RGB: Light green
     scene25seoulButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.78), static_cast<int>(windowHeight * 0.4),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/seoul-button.png", false); // RGB: Light green
+                                           rectWidth, rectHeight,
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/countries/seoul-button.png", false); // RGB: Light green
     scene25shanghaiButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.4),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/shanghai-button.png", false); // RGB: Light green    
+                                              rectWidth, rectHeight,
+                                              "", 144, 238, 144, 255, "assets/graphics/buttons/countries/shanghai-button.png", false); // RGB: Light green
     scene25singaporeButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.7), static_cast<int>(windowHeight * 0.57),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/singapore-button.png", false); // RGB: Light green
+                                               rectWidth, rectHeight,
+                                               "", 144, 238, 144, 255, "assets/graphics/buttons/countries/singapore-button.png", false); // RGB: Light green
     scene25tokyoButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.83), static_cast<int>(windowHeight * 0.43),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/tokyo-button.png", false); // RGB: Light green    
-    
+                                           rectWidth, rectHeight,
+                                           "", 144, 238, 144, 255, "assets/graphics/buttons/countries/tokyo-button.png", false); // RGB: Light green
+
     scene25romeButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.50), static_cast<int>(windowHeight * 0.45),
-                                                  rectWidth, rectHeight,
-                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/countries/rome-button.png", false); // RGB: Light green
-    
+                                          rectWidth, rectHeight,
+                                          "", 144, 238, 144, 255, "assets/graphics/buttons/countries/rome-button.png", false); // RGB: Light green
+
     scene25helpButton.set_button_texture(renderer, "");
     scene25settingsButton.set_button_texture(renderer, "");
     scene25returnTitleButton.set_button_texture(renderer, "");
@@ -1214,7 +1235,7 @@ void load_buttons_25()
     scene25shanghaiButton.set_button_texture(renderer, "");
     scene25singaporeButton.set_button_texture(renderer, "");
     scene25tokyoButton.set_button_texture(renderer, "");
-    
+
     scene25romeButton.set_button_texture(renderer, "");
 }
 
@@ -1464,10 +1485,13 @@ void draw()
     if (scene == 1) // menu
     {
         SDL_RenderCopy(renderer, menuBackgroundTexture, NULL, NULL);
-        
-        if (displaySavefileExistsPopup) {
+
+        if (displaySavefileExistsPopup)
+        {
             draw_does_save_file_exist();
-        } else {
+        }
+        else
+        {
             draw_buttons_scene_1();
         }
         draw_text_for_HUD_scene_1();
@@ -1568,6 +1592,7 @@ void exit_SDL()
     SDL_DestroyTexture(returnTitleTexture);
 
     // Scene 4 destroy - Achievements
+    SDL_DestroyTexture(achievementsTexture);
 
     // Secene 5 destroy - Help
     SDL_DestroyTexture(forwardTexture);

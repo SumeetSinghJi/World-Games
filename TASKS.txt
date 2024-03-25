@@ -33,7 +33,7 @@ TASKS
     * Somehow come up with a Machine Learning tool to click on rects, and simulate games in Python
 
 BUGS
-    * High Risk - On Tic Tac Toe game computer starting first and winning game crashes
+    * High Risk - Winning Tic Tac toe game crashes when you start first (e.g. X), human player starts second (O) and player (X) wins
     * High Risk - Game take unreasonable time to quit, requires profiling
     * High Risk - Destructor for Custom_SDL_Button closing any private member fault causes Segmentation fault
     * Medium Risk - is_achievement_unlocked(1) in render scene 4 will cause memory leak fix after rimplementing button class

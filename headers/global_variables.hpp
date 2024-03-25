@@ -118,7 +118,7 @@ extern TTF_Font *font_48;
 extern SDL_Texture *textTexture;
 extern SDL_Texture *texture;
 
-// Main Menu buttons
+// Scene 1 - Main Menu buttons
 extern SDL_Texture *menuBackgroundTexture;
 extern SDL_Texture *menuNewGameTexture;
 extern SDL_Texture *menuLoadGameTexture;
@@ -129,7 +129,7 @@ extern SDL_Texture *menuUpdateGameTexture;
 extern SDL_Texture *menuQuitTexture;
 extern SDL_Texture *AgniSamoohLogoTexture;
 
-// Settings buttons
+// Scene 2 - Settings buttons
 extern SDL_Texture *settingsTexture;
 extern SDL_Texture *settingsResetTexture;
 extern SDL_Texture *settingsSaveTexture;
@@ -144,6 +144,9 @@ extern SDL_Texture *resolution1366x768Texture;
 extern SDL_Texture *resolutionFullScreenTexture;
 extern SDL_Texture *returnGameTexture;
 extern SDL_Texture *returnTitleTexture;
+
+// Scene 4 - Achievements
+extern SDL_Texture *achievementsTexture;
 
 // Keyboard remapping texture
 extern SDL_Texture *keyboardRealisticTexture;
@@ -457,6 +460,9 @@ extern int menuTotalOptions;                  // For Keyboard arrow key or Gamep
 extern int SettingsTotalOptions;              // For Keyboard arrow key or Gamepad d-pad selection
 extern int GameTotalOptions;                  // For Keyboard arrow key or Gamepad d-pad selection
 
+// Scene 4 - Achievements
+extern bool coutAchievements; // For scene 4 is_achievement_unlocked() to only cout unlocked achievements once to prevent memory leak
+
 // Multiplayer variables
 extern std::string playerUsername;
 extern std::string playerEmail;
@@ -476,6 +482,11 @@ extern std::unordered_map<std::string, SDL_Keycode> keyMap;
 /* Function Prototypes */
 void render_text(const std::string &text, int x, int y, Uint8 alpha, int customFontSize); // For SDL texts
 SDL_Texture *load_texture(const char *path, const char *name); // For SDL loads
+
+// for each individual game win logic,cout the unlocked achievements for debugging the achievement was unlocked
+// and for SDL_renders
+void show_unlocked_achievements();
+void unlocked_achievement(int i);
 
 // For the handles
 void change_resolution(int newWindowWidth, int newWindowHeight);

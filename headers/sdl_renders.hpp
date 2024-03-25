@@ -87,12 +87,15 @@ void draw_policies_popup_window()
     {
         render_text("Read Privacy Policy below then accept or deny for online access",
                     static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1), 255, 0);
-                    if (!acceptedPrivacyPolicy) {
-                        privacy_policy_file_read();
-                    } else {
-                        terms_and_conditions_file_read();
-                    }
-        
+        if (!acceptedPrivacyPolicy)
+        {
+            privacy_policy_file_read();
+        }
+        else
+        {
+            terms_and_conditions_file_read();
+        }
+
         scene11acceptButton.render_button_rect(renderer);
         scene11denyButton.render_button_rect(renderer);
     }
@@ -136,7 +139,6 @@ void draw_buttons_scene_2() // Settings
     {
         soundButton.set_button_texture(renderer, "assets/graphics/buttons/settings/sound-off-button.png");
     }
-
 }
 void draw_buttons_scene_3() // Credits
 {
@@ -160,45 +162,51 @@ void draw_buttons_scene_4() // Achievements
 
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
 
+    if (coutAchievements)
+    {
+        show_unlocked_achievements();
+        coutAchievements = false;
+    }
+
     if (is_achievement_unlocked(1))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement1Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement1Rect);
     }
     else if (is_achievement_unlocked(2))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement2Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement2Rect);
     }
     else if (is_achievement_unlocked(3))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement3Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement3Rect);
     }
     else if (is_achievement_unlocked(4))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement4Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement4Rect);
     }
     else if (is_achievement_unlocked(5))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement5Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement5Rect);
     }
     else if (is_achievement_unlocked(6))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement6Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement6Rect);
     }
     else if (is_achievement_unlocked(7))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement7Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement7Rect);
     }
     else if (is_achievement_unlocked(8))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement8Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement8Rect);
     }
     else if (is_achievement_unlocked(9))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement9Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement9Rect);
     }
     else if (is_achievement_unlocked(10))
     {
-        SDL_RenderCopy(renderer, menuAchievementsTexture, nullptr, &achievement10Rect);
+        SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement10Rect);
     }
 }
 void draw_buttons_scene_5() // Help
@@ -212,7 +220,7 @@ void draw_buttons_scene_6() // Leaderboard
 {
     scene6returnTitleButton.render_button_rect(renderer);
 }
-void draw_buttons_scene_7() // 
+void draw_buttons_scene_7() //
 {
     scene7returnTitleButton.render_button_rect(renderer);
 }
@@ -220,7 +228,7 @@ void draw_buttons_scene_8() //
 {
     // scene7returnTitleButton.render_button_rect(renderer);
 }
-void draw_buttons_scene_9() // 
+void draw_buttons_scene_9() //
 {
     SDL_Rect returnTitleRect = {static_cast<int>(windowWidth * 0.8), static_cast<int>(windowHeight * 0.8), rectWidth, rectHeight};
 
@@ -281,7 +289,6 @@ void draw_buttons_scene_25() // World map
     scene25shanghaiButton.render_button_rect(renderer);
     scene25singaporeButton.render_button_rect(renderer);
     scene25tokyoButton.render_button_rect(renderer);
-    
+
     scene25romeButton.render_button_rect(renderer);
 }
-

@@ -478,6 +478,8 @@ void ttt_update_winning_logic()
             ttt_winner = 1;
             ttt_opponentsTurn = false;
             Mix_PlayChannel(-1, winGameSound, 0);
+
+            unlocked_achievement(0);
         }
     }
 
