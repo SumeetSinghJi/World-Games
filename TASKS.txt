@@ -1,6 +1,8 @@
 
 TASKS
-    * savefile is outputing unlocked achievements as empty string so on load_game() crashes.
+    * save_game() needs to save
+    * show_achievements() not appearing in for loop
+    * unlocked_achievements() not working
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS
     * If languages is different load correct localisation of documentation

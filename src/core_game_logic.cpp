@@ -518,20 +518,19 @@ bool is_achievement_unlocked(int target)
 void show_unlocked_achievements()
 {
     std::cout << "Unlocked Achievements: " << std::endl;
-
     for (int i : unlockedAchievements)
     {
-        std::cout << i << ", ";
+        std::cout << i << ", " << std::endl;
     }
-    std::cout << std::endl;
 }
 void unlocked_achievement(int i)
 {
-    // for unlocking achievement 1. Won first game, then cout to debug
+    // uses element position therefore unlocked_achievement(0) = Achievement 1. Won first game
     if (unlockedAchievements[i] != 1)
     {
-        std::cout << "Unlocked Achievement: Won game" << std::endl;
         unlockedAchievements[i] = 1;
+        i++;
+        std::cout << "Unlocked Achievement: " << i << std::endl;
         show_unlocked_achievements();
     }
 }

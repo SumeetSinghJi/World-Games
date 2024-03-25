@@ -128,7 +128,7 @@ void save_game()
       savefileObject << unlockedAchievements[i];
       if (i != unlockedAchievements.size() - 1)
       {
-        savefileObject << ",";
+        savefileObject << unlockedAchievements[i] << ",";
       }
     }
     savefileObject << "\n";
@@ -198,6 +198,7 @@ void does_save_file_exist()
       new_game();
       scene = 25;
       overwriteGame = false;
+      save_game();
       displaySavefileExistsPopup = false;
     }
   }
