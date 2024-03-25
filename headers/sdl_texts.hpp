@@ -646,8 +646,8 @@ void draw_text_for_HUD_scene_1() // Main menu
 {
     if (displaySavefileExistsPopup)
     {
-        render_text(sentence_overwrite_or_load_game_1_txt, (windowWidth * 0.35), (windowHeight * 0.1), 255, 0);
-        render_text(sentence_overwrite_or_load_game_2_txt, (windowWidth * 0.35), (windowHeight * 0.2), 255, 0);
+        render_text(sentence_overwrite_or_load_game_1_txt, (windowWidth * 0.30), (windowHeight * 0.1), 255, 0);
+        render_text(sentence_overwrite_or_load_game_2_txt, (windowWidth * 0.30), (windowHeight * 0.2), 255, 0);
     }
     else
     {

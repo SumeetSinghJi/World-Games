@@ -1,5 +1,5 @@
 /*
-    Author: Sumeet Singh
+    Author: TESTUSER Singh
     Dated: 14/02/2024
     Minimum C++ Standard: C++11
     Purpose: Declaration/Definition file combined
@@ -12,13 +12,13 @@
     the old directory and starting the new folder executable.
 
     Example:
-    1. Set variable UpdateApp_sourceDirectory to existing game directory e.g. UpdateApp_sourceDirectory = "C:/Users/Sumeet/Documents/World-Games";
+    1. Set variable UpdateApp_sourceDirectory to existing game directory e.g. UpdateApp_sourceDirectory = "C:/Users/TESTUSER/Documents/World-Games";
     2. call function: update_version_string_from_readme_file(std::string fileWithVersionString); with parameters below
     fileWithVersionString = local file e.g. .txt/.md with string "Version: " to populate return variable currenVersion;
     3. call function: start_application_update(std::string urlPath, std::string downloadLink); with 2 parameters;
     urlPath = remote file e.g. .txt/.md with string "Version: " to curl and compare remoteVersion with updateApp_currentVersion;
     downloadLink = full .zip file URL of app
-    e.g. start_application_update("https://github.com/SumeetSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
+    e.g. start_application_update("https://github.com/TESTUSERSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/TESTUSERSinghJi/world-games/archive/refs/heads/master.zip");
     4. variable/API updateApp_newVersionAvailable will trigger true during start_application_update() if new update available
     5. Manually setting variable updateApp_startUpdate to true will continue remainder of update process, closing app, copying save, and restarting
 */
@@ -64,6 +64,20 @@ bool updateApp_newVersionAvailable = false; // API to render to console/screen "
 bool updateApp_startUpdate = false; // API that works together with variable above "updateApp_newVersionAvailable"
 double updateApp_downloadProgress = 0.0;
 bool updateApp_showProgress = false;
+
+// Get current and parent folder paths
+bool get_game_current_and_parent_directory() {
+    std::filesystem::path currentPath = std::filesystem::current_path();
+    std::filesystem::path parentPath = currentPath.parent_path();
+    UpdateApp_sourceDirectory = currentPath.string();
+    UpdateApp_sourceParentDirectory = parentPath.string();
+    std::cout << "Game directory current path is: " << UpdateApp_sourceDirectory << std::endl;
+    std::cout << "Game directory parent path is: " << UpdateApp_sourceParentDirectory << std::endl;
+    if(!UpdateApp_sourceDirectory.empty() && !UpdateApp_sourceParentDirectory.empty()) {
+        return true;
+    }
+    return false;
+}
 
 // Callback function to handle the response received from the website
 size_t cout_curl_response_to_terminal(void *contents, size_t size, size_t nmemb, std::string *output)
@@ -405,22 +419,9 @@ bool extract_zip()
     return true;
 }
 
-// Get parent directory from sourceDirectory
-bool set_parent_directory_file_path() {
-    // Assuming UpdateApp_sourceDirectory is "C:/Users/Sumeet/Documents/World-Games"
-    size_t lastSeparatorPos = UpdateApp_sourceDirectory.find_last_of("/\\");
-
-    // Check if the separator was found
-    if (lastSeparatorPos != std::string::npos) {
-        // Remove everything after the last separator (including the separator itself)
-        UpdateApp_sourceParentDirectory = UpdateApp_sourceDirectory.substr(0, lastSeparatorPos);
-    }
-    return true;
-}
-
 // Get zip file name from downloadLink
 bool set_zip_file_name(std::string downloadLink) {
-    // Assuming UpdateApp_sourceDirectory is "C:/Users/Sumeet/Documents/World-Games"
+    // Assuming UpdateApp_sourceDirectory is "C:/Users/TESTUSER/Documents/World-Games"
     size_t lastSeparatorPos = downloadLink.find_last_of("/\\");
 
     // Check if the separator was found
@@ -434,7 +435,7 @@ bool set_zip_file_name(std::string downloadLink) {
 // from UpdateApp_sourceDirectory set UpdateApp_destinationDirectory
 std::string get_unzipped_application_file_path()
 {
-    // Assuming UpdateApp_sourceDirectory is "C:/Users/Sumeet/Documents/World-Games"
+    // Assuming UpdateApp_sourceDirectory is "C:/Users/TESTUSER/Documents/World-Games"
     std::string UpdateApp_destinationDirectory = UpdateApp_sourceDirectory;
 
     // Find the last occurrence of the directory separator
@@ -692,7 +693,7 @@ void start_application_update(std::string urlPath, std::string downloadLink)
     start_curl(urlPath);
     if (updateApp_startUpdate)
     {
-        if (set_parent_directory_file_path() &&
+        if (get_game_current_and_parent_directory() &&
             set_zip_file_name(downloadLink) &&
             download_file(downloadLink) &&
             extract_zip() &&
