@@ -16,15 +16,16 @@ bool overwriteGame = false;
 std::string saveFileName = "world-games_save.txt";
 
 void new_game();
+void save_game();
 
 void create_save_file_if_doesnt_exist()
 {
-  std::fstream savefileObject(saveFileName, std::fstream::app); // std::fstream::app (append) will create the file if it doesn't exist
-  if (!savefileObject.is_open())
+  // Called in implementation file at game start to create a new save file txt if not existing (for brand new installations)
+  if (!std::ifstream(saveFileName)) //std::ifstream is read only, no need to saveFileName.close()
   {
-    std::cerr << "Error: Unable to open save file." << std::endl;
+    save_game();
   }
-  savefileObject.close();
+  else {}
 }
 
 void save_settings()
@@ -188,7 +189,7 @@ void load_game()
 
 void does_save_file_exist()
 {
-  if (std::ifstream(saveFileName))
+  if (std::ifstream(saveFileName)) // std::ifstream requires no .close()
   {
     displaySavefileExistsPopup = true;
     if (overwriteGame)
@@ -204,6 +205,4 @@ void does_save_file_exist()
     new_game();
     scene = 25;
   }
-  
-
 }
