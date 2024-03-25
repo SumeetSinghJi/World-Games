@@ -21,6 +21,7 @@ TASKS
     * If user clicks OK on email verification, account created
     * Scene 14 - ask for login, POST to server, if server responds OK, ???
     * Profanity filter for text input
+    * Include a settings button to change framerate, test with FPS button
     * New Settings button for changing scroll speed, important for reading help guide forward and back buttons too slow 
     * Setup boost.asio for multiplayer udp
     * Create .exe installer and have parameter for variable: UpdateApp_sourceDirectory

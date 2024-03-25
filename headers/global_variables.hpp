@@ -412,6 +412,8 @@ extern int textWidth;            // for font
 extern int textHeight;           // for font
 extern int fontSize;             // for font
 extern int scene;                // for scene to display
+extern int framerate; /* There are 1000 milliseconds in 1 second. So, if you render 1 frame every 16 milliseconds, you would render approximately 
+1000/16 frames per second, which is approximately 62.5 FPS. */ 
 
 // PLAYER VARIABLES
 extern std::string username; // Multiplayer - Multiplayer players username

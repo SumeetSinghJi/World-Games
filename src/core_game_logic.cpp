@@ -327,6 +327,8 @@ int textWidth = 0;                             // for font
 int textHeight = 0;                            // for font
 int fontSize = 36;                             // for font
 int scene = 1;                                 // for scene to display
+int framerate = 16; /* There are 1000 milliseconds in 1 second. So, if you render 1 frame every 16 milliseconds, you would render approximately 
+1000/16 frames per second, which is approximately 62.5 FPS. */ 
 
 // PLAYER VARIABLES
 std::string username = ""; // Multiplayer - Multiplayer players username
@@ -1549,6 +1551,8 @@ void run_SDL()
         handle_events();
         update();
         draw();
+
+        SDL_Delay(framerate);
     }
 }
 void exit_SDL()
