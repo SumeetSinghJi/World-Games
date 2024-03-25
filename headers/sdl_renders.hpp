@@ -171,7 +171,6 @@ void draw_buttons_scene_4() // Achievements
     if (is_achievement_unlocked(1))
     {
         SDL_RenderCopy(renderer, achievementsTexture, nullptr, &achievement1Rect);
-        std::cout << "Achievement 1 unlocked" << std::endl;
     }
     else if (is_achievement_unlocked(2))
     {

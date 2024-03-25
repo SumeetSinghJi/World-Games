@@ -359,8 +359,8 @@ bool countdownStarted = false;
 int countdownSeconds = 300; // Initial countdown time
 
 // GAME VARIABLES
-bool gameStarted = NULL;                      // Toggle to prevent "continuing to game" if game hasn't begun
-bool gameWon = NULL;                          // Game variable - display credits on game completion
+bool gameStarted = false;                      // Toggle to prevent "continuing to game" if game hasn't begun
+bool gameWon = false;                          // Game variable - display credits on game completion
 std::vector<int> unlockedScenes(30, 0);       // unlocked scenes if in game mode
 std::vector<int> unlockedAchievements(10, 0); // unlocked scenes if in game mode
 int selectedOption = 0;                       // For Keyboard arrow key or Gamepad d-pad selection
@@ -517,11 +517,13 @@ bool is_achievement_unlocked(int target)
 }
 void show_unlocked_achievements()
 {
+    std::cout << std::flush;
     std::cout << "Unlocked Achievements: " << std::endl;
     for (int i : unlockedAchievements)
     {
-        std::cout << i << ", " << std::endl;
+        std::cout << i << ", ";
     }
+    std::cout << "" << std::endl;
 }
 void unlocked_achievement(int i)
 {
@@ -529,8 +531,6 @@ void unlocked_achievement(int i)
     if (unlockedAchievements[i] != 1)
     {
         unlockedAchievements[i] = 1;
-        i++;
-        std::cout << "Unlocked Achievement: " << i << std::endl;
         show_unlocked_achievements();
     }
 }
@@ -565,9 +565,7 @@ void change_resolution(int newWindowWidth, int newWindowHeight)
 void new_game()
 {
     gameStarted = true; // This is flagged as on, so that in Settings screen you can "Continue" to game, if started else not.
-    gameWon = NULL;
-    unlockedScenes.clear();
-    unlockedAchievements.clear();
+    gameWon = false;
 }
 std::string find_os()
 {
