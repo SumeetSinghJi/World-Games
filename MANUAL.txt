@@ -196,9 +196,16 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________________________
 
-GOLDEN RULE
 
-header files shouldn't include any other header files besides global_variables.hpp
+
+PROGRAMMING DEVELOPMENT LANGUAGE
+
+Game written in C++17 minimum standard, due to inclusion of std::filesystem header #include <filesystem>
+
+
+PROJECT SPECIFIC RULES
+
+header files shouldn't include any other header files besides global_variables.hpp for easy maintenance
 
 
 

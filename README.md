@@ -1,12 +1,11 @@
 # World Games
 
-Version: 0.1
+* Version: 0.1
 * Created: 26/09/2023
 * Description: A free fun C++ game players can travel the world playing different ancient culture board games.
 * Author: Sumeet Singh @ sumeet-singh.com
 * Publisher: AgniSamooh @ agnisamooh.com
-* License: This project is licensed under the MIT License.
-Full license terms can be found in the `./MANUAL.txt` file.
+* License: This project is licensed under the MIT License. Full license terms can be found in the `./MANUAL.txt` file.
 
 
 ![Promotional Screenshot 1](assets/graphics/promotional_artwork/promo%20screenshot%201.png)
@@ -25,16 +24,9 @@ Full license terms can be found in the `./MANUAL.txt` file.
 * Hard Drive: 5 GB Free
 
 
-# SETUP
+# SETUP & INSTRUCTIONS
 
-1. Download and extract folder to home directory.
-Windows uses USERPROFILE for the home directory, e.g: c:\users\sumeet
-linux and MacOS use HOME for the home directory, e.g: /home/sumeet
-
-2. Run main.exe to start game
-
-
-# INSTRUCTIONS
+No installation required, simply download game and run main.exe to start game
 
 The MANUAL.txt file contains instructions on gameplay and development. 
 File may also be found in game using the Book (Help) icon option.

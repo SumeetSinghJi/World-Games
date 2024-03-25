@@ -1,7 +1,7 @@
 /*
     Author: TESTUSER Singh
     Dated: 14/02/2024
-    Minimum C++ Standard: C++11
+    Minimum C++ Standard: C++17
     Purpose: Declaration/Definition file combined
     License: MIT License
     Description: Declaration and Definition file for using curl to read website i.e, World games github

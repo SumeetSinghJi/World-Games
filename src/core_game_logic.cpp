@@ -1,7 +1,7 @@
 /*
     Author: Sumeet Singh
     Dated: 26/09/2023
-    Minimum C++ Standard: C++11
+    Minimum C++ Standard: C++17
     Purpose: Definition file (Declaration file is: "headers/global_variables.hpp")
     License: MIT License
     Description: read the attached help.txt file
