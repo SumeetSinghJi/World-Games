@@ -196,6 +196,11 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________________________
 
+GOLDEN RULE
+
+header files shouldn't include any other header files besides global_variables.hpp
+
+
 
 ENVIRONMENT
 
@@ -210,8 +215,6 @@ Applicaiton
 and multiplayer
 6. libzip: https://github.com/nih-at/libzip - Library for extracting Zip files used for extracting 
 downloaded game zip from source repository
-7. Boost.asio: https://www.boost.org/ - For multiplayer online gameplay
-
 
 
 FILES

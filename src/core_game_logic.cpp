@@ -1319,7 +1319,6 @@ void handle_events()
     {
         if (event.type == SDL_QUIT)
         {
-            // save_game();
             std::cout << "Game Quiting. Goodbye" << std::endl;
             quitEventLoop = true;
         }
@@ -1441,13 +1440,13 @@ void update()
     else if (scene == 5) // help
     {
     }
-    else if (scene == 25) // world map
-    {
-    }
     else if (scene == 8) // multiplayer
     {
     }
     else if (scene == 9) // leaderboard
+    {
+    }
+    else if (scene == 25) // world map
     {
     }
     else if (scene == 32)
@@ -1466,7 +1465,7 @@ void draw()
     {
         SDL_RenderCopy(renderer, menuBackgroundTexture, NULL, NULL);
         
-        if (savefileExists) {
+        if (displaySavefileExistsPopup) {
             draw_does_save_file_exist();
         } else {
             draw_buttons_scene_1();
@@ -1494,12 +1493,6 @@ void draw()
         draw_buttons_scene_5();
         manual_file_read(); // render txt output of MANUAL.txt to screen
     }
-    else if (scene == 25) // world map
-    {
-        SDL_RenderCopy(renderer, worldMapTexture, NULL, NULL);
-        draw_text_for_HUD_scene_25();
-        draw_buttons_scene_25();
-    }
     else if (scene == 8) // tutorial
     {
         draw_text_for_HUD_scene_8();
@@ -1514,7 +1507,12 @@ void draw()
         draw_text_for_HUD_scene_11();
         draw_buttons_scene_11();
     }
-
+    else if (scene == 25) // world map
+    {
+        SDL_RenderCopy(renderer, worldMapTexture, NULL, NULL);
+        draw_text_for_HUD_scene_25();
+        draw_buttons_scene_25();
+    }
     else if (scene == 32) // Game Map - Rome - Tic Tac Toe
     {
         ttt_SDL_draw();

@@ -2,7 +2,7 @@
     Author: Sumeet Singh
     Dated: 14/02/2024
     Minimum C++ Standard: C++11
-    Purpose: Declaration file (declaration file is: global_variables.hpp)
+    Purpose: Declaration file
     License: MIT License
     Description: read the attached MANUAL.txt file
 */
@@ -467,8 +467,8 @@ extern bool acceptedPrivacyPolicy;
 extern bool acceptedTermsAndConditions;
 
 // sdl_renders.hpp variables
-extern bool savefileExists; // for drawing in scene 1 if you click new game and save game already exists
-extern int overwriteGame; // set in mouse handle if overwrite button, will set to delete existing save game and new game
+extern bool displaySavefileExistsPopup; // for drawing in scene 1 if you click new game and save game already exists
+extern bool overwriteGame; // set in mouse handle if overwrite button, will set to delete existing save game and new game
 void draw_does_save_file_exist();
 
 extern std::unordered_map<std::string, SDL_Keycode> keyMap;

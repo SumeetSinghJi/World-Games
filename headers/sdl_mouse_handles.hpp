@@ -15,18 +15,19 @@ void handle_click_scene_1(int mouseX, int mouseY) // Main menu
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
-    if (savefileExists)
+    if (displaySavefileExistsPopup)
     {
         if (scene1continueButton.isClicked(mousePosition))
         {
             std::cout << "You clicked: Load Game" << std::endl;
+            displaySavefileExistsPopup = false;
             load_game();
             scene = 25;
         }
         else if (scene1overwriteGameButton.isClicked(mousePosition))
         {
             std::cout << "You clicked: Overwrite Game" << std::endl;
-            overwriteGame = 1;
+            overwriteGame = true;
             does_save_file_exist();
         }
     }

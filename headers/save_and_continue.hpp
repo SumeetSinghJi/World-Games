@@ -11,15 +11,15 @@ Description: read the attached MANUAL.txt file
 
 #include "global_variables.hpp"
 
-bool savefileExists = false; // used in SDL_mouse_handles.hpp
-int overwriteGame = 0;
+bool displaySavefileExistsPopup = false; // used in SDL_mouse_handles.hpp
+bool overwriteGame = false;
 std::string saveFileName = "world-games_save.txt";
 
 void new_game();
 
 void create_save_file_if_doesnt_exist()
 {
-  std::fstream savefileObject(saveFileName, std::fstream::app);
+  std::fstream savefileObject(saveFileName, std::fstream::app); // std::fstream::app (append) will create the file if it doesn't exist
   if (!savefileObject.is_open())
   {
     std::cerr << "Error: Unable to open save file." << std::endl;
@@ -100,13 +100,10 @@ void load_settings()
   std::cout << "Saved Settings loaded successfully" << std::endl;
 }
 
-// ____________ONLY NECESSARY FOR HIDDEN SCENE OR VIEWING ACHIEVEMENTS_____________________ //
-
 void save_game()
 {
-  // fstream replaces ifstream (reading) and ofstream (writing) for both
-  // , std::fstream::app indicates to create the file if it doesn't exist
-  std::fstream savefileObject(saveFileName, std::fstream::app);
+  // fstream replaces fstream (reading) and ofstream (writing). So instead of 2 different functions just use fstream
+  std::fstream savefileObject(saveFileName, std::fstream::app); // std::fstream::app (append) will create the file if it doesn't exist
   if (!savefileObject.is_open())
   {
     std::cerr << "Error: Unable to open save file." << std::endl;
@@ -191,30 +188,22 @@ void load_game()
 
 void does_save_file_exist()
 {
-  std::cout << "Checking to see if any saves exist" << std::endl;
-
   if (std::ifstream(saveFileName))
   {
-    std::cout << "Save file exists: " << saveFileName << "Do you want to delete it? (y/n)";
-    savefileExists = true;
-    if (overwriteGame == 1)
+    displaySavefileExistsPopup = true;
+    if (overwriteGame)
     {
       std::remove(saveFileName.c_str());
       new_game();
       scene = 25;
-      overwriteGame = 0;
-    }
-    else if (overwriteGame == 2)
-    {
-      std::cout << "Save game not deleted. Loading saved game..." << std::endl;
-      load_game();
-      overwriteGame = 0;
+      overwriteGame = false;
+      displaySavefileExistsPopup = false;
     }
   }
-  else
-  {
-    std::cout << "Save game doesn't exist." << std::endl;
+  else {
     new_game();
     scene = 25;
   }
+  
+
 }

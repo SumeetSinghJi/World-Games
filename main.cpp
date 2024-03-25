@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
     play_developer_splash_screen(); // Render promotional image of developer before game starts
 
     run_SDL();  // Run Game
+    save_game(); // Save after quit called in run_SDL() event loop
     exit_SDL(); // Quit Game
 
     return 0;
