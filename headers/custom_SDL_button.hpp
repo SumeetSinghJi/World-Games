@@ -237,7 +237,7 @@ public:
         selectedButton = this;
     }
 
-    void set_button_texture(SDL_Renderer *renderer, std::string customButtonPath)
+    void set_button_texture(SDL_Renderer *renderer, const std::string customButtonPath)
     {
         if (!customButtonPath.empty())
         {

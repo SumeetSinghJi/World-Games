@@ -55,25 +55,27 @@ const std::string updateApp_curl_bin_path = "./src/curl/bin/curl.exe";
 
 // GLOBAL VARIABLES
 const std::string updateApp_certPath = "./src/curl/bin/curl-ca-bundle.crt";
-std::string UpdateApp_sourceDirectory  = ""; // Game installation path set in main code
-std::string updateApp_zipFilePath = ""; // set by set_zip_file_name();
+std::string UpdateApp_sourceDirectory = "";       // Game installation path set in main code
+std::string updateApp_zipFilePath = "";           // set by set_zip_file_name();
 std::string UpdateApp_sourceParentDirectory = ""; // set by set_parent_directory_file_path();
 std::string UpdateApp_downloadLink = "";
-std::string updateApp_currentVersion; // API for rendering current version of app to console/screen
+std::string updateApp_currentVersion;       // API for rendering current version of app to console/screen
 bool updateApp_newVersionAvailable = false; // API to render to console/screen "new version available" then set "updateApp_startUpdate = true" to start update.
-bool updateApp_startUpdate = false; // API that works together with variable above "updateApp_newVersionAvailable"
+bool updateApp_startUpdate = false;         // API that works together with variable above "updateApp_newVersionAvailable"
 double updateApp_downloadProgress = 0.0;
 bool updateApp_showProgress = false;
 
 // Get current and parent folder paths
-bool get_game_current_and_parent_directory() {
+bool get_game_current_and_parent_directory()
+{
     std::filesystem::path currentPath = std::filesystem::current_path();
     std::filesystem::path parentPath = currentPath.parent_path();
     UpdateApp_sourceDirectory = currentPath.string();
     UpdateApp_sourceParentDirectory = parentPath.string();
     std::cout << "Game directory current path is: " << UpdateApp_sourceDirectory << std::endl;
     std::cout << "Game directory parent path is: " << UpdateApp_sourceParentDirectory << std::endl;
-    if(!UpdateApp_sourceDirectory.empty() && !UpdateApp_sourceParentDirectory.empty()) {
+    if (!UpdateApp_sourceDirectory.empty() && !UpdateApp_sourceParentDirectory.empty())
+    {
         return true;
     }
     return false;
@@ -420,12 +422,14 @@ bool extract_zip()
 }
 
 // Get zip file name from downloadLink
-bool set_zip_file_name(std::string downloadLink) {
+bool set_zip_file_name(std::string downloadLink)
+{
     // Assuming UpdateApp_sourceDirectory is "C:/Users/TESTUSER/Documents/ancient-Games"
     size_t lastSeparatorPos = downloadLink.find_last_of("/\\");
 
     // Check if the separator was found
-    if (lastSeparatorPos != std::string::npos) {
+    if (lastSeparatorPos != std::string::npos)
+    {
         // Remove everything after the last separator (including the separator itself)
         updateApp_zipFilePath = UpdateApp_sourceDirectory.substr(0, lastSeparatorPos);
     }
@@ -440,9 +444,10 @@ std::string get_unzipped_application_file_path()
 
     // Find the last occurrence of the directory separator
     size_t lastSeparatorPos = UpdateApp_destinationDirectory.find_last_of("/\\");
-    
+
     // Check if the separator was found
-    if (lastSeparatorPos != std::string::npos) {
+    if (lastSeparatorPos != std::string::npos)
+    {
         // Remove everything after the last separator (including the separator itself)
         UpdateApp_destinationDirectory = UpdateApp_destinationDirectory.substr(0, lastSeparatorPos);
     }
@@ -634,19 +639,63 @@ bool rename_extracted_folder()
     {
         rename(newDirectory.c_str(), UpdateApp_sourceDirectory.c_str());
         std::cout << "Unzipped folder sucessfully renamed from 'ancient-games-master' to 'ancient-games'." << std::endl;
+        return true;
     }
     catch (const std::filesystem::filesystem_error &e)
     {
         std::cerr << "Error renaming Unzipped folder from 'ancient-games-master' to 'ancient-games': " << e.what() << std::endl;
+        return false;
     }
-    return true;
 }
 
-// FUTURE DEVELOPMENT - Run CMAKE, to copy shortcut to desktop
+// Copy shortcut to desktop / CMAKE name is a placeholder for Future development
 bool CMAKE_build()
 {
-    std::cout << "Running CMAKE build steps to copy shortcuts to desktop" << std::endl;
-    return true;
+    std::cout << "Running CMAKE build steps to copy shortcut to desktop" << std::endl;
+
+    std::string shortcutFilePath = UpdateApp_sourceDirectory + "\\Ancient Games.lnk";
+    if (!std::filesystem::exists(shortcutFilePath))
+    {
+        std::cerr << "Error: Shortcut file does not exist." << std::endl;
+        return false;
+    }
+
+    std::string desktopPath;
+#ifdef _WIN32
+    const char *userProfile = std::getenv("USERPROFILE");
+    if (userProfile)
+    {
+        desktopPath = std::string(userProfile) + "\\Desktop\\Ancient Games.lnk";
+    }
+    else
+    {
+        std::cerr << "Error: Failed to find user profile directory" << std::endl;
+        return false;
+    }
+#elif __linux__
+    const char *homeDir = std::getenv("HOME");
+    if (homeDir)
+    {
+        desktopPath = std::string(homeDir) + "/Desktop/Ancient Games.lnk";
+    }
+    else
+    {
+        std::cerr << "Error: Failed to find user home directory" << std::endl;
+        return false;
+    }
+#endif
+
+    try
+    {
+        std::filesystem::copy_file(shortcutFilePath, desktopPath, std::filesystem::copy_options::overwrite_existing);
+        std::cout << "Shortcut copied successfully to desktop." << std::endl;
+        return true;
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error: Failed to copy shortcut to desktop: " << e.what() << std::endl;
+        return false;
+    }
 }
 
 // Open new application executable or binary to complete update application step

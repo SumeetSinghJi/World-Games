@@ -18,7 +18,7 @@
 #include <iostream> // Core logic
 #include <limits>   // For SDL_Button_class largest number limit to compare button distance or srand()
 #include <memory>
-#include <sstream>
+#include <sstream>       // String Stream for extracting words from load_game/settings() save file std::string lines
 #include <string>        // Core logic
 #include <thread>        // Core logic - for timer
 #include <vector>        // Core logic
@@ -115,7 +115,6 @@ extern SDL_Texture *splashScreenTexture;
 extern TTF_Font *font_24;
 extern TTF_Font *font_36;
 extern TTF_Font *font_48;
-extern SDL_Texture *textTexture;
 extern SDL_Texture *texture;
 
 // Scene 1 - Main Menu buttons

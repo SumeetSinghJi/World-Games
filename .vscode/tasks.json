@@ -55,7 +55,7 @@
                 "--inconclusive",
                 "--std=c++11",
                 "${workspaceFolder}/src/*.cpp",
-                // "${workspaceFolder}/headers/*.h"
+                "${workspaceFolder}/headers/*.hpp"
             ],
             "problemMatcher": {
                 "owner": "cppcheck",

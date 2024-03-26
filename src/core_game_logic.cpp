@@ -1324,6 +1324,7 @@ void start_SDL()
     load_buttons_6();
     load_buttons_7();
     load_buttons_8();
+    load_buttons_10();
     load_buttons_11();
     load_buttons_12();
     load_buttons_13();

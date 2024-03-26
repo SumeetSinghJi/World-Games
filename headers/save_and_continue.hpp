@@ -88,11 +88,9 @@ void load_settings()
   {
     if (line.find("Language: ") != std::string::npos)
     {
-
       std::istringstream iss(line);
       std::string word;
-      // Extract the second word after "Language: "
-      if (iss >> word && iss >> word)
+      if (iss >> word) // Extract from string stream variable (iss) the second word after "Language: " and store in variable (word)
       {
         language = word;
       }
