@@ -63,7 +63,7 @@ void handle_click_scene_1(int mouseX, int mouseY) // Main menu
         else if (scene1multiplayerButton.isClicked(mousePosition))
         {
             std::cout << "You clicked Update game" << std::endl;
-            start_application_update("https://github.com/SumeetSinghJi/world-games", "https://github.com/SumeetSinghJi/world-games/archive/refs/heads/master.zip");
+            start_application_update("https://github.com/SumeetSinghJi/ancient-games", "https://github.com/SumeetSinghJi/ancient-games/archive/refs/heads/master.zip");
         }
         else if (scene1QuitButton.isClicked(mousePosition))
         {

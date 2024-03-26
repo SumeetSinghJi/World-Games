@@ -1,44 +1,23 @@
 {
-    "configurations": [
-    /*
-        To create this file, use CTRL + SHIFT + P - type tasks.json or create file under ./.vscode manually click
-        add configuration button: C++ GDB Launch. This will set the debugger to use with debug and run button (F5)
-        Remember these values
-
-        "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
-        "cwd": "${workspaceFolder}",
-        "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
-
-        How this file works.
-
-        1. When clicking F5 (Debug + Run) first tasks.json links headers and libs etc.,
-        2. This launch.json is then used to start the debugging
-    */
-    {
-        "name": "(gdb) Launch",
-        "type": "cppdbg",
-        "request": "launch",
-        "program": "${workspaceFolder}/${fileBasenameNoExtension}.exe",
-        "args": [],
-        "stopAtEntry": false,
-        "cwd": "${workspaceFolder}",
-        "environment": [],
-        "externalConsole": false,
-        "MIMode": "gdb",
-        "miDebuggerPath": "C:/msys64/mingw64/bin/gdb.exe",
-        
-        "setupCommands": [
-            {
-                "description": "Enable pretty-printing for gdb",
-                "text": "-enable-pretty-printing",
-                "ignoreFailures": true
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build with g++",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
             },
-            {
-                "description": "Set Disassembly Flavor to Intel",
-                "text": "-gdb-set disassembly-flavor intel",
-                "ignoreFailures": true
-            }
-        ]
-    }
+            "problemMatcher": [
+                "$gcc"
+            ]
+        }
     ]
 }

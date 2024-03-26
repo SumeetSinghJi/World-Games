@@ -1,8 +1,8 @@
-# World Games
+# Ancient Games
 
 * Version: 0.1
 * Created: 26/09/2023
-* Description: A free fun C++ game players can travel the world playing different ancient culture board games.
+* Description: A free fun C++ game players can travel the ancient playing different ancient culture board games.
 * Author: Sumeet Singh @ sumeet-singh.com
 * Publisher: AgniSamooh @ agnisamooh.com
 * License: This project is licensed under the MIT License. Full license terms can be found in the `./MANUAL.txt` file.

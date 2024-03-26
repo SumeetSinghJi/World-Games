@@ -4,7 +4,7 @@
     Minimum C++ Standard: C++17
     Purpose: Declaration/Definition file combined
     License: MIT License
-    Description: Declaration and Definition file for using curl to read website i.e, World games github
+    Description: Declaration and Definition file for using curl to read website i.e, ancient games github
     then find the version number from the README.md string "Version: x.x". Compare the version number
     online with local offline version then prompt user if offline software out of date to update.
     curl.h will download the git .zip file, then zip.h will extract. Remainder of code related to
@@ -12,13 +12,13 @@
     the old directory and starting the new folder executable.
 
     Example:
-    1. Set variable UpdateApp_sourceDirectory to existing game directory e.g. UpdateApp_sourceDirectory = "C:/Users/TESTUSER/Documents/World-Games";
+    1. Set variable UpdateApp_sourceDirectory to existing game directory e.g. UpdateApp_sourceDirectory = "C:/Users/TESTUSER/Documents/ancient-Games";
     2. call function: update_version_string_from_readme_file(std::string fileWithVersionString); with parameters below
     fileWithVersionString = local file e.g. .txt/.md with string "Version: " to populate return variable currenVersion;
     3. call function: start_application_update(std::string urlPath, std::string downloadLink); with 2 parameters;
     urlPath = remote file e.g. .txt/.md with string "Version: " to curl and compare remoteVersion with updateApp_currentVersion;
     downloadLink = full .zip file URL of app
-    e.g. start_application_update("https://github.com/TESTUSERSinghJi/world-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/TESTUSERSinghJi/world-games/archive/refs/heads/master.zip");
+    e.g. start_application_update("https://github.com/TESTUSERSinghJi/ancient-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/TESTUSERSinghJi/ancient-games/archive/refs/heads/master.zip");
     4. variable/API updateApp_newVersionAvailable will trigger true during start_application_update() if new update available
     5. Manually setting variable updateApp_startUpdate to true will continue remainder of update process, closing app, copying save, and restarting
 */
@@ -139,7 +139,7 @@ std::string update_version_string_from_readme_file(std::string fileWithVersionSt
     return updateApp_currentVersion;
 }
 
-// Start Curl to world-games Github to check for updates
+// Start Curl to ancient-games Github to check for updates
 bool start_curl(std::string urlPath)
 {
     /* Purpose
@@ -241,7 +241,7 @@ bool start_curl(std::string urlPath)
 // download update file from start_curl() prompt
 bool download_file(std::string downloadLink)
 {
-    std::cout << "Attempting to download updates for world-games." << std::endl;
+    std::cout << "Attempting to download updates for ancient-games." << std::endl;
 
     CURL *curl;
     CURLcode res;
@@ -421,7 +421,7 @@ bool extract_zip()
 
 // Get zip file name from downloadLink
 bool set_zip_file_name(std::string downloadLink) {
-    // Assuming UpdateApp_sourceDirectory is "C:/Users/TESTUSER/Documents/World-Games"
+    // Assuming UpdateApp_sourceDirectory is "C:/Users/TESTUSER/Documents/ancient-Games"
     size_t lastSeparatorPos = downloadLink.find_last_of("/\\");
 
     // Check if the separator was found
@@ -435,7 +435,7 @@ bool set_zip_file_name(std::string downloadLink) {
 // from UpdateApp_sourceDirectory set UpdateApp_destinationDirectory
 std::string get_unzipped_application_file_path()
 {
-    // Assuming UpdateApp_sourceDirectory is "C:/Users/TESTUSER/Documents/World-Games"
+    // Assuming UpdateApp_sourceDirectory is "C:/Users/TESTUSER/Documents/ancient-Games"
     std::string UpdateApp_destinationDirectory = UpdateApp_sourceDirectory;
 
     // Find the last occurrence of the directory separator
@@ -446,20 +446,20 @@ std::string get_unzipped_application_file_path()
         // Remove everything after the last separator (including the separator itself)
         UpdateApp_destinationDirectory = UpdateApp_destinationDirectory.substr(0, lastSeparatorPos);
     }
-    // Append "world-games-master" to the destination directory
-    UpdateApp_destinationDirectory += "/world-games-master";
+    // Append "ancient-games-master" to the destination directory
+    UpdateApp_destinationDirectory += "/ancient-games-master";
 
     return UpdateApp_destinationDirectory;
 }
 
-// Copy save from original application directory "world-games" to unzipped folder "world-games-master"
+// Copy save from original application directory "ancient-games" to unzipped folder "ancient-games-master"
 bool copy_save_to_extracted_folder()
 {
     std::cout << "STARTING - copy save from original directory to unzipped new updated application folder" << std::endl;
 
-    std::filesystem::path sourcePath = std::filesystem::path(UpdateApp_sourceDirectory) / "world-games_save.txt";
+    std::filesystem::path sourcePath = std::filesystem::path(UpdateApp_sourceDirectory) / "ancient-games_save.txt";
     std::filesystem::path destinationDirectory = get_unzipped_application_file_path();
-    std::filesystem::path destinationPath = destinationDirectory / "world-games_save.txt"; // Include the filename
+    std::filesystem::path destinationPath = destinationDirectory / "ancient-games_save.txt"; // Include the filename
 
     try
     {
@@ -493,7 +493,7 @@ bool copy_save_to_extracted_folder()
     }
 }
 
-// Close existing world-games executable
+// Close existing ancient-games executable
 bool exit_application()
 {
     std::cout << "STARTING - Close application" << std::endl;
@@ -624,20 +624,20 @@ bool delete_original_application_folder()
     return true;
 }
 
-// Rename unzipped new updated application folder "world-games-master" to "world-games"
+// Rename unzipped new updated application folder "ancient-games-master" to "ancient-games"
 bool rename_extracted_folder()
 {
     std::string newDirectory = get_unzipped_application_file_path();
 
-    std::cout << "STARTING - rename unzipped folder to world-games" << std::endl;
+    std::cout << "STARTING - rename unzipped folder to ancient-games" << std::endl;
     try
     {
         rename(newDirectory.c_str(), UpdateApp_sourceDirectory.c_str());
-        std::cout << "Unzipped folder sucessfully renamed from 'world-games-master' to 'world-games'." << std::endl;
+        std::cout << "Unzipped folder sucessfully renamed from 'ancient-games-master' to 'ancient-games'." << std::endl;
     }
     catch (const std::filesystem::filesystem_error &e)
     {
-        std::cerr << "Error renaming Unzipped folder from 'world-games-master' to 'world-games': " << e.what() << std::endl;
+        std::cerr << "Error renaming Unzipped folder from 'ancient-games-master' to 'ancient-games': " << e.what() << std::endl;
     }
     return true;
 }
@@ -658,12 +658,12 @@ bool application_start()
 
     if (updateApp_OSversion == "Windows")
     {
-        start_command = "start \"\" \"" + new_application_directory_path + "\\world-games.exe\"";
+        start_command = "start \"\" \"" + new_application_directory_path + "\\ancient-games.exe\"";
         system(start_command.c_str());
     }
     else
     {
-        start_command = "chmod +x \"" + new_application_directory_path + "/world-games.bin\"";
+        start_command = "chmod +x \"" + new_application_directory_path + "/ancient-games.bin\"";
         system(start_command.c_str());
     }
     return true;
@@ -674,7 +674,7 @@ void set_application_updated_variable()
 {
     std::string updateApp_currentVersion = update_version_string_from_readme_file("README.md");
 
-    std::ofstream savefile_object("world-games_save.txt");
+    std::ofstream savefile_object("ancient-games_save.txt");
 
     if (savefile_object.is_open())
     {

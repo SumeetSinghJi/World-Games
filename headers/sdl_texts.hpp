@@ -95,7 +95,7 @@ std::string visited_han_palace_txt;
 std::string won_first_game_txt;
 std::string won_game_txt;
 std::string won_same_hand_txt;
-std::string world_games_txt;
+std::string ancient_games_txt;
 std::string world_map_txt;
 
 void localisation(const std::string &language)
@@ -155,7 +155,7 @@ void localisation(const std::string &language)
         // V
         version_txt = "version: ";
         // W
-        world_games_txt = "World Games";
+        ancient_games_txt = "Ancient Games";
         won_first_game_txt = "1. Won first game";
         won_same_hand_txt = "3. Won with same hand";
         won_game_txt = "8. Won the game";
@@ -214,7 +214,7 @@ void localisation(const std::string &language)
         // V
         version_txt = "バージョン: ";
         // W
-        world_games_txt = "世界 ゲーム";
+        ancient_games_txt = "古代のゲーム";
         won_first_game_txt = "1. 最初の試合に勝利した";
         won_same_hand_txt = "3. 同じハンドで勝ちました";
         won_game_txt = "8. 試合に勝った";
@@ -274,7 +274,7 @@ void localisation(const std::string &language)
         // V
         version_txt = "เวอร์ชัน: ";
         // W
-        world_games_txt = "เกมโลก";
+        ancient_games_txt = "เกมโบราณ";
         won_first_game_txt = "1. ชนะเกมแรก";
         won_same_hand_txt = "3. ชนะด้วยมือเดียวกัน";
         won_game_txt = "8. ชนะเกม";
@@ -334,7 +334,7 @@ void localisation(const std::string &language)
         // V
         version_txt = "संस्करण: ";
         // W
-        world_games_txt = "विश्व खेल";
+        ancient_games_txt = "प्राचीन खेलानि ";
         won_first_game_txt = "1. पहला खेल जीता";
         won_same_hand_txt = "3. एक ही हाथ से जीता";
         won_game_txt = "8. खेल जीता";
@@ -395,7 +395,7 @@ void localisation(const std::string &language)
         // V
         version_txt = "版本：";
         // W
-        world_games_txt = "世界遊戲";
+        ancient_games_txt = "古代遊戲 ";
         won_first_game_txt = "1. 贏得第一場比賽";
         won_same_hand_txt = "3. 用同一手贏得";
         won_game_txt = "8. 贏得比賽";
@@ -455,7 +455,7 @@ void localisation(const std::string &language)
         // V
         version_txt = "النسخة: ";
         // W
-        world_games_txt = "ألعاب العالم";
+        ancient_games_txt = "الألعاب القديمة";
         won_first_game_txt = "1. فاز باللعبة الأولى";
         won_same_hand_txt = "3. فاز بنفس اليد";
         won_game_txt = "8. فاز باللعبة";
@@ -515,7 +515,7 @@ void localisation(const std::string &language)
         // V
         version_txt = "እትም: ";
         // W
-        world_games_txt = "ዓለም ጨዋታዎች";
+        ancient_games_txt = "የድህነት ጨዋታዎች";
         won_first_game_txt = "1. መጀመሪያ ጨዋታ ተለዋጭ";
         won_same_hand_txt = "3. በአንድ ታንክ ተለዋጭ";
         won_game_txt = "8. ጨዋታ ተለዋጭ";
@@ -575,7 +575,7 @@ void localisation(const std::string &language)
         // V
         version_txt = "Έκδοση: ";
         // W
-        world_games_txt = "Παγκόσμια παιχνίδια";
+        ancient_games_txt = "Αρχαία παιχνίδια";
         won_first_game_txt = "1. Κέρδισε το πρώτο παιχνίδι";
         won_same_hand_txt = "3. Κέρδισε με το ίδιο χέρι";
         won_game_txt = "8. Κέρδισε το παιχνίδι";
@@ -633,7 +633,7 @@ void localisation(const std::string &language)
         // V
         version_txt = "Versio: ";
         // W
-        world_games_txt = "Ludi mundi";
+        ancient_games_txt = "Ludi antiqui";
         won_first_game_txt = "1. Primum ludum vicum";
         won_same_hand_txt = "3. Eadem manu victum";
         won_game_txt = "8. Ludum vicum";
@@ -651,7 +651,7 @@ void draw_text_for_HUD_scene_1() // Main menu
     }
     else
     {
-        render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 48);
+        render_text(ancient_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 48);
 
         render_text(load_game_txt, (windowWidth * 0.45), (windowHeight * 0.15), 255, 0);
         render_text(start_game_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);

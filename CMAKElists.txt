@@ -1,7 +1,7 @@
 # Uses instructions here for SDL CMAKE Setup:
 cmake_minimum_required(VERSION 3.12)
 
-project(World-Games)
+project(Ancient-Games)
 
 find_package(SDL2 REQUIRED HINTS "${CMAKE_SOURCE_DIR}/src/SDL2/cmake")
 if(NOT SDL2_FOUND)
@@ -65,9 +65,9 @@ set(SOURCES
     ./src/core_game_logic.cpp
 )
 
-add_executable(World-Games ${SOURCES})
+add_executable(Ancient-Games ${SOURCES})
 
-target_include_directories(World-Games PRIVATE
+target_include_directories(Ancient-Games PRIVATE
     ${SDL2_INCLUDE_DIRS}
     ${SDL2_Image_INCLUDE_DIRS}
     ${SDL2_Mixer_INCLUDE_DIRS}
@@ -78,7 +78,7 @@ target_include_directories(World-Games PRIVATE
     # assets - do not add. .exe/automatically detects path based on hardcoding
 )
 
-target_link_libraries(World-Games
+target_link_libraries(Ancient-Games
     ${SDL2_LIBRARIES}
     ${SDL2_Image_LIBRARIES}
     ${SDL2_Mixer_LIBRARIES}
@@ -89,4 +89,4 @@ target_link_libraries(World-Games
     stdc++ # C++ Standard library, required if your main.cpp has it's #includes in another header
 )
 
-set_target_properties(World-Games PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}) #output .exe to "./"
+set_target_properties(Ancient-Games PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}) #output .exe to "./"

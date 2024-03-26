@@ -1,6 +1,6 @@
 _________________________________________________________________________________________________________________
 
-                                          World Games Help Guide
+                                          Ancient Games Help Guide
 
                                             1. INTRODUCTION
 
@@ -127,10 +127,11 @@ ________________________________________________________________________________
 
 GAME DETAILS
 
-Game Name: World Games
+Game Name: Ancient Games
+Project name: Games of the Ancients
 Creation: 26/09/2023
 Version: 0.1
-Description: A C++ game on traditional board and hand games from different cultures around the world.
+Description: A C++ game on traditional board and hand games from different cultures around the ancient.
 Author: Sumeet Singh @ www.sumeet-singh.com
 Publisher: AgniSamooh @ www.agniSamooh.com
 License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) 
@@ -176,12 +177,12 @@ ACCESSIBILITY
 SETUP
 
 1. Download zipped game folder from GitHub here:
-https://github.com/SumeetSinghJi/world-games/archive/refs/heads/main.zip
+https://github.com/SumeetSinghJi/ancient-games/archive/refs/heads/main.zip
 
 2. Unzip to computers user directory in new folder
-For Windows: c:\users\username\world-games
+For Windows: c:\users\username\ancient-games
 For MacOS: default download folder
-For Linux: /home/username/world-games
+For Linux: /home/username/ancient-games
 
 3. Run below file to start game
 For Windows: main.exe
@@ -250,8 +251,8 @@ Various DLL's for libraries {
     SDL2_TTF.dll - SDL2 TTF/Font
     SDL2.dll - SDL2
 }
-world-games_save.txt - in game save file
-world-games.code-workspace - vscode configuration file
+ancient-games_save.txt - in game save file
+ancient-games.code-workspace - vscode configuration file
 
 
 
@@ -259,7 +260,7 @@ GRAPHICAL USER INTERFACE & GAME NAVIGATION
 
 Game menu and navigation is based on SDL Game design best practice "scenes".
 There are scenes for all different menu options e.g. Settings, or Credits, and a
-central hub "scene 6" for in game world map which interconnects with other in game
+central hub "scene 6" for in game ancient map which interconnects with other in game
 scenes e.g. "scene 30 = Beijing" where different maps/levels/scenes can be accessed
 which all have slight variations of the named function start_spr_game() function depending 
 on regional variations.
@@ -293,7 +294,7 @@ Uses headers;
 
 SAVING AND RESTORING GAME
 
-A save game text file world-games_save.txt is created on SDL Quit and on main menu Continue button loaded.
+A save game text file ancient-games_save.txt is created on SDL Quit and on main menu Continue button loaded.
 
 Uses headers;
 #include "headers/save_game.hpp"             // For save/continue functions
@@ -354,7 +355,7 @@ scene 21 = _____UNUSED_____
 scene 22 = _____UNUSED_____
 scene 23 = _____UNUSED_____
 scene 24 = _____UNUSED_____
-scene 25 = World map
+scene 25 = ancient map
 scene 26 = _____UNUSED_____
 scene 27 = Tutorial
 scene 28 = _____UNUSED_____
@@ -392,7 +393,7 @@ Completing a traditional game from a scene unlocks that achievement.
 
 OBJECTIVE
 
-1. Win the game by winning all games around the world while having fun.
+1. Win the game by winning all games around the ancient while having fun.
 
 
 MODDING
@@ -411,7 +412,7 @@ ________________________________________________________________________________
 
 Beijing (China) - Rock paper scissors (Chinese; romanized: Shoushiling, traditional: 手勢令. simplified: 手势令)
 
-A seemingly simple game of chance, has woven its way into cultures worldwide, transcending generations and 
+A seemingly simple game of chance, has woven its way into cultures ancientwide, transcending generations and 
 borders. Despite its apparent simplicity, its origins are steeped in history, folklore, and strategic 
 subtleties. This humble game finds its roots in ancient civilizations and evolves continuously, embracing
 new forms and variations.
@@ -450,7 +451,7 @@ there are additional elements like a well, a lion, or a spock, introducing furth
 
 Unique Trivia:
 Competitive Tournaments: Believe it or not, there are competitive rock-paper-scissors tournaments held 
-worldwide. Participants strategize and compete for prizes, showcasing their skill in a seemingly luck-based 
+ancientwide. Participants strategize and compete for prizes, showcasing their skill in a seemingly luck-based 
 game.
 
 AI and Strategy: Researchers have developed AI programs specifically designed to excel at rock-paper-scissors. 

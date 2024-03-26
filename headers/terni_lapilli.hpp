@@ -624,7 +624,7 @@ void ttt_mouse_handle(int mouseX, int mouseY)
     SDL_Rect timerRect = {static_cast<int>(windowWidth * 0.05), static_cast<int>(windowHeight * 0.05), (windowWidth / 4), (windowHeight / 8)};
 
     // Popup - Buttons
-    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.68), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
+    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.75), static_cast<int>(windowHeight * 0.2), rectWidth, rectHeight};
     SDL_Rect ttt_X_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
     SDL_Rect ttt_O_rect = {static_cast<int>(windowWidth * 0.36), static_cast<int>(windowHeight * 0.26), rectWidth, rectHeight};
     SDL_Rect ttt_player_start_first_rect = {static_cast<int>(windowWidth * 0.26), static_cast<int>(windowHeight * 0.40), rectWidth, rectHeight};
@@ -847,7 +847,7 @@ void ttt_keyboard_handle(SDL_Event event)
 
     SDL_Rect restartRect = {static_cast<int>(windowWidth * 0.9), static_cast<int>(windowHeight * 0.4), (windowWidth / 8), (windowHeight / 8)};
 
-    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.35), (windowWidth / 20), (windowHeight / 20)};
+    SDL_Rect closeButtonRect = {static_cast<int>(windowWidth * 0.75), static_cast<int>(windowHeight * 0.2), (windowWidth / 20), (windowHeight / 20)};
 
     // Highlight the selected option for keyboard arrow key and gamepad d pad key input
     SDL_Rect selectedRect = {

@@ -19,7 +19,6 @@ SDL_Texture *splashScreenTexture = nullptr;
 TTF_Font *font_24 = nullptr;
 TTF_Font *font_36 = nullptr;
 TTF_Font *font_48 = nullptr;
-SDL_Texture *textTexture = nullptr;
 SDL_Texture *texture = nullptr;
 
 // Scene 1 - Main menu
@@ -418,7 +417,7 @@ void render_text(const std::string &text, int x, int y, Uint8 alpha, int customF
      int customFontSize = leave as 0 to scale with all global fontsize functions, however can statically
      set to values equal to fonts on loop below e.g. 24, 36, 48 for fixed heading sizes
      e.g. the main menu title is custom font size 48;
-    render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 48);
+    render_text(Ancient_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 48);
 
     */
     TTF_Font *font = nullptr;
@@ -469,6 +468,7 @@ void render_text(const std::string &text, int x, int y, Uint8 alpha, int customF
                 SDL_Rect textRect = {x, y, textWidth, textHeight};
                 SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
             }
+            SDL_DestroyTexture(textTexture);
         }
     }
 }
@@ -1717,7 +1717,6 @@ void exit_SDL()
     SDL_DestroyTexture(computerMouseTexture);
 
     // clearing fonts
-    SDL_DestroyTexture(textTexture);
     font_24 = nullptr;
     font_36 = nullptr;
     font_48 = nullptr;

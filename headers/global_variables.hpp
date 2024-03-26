@@ -102,7 +102,7 @@
  extern std::string won_first_game_txt;
  extern std::string won_game_txt;
  extern std::string won_same_hand_txt;
- extern std::string world_games_txt;
+ extern std::string ancient_games_txt;
  extern std::string world_map_txt;
 
 extern SDL_Window *window;
