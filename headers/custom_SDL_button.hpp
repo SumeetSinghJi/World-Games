@@ -172,16 +172,16 @@ private:
             if (textSurface)
             {
                 // Calculate textWidth and textHeight using TTF_SizeText
-                int textWidth, textHeight;
-                TTF_SizeText(buttonFont, text.c_str(), &textWidth, &textHeight);
+                int btextWidth, btextHeight;
+                TTF_SizeText(buttonFont, text.c_str(), &btextWidth, &btextHeight);
 
-                SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
+                SDL_Texture *btextTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
                 SDL_FreeSurface(textSurface);
 
-                if (textTexture)
+                if (btextTexture)
                 {
-                    SDL_Rect textRect = {x, y, textWidth, textHeight};
-                    SDL_RenderCopy(renderer, textTexture, nullptr, &textRect);
+                    SDL_Rect textRect = {x, y, btextWidth, btextHeight};
+                    SDL_RenderCopy(renderer, btextTexture, nullptr, &textRect);
                 }
             }
         }
@@ -323,7 +323,7 @@ public:
         return results;
     }
 
-    void find_nearest_button(std::vector<Custom_SDL_Button *> sceneVector, SDL_Keycode keyCode, int gamepadButton)
+    void find_nearest_button(std::vector<Custom_SDL_Button *> sceneVector, SDL_Keycode keyCode, int gamepadButton) const
     {
         /*
         Say there are 1 reference point button A, and 4 buttons

@@ -337,8 +337,8 @@ std::string password = ""; // Multiplayer - Multiplayer players account password
 
 // SETTINGS VARIABLES
 bool isMusicPlaying = NULL;                                           // for music
-std::string currentSong = "";                                         // for music
-std::string songTitle = "assets/sounds/music/Time - AlexiAction.mp3"; // for music
+std::string currentSong;                                         // for music
+std::string songTitle; // for music
 std::string language = "English";                                     // for changing language
 std::string osVersion = "";                                           // Custom Multiplatform social media link
 int lastScene = 1;                                                    // Settings - return to last game scene
@@ -572,7 +572,6 @@ std::string find_os()
     // called in main.cpp implementation file before SDL loop starts
     // Uses in handle_click_scene_1() the developer logo uses osVersion to determine URL type to open browser to developer page
     const char *char_osVersion = SDL_GetPlatform();
-    std::string osVersion;
     if (char_osVersion != NULL)
     {
         osVersion = char_osVersion;
@@ -982,10 +981,10 @@ void load_buttons_1()
                                                  "", 144, 238, 144, 255, "assets/graphics/buttons/settings/achievement-button.png", false); // RGB: Light green
     scene1HelpButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55),
                                          rectWidth, rectHeight,
-                                         "", 144, 238, 144, 255, "assets/graphics/buttons/settings/internet-button.png", false); // RGB: Light green
+                                         "", 144, 238, 144, 255, "assets/graphics/buttons/settings/book-button.png", false); // RGB: Light green
     scene1multiplayerButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.65),
                                                 rectWidth, rectHeight,
-                                                "", 144, 238, 144, 255, "assets/graphics/buttons/settings/help-button.png", false); // RGB: Light green
+                                                "", 144, 238, 144, 255, "assets/graphics/buttons/settings/internet-button.png", false); // RGB: Light green
     scene1QuitButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.75),
                                          rectWidth, rectHeight,
                                          "", 144, 238, 144, 255, "assets/graphics/buttons/settings/quit-button.png", false); // RGB: Light green
@@ -1313,9 +1312,7 @@ void start_SDL()
     load_textures();
     ttt_load_textures();
     load_animations();
-    std::string currentSong = "";
-    std::string songTitle = "assets/sounds/music/Time - AlexiAction.mp3";
-    load_music(songTitle);
+    load_music("assets/sounds/music/Time - AlexiAction.mp3");
     load_sound();
     load_controller();
     localisation("English");
