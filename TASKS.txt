@@ -1,6 +1,10 @@
 
 TASKS
-    * Convert Tic Tac toe into Terni Lapilli with button classes
+    * High Risk - Game crash when going back achievements after losing a Tic Tac toe round
+    * Convert Tic Tac toe with buttons
+    * Make game Terni
+    * Make interactive tutorial with Tic Tac Toe + Terni, e.g. circle over the board, the crosses, the winning combo, the reset button
+    and the button to go back. Also include a button to Replay rules (seperate to the book help button)
     * save_game() needs to save
     * fix if buttonpath.empty() show selected, to regardless will show selected texture or not!
     * Fix reading MANUAL and CREDITS subsection + PRIVACY POLICY and TERMS AND CONDITIONS

@@ -126,7 +126,7 @@ void save_game()
       savefileObject << unlockedAchievements[i];
       if (i != unlockedAchievements.size() - 1)
       {
-        savefileObject << unlockedAchievements[i] << ",";
+        savefileObject << ",";
       }
     }
     savefileObject << "\n";

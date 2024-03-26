@@ -19,7 +19,7 @@
 
 * Supported OS: Windows 10+ (untested on other or older OS)
 * Processor: at least 7th gen Intel Core i3 
-* Memory: 4 GB RAM
+* Memory: 8 GB RAM
 * Graphics: Either CPU's dedicated GPU, or an HD capable GPU
 * Hard Drive: 5 GB Free
 
