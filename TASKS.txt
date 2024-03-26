@@ -17,6 +17,7 @@ TASKS
     * Find a font that supports all languages
     * Key remapping option
     * Draw win frequency
+    * Fix rounds as lives
     * In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
     * server responds with verification email.
     * If user clicks OK on email verification, account created
