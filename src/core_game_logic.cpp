@@ -7,7 +7,7 @@
     Description: read the attached help.txt file
 */
 
-#include "headers/global_variables.hpp" // Declarations for all headers, variables and functions
+#include "../headers/global_variables.hpp" // Declarations for all headers, variables and functions
 
 SDL_Window *window = nullptr;
 SDL_Renderer *renderer = nullptr;
@@ -327,8 +327,8 @@ int textWidth = 0;                             // for font
 int textHeight = 0;                            // for font
 int fontSize = 36;                             // for font
 int scene = 1;                                 // for scene to display
-int framerate = 16; /* There are 1000 milliseconds in 1 second. So, if you render 1 frame every 16 milliseconds, you would render approximately 
-1000/16 frames per second, which is approximately 62.5 FPS. */ 
+int framerate = 16;                            /* There are 1000 milliseconds in 1 second. So, if you render 1 frame every 16 milliseconds, you would render approximately
+                           1000/16 frames per second, which is approximately 62.5 FPS. */
 
 // PLAYER VARIABLES
 std::string username = ""; // Multiplayer - Multiplayer players username
@@ -361,8 +361,8 @@ bool countdownStarted = false;
 int countdownSeconds = 300; // Initial countdown time
 
 // GAME VARIABLES
-bool gameStarted = false;                      // Toggle to prevent "continuing to game" if game hasn't begun
-bool gameWon = false;                          // Game variable - display credits on game completion
+bool gameStarted = false;                     // Toggle to prevent "continuing to game" if game hasn't begun
+bool gameWon = false;                         // Game variable - display credits on game completion
 std::vector<int> unlockedScenes(30, 0);       // unlocked scenes if in game mode
 std::vector<int> unlockedAchievements(10, 0); // unlocked scenes if in game mode
 int selectedOption = 0;                       // For Keyboard arrow key or Gamepad d-pad selection
@@ -409,6 +409,7 @@ SDL_Texture *load_texture(const char *path, const char *name)
 void render_text(const std::string &text, int x, int y, Uint8 alpha, int customFontSize)
 {
     /* Example
+
      1. Parameter definitions
      const std::string &text: The text to render to screen
      int x, x position e.g. static_cast<int>(windowWidth * 0.1) = if there are 10 columns it will appear in 1st column from left
@@ -416,11 +417,12 @@ void render_text(const std::string &text, int x, int y, Uint8 alpha, int customF
      Uint8 alpha: transperancy, leave at 255 per default unless you want particular text transparent scale 0 - 255
      int customFontSize = leave as 0 to scale with all global fontsize functions, however can statically
      set to values equal to fonts on loop below e.g. 24, 36, 48 for fixed heading sizes
+     e.g. the main menu title is custom font size 48;
+    render_text(world_games_txt, (windowWidth * 0.35), (windowHeight * 0.05), 255, 48);
 
-     2. Populate parameters
-     render_text("Enter Username: ", static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.2), 255, 0);
     */
     TTF_Font *font = nullptr;
+
     if (customFontSize == 0)
     {
         if (fontSize == 24)
@@ -436,20 +438,17 @@ void render_text(const std::string &text, int x, int y, Uint8 alpha, int customF
             font = font_48;
         }
     }
-    else if (!customFontSize == 0)
+    else if (customFontSize == 24)
     {
-        if (customFontSize == 24)
-        {
-            font = font_24;
-        }
-        else if (customFontSize == 36)
-        {
-            font = font_36;
-        }
-        else if (customFontSize == 48)
-        {
-            font = font_48;
-        }
+        font = font_24;
+    }
+    else if (customFontSize == 36)
+    {
+        font = font_36;
+    }
+    else if (customFontSize == 48)
+    {
+        font = font_48;
     }
 
     if (font)
@@ -460,7 +459,6 @@ void render_text(const std::string &text, int x, int y, Uint8 alpha, int customF
         if (textSurface)
         {
             // Calculate textWidth and textHeight using TTF_SizeText
-            int textWidth, textHeight;
             TTF_SizeText(font, text.c_str(), &textWidth, &textHeight);
 
             SDL_Texture *textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
@@ -571,15 +569,19 @@ void new_game()
 }
 std::string find_os()
 {
+    // called in main.cpp implementation file before SDL loop starts
+    // Uses in handle_click_scene_1() the developer logo uses osVersion to determine URL type to open browser to developer page
     const char *char_osVersion = SDL_GetPlatform();
-    std::string osVersion = char_osVersion;
+    std::string osVersion;
     if (char_osVersion != NULL)
     {
+        osVersion = char_osVersion;
         std::cout << "Host operating system: " << char_osVersion << std::endl;
     }
     else
     {
         std::cerr << "Failed to detect the host operating system." << std::endl;
+        osVersion = "Unknown OS";
     }
     return osVersion;
 }

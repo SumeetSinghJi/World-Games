@@ -55,10 +55,10 @@ e.g. submitEmailPasswordButton = Custom_SDL_Button(static_cast<int>(windowWidth 
 6th parameter = type: Uint8 r = button rgb red colour value e.g. 144 = combined with rgb = light green button colour
 7th parameter = type: Uint8 g = button rgb green colour value e.g. 238 = combined with rgb = light green button colour
 8th parameter = type: Uint8 b = button rgb blue colour value e.g. 144 = combined with rgb = light green button colour
-9th parameter = type: Uint8 alpha = transperancy of font, low number means more transparent font e.g. 255 
+9th parameter = type: Uint8 alpha = transperancy of font, low number means more transparent font e.g. 255
 10th parameter = type: std::string path = string path of asset to load e.g. (example not shown above but an real use case would
 look like this) "assets/graphics/buttons/settings/save-button.png"
-11th parameter = type: bool selected = used by find_euclidean_distance() to find selected button or called in handles to 
+11th parameter = type: bool selected = used by find_euclidean_distance() to find selected button or called in handles to
 select buttons = e.g. false
 
 
@@ -150,16 +150,16 @@ class Custom_SDL_Button
 {
 private:
     SDL_Rect rect;
-    // std::string buttonText;
+    std::string buttonText;
     SDL_Color bgColor;
-    TTF_Font *buttonFont; // destroyed with deconstructor
+    std::string buttonPath;
+    bool isSelected;
+    static Custom_SDL_Button *selectedButton; // Static pointer to keep track of the selected button
+    TTF_Font *buttonFont;                     // destroyed with deconstructor
     TTF_Font *buttonfont_24;
     TTF_Font *buttonfont_36;
     TTF_Font *buttonfont_48;
     SDL_Texture *buttonTexture = nullptr; // destroyed with deconstructor
-    std::string buttonPath;
-    bool isSelected;
-    static Custom_SDL_Button *selectedButton; // Static pointer to keep track of the selected button
 
     void render_button_text(const std::string &text, int x, int y, SDL_Renderer *renderer, Uint8 alpha) const
     {
@@ -188,7 +188,6 @@ private:
     }
 
 public:
-    std::string buttonText;
     Custom_SDL_Button(int x, int y, int width, int height, const std::string &text,
                       Uint8 r, Uint8 g, Uint8 b, Uint8 alpha, std::string path, bool selected)
         : rect({x, y, width, height}), buttonText(text),
@@ -221,7 +220,8 @@ public:
         return SDL_PointInRect(&point, &rect);
     }
 
-    bool is_selected() {
+    bool is_selected() const
+    {
         return isSelected;
     }
 
@@ -239,7 +239,8 @@ public:
 
     void set_button_texture(SDL_Renderer *renderer, std::string customButtonPath)
     {
-        if (!customButtonPath.empty()) {
+        if (!customButtonPath.empty())
+        {
             buttonPath = customButtonPath;
         }
         buttonTexture = IMG_LoadTexture(renderer, buttonPath.c_str());
@@ -313,7 +314,7 @@ public:
         }
     }
 
-    double find_euclidean_distance(int x1, int y1, int x2, int y2)
+    static double find_euclidean_distance(int x1, int y1, int x2, int y2)
     {
         // Measure Euclidean distance used in finding closest button to navigate to using directional navigation keys
         // E.g. if you press up directional arrow key on a keyboard or gamepad all the buttons north in -y scale
@@ -484,5 +485,4 @@ public:
             }
         }
     }
-
 };

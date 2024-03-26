@@ -34,7 +34,7 @@
 int main(int argc, char *argv[])
 {
     srand(static_cast<unsigned int>(time(0)));                           // Seed random time function for gameplay randomisation
-    find_os();                                                           // Find host OS for OS specific functions
+    osVersion = find_os();                                               // Find host OS for OS specific functions
     update_version_string_from_readme_file("README.md");                 // populate variable currentVersion in update_app.hpp
 
     create_save_file_if_doesnt_exist(); // If game downloaded with no existing save file this function will create
