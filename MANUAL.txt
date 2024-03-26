@@ -131,12 +131,22 @@ Game Name: Ancient Games
 Project name: Games of the Ancients
 Creation: 26/09/2023
 Version: 0.1
-Description: A C++ game on traditional board and hand games from different cultures around the ancient.
 Author: Sumeet Singh @ www.sumeet-singh.com
 Publisher: AgniSamooh @ www.agniSamooh.com
-License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) 
-License.
+License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) License.
 
+
+
+GAME DESCRIPTION
+
+Ancient Games is a C++ programming language developed game in which players can play different traditional 
+board and hand games from different ancient cultures around the world.
+There are achievements that can be unlocked through completing specific objectives in the game such as winning your
+first game, or winning all games against a computer (AI) opponent at least once.
+You can locate games by starting a new game then clicking on any location on the world map marked by a landmark.
+Before the game starts you can configure game settings such as rounds (lives), timer, who starts first and position.
+When you accept/close the game settings you can view the rules in the help (book icon) section.
+Once you begin the game and learn, you can join online multiplayer to find other players or friends and compete.
 
 
 HELP
@@ -355,12 +365,12 @@ scene 21 = _____UNUSED_____
 scene 22 = _____UNUSED_____
 scene 23 = _____UNUSED_____
 scene 24 = _____UNUSED_____
-scene 25 = ancient map
+scene 25 = World map
 scene 26 = _____UNUSED_____
-scene 27 = Tutorial
+scene 27 = _____UNUSED_____
 scene 28 = _____UNUSED_____
 scene 29 = _____UNUSED_____
-scene 30 = _____UNUSED_____
+scene 30 = Tutorial - Tic Tac Toe
 scene 31 - beijing - Go
 scene 32 = london (Celtic)- Fidhchell
 scene 33 = Ethiopia (Yeha) - Mancala
@@ -386,21 +396,28 @@ scene 50 - _____UNUSED_____
 
 UNLOCKABLE ACHIEVEMENTS
 
-Completing a traditional game from a scene unlocks that achievement.
+The list of all achievements that can be unlocked while completing objectives playing the game are below
+1. 
+2. 
+3. 
+4. 
+5. 
+6. 
+7. 
+8. 
+9. 
+10. 
 
-12 (scene 32): Won Tic Tac Toe
-
-
-OBJECTIVE
-
-1. Win the game by winning all games around the ancient while having fun.
 
 
 MODDING
 
-Game can be modified anytime through source code. Free scenes are marked as _____UNUSED_____ in scenes section.
-Creating new games can be achieved by creating a new header file for your game using an existing as an template
-if needed then creating the relevant SDL links.
+Modding is easy
+
+Step 1. In MANUAL.txt find a free scene marked as _____UNUSED_____ in scenes section.
+Step 2. Create a game as a header similar to existing header games
+Step 3. Add the games specific code for handle(), update(), draw() to core_game_logic() handle(), update(), draw()
+
 
 
 _________________________________________________________________________________________________________________

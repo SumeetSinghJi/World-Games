@@ -1392,7 +1392,7 @@ void handle_events()
             {
                 handle_click_scene_25(mouseX, mouseY);
             }
-            else if (scene == 32)
+            else if (scene == 30) // Tutorial Tic Tac Toe
             {
                 ttt_mouse_handle(mouseX, mouseY);
             }
@@ -1468,7 +1468,7 @@ void update()
     else if (scene == 25) // world map
     {
     }
-    else if (scene == 32)
+    else if (scene == 30)
     {
         ttt_SDL_update();
     }
@@ -1535,7 +1535,7 @@ void draw()
         draw_text_for_HUD_scene_25();
         draw_buttons_scene_25();
     }
-    else if (scene == 32) // Game Map - Rome - Tic Tac Toe
+    else if (scene == 30) // Game Map - Rome - Tic Tac Toe
     {
         ttt_SDL_draw();
     }

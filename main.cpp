@@ -18,6 +18,7 @@
 #include "headers/sdl_gamepad_handles.hpp"  // SDL Gamepad controller keypresses
 #include "headers/update_app.hpp"           // For downloading and installing latest game update
 
+#include "headers/tic_tac_toe.hpp"      // scene 30 - Tutorial - Tic Tac Toe
 #include "headers/go.hpp"               // scene 31 - beijing - Go
 #include "headers/fidhchell.hpp"        // scene 32 = london (Celtic)- Fidhchell
 #include "headers/mancala.hpp"          // scene 33 = Ethiopia (Yeha) - Mancala
@@ -33,20 +34,20 @@
 
 int main(int argc, char *argv[])
 {
-    srand(static_cast<unsigned int>(time(0)));                           // Seed random time function for gameplay randomisation
-    osVersion = find_os();                                               // Find host OS for OS specific functions
-    update_version_string_from_readme_file("README.md");                 // populate variable currentVersion in update_app.hpp
+    srand(static_cast<unsigned int>(time(0)));           // Seed random time function for gameplay randomisation
+    osVersion = find_os();                               // Find host OS for OS specific functions
+    update_version_string_from_readme_file("README.md"); // populate variable currentVersion in update_app.hpp
 
     create_save_file_if_doesnt_exist(); // If game downloaded with no existing save file this function will create
-    load_settings(); // load settings will call create_save_file_if_missing();
+    load_settings();                    // load settings will call create_save_file_if_missing();
 
     start_SDL(); // Start game
 
     play_developer_splash_screen(); // Render promotional image of developer before game starts
 
-    run_SDL();  // Run Game
+    run_SDL();   // Run Game
     save_game(); // Save after quit called in run_SDL() event loop
-    exit_SDL(); // Quit Game
+    exit_SDL();  // Quit Game
 
     return 0;
 }
