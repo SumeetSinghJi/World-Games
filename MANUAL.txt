@@ -88,11 +88,12 @@ ________________________________________________________________________________
 
 _________________________________________________________________________________________________________________
 
+MIT License
+
+Copyright (c) 2023 Sumeet Singh
 
 Source Code License:
 The source code in this project is licensed under the MIT License.
-
-Copyright (c) 2023 Sumeet Singh
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -115,7 +116,6 @@ Note: This project includes components licensed under different terms:
 - SDL2 image: See `./src/SDL2_image/LICENSE.txt` for details.
 - SDL2 Mixer: See `./src/SDL2_Mixer/LICENSE.txt` for details.
 - SDL2 TTF: See `./src/SDL2_TTF/LICENSE.txt` for details.
-- Boost.asio: See __________FILL ME______________ for details.
 
 
 _________________________________________________________________________________________________________________
