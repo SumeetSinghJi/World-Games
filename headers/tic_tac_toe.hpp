@@ -164,7 +164,7 @@ void ttt_draw_setup_game_popup_window()
         {
             render_text("You choose: Starting player O", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.30), 255, 0);
         }
-        else if (ttt_starting_player_is_x)
+        else
         {
             render_text("You choose: Starting player X", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.30), 255, 0);
         }
@@ -394,7 +394,7 @@ std::vector<int> ttt_update_ai_check_available_moves(std::vector<int> &ttt_posit
     }
     return moves;
 }
-int ttt_update_possible_winning_moves(std::vector<int> ttt_positions, int player)
+int ttt_update_possible_winning_moves(const std::vector<int> ttt_positions, int player)
 {
     for (int i = 0; i < ttt_positions.size(); ++i)
     {

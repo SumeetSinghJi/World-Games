@@ -425,16 +425,14 @@ void handle_click_scene_11(int mouseX, int mouseY) // Online login
         if (scene11acceptButton.isClicked(mousePosition))
         {
             std::cout << "You clicked: Accept Privacy Policy" << std::endl;
-            if (!acceptedPrivacyPolicy)
-            {
-                acceptedPrivacyPolicy = true;
-            }
-            if (acceptedPrivacyPolicy)
-            {
-                acceptedTermsAndConditions = true;
-                showPrivacyPolicyPopup = false;
-            }
-            scene = 13; // To multiplayer lobby
+            acceptedPrivacyPolicy = true;
+                if (scene11acceptButton.isClicked(mousePosition))
+                { 
+                    std::cout << "You clicked: Accept Terms and Conditions" << std::endl;
+                    acceptedTermsAndConditions = true;
+                    showPrivacyPolicyPopup = false;
+                    scene = 13; // To multiplayer lobby
+                }
         }
         else if (scene11denyButton.isClicked(mousePosition))
         {
@@ -588,7 +586,7 @@ void handle_click_scene_25(int mouseX, int mouseY) // World map
     else if (scene25romeButton.isClicked(mousePosition))
     {
         std::cout << "You clicked Rome" << std::endl;
-        int target = 32;
+        int target = 30;
         is_scene_unlocked(target);
     }
 }

@@ -43,7 +43,7 @@ void load_controller()
     }
 }
 
-void load_music(const std::string songTitle)
+void load_music(const std::string& songTitle)
 {
     if (currentSong != songTitle)
     {

@@ -164,7 +164,7 @@ void ternilapilli_draw_setup_game_popup_window()
         {
             render_text("You choose: Starting player O", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.30), 255, 0);
         }
-        else if (ternilapilli_starting_player_is_x)
+        else
         {
             render_text("You choose: Starting player X", static_cast<int>(windowWidth * 0.19), static_cast<int>(windowHeight * 0.30), 255, 0);
         }
@@ -394,7 +394,7 @@ std::vector<int> ternilapilli_update_ai_check_available_moves(std::vector<int> &
     }
     return moves;
 }
-int ternilapilli_update_possible_winning_moves(std::vector<int> ternilapilli_positions, int player)
+int ternilapilli_update_possible_winning_moves(const std::vector<int> ternilapilli_positions, int player)
 {
     for (int i = 0; i < ternilapilli_positions.size(); ++i)
     {

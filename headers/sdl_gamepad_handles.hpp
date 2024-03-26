@@ -238,9 +238,9 @@ void handle_gamepad_scene_2(int button) // Settings
             std::cout << "You clicked: set to 800 x 600 resolution" << std::endl;
             change_resolution(800, 600);
             fontSize = 24;
-            for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+            for (Custom_SDL_Button *btn : allButtons) // for loop variable* has to match buttonsVector*
             {
-                button->set_font_size(24);
+                btn->set_font_size(24);
             }
         }
         else if (resolution1366x768Button.is_selected())
@@ -248,9 +248,9 @@ void handle_gamepad_scene_2(int button) // Settings
             std::cout << "You clicked: set to 1366 x 768 resolution" << std::endl;
             change_resolution(1366, 768);
             fontSize = 36;
-            for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+            for (Custom_SDL_Button *btn : allButtons) // for loop variable* has to match buttonsVector*
             {
-                button->set_font_size(36);
+                btn->set_font_size(36);
             }
         }
         else if (resolutionFullScreenButton.is_selected())
@@ -272,9 +272,9 @@ void handle_gamepad_scene_2(int button) // Settings
             change_resolution(windowWidth, windowHeight);
 
             fontSize = 48;
-            for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+            for (Custom_SDL_Button *btn : allButtons) // for loop variable* has to match buttonsVector*
             {
-                button->set_font_size(48);
+                btn->set_font_size(48);
             }
         }
         else if (returnGameButton.is_selected())
@@ -299,9 +299,9 @@ void handle_gamepad_scene_2(int button) // Settings
             std::cout << "You clicked: Reset settings" << std::endl;
             change_resolution(1366, 768);
             fontSize = 36;
-            for (Custom_SDL_Button *button : allButtons) // for loop variable* has to match buttonsVector*
+            for (Custom_SDL_Button *btn : allButtons) // for loop variable* has to match buttonsVector*
             {
-                button->set_font_size(36);
+                btn->set_font_size(36);
             }
             if (!isMusicPlaying)
             {

@@ -496,7 +496,7 @@ void new_game();
 void exit_SDL();
 std::string find_os();
 void render_fps();
-void start_application_update(std::string urlPath, std::string downloadLink);
+void start_application_update(const std::string& urlPath, const std::string& downloadLink);
 
 // for SDL_renders
 bool is_achievement_unlocked(int target); // For rendering Trophy icon if achievement unlocked
@@ -505,7 +505,7 @@ void terms_and_conditions_file_read(); // for Terms and conditions policy popup 
 
 // for main.cpp
 std::string find_os();
-std::string update_version_string_from_readme_file(std::string fileWithVersionString);
+std::string update_version_string_from_readme_file(const std::string& fileWithVersionString);
 void start_SDL();
 void play_developer_splash_screen();
 void run_SDL();
@@ -516,7 +516,7 @@ void load_fonts(); // Load fonts here
 void load_textures();
 void ttt_load_textures();
 void load_animations();
-void load_music(std::string songTitle);
+void load_music(const std::string& songTitle);
 void load_sound();
 void load_controller();
 
@@ -542,19 +542,23 @@ void draw_buttons_scene_2();
 void draw_buttons_scene_3();
 void draw_buttons_scene_4();
 void draw_buttons_scene_5();
-void draw_buttons_scene_25();
+
 void draw_buttons_scene_8();
 void draw_buttons_scene_9();
+
 void draw_buttons_scene_10();
 void draw_buttons_scene_11();
+
+void draw_buttons_scene_25();
 
 void draw_text_for_HUD_scene_1();
 void draw_text_for_HUD_scene_2();
 void draw_text_for_HUD_scene_4();
-void draw_text_for_HUD_scene_25();
 void draw_text_for_HUD_scene_8();
 void draw_text_for_HUD_scene_9();
+
 void draw_text_for_HUD_scene_11();
+void draw_text_for_HUD_scene_25();
 
 void ttt_mouse_handle(int mouseX, int mouseY);
 void ttt_SDL_update();

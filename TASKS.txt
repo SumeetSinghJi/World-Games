@@ -19,6 +19,7 @@ TASKS
     * Key remapping option
     * Draw win frequency
     * Fix rounds as lives
+    * Make update_app.hpp into a class with static members for functions to call outside object-> referencing e.g. sdl.do() to do()
     * In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
     * server responds with verification email.
     * If user clicks OK on email verification, account created

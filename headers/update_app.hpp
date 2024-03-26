@@ -40,17 +40,17 @@
 #include <cstdlib>    // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,
 
 #ifdef _WIN32
-const std::string updateApp_OSversion = "Windows";
-const std::string updateApp_curl_bin_path = "./src/curl/bin/curl.exe";
+std::string updateApp_OSversion = "Windows";
+std::string updateApp_curl_bin_path = "./src/curl/bin/curl.exe";
 #elif __APPLE__
-const std::string updateApp_OSversion = "Mac OS X";
-const std::string updateApp_curl_bin_path = "./src/curl/bin/curl.bin";
+std::string updateApp_OSversion = "Mac OS X";
+std::string updateApp_curl_bin_path = "./src/curl/bin/curl.bin";
 #elif __linux__
-const std::string updateApp_OSversion = "Linux";
-const std::string updateApp_curl_bin_path = "./src/curl/bin/curl";
+std::string updateApp_OSversion = "Linux";
+std::string updateApp_curl_bin_path = "./src/curl/bin/curl";
 #else
-const std::string updateApp_OSversion = "Unknown";
-const std::string updateApp_curl_bin_path = "./src/curl/bin/curl.exe";
+std::string updateApp_OSversion = "Unknown OS";
+std::string updateApp_curl_bin_path = "./src/curl/bin/curl";
 #endif
 
 // GLOBAL VARIABLES
@@ -116,10 +116,9 @@ int XferInfoCallback(void *clientp, curl_off_t dltotal, curl_off_t dlnow, curl_o
 }
 
 // This function reads the README.md to find the current version, to compare with online repo latest version
-std::string update_version_string_from_readme_file(std::string fileWithVersionString)
+std::string update_version_string_from_readme_file(const std::string& fileWithVersionString)
 {
     std::fstream readme_object;
-    std::string version = "";
     readme_object.open(fileWithVersionString, std::ios::in);
     if (readme_object.is_open())
     {
@@ -142,7 +141,7 @@ std::string update_version_string_from_readme_file(std::string fileWithVersionSt
 }
 
 // Start Curl to ancient-games Github to check for updates
-bool start_curl(std::string urlPath)
+bool start_curl(const std::string& urlPath)
 {
     /* Purpose
 
@@ -241,7 +240,7 @@ bool start_curl(std::string urlPath)
 }
 
 // download update file from start_curl() prompt
-bool download_file(std::string downloadLink)
+bool download_file(const std::string& downloadLink)
 {
     std::cout << "Attempting to download updates for ancient-games." << std::endl;
 
@@ -422,18 +421,26 @@ bool extract_zip()
 }
 
 // Get zip file name from downloadLink
-bool set_zip_file_name(std::string downloadLink)
+bool set_zip_file_name(const std::string& downloadLink)
 {
     // Assuming UpdateApp_sourceDirectory is "C:/Users/TESTUSER/Documents/ancient-Games"
     size_t lastSeparatorPos = downloadLink.find_last_of("/\\");
 
-    // Check if the separator was found
-    if (lastSeparatorPos != std::string::npos)
+    try
     {
-        // Remove everything after the last separator (including the separator itself)
-        updateApp_zipFilePath = UpdateApp_sourceDirectory.substr(0, lastSeparatorPos);
+        // Check if the separator was found
+        if (lastSeparatorPos != std::string::npos)
+        {
+            // Remove everything after the last separator (including the separator itself)
+            updateApp_zipFilePath = UpdateApp_sourceDirectory.substr(0, lastSeparatorPos);
+        }
+        return true;
     }
-    return true;
+    catch (const std::exception &e)
+    {
+        std::cerr << "Error: couldn't retrieve zip file name from full download link path" << e.what() << std::endl;
+        return false;
+    }
 }
 
 // from UpdateApp_sourceDirectory set UpdateApp_destinationDirectory
@@ -448,8 +455,8 @@ std::string get_unzipped_application_file_path()
     // Check if the separator was found
     if (lastSeparatorPos != std::string::npos)
     {
-        // Remove everything after the last separator (including the separator itself)
-        UpdateApp_destinationDirectory = UpdateApp_destinationDirectory.substr(0, lastSeparatorPos);
+        // Resize the string to remove everything after the last separator (including the separator itself)
+        UpdateApp_destinationDirectory.resize(lastSeparatorPos);
     }
     // Append "ancient-games-master" to the destination directory
     UpdateApp_destinationDirectory += "/ancient-games-master";
@@ -502,23 +509,33 @@ bool copy_save_to_extracted_folder()
 bool exit_application()
 {
     std::cout << "STARTING - Close application" << std::endl;
-    std::string windows_terrinate_process_command = "taskkill /F /IM main.exe";
-    std::string unix_terrinate_process_command = "pkill main";
 
-    if (updateApp_OSversion == "Windows")
+    try
     {
-        system(windows_terrinate_process_command.c_str());
+        if (updateApp_OSversion == "Windows")
+        {
+            std::string windows_terminate_process_command = "taskkill /F /IM main.exe";
+            system(windows_terminate_process_command.c_str());
+        }
+        else
+        {
+            std::string unix_terminate_process_command = "pkill main";
+            system(unix_terminate_process_command.c_str());
+        }
+        return true;
     }
-    else
+    catch (const std::exception &e)
     {
-        system(unix_terrinate_process_command.c_str());
+        std::cerr << "Error occurred in exit_application: " << e.what() << std::endl;
+        return false;
     }
-    return true;
 }
 
 // Function to delete a directory and its contents using the rmdir command
-bool delete_directory(const std::string &folderPath)
+bool delete_directory(const std::string& folderPath)
 {
+    std::cout << "STARTING - deleting directory: " << folderPath << std::endl;
+
     for (const auto &entry : std::filesystem::directory_iterator(folderPath))
     {
         if (entry.is_directory())
@@ -591,42 +608,6 @@ bool delete_directory(const std::string &folderPath)
             return false;
         }
     }
-}
-
-// Delete original application directory and its subdirectories
-bool delete_original_application_directory_subdirectories()
-{
-    std::cout << "STARTING - delete original application directory - subdirectories" << std::endl;
-    std::cout << "Existing application folder to be deleted is: " << UpdateApp_sourceDirectory << std::endl;
-
-    // Call the recursive delete_directory function
-    delete_directory(UpdateApp_sourceDirectory);
-    return true;
-}
-
-// Delete original application directory
-bool delete_original_application_folder()
-{
-    std::cout << "STARTING - delete original application directory" << std::endl;
-    std::cout << "Existing application folder to be deleted is: " << UpdateApp_sourceDirectory << std::endl;
-
-    if (updateApp_OSversion == "Windows")
-    {
-        try
-        {
-            std::filesystem::remove_all(UpdateApp_sourceDirectory); // Use remove_all to delete hidden folders as well
-            std::cout << "Original application directory deleted." << std::endl;
-        }
-        catch (const std::filesystem::filesystem_error &exception)
-        {
-            std::cout << "Error deleting original application directory: " << exception.what() << std::endl;
-        }
-    }
-    else if (updateApp_OSversion == "linux" || updateApp_OSversion == "Mac OS X")
-    {
-        std::cout << "delete original application directory Work in progress" << std::endl;
-    }
-    return true;
 }
 
 // Rename unzipped new updated application folder "ancient-games-master" to "ancient-games"
@@ -703,26 +684,31 @@ bool application_start()
 {
     std::cout << "STARTING - Opening application executable or binary" << std::endl;
     std::string new_application_directory_path = UpdateApp_sourceDirectory;
-    std::string start_command;
 
-    if (updateApp_OSversion == "Windows")
+    try
     {
-        start_command = "start \"\" \"" + new_application_directory_path + "\\ancient-games.exe\"";
-        system(start_command.c_str());
+        if (updateApp_OSversion == "Windows")
+        {
+            std::string start_command = "start \"\" \"" + new_application_directory_path + "\\ancient-games.exe\"";
+            system(start_command.c_str());
+        }
+        else
+        {
+            std::string start_command = "chmod +x \"" + new_application_directory_path + "/ancient-games.bin\"";
+            system(start_command.c_str());
+        }
+        return true;
     }
-    else
+    catch (const std::exception &e)
     {
-        start_command = "chmod +x \"" + new_application_directory_path + "/ancient-games.bin\"";
-        system(start_command.c_str());
+        std::cerr << "Error occurred in application_start: " << e.what() << std::endl;
+        return false;
     }
-    return true;
 }
 
 // If all functions return true, write to save-file, applicationupdated
 void set_application_updated_variable()
 {
-    std::string updateApp_currentVersion = update_version_string_from_readme_file("README.md");
-
     std::ofstream savefile_object("ancient-games_save.txt");
 
     if (savefile_object.is_open())
@@ -737,7 +723,7 @@ void set_application_updated_variable()
 }
 
 // Call to start program after setting UpdateApp_sourceDirectory = "" && update_version_string_from_readme_file("");
-void start_application_update(std::string urlPath, std::string downloadLink)
+void start_application_update(const std::string& urlPath, const std::string& downloadLink)
 {
     start_curl(urlPath);
     if (updateApp_startUpdate)
@@ -748,7 +734,7 @@ void start_application_update(std::string urlPath, std::string downloadLink)
             extract_zip() &&
             copy_save_to_extracted_folder() &&
             exit_application() &&
-            delete_original_application_directory_subdirectories() &&
+            delete_directory(UpdateApp_sourceDirectory) &&
             rename_extracted_folder() &&
             CMAKE_build() &&
             application_start())
