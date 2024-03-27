@@ -246,7 +246,7 @@ public:
         buttonTexture = IMG_LoadTexture(renderer, buttonPath.c_str());
         if (buttonTexture == nullptr)
         {
-            std::cout << "Button texture failed to load: " << IMG_GetError << std::endl;
+            std::cout << "Button texture failed to load: " << IMG_GetError() << std::endl;
         }
     }
 

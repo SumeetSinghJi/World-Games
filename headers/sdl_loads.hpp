@@ -228,7 +228,7 @@ void load_animations()
     fireworksAnimationSurface = IMG_Load("assets/graphics/animations/fireworks - haenaillust.gif");
     if (!fireworksAnimationSurface)
     {
-        std::cerr << "Error: Faled to load .gif animations: " << IMG_GetError << std::endl;
+        std::cerr << "Error: Faled to load .gif animations: " << IMG_GetError() << std::endl;
     }
     else
     {

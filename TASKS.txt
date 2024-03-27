@@ -1,6 +1,9 @@
 
 TASKS
     * High Risk - Game crash when going back achievements after losing a Tic Tac toe round
+    * Debug/Compile with lldb/clang++
+    * Static analyse with clangtidy
+    * Static analuse with cppcheck
     * Convert Tic Tac toe with buttons
     * Make game Terni
     * Make interactive tutorial with Tic Tac Toe + Terni, e.g. circle over the board, the crosses, the winning combo, the reset button

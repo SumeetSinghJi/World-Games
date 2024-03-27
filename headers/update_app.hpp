@@ -18,7 +18,7 @@
     3. call function: start_application_update(std::string urlPath, std::string downloadLink); with 2 parameters;
     urlPath = remote file e.g. .txt/.md with string "Version: " to curl and compare remoteVersion with updateApp_currentVersion;
     downloadLink = full .zip file URL of app
-    e.g. start_application_update("https://github.com/TESTUSERSinghJi/ancient-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/TESTUSERSinghJi/ancient-games/archive/refs/heads/master.zip");
+    e.g. start_application_update("https://github.com/SumeetSinghJi/ancient-games", "./src/curl/bin/curl-ca-bundle.crt", "https://github.com/SumeetSinghJi/ancient-games/archive/refs/heads/master.zip");
     4. variable/API updateApp_newVersionAvailable will trigger true during start_application_update() if new update available
     5. Manually setting variable updateApp_startUpdate to true will continue remainder of update process, closing app, copying save, and restarting
 */
@@ -27,9 +27,9 @@
 
 #include <iostream>
 #include <curl.h>  // for downloading latest application from Github
-#include <cstdio>  // for curl functions
+#include <cstdio>  // for curl functions, and fopen_s
 #include <cstring> // for curl functions
-#include <cstdlib> // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,
+#include <cstdlib> // For c++, multiplatform code e.g. std::system("pkill") to run system commands e.g terminate app, or _dupenv_s()
 #ifdef _WIN32
 #include <winsock2.h> // For curling on Windows
 #endif
@@ -37,7 +37,6 @@
 #include <fstream>    // multiplatform method for for file open read write objects
 #include <filesystem> // multiplatform method for creating and deleting directories (folders)
 #include <string>     // For getline()
-#include <cstdlib>    // multiplatform e.g. std::system("pkill") to run system commands e.g terminate app,
 
 #ifdef _WIN32
 std::string updateApp_OSversion = "Windows";
@@ -116,7 +115,7 @@ int XferInfoCallback(void *clientp, curl_off_t dltotal, curl_off_t dlnow, curl_o
 }
 
 // This function reads the README.md to find the current version, to compare with online repo latest version
-std::string update_version_string_from_readme_file(const std::string& fileWithVersionString)
+std::string update_version_string_from_readme_file(const std::string &fileWithVersionString)
 {
     std::fstream readme_object;
     readme_object.open(fileWithVersionString, std::ios::in);
@@ -141,7 +140,7 @@ std::string update_version_string_from_readme_file(const std::string& fileWithVe
 }
 
 // Start Curl to ancient-games Github to check for updates
-bool start_curl(const std::string& urlPath)
+bool start_curl(const std::string &urlPath)
 {
     /* Purpose
 
@@ -240,15 +239,15 @@ bool start_curl(const std::string& urlPath)
 }
 
 // download update file from start_curl() prompt
-bool download_file(const std::string& downloadLink)
+bool download_file(const std::string &downloadLink)
 {
     std::cout << "Attempting to download updates for ancient-games." << std::endl;
 
     CURL *curl;
     CURLcode res;
-    FILE *file = fopen(updateApp_zipFilePath.c_str(), "wb");
+    FILE *file;
 
-    if (!file)
+    if (fopen_s(&file, updateApp_zipFilePath.c_str(), "wb") != 0)
     {
         std::cout << "Error: Cannot open file for writing." << std::endl;
         return false;
@@ -372,8 +371,9 @@ bool extract_zip()
                 std::filesystem::create_directories(output_file_path.parent_path());
 
                 // Open the output file
-                FILE *output_file = fopen(output_file_path.string().c_str(), "wb");
-                if (output_file == nullptr)
+                FILE *output_file;
+                errno_t err = fopen_s(&output_file, output_file_path.string().c_str(), "wb");
+                if (err != 0 || output_file == nullptr)
                 {
                     std::cout << "Error creating output file." << std::endl;
                     zip_fclose(zip_file);
@@ -421,7 +421,7 @@ bool extract_zip()
 }
 
 // Get zip file name from downloadLink
-bool set_zip_file_name(const std::string& downloadLink)
+bool set_zip_file_name(const std::string &downloadLink)
 {
     // Assuming UpdateApp_sourceDirectory is "C:/Users/TESTUSER/Documents/ancient-Games"
     size_t lastSeparatorPos = downloadLink.find_last_of("/\\");
@@ -532,7 +532,7 @@ bool exit_application()
 }
 
 // Function to delete a directory and its contents using the rmdir command
-bool delete_directory(const std::string& folderPath)
+bool delete_directory(const std::string &folderPath)
 {
     std::cout << "STARTING - deleting directory: " << folderPath << std::endl;
 
@@ -643,10 +643,13 @@ bool CMAKE_build()
 
     std::string desktopPath;
 #ifdef _WIN32
-    const char *userProfile = std::getenv("USERPROFILE");
-    if (userProfile)
+    char *userProfile = nullptr;
+    size_t len;
+    errno_t err = _dupenv_s(&userProfile, &len, "USERPROFILE"); // _dupenv_s part of <stdlib.h> header in C and <cstdlib> in C++
+    if (err == 0 && userProfile != nullptr)
     {
         desktopPath = std::string(userProfile) + "\\Desktop\\Ancient Games.lnk";
+        free(userProfile);
     }
     else
     {
@@ -722,8 +725,8 @@ void set_application_updated_variable()
     }
 }
 
-// Call to start program after setting UpdateApp_sourceDirectory = "" && update_version_string_from_readme_file("");
-void start_application_update(const std::string& urlPath, const std::string& downloadLink)
+// Called to start program after setting UpdateApp_sourceDirectory = "" && update_version_string_from_readme_file("");
+void start_application_update(const std::string &urlPath, const std::string &downloadLink)
 {
     start_curl(urlPath);
     if (updateApp_startUpdate)
