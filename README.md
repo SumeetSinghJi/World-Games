@@ -1,6 +1,7 @@
 # Ancient Games
 
-* Version: 0.1
+Version: 0.1
+
 * Created: 26/09/2023
 * Description: A free fun C++ game players can travel the ancient playing different ancient culture board games.
 * Author: Sumeet Singh @ sumeet-singh.com

@@ -247,15 +247,15 @@ ________________________________________________________________________________
 
 
 
-PROGRAMMING LANGUAGE
+PROGRAMMING ENVIRONMENT
 
-* Game written in C++17 minimum standard, due to inclusion of modern headers such as 
+* Game written in C++ C++17 minimum standard, due to inclusion of modern headers such as 
 std::filesystem header #include <filesystem>
-
-
-PROGRAM COMPILING
-
 * Currently compiles with g++ (part of MinGW/GNU)
+* Includes IDE development files for Visual Studio Code within .vscode folder
+* Development environment includes 4 tasks.json tasks for 
+Compilers; g++ and clang and Static Analysers; cppcheck and clang tidy
+* Includes CMAKElists.txt compile file with associated ./build folder for building locally
 
 
 LIBRAIRES
@@ -279,19 +279,22 @@ The below files are contained in the downloaded game directory
 
 ./vscode - vscode configuration files
 ./assets - subdirectories of assets e.g. images, sounds, fonts
+./documents - Contains game documents such as manuals, policies with translations
 ./headers - C++ header files
 ./src - Source code and Third party libraries
 ./tests - Tests directory, contains various game development tests using Google Tests library
 .gitignore - Used in development file
+Ancient Games.lnk - Windows shortcut used in update_app.hpp update function to copy to desktop
+ancient-games_save.txt - in game save file
+ancient-games.code-workspace - vscode configuration file
 CMAKEllists.txt - Used in development file
+LICENSE - Hosts a full copy of license same as within manual. Seperated for Github metadata
 main.cpp - Implementation file
 main.exe - Game executable
 MANUAL.txt - Contains information about game
-privacy_policy.txt - Online services Privacy Policy
 README.md - Github source repository introduction document
 TASKS.txt - Issue and Bug tracker
-terms_and_conditions.txt - Online services Terms and Conditions
-Various DLL's for libraries {
+Various DLL's for third party libraries in ./src {
     libcurl-x64.dll - libcurl
     libzip.dll - libzip
     SDL2_image.dll - SDL2 Image
@@ -299,12 +302,11 @@ Various DLL's for libraries {
     SDL2_TTF.dll - SDL2 TTF/Font
     SDL2.dll - SDL2
 }
-ancient-games_save.txt - in game save file
-ancient-games.code-workspace - vscode configuration file
 
 
 
-GRAPHICAL USER INTERFACE & GAME NAVIGATION
+
+GAME NAVIGATION
 
 Game menu and navigation is based on SDL Game design best practice "scenes".
 There are scenes for all different menu options e.g. Settings, or Credits, and a
@@ -319,6 +321,8 @@ Navigating through scene is dependent on handle_events() button clicks in GAME L
 Graphical navigation is dictated by button object created from the Custom_SDL_button class
 within custom_SDL_button.hpp that are clickable as defined in sdl_mouse_handles.hpp
 
+
+
 Uses headers;
 
 #include "headers/sdl_loads.hpp"            // SDL Textures, Sounds, Animations to load
@@ -328,6 +332,7 @@ Uses headers;
 #include "headers/sdl_keyboard_handles.hpp" // SDL Keyboard keypresses
 #include "headers/sdl_gamepad_handles.hpp"  // SDL Gamepad controller keypresses
 #include "headers/custom_SDL_button.hpp"    // Custom SDL Button class for creating buttons for handles
+
 
 
 GAMEPLAY
@@ -351,13 +356,19 @@ Uses headers;
 
 UPDATING GAME
 
-There is an in game option to update game. It will contact a repository hosting game depending on which platform
-game was downloaded and installed from, which will check the latest version string then download and replace the
-existing game directory while retaining save game files.
+There is an in game option to update game. It will contact the GitHub repository hosting game then look
+for string "Version: " in GitHub repo front page README.md file and compare with local README.md file.
+If different prompt will appear to download latest version which;
+
+* Downloads latest file
+* Copies over save
+* Deletes old game directory
+
+IMPORTANT: In README.md string "Version: " must be on a new line without dot point (*) in front of text e.g.
+Version: 0.1
 
 Uses headers;
-#include "headers/download_game.hpp"        // For downloading latest game update
-#include "headers/install_game.hpp"        // For Installing latest game update
+#include "headers/update_app.hpp"        // For downloading latest game update
 
 
 
@@ -378,6 +389,19 @@ Uses headers;
 
 
 SCENES
+
+Scenes represent logical segregation of game menus.
+
+Each scene comes with it's own
+
+* mouse_handle() - for run_SDL()
+* gamepad_handle() - for run_SDL()
+* keyboard_handle() - for run_SDL()
+* sdl_renders() - for SDL_draw()
+* sdl_texts() - for SDL_draw()
+* SDL_draw() - Logic for music goes here
+
+All scenes are below. Any scene labelled _____UNUSED_____ can be used for development and modding.
 
 scene 1 = Main menu
 scene 2 = Settings
@@ -435,7 +459,8 @@ scene 50 - _____UNUSED_____
 UNLOCKABLE ACHIEVEMENTS
 
 The list of all achievements that can be unlocked while completing objectives playing the game are below
-1. 
+
+1. Won first game
 2. 
 3. 
 4. 
@@ -444,7 +469,7 @@ The list of all achievements that can be unlocked while completing objectives pl
 7. 
 8. 
 9. 
-10. 
+10. Won all games
 
 
 
