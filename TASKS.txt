@@ -1,9 +1,6 @@
 
 TASKS
     * High Risk - Game crash when going back achievements after losing a Tic Tac toe round
-    * Debug/Compile with lldb/clang++
-    * Static analyse with clangtidy
-    * Static analuse with cppcheck
     * Convert Tic Tac toe with buttons
     * Make game Terni
     * Make interactive tutorial with Tic Tac Toe + Terni, e.g. circle over the board, the crosses, the winning combo, the reset button
@@ -30,7 +27,7 @@ TASKS
     * New Settings button for changing scroll speed, important for reading help guide forward and back buttons too slow 
     * Create .exe installer and have parameter for variable: UpdateApp_sourceDirectory
     * With installer set icon
-    * Use profiler
+    * Use Intel Vtune profiler to see top functions in call stack
     * Use AI to create victory animation
     * new settings button - volume up/down slider - with noise
     * Fix keyboard up and down movement to different buttons

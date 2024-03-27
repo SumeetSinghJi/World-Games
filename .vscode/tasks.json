@@ -40,7 +40,7 @@
                 "-lSDL2_ttf",
                 "-lSDL2_mixer",
                 "-lgtest",
-                "-lgtest_main"
+                "-lgtest_main",
             ],
             "options": {
                 "cwd": "${fileDirname}"

@@ -29,7 +29,7 @@
 #include <curl.h>  // for downloading latest application from Github
 #include <cstdio>  // for curl functions, and fopen_s
 #include <cstring> // for curl functions
-#include <cstdlib> // For c++, multiplatform code e.g. std::system("pkill") to run system commands e.g terminate app, or _dupenv_s()
+#include <cstdlib> // For c++, multiplatform code e.g. std::system("pkill") to run system commands e.g terminate app
 #ifdef _WIN32
 #include <winsock2.h> // For curling on Windows
 #endif
@@ -643,13 +643,10 @@ bool CMAKE_build()
 
     std::string desktopPath;
 #ifdef _WIN32
-    char *userProfile = nullptr;
-    size_t len;
-    errno_t err = _dupenv_s(&userProfile, &len, "USERPROFILE"); // _dupenv_s part of <stdlib.h> header in C and <cstdlib> in C++
-    if (err == 0 && userProfile != nullptr)
+    const char *userProfile = std::getenv("USERPROFILE");
+    if (userProfile)
     {
         desktopPath = std::string(userProfile) + "\\Desktop\\Ancient Games.lnk";
-        free(userProfile);
     }
     else
     {
