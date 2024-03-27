@@ -133,7 +133,8 @@ Creation: 26/09/2023
 Version: 0.1
 Author: Sumeet Singh @ www.sumeet-singh.com
 Publisher: AgniSamooh @ www.agniSamooh.com
-License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) License.
+License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) 
+License.
 
 
 
@@ -145,8 +146,45 @@ There are achievements that can be unlocked through completing specific objectiv
 first game, or winning all games against a computer (AI) opponent at least once.
 You can locate games by starting a new game then clicking on any location on the world map marked by a landmark.
 Before the game starts you can configure game settings such as rounds (lives), timer, who starts first and position.
-When you accept/close the game settings you can view the rules in the help (book icon) section.
-Once you begin the game and learn, you can join online multiplayer to find other players or friends and compete.
+You may view the rules for each game in the help (book icon) section.
+You may also join or create online multiplayer games with others and friends to compete.
+
+
+CAMPAIGN / STORY MODE
+
+As a university professor specializing in teleportation research, I had always been fascinated by the 
+possibilities of time travel. But when a mishap in my lab sent me hurtling back in time, I found myself in a 
+predicament unlike any I had ever faced.
+
+Lost and disoriented, I soon realized that the only way to return to my own time was to repair the teleportation 
+device I had inadvertently triggered. However, the manual I desperately needed had been reduced to ashes, leaving 
+only scattered fragments in various languages.
+
+With no resources to afford language lessons, I wandered aimlessly, feeling hopeless and alone. That is until I 
+stumbled upon a group of street kids engrossed in an ancient game played with circles drawn in the sand, sticks as 
+lines, and stones as players.
+
+Watching them play, I had a sudden revelation. The game they were playing bore a striking resemblance to Tic Tac Toe, 
+a childhood favorite of mine. As the kids enthusiastically explained the rules in their own language, I realized that 
+this game could serve as a bridge between my existing knowledge and the languages I needed to learn.
+
+Determined to piece together the fragments of the manual, I embarked on a journey across the globe, joining in games 
+with people from different cultures and backgrounds. Through these interactions, I began to piece together words and 
+phrases, linking them to what I already knew.
+
+Day by day, my understanding of languages grew, and with each new piece of information, I made progress in deciphering 
+the manual. As I traveled, I encountered kindness and generosity from strangers who were eager to share their 
+knowledge and language skills.
+
+Eventually, after months of dedication and perseverance, I finally completed the manual, using my newfound linguistic 
+abilities to understand the intricate instructions for repairing the teleportation device.
+
+With the device restored, I bid farewell to my newfound friends and activated the teleporter, feeling a mix of 
+excitement and apprehension as I prepared to return to my own time.
+
+As the familiar hum of the teleportation process enveloped me, I closed my eyes, grateful for the unexpected journey 
+that had led me to this moment. And with a leap of faith, I stepped forward into the unknown, eager to resume my 
+life but forever changed by the experiences that had shaped my journey home.
 
 
 HELP
@@ -209,18 +247,18 @@ ________________________________________________________________________________
 
 
 
-PROGRAMMING DEVELOPMENT LANGUAGE
+PROGRAMMING LANGUAGE
 
-Game written in C++17 minimum standard, due to inclusion of std::filesystem header #include <filesystem>
-
-
-PROJECT SPECIFIC RULES
-
-header files shouldn't include any other header files besides global_variables.hpp for easy maintenance
+* Game written in C++17 minimum standard, due to inclusion of modern headers such as 
+std::filesystem header #include <filesystem>
 
 
+PROGRAM COMPILING
 
-ENVIRONMENT
+* Currently compiles with g++ (part of MinGW/GNU)
+
+
+LIBRAIRES
 
 Game uses the following third party libraries.
 

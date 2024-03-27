@@ -15,8 +15,13 @@ TASKS
     * new settings button to save settings, new function to save settings, and update load_game() to load settings
     * Find a font that supports all languages
     * Key remapping option
-    * Draw win frequency
-    * Fix rounds as lives
+    * Draw win frequency, track wins for a match
+    * Add a leaderboard option for single player
+    * Fix lives function so that rounds = lives and losing rounds loses life
+    * Have a Campaign/story/challenge mode that losing rounds loses lives, but winning rounds wins lives
+    * Clicking new game has ARCADE | STORY options
+    * Add voice acting of the story for above in every language, and also cartoon AI scenes, use generic 
+    tanned dark male with dark hair as protagonist, and a female sidekick that helps you along the way
     * Make update_app.hpp into a class with static members for functions to call outside object-> referencing e.g. sdl.do() to do()
     * In scene 13 - after entering username and email on Submit.onclick, POST to server to login html/js textfield
     * server responds with verification email.
@@ -35,7 +40,8 @@ TASKS
     * Translate MANUAL, PRIVACY POLICY, TERMS AND CONDITIONS, CREDITS in all languages
     * Compile on MacOS and Ubuntu - Untested: Mac OS X 10.11 or higher | Ubuntu 18.04+
     * tests.cpp building not working correctly
-    * CMAKElists.txt not working for main and tests + setup boost + have it create visual studio sln file
+    * Create leaderboard
+    * CMAKElists.txt not working for main and tests + have fiverr person fix then use it to create visual studio sln file
     * For button class Implement multi-highlight/selects for radio buttons/checkboxes/multi-game piece selections
     * Another Interesting segment - https://www.tokabox.com/blog/traditional-board-games-india
     * Interesting segment for help guide - https://en.wikipedia.org/wiki/List_of_games_that_Buddha_would_not_play
