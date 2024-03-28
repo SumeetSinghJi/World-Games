@@ -132,10 +132,11 @@ As a university professor specializing in teleportation research, I'm constantly
 time travel. However, an accident in my lab transported me back in time, presenting me with an unprecedented 
 challenge.
 
-Lost and disoriented, I quickly realized that repairing the teleportation device was the only way to return to my 
-time. Unfortunately, the manual I needed was destroyed, leaving only scattered fragments in various languages.
+Lost and disoriented, I quickly realized that repairing the teleportation device was the only way to return to 
+my time. Unfortunately, the manual I needed was destroyed, leaving only scattered fragments in various languages.
 
-While wandering aimlessly, feeling hopeless and alone, I stumbled upon a group of street children deeply engrossed 
+While wandering aimlessly, feeling hopeless and alone, I stumbled upon a group of street children deeply 
+engrossed 
 in a game I had never encountered before. Intrigued, I approached them, drawn by their lively banter and the 
 intriguing patterns they were creating in the sand. They eagerly explained the rules of their game, which they 
 called "terni lapilli," using simple gestures and basic words.
@@ -302,7 +303,8 @@ files specific to this game below;
 * MANUAL.txt
 * README.md
 * ancient-games* (files starting with Ancient Games)
-* Any mention of variable "scene == 25" = the Starting point of the interaction between the Game Engine and the Game.
+* Any mention of variable "scene == 25" = the Starting point of the interaction between the Game Engine and the 
+Game.
 So if your game is a simple Car/Ship racing game, change all scene 25 logic to interact with you're
 specific game as outlined in ./headers/games (see below MODDING section)
 * Game Engine written in C++ C++17 minimum standard, due to inclusion of modern headers such as 
@@ -321,9 +323,12 @@ instructions
 
 Step 1. In MANUAL.txt find a free scene marked as _____UNUSED_____ in scenes section.
 Step 2. Create a game as a C++ header.hpp file similar to existing header games within ./headers/games
-Step 3. Add the games specific code for handle(), update(), draw() to core_game_logic() handle(), update(), draw()
-Step 4. Integrating achievements can be done with the unlockedAchievements[i] value in the trigger condition logic
-of your game. E.g. on winning your Car Racing sim game in ./headers/games/car_game.hpp set unlockedAchievements[0]
+Step 3. Add the games specific code for handle(), update(), draw() to core_game_logic() handle(), update(), 
+draw()
+Step 4. Integrating achievements can be done with the unlockedAchievements[i] value in the trigger condition 
+logic
+of your game. E.g. on winning your Car Racing sim game in ./headers/games/car_game.hpp set 
+unlockedAchievements[0]
 then in scene 4 (achievements) you can set custom achievement txt in ./headers/sdl_texts.hpp 
 
 
