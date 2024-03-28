@@ -126,41 +126,66 @@ ________________________________________________________________________________
 
 
 
-STORY
+Chapter 1.
 
-As a university professor specializing in teleportation research, I had always been fascinated by the 
-possibilities of time travel. But when a mishap in my lab sent me hurtling back in time, I found myself in a 
-predicament unlike any I had ever faced.
+As a university professor specializing in teleportation research, I'm constantly intrigued by the potential of 
+time travel. However, an accident in my lab transported me back in time, presenting me with an unprecedented 
+challenge.
 
-Lost and disoriented, I soon realized that the only way to return to my own time was to repair the teleportation 
-device I had inadvertently triggered. However, the manual I desperately needed had been reduced to ashes, leaving 
-only scattered fragments in various languages.
+Lost and disoriented, I quickly realized that repairing the teleportation device was the only way to return to my 
+time. Unfortunately, the manual I needed was destroyed, leaving only scattered fragments in various languages.
 
-With no resources to afford language lessons, I wandered aimlessly, feeling hopeless and alone. That is until I 
-stumbled upon a group of street kids engrossed in an ancient game played with circles drawn in the sand, sticks as 
-lines, and stones as players.
+While wandering aimlessly, feeling hopeless and alone, I stumbled upon a group of street children deeply engrossed 
+in a game I had never encountered before. Intrigued, I approached them, drawn by their lively banter and the 
+intriguing patterns they were creating in the sand. They eagerly explained the rules of their game, which they 
+called "terni lapilli," using simple gestures and basic words.
 
-Watching them play, I had a sudden revelation. The game they were playing bore a striking resemblance to Tic Tac Toe, 
-a childhood favorite of mine. As the kids enthusiastically explained the rules in their own language, I realized that 
-this game could serve as a bridge between my existing knowledge and the languages I needed to learn.
+Listening to their explanations, I couldn't help but notice striking similarities between their game and Tic 
+Tac Toe, a beloved childhood pastime of mine. The circular formations and crude markings resembling crosses 
+and naughts sparked a sense of familiarity within me.
 
-Determined to piece together the fragments of the manual, I embarked on a journey across the globe, joining in games 
-with people from different cultures and backgrounds. Through these interactions, I began to piece together words and 
-phrases, linking them to what I already knew.
+In that moment, devoid of money, profession, status, or a family, I felt a glimmer of hope. The resemblance of 
+"terni lapilli" to the familiar circles, lines, and rocks of Tic Tac Toe pieces sparked an idea. Realizing 
+the potential of this game as a tool for language acquisition, I began to play along with the kids, immersing 
+myself in their world.
 
-Day by day, my understanding of languages grew, and with each new piece of information, I made progress in deciphering 
-the manual. As I traveled, I encountered kindness and generosity from strangers who were eager to share their 
-knowledge and language skills.
+As we played, I started to pick up on their language, gradually understanding and translating their words into 
+my own. It dawned on me that this journey to repair the teleportation device would require me to learn multiple 
+foreign languages, and what better way to do so than through the universal language of games?
 
-Eventually, after months of dedication and perseverance, I finally completed the manual, using my newfound linguistic 
-abilities to understand the intricate instructions for repairing the teleportation device.
+With renewed determination, I embarked on a global journey, seeking out different games and cultures, each 
+providing me with an opportunity to learn a new language. Through these interactions, I pieced together the 
+fragments of the manual, using my growing linguistic skills to decipher its contents.
 
-With the device restored, I bid farewell to my newfound friends and activated the teleporter, feeling a mix of 
-excitement and apprehension as I prepared to return to my own time.
+And so, armed with newfound knowledge and a sense of purpose, I set out to rebuild the teleportation device, one 
+game and one language at a time.
 
-As the familiar hum of the teleportation process enveloped me, I closed my eyes, grateful for the unexpected journey 
-that had led me to this moment. And with a leap of faith, I stepped forward into the unknown, eager to resume my 
-life but forever changed by the experiences that had shaped my journey home.
+
+Chapter 2.
+
+As the professor traveled the world by foot, horseback, or ship, he relied on his newfound linguistic skills 
+and the universal language of games to fund his journey. Winning games became not just a means of 
+transportation, but also a way to connect with people from diverse backgrounds and cultures.
+
+With each victory, the professor gained more than just passage; he acquired knowledge and understanding, 
+piecing together the fragments of the burnt manual in various languages. It was a challenging journey, 
+filled with obstacles and setbacks, but his determination never wavered.
+
+Eventually, after months of perseverance, the professor reached a breakthrough. Through his diligent study and 
+translation efforts, he discovered that the crucial parts needed to repair the teleportation device were 
+hidden within the emergency section of the device itself. It was a revelation that brought both relief and a 
+renewed sense of purpose.
+
+Following the instructions meticulously laid out in the manual, the professor carefully assembled the 
+components, drawing on his expertise in teleportation research and the languages he had learned along the way. 
+With steady hands and a hopeful heart, he activated the device, prepared to return to the future and his 
+familiar university.
+
+As the familiar hum of the teleportation process enveloped him, the professor closed his eyes, filled with 
+gratitude for the unexpected journey that had led him to this moment. And with a leap of faith, he stepped 
+forward into the unknown, eager to resume his life but forever changed by the experiences that had shaped his 
+quest to return home.
+
 
 
 
@@ -222,12 +247,12 @@ REQUIREMENTS
 
 ACCESSIBILITY
 
-* Supported full controllers: Mouse, Keyboard, Gamepad, Touch
+Full Controller supports: Mouse, Keyboard, Gamepad, Touch
 (Key bindings can be changed via in game settings, key bindings button)
 
-* Supported full languages:
-(Languages can be changed via in game settings, language button)
-1. ENGLISH
+Full supported languages (Voice and Text);
+1. ENGLISH (English)
+Partial supported languages (Text only);
 2. 日本語 (Japanese)
 3. ภาษาไทย (Thai)
 4. संस्कृतम् (Sanskrit)
@@ -236,7 +261,7 @@ ACCESSIBILITY
 7. ግዕዝ (Ge'ez)
 8. Ελληνικά (Greek)
 9. Latina (Latin)
-
+(Languages can be changed via in game settings, language button)
 
 
 SETUP
@@ -266,9 +291,9 @@ ________________________________________________________________________________
 
 GAME ENGINE
 
-* The Game Engine is called Māyāyantra a compound word Translated in Sanskrit as मायायन्त्र and English as 
-IllusionInstrument is the UI source code logic written on top of the SDL Framework. 
-Māyāyantra uses SDL functions and conventions for low level input interaction 
+* The Game Engine is called SparshYantra a compound word Translated in Sanskrit as स्पर्शयन्त्र and English as 
+TouchEngine is the UI source code logic written on top of the SDL Framework.
+SparshYantra uses SDL functions and conventions for low level input interaction 
 with hardware which includes all files within this project with the exception of the 
 files specific to this game below;
 * ./headers/games/*.hpp
