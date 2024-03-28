@@ -9,6 +9,6 @@ Description: read the attached MANUAL.txt file
 
 #pragma once
 
-#include "global_variables.hpp"
+#include "../global_variables.hpp"
 
-// Read more here: read more here: https://en.wikipedia.org/wiki/Go_(game)
+// Read more here: https://en.wikipedia.org/wiki/Royal_Game_of_Ur

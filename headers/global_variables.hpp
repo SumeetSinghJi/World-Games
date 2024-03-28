@@ -287,6 +287,8 @@ extern SDL_Event event;                // event loop object initialise
 // Scene 1 - Main menu
 extern Custom_SDL_Button scene1LoadGameButton;
 extern Custom_SDL_Button scene1newGameButton;
+extern Custom_SDL_Button scene1CasualGameButton;
+extern Custom_SDL_Button scene1StoryGameButton;
 extern Custom_SDL_Button scene1settingsButton;
 extern Custom_SDL_Button scene1AchievementsButton;
 extern Custom_SDL_Button scene1HelpButton;
@@ -329,7 +331,8 @@ extern Custom_SDL_Button scene10denyButton;
 // Scene 11 - online login
 extern Custom_SDL_Button scene11submitUsernameButton;
 extern Custom_SDL_Button scene11registerButton;
-extern Custom_SDL_Button scene11acceptButton;
+extern Custom_SDL_Button scene11acceptPrivacyButton;
+extern Custom_SDL_Button scene11acceptTermsButton;
 extern Custom_SDL_Button scene11denyButton;
 // Scene 12 - create account
 extern Custom_SDL_Button scene12submitEmailPasswordButton;
@@ -460,7 +463,14 @@ extern int selectedOption;                    // For Keyboard arrow key or Gamep
 extern int menuTotalOptions;                  // For Keyboard arrow key or Gamepad d-pad selection
 extern int SettingsTotalOptions;              // For Keyboard arrow key or Gamepad d-pad selection
 extern int GameTotalOptions;                  // For Keyboard arrow key or Gamepad d-pad selection
-
+extern bool clickedNewGame;
+extern std::string gameMode;                    
+/*
+    For different game play based on mode 
+    "Story" = Campaign gameplay (locked gameplay settings, narrative driven story with voice acting, cutscenes, and interactivity)
+    "Casual" = Classic gameplay (everything is unlocked and player free to choose any lives/timer/game settings)
+    "Multiplayer" = Online gameplay (everything is unlocked and player free to choose any lives/timer/game settings AND set to RPC mode)
+*/
 // Scene 4 - Achievements
 extern bool coutAchievements; // For scene 4 is_achievement_unlocked() to only cout unlocked achievements once to prevent memory leak
 

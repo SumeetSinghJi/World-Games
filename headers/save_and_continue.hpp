@@ -13,7 +13,7 @@ Description: read the attached MANUAL.txt file
 
 bool displaySavefileExistsPopup = false; // used in SDL_mouse_handles.hpp
 bool overwriteGame = false;
-std::string saveFileName = "ancient-games_save.txt";
+std::string saveFileName = "savefile.txt";
 
 void new_game();
 void save_game();

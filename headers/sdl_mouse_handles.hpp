@@ -41,8 +41,21 @@ void handle_click_scene_1(int mouseX, int mouseY) // Main menu
         }
         else if (scene1newGameButton.isClicked(mousePosition))
         {
-            std::cout << "You clicked Start Game" << std::endl;
-            does_save_file_exist();
+            std::cout << "You clicked New Game" << std::endl;
+            clickedNewGame = true;
+            if (scene1CasualGameButton.isClicked(mousePosition))
+            {
+                gameMode = "Casual";
+                clickedNewGame = false;
+                new_game();
+                scene = 25;
+            }
+            else if (scene1StoryGameButton.isClicked(mousePosition))
+            {
+                gameMode = "Story";
+                clickedNewGame = false;
+                does_save_file_exist();
+            }
         }
         else if (scene1settingsButton.isClicked(mousePosition))
         {
@@ -422,22 +435,23 @@ void handle_click_scene_11(int mouseX, int mouseY) // Online login
     }
     if (showPrivacyPolicyPopup)
     {
-        if (scene11acceptButton.isClicked(mousePosition))
+
+        if (scene11acceptPrivacyButton.isClicked(mousePosition))
         {
             std::cout << "You clicked: Accept Privacy Policy" << std::endl;
             acceptedPrivacyPolicy = true;
-                if (scene11acceptButton.isClicked(mousePosition))
-                { 
-                    std::cout << "You clicked: Accept Terms and Conditions" << std::endl;
-                    acceptedTermsAndConditions = true;
-                    showPrivacyPolicyPopup = false;
-                    scene = 13; // To multiplayer lobby
-                }
         }
         else if (scene11denyButton.isClicked(mousePosition))
         {
             std::cout << "You clicked: Deny Privacy Policy" << std::endl;
             showPrivacyPolicyPopup = false;
+        }
+        else if (scene11acceptTermsButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked: Accept Terms and Conditions" << std::endl;
+            acceptedTermsAndConditions = true;
+            showPrivacyPolicyPopup = false;
+            scene = 13; // To multiplayer lobby
         }
     }
 }

@@ -19,7 +19,7 @@ TASKS
     * Add a leaderboard option for single player
     * Fix lives function so that rounds = lives and losing rounds loses life
     * Have a Campaign/story/challenge mode that losing rounds loses lives, but winning rounds wins lives
-    * Clicking new game has ARCADE | STORY options
+    * Clicking new game has CLASSIC | STORY options - currently broken
     * Add voice acting of the story for above in every language, and also cartoon AI scenes, use generic 
     tanned dark male with dark hair as protagonist, and a female sidekick that helps you along the way
     * Make update_app.hpp into a class with static members for functions to call outside object-> referencing e.g. sdl.do() to do()

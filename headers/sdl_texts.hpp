@@ -30,6 +30,7 @@ std::string agnisamooh_txt;
 
 // C
 std::string called_out_bluff_txt;
+std::string casual_mode_txt;
 std::string cheated_round_txt;
 std::string continue_txt;
 
@@ -83,6 +84,7 @@ std::string sentence_overwrite_or_load_game_2_txt;
 std::string settings_txt;
 std::string sound_txt;
 std::string start_game_txt;
+std::string story_mode_txt;
 
 // U
 std::string update_txt;
@@ -108,6 +110,7 @@ void localisation(const std::string &language)
         agnisamooh_txt = "@AgniSamooh.com";
         // C
         called_out_bluff_txt = "4. Called out a bluff";
+        casual_mode_txt = "Casual mode";
         cheated_round_txt = "5. Cheated a round";
         continue_txt = "Continue";
 
@@ -152,6 +155,7 @@ void localisation(const std::string &language)
         settings_txt = "Settings";
         sound_txt = "Sound";
         start_game_txt = "Start game";
+        story_mode_txt = "Story mode";
         // V
         version_txt = "version: ";
         // W
@@ -170,6 +174,7 @@ void localisation(const std::string &language)
         agnisamooh_txt = "@AgniSamooh.com";
         // C
         called_out_bluff_txt = "4. ブラフを発動した";
+        casual_mode_txt = "行きずりモード";
         cheated_round_txt = "5. ラウンドで不正行為をした";
         continue_txt = "続く";
         // D
@@ -211,6 +216,7 @@ void localisation(const std::string &language)
         settings_txt = "設定";
         start_game_txt = "始めるゲーム";
         sound_txt = "音";
+        story_mode_txt = "物語モード";
         // V
         version_txt = "バージョン: ";
         // W
@@ -228,6 +234,7 @@ void localisation(const std::string &language)
         agnisamooh_txt = "@AgniSamooh.com";
         // C
         called_out_bluff_txt = "4. กล่าวออกมาโดนเฉพาะ";
+        casual_mode_txt = "โหมดระบบธรรมดา";
         cheated_round_txt = "5. โกงรอบ";
         continue_txt = "ดำเนินการต่อ";
 
@@ -271,6 +278,7 @@ void localisation(const std::string &language)
         settings_txt = "การตั้งค่า";
         sound_txt = "เสียง";
         start_game_txt = "เริ่มเกม";
+        story_mode_txt = "โหมดเรื่องราว";
         // V
         version_txt = "เวอร์ชัน: ";
         // W
@@ -288,6 +296,7 @@ void localisation(const std::string &language)
         agnisamooh_txt = "@AgniSamooh.com";
         // C
         called_out_bluff_txt = "4. छल का उद्घाटन";
+        casual_mode_txt = "लैलक";
         cheated_round_txt = "5. धोखेबाजी राउंड";
         continue_txt = "प्रस्तुति";
 
@@ -331,6 +340,7 @@ void localisation(const std::string &language)
         settings_txt = "सेटिंग्स";
         sound_txt = "ध्वनि";
         start_game_txt = "खेल प्रारंभ करें";
+        story_mode_txt = "कथामोद";
         // V
         version_txt = "संस्करण: ";
         // W
@@ -348,6 +358,7 @@ void localisation(const std::string &language)
         agnisamooh_txt = "@AgniSamooh.com";
         // C
         called_out_bluff_txt = "4. 揭穿虛張聲勢";
+        casual_mode_txt = "休閒模式";
         cheated_round_txt = "5. 作弊一輪";
         continue_txt = "繼續";
 
@@ -392,6 +403,7 @@ void localisation(const std::string &language)
         settings_txt = "設置";
         sound_txt = "音效";
         start_game_txt = "開始遊戲";
+        story_mode_txt = "故事模式";
         // V
         version_txt = "版本：";
         // W
@@ -409,6 +421,7 @@ void localisation(const std::string &language)
         agnisamooh_txt = "@AgniSamooh.com";
         // C
         called_out_bluff_txt = "4. كشف الكذب";
+        casual_mode_txt = "وضع عادي";
         cheated_round_txt = "5. خدع جولة";
         continue_txt = "متابعة";
 
@@ -452,6 +465,7 @@ void localisation(const std::string &language)
         settings_txt = "الإعدادات";
         sound_txt = "الصوت";
         start_game_txt = "بدء اللعبة";
+        story_mode_txt = "وضع القصة";
         // V
         version_txt = "النسخة: ";
         // W
@@ -469,6 +483,7 @@ void localisation(const std::string &language)
         agnisamooh_txt = "@AgniSamooh.com";
         // C
         called_out_bluff_txt = "4. በርቀት ተገኝቷል";
+        casual_mode_txt = "ምንም ቦታ";
         cheated_round_txt = "5. መርጋገጥ እቅል";
         continue_txt = "ተጨማሪ ይሆን";
 
@@ -512,6 +527,7 @@ void localisation(const std::string &language)
         settings_txt = "ቅንብሮች";
         sound_txt = "ድምፅ";
         start_game_txt = "ጨዋታ ጀምር";
+        story_mode_txt = "ስታሪ ሞዴ";
         // V
         version_txt = "እትም: ";
         // W
@@ -529,6 +545,7 @@ void localisation(const std::string &language)
         agnisamooh_txt = "@AgniSamooh.com";
         // C
         called_out_bluff_txt = "4. Αποκάλυψη ψεύδους";
+        casual_mode_txt = "Αργό καθεστώς";
         cheated_round_txt = "5. Απάτη γύρου";
         continue_txt = "Συνέχεια";
 
@@ -572,6 +589,7 @@ void localisation(const std::string &language)
         settings_txt = "Ρυθμίσεις";
         sound_txt = "Ήχος";
         start_game_txt = "Έναρξη παιχνιδιού";
+        story_mode_txt = "Λειτουργία ιστορίας";
         // V
         version_txt = "Έκδοση: ";
         // W
@@ -589,6 +607,7 @@ void localisation(const std::string &language)
         agnisamooh_txt = "@AgniSamooh.com";
         // C
         called_out_bluff_txt = "4. Detectum mendacium";
+        casual_mode_txt = "Modus casuales";
         cheated_round_txt = "5. Fraus circuli";
         continue_txt = "Continua";
         // D
@@ -630,6 +649,7 @@ void localisation(const std::string &language)
         settings_txt = "Configurationes";
         sound_txt = "Sonus";
         start_game_txt = "Ludum incipe";
+        story_mode_txt = "Modus fabula";
         // V
         version_txt = "Versio: ";
         // W
@@ -644,7 +664,12 @@ void localisation(const std::string &language)
 
 void draw_text_for_HUD_scene_1() // Main menu
 {
-    if (displaySavefileExistsPopup)
+    if (clickedNewGame && !displaySavefileExistsPopup)
+    {
+        render_text(story_mode_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
+        render_text(casual_mode_txt, (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
+    }
+    else if (displaySavefileExistsPopup)
     {
         render_text(sentence_overwrite_or_load_game_1_txt, (windowWidth * 0.30), (windowHeight * 0.1), 255, 0);
         render_text(sentence_overwrite_or_load_game_2_txt, (windowWidth * 0.30), (windowHeight * 0.2), 255, 0);
@@ -717,15 +742,15 @@ void draw_text_for_HUD_scene_6() // Leaderboard
 
     render_text(leaderboard_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
 }
-void draw_text_for_HUD_scene_7() // 
+void draw_text_for_HUD_scene_7() //
 {
     render_text(update_txt, (windowWidth * 0.4), (windowHeight * 0.1), 255, 0);
 }
-void draw_text_for_HUD_scene_8() // 
+void draw_text_for_HUD_scene_8() //
 {
     render_text(multiplayer_lobby_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);
 }
-void draw_text_for_HUD_scene_9() // 
+void draw_text_for_HUD_scene_9() //
 {
 
     render_text(leaderboard_txt, (windowWidth * 0.45), (windowHeight * 0.1), 255, 0);

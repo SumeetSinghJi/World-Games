@@ -699,23 +699,23 @@ void keyboard_handles_11(SDL_Event event) // Online login
             break;
         case SDLK_UP:
             std::cout << "You clicked button: UP" << std::endl;
-            scene11acceptButton.find_nearest_button(scene11buttons, SDLK_UP, 0);
+            scene11acceptPrivacyButton.find_nearest_button(scene11buttons, SDLK_UP, 0);
             break;
         case SDLK_DOWN:
             std::cout << "You clicked button: DOWN" << std::endl;
-            scene11acceptButton.find_nearest_button(scene11buttons, SDLK_DOWN, 0);
+            scene11acceptPrivacyButton.find_nearest_button(scene11buttons, SDLK_DOWN, 0);
             break;
         case SDLK_LEFT:
             std::cout << "You clicked button: LEFT" << std::endl;
-            scene11acceptButton.find_nearest_button(scene11buttons, SDLK_LEFT, 0);
+            scene11acceptPrivacyButton.find_nearest_button(scene11buttons, SDLK_LEFT, 0);
             break;
         case SDLK_RIGHT:
             std::cout << "You clicked button: RIGHT" << std::endl;
-            scene11acceptButton.find_nearest_button(scene11buttons, SDLK_RIGHT, 0);
+            scene11acceptPrivacyButton.find_nearest_button(scene11buttons, SDLK_RIGHT, 0);
             break;
         case SDLK_RETURN:
             std::cout << "You clicked button: ENTER" << std::endl;
-            if (scene11acceptButton.is_selected())
+            if (scene11acceptPrivacyButton.is_selected())
             {
                 std::cout << "You clicked: Accept Privacy Policy" << std::endl;
                 showPrivacyPolicyPopup = false;

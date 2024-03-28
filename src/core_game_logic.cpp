@@ -190,6 +190,8 @@ SDL_Event event;                          // event loop object initialise
 // Scene 1
 Custom_SDL_Button scene1LoadGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1newGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene1CasualGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene1StoryGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1settingsButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1AchievementsButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1HelpButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -241,7 +243,8 @@ Custom_SDL_Button scene10denyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false)
 
 Custom_SDL_Button scene11submitUsernameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene11registerButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
-Custom_SDL_Button scene11acceptButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene11acceptPrivacyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene11acceptTermsButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene11denyButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 
 // Scene 12
@@ -368,7 +371,14 @@ int selectedOption = 0;                       // For Keyboard arrow key or Gamep
 int menuTotalOptions = 6;                     // For Keyboard arrow key or Gamepad d-pad selection
 int SettingsTotalOptions = 10;                // For Keyboard arrow key or Gamepad d-pad selection
 int GameTotalOptions = 10;                    // For Keyboard arrow key or Gamepad d-pad selection
-
+bool clickedNewGame = false;                  // Toggle to show Select gameMode buttons below
+std::string gameMode = "";                    
+/*
+    For different game play based on mode 
+    "Story" = Campaign gameplay (locked gameplay settings, narrative driven story with voice acting, cutscenes, and interactivity)
+    "Casual" = Classic gameplay (everything is unlocked and player free to choose any lives/timer/game settings)
+    "Multiplayer" = Online gameplay (everything is unlocked and player free to choose any lives/timer/game settings AND set to RPC mode)
+*/
 // Scene 4 - Achievements
 bool coutAchievements = true; // For scene 4 is_achievement_unlocked() to only cout unlocked achievements once to prevent memory leak
 
@@ -859,6 +869,8 @@ void load_buttons_to_scene_vectors()
     // scene 1
     scene1buttons.push_back(&scene1LoadGameButton);
     scene1buttons.push_back(&scene1newGameButton);
+    scene1buttons.push_back(&scene1CasualGameButton);
+    scene1buttons.push_back(&scene1StoryGameButton);
     scene1buttons.push_back(&scene1settingsButton);
     scene1buttons.push_back(&scene1AchievementsButton);
     scene1buttons.push_back(&scene1HelpButton);
@@ -900,7 +912,8 @@ void load_buttons_to_scene_vectors()
     // scene 11
     scene11buttons.push_back(&scene11submitUsernameButton);
     scene11buttons.push_back(&scene11registerButton);
-    scene11buttons.push_back(&scene11acceptButton);
+    scene11buttons.push_back(&scene11acceptPrivacyButton);
+    scene11buttons.push_back(&scene11acceptTermsButton);
     scene11buttons.push_back(&scene11denyButton);
     // scene 12
     scene12buttons.push_back(&scene12submitEmailPasswordButton);
@@ -973,6 +986,14 @@ void load_buttons_1()
     scene1newGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
                                             rectWidth, rectHeight,
                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/newgame-button.png", false); // RGB: Light green
+
+    scene1CasualGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
+                                            rectWidth, rectHeight,
+                                            "", 144, 238, 144, 255, "assets/graphics/backgrounds/world-map.jpg", false); // RGB: Light green
+    scene1StoryGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35),
+                                            rectWidth, rectHeight,
+                                            "", 144, 238, 144, 255, "assets/graphics/buttons/settings/book-button.png", false); // RGB: Light green
+
     scene1settingsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35),
                                              rectWidth, rectHeight,
                                              "", 144, 238, 144, 255, "assets/graphics/buttons/settings/settings-button.png", false); // RGB: Light green
@@ -1002,6 +1023,8 @@ void load_buttons_1()
     scene1continueButton.set_button_texture(renderer, "");
     scene1LoadGameButton.set_button_texture(renderer, "");
     scene1newGameButton.set_button_texture(renderer, "");
+    scene1CasualGameButton.set_button_texture(renderer, "");
+    scene1StoryGameButton.set_button_texture(renderer, "");
     scene1settingsButton.set_button_texture(renderer, "");
     scene1AchievementsButton.set_button_texture(renderer, "");
     scene1HelpButton.set_button_texture(renderer, "");
@@ -1132,7 +1155,10 @@ void load_buttons_11()
     scene11registerButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.8),
                                               static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
                                               "REGISTER", 144, 238, 144, 255, "", false); // RGB: Light green
-    scene11acceptButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.6),
+    scene11acceptPrivacyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.6),
+                                            static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                            "ACCEPT", 144, 238, 144, 255, "", false); // RGB: Light green
+    scene11acceptTermsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.6),
                                             static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
                                             "ACCEPT", 144, 238, 144, 255, "", false); // RGB: Light green
     scene11denyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.6),

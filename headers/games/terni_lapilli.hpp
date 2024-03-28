@@ -9,7 +9,7 @@ Description: read the attached MANUAL.txt file
 
 #pragma once
 
-#include "global_variables.hpp"
+#include "../global_variables.hpp"
 
 // terni lapilli - Textures
 SDL_Texture *ternilapilli_xTexture = nullptr;

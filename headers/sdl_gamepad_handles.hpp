@@ -688,23 +688,23 @@ void handle_gamepad_scene_11(int button) // Online login
             break;
         case SDL_CONTROLLER_BUTTON_DPAD_UP:
             std::cout << "You pressed controller button: UP" << std::endl;
-            scene11acceptButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
+            scene11acceptPrivacyButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_UP);
             break;
         case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
             std::cout << "You pressed controller button: DOWN" << std::endl;
-            scene11acceptButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
+            scene11acceptPrivacyButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_DOWN);
             break;
         case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
             std::cout << "You pressed controller button: LEFT" << std::endl;
-            scene11acceptButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
+            scene11acceptPrivacyButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_LEFT);
             break;
         case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
             std::cout << "You pressed controller button: RIGHT" << std::endl;
-            scene11acceptButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
+            scene11acceptPrivacyButton.find_nearest_button(scene1buttons, 0, SDL_CONTROLLER_BUTTON_DPAD_RIGHT);
             break;
         case SDL_CONTROLLER_BUTTON_A:
             std::cout << "You pressed controller button: A" << std::endl;
-            if (scene11acceptButton.is_selected())
+            if (scene11acceptPrivacyButton.is_selected())
             {
                 std::cout << "You clicked: Accept Privacy Policy" << std::endl;
                 showPrivacyPolicyPopup = false;

@@ -247,15 +247,41 @@ ________________________________________________________________________________
 
 
 
-PROGRAMMING ENVIRONMENT
+GAME ENGINE
 
 * Game written in C++ C++17 minimum standard, due to inclusion of modern headers such as 
 std::filesystem header #include <filesystem>
-* Currently compiles with g++ (part of MinGW/GNU)
-* Includes IDE development files for Visual Studio Code within .vscode folder
-* Development environment includes 4 tasks.json tasks for 
-Compilers; g++ and clang and Static Analysers; cppcheck and clang tidy
+* Currently compiles with g++ (part of MinGW/GNU), untested with clang and msvc
+* Includes IDE development files for Visual Studio Code within .vscode folder which includes;
+   4 tasks.json tasks for Compilers; g++ and clang and Static Analysers; cppcheck and clang tidy
 * Includes CMAKElists.txt compile file with associated ./build folder for building locally
+* The Game Engine is called Māyāyantra 
+(A Compound word Translated in Sanskrit as मायायन्त्र and English as IllusionInstrument) is the UI source code 
+logic which includes all files within this project with the exception of the files specific to this game below;
+* ./headers/games/*.hpp
+* ./documents
+* ./assets/graphics/backgrounds/title_background.jpg
+* MANUAL.txt
+* README.md
+* ancient-games* (files starting with Ancient Games)
+* Any mention of scene 25 = the Starting point of the interaction between the Game Engine and the Game.
+So if your game is a simple Car/Ship racing game, change all scene 25 logic to interact with you're
+specific game as outlined in ./headers/games (see below MODDING section)
+
+
+
+MODDING
+
+Game is built ontop the Māyāyantra game engine (see above GAME ENGINE section). To mod game follow below 
+instructions
+
+Step 1. In MANUAL.txt find a free scene marked as _____UNUSED_____ in scenes section.
+Step 2. Create a game as a C++ header.hpp file similar to existing header games within ./headers/games
+Step 3. Add the games specific code for handle(), update(), draw() to core_game_logic() handle(), update(), draw()
+Step 4. Integrating achievements can be done with the unlockedAchievements[i] value in the trigger condition logic
+of your game. E.g. on winning your Car Racing sim game in ./headers/games/car_game.hpp set unlockedAchievements[0]
+then in scene 4 (achievements) you can set custom achievement txt in ./headers/sdl_texts.hpp 
+
 
 
 LIBRAIRES
@@ -473,13 +499,7 @@ The list of all achievements that can be unlocked while completing objectives pl
 
 
 
-MODDING
 
-Modding is easy
-
-Step 1. In MANUAL.txt find a free scene marked as _____UNUSED_____ in scenes section.
-Step 2. Create a game as a header similar to existing header games
-Step 3. Add the games specific code for handle(), update(), draw() to core_game_logic() handle(), update(), draw()
 
 
 

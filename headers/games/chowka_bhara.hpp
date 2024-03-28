@@ -9,6 +9,6 @@ Description: read the attached MANUAL.txt file
 
 #pragma once
 
-#include "global_variables.hpp"
+#include "../global_variables.hpp"
 
-// Read more here: https://en.wikipedia.org/wiki/Pachisi
+// Read more here: https://en.wikipedia.org/wiki/Chowka_bhara

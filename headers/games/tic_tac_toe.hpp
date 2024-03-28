@@ -9,7 +9,7 @@ Description: read the attached MANUAL.txt file
 
 #pragma once
 
-#include "global_variables.hpp"
+#include "../global_variables.hpp"
 
 // Tic Tac Toe - Textures
 SDL_Texture *xTexture = nullptr;
@@ -477,7 +477,9 @@ void ttt_update_winning_logic()
             ttt_winner = 1;
             ttt_opponentsTurn = false;
             Mix_PlayChannel(-1, winGameSound, 0);
-            unlocked_achievement(0);
+            if (gameMode == "Story") {
+                unlocked_achievement(0);
+            }
         }
     }
 

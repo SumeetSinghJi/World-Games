@@ -71,7 +71,7 @@ void draw_password_textbox()
     SDL_RenderFillRect(renderer, &textInputRect);
 }
 
-void draw_policies_popup_window()
+void draw_online_registration_policy_popup_window()
 {
     // Draw privacy policy popup black border
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // RGB: Black
@@ -85,32 +85,40 @@ void draw_policies_popup_window()
 
     if (showPrivacyPolicyPopup)
     {
-        render_text("Read Privacy Policy below then accept or deny for online access",
-                    static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1), 255, 0);
         if (!acceptedPrivacyPolicy)
         {
+            render_text("Read Privacy Policy below then accept or deny for online access",
+                        static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1), 255, 0);
             privacy_policy_file_read();
+            scene11acceptPrivacyButton.render_button_rect(renderer);
         }
         else
         {
+            render_text("Read Terms and Conditions Policy below then accept or deny for online access",
+                        static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1), 255, 0);
             terms_and_conditions_file_read();
+            scene11acceptTermsButton.render_button_rect(renderer);
         }
-
-        scene11acceptButton.render_button_rect(renderer);
         scene11denyButton.render_button_rect(renderer);
     }
 }
 
 void draw_buttons_scene_1()
 {
-    scene1LoadGameButton.render_button_rect(renderer);
-    scene1newGameButton.render_button_rect(renderer);
-    scene1settingsButton.render_button_rect(renderer);
-    scene1AchievementsButton.render_button_rect(renderer);
-    scene1HelpButton.render_button_rect(renderer);
-    scene1multiplayerButton.render_button_rect(renderer);
-    scene1QuitButton.render_button_rect(renderer);
-    scene1DeveloperLogoLinkButton.render_button_rect(renderer);
+    if (!clickedNewGame)
+    {
+        scene1LoadGameButton.render_button_rect(renderer);
+        scene1newGameButton.render_button_rect(renderer);
+        scene1settingsButton.render_button_rect(renderer);
+        scene1AchievementsButton.render_button_rect(renderer);
+        scene1HelpButton.render_button_rect(renderer);
+        scene1multiplayerButton.render_button_rect(renderer);
+        scene1QuitButton.render_button_rect(renderer);
+        scene1DeveloperLogoLinkButton.render_button_rect(renderer);
+    } else {
+        scene1CasualGameButton.render_button_rect(renderer);
+        scene1StoryGameButton.render_button_rect(renderer);
+    }
 }
 
 void draw_buttons_scene_2() // Settings
@@ -244,9 +252,9 @@ void draw_buttons_scene_11() // Online login
 {
     if (showPrivacyPolicyPopup)
     {
-        draw_policies_popup_window();
+        draw_online_registration_policy_popup_window();
     }
-    else if (!showPrivacyPolicyPopup)
+    else
     {
         draw_username_textbox();
         draw_password_textbox();

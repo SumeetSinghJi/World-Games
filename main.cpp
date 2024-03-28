@@ -18,17 +18,17 @@
 #include "headers/sdl_gamepad_handles.hpp"  // SDL Gamepad controller keypresses
 #include "headers/update_app.hpp"           // For downloading and installing latest game update
 
-#include "headers/tic_tac_toe.hpp"      // scene 30 - Tutorial - Tic Tac Toe
-#include "headers/go.hpp"               // scene 31 - beijing - Go
-#include "headers/fidhchell.hpp"        // scene 32 = london (Celtic)- Fidhchell
-#include "headers/mancala.hpp"          // scene 33 = Ethiopia (Yeha) - Mancala
-#include "headers/senet.hpp"            // scene 34 = Cairo - Senet
-#include "headers/pachisi.hpp"          // scene 35 = Delhi (Aryavarta) - Pachisi
-#include "headers/backgammon.hpp"       // scene 36 = Tehran (Persia) - Backgammon
-#include "headers/patolli.hpp"          // scene 37 = Mexico - Patolli
-#include "headers/royal_game_of_ur.hpp" // scene 38 = Baghdad (Babylonian) - Royal game of Ur
-#include "headers/petteia.hpp"          // scene 39 = Greece - Petteia
-#include "headers/terni_lapilli.hpp"    // scene 40 - Rome - terni lapilli
+#include "headers/games/tic_tac_toe.hpp"      // scene 30 - Tutorial - Tic Tac Toe
+#include "headers/games/go.hpp"               // scene 31 - beijing - Go
+#include "headers/games/fidhchell.hpp"        // scene 32 = london (Celtic)- Fidhchell
+#include "headers/games/mancala.hpp"          // scene 33 = Ethiopia (Yeha) - Mancala
+#include "headers/games/senet.hpp"            // scene 34 = Cairo - Senet
+#include "headers/games/pachisi.hpp"          // scene 35 = Delhi (Aryavarta) - Pachisi
+#include "headers/games/backgammon.hpp"       // scene 36 = Tehran (Persia) - Backgammon
+#include "headers/games/patolli.hpp"          // scene 37 = Mexico - Patolli
+#include "headers/games/royal_game_of_ur.hpp" // scene 38 = Baghdad (Babylonian) - Royal game of Ur
+#include "headers/games/petteia.hpp"          // scene 39 = Greece - Petteia
+#include "headers/games/terni_lapilli.hpp"    // scene 40 - Rome - terni lapilli
 
 #include "headers/custom_SDL_button.hpp" // Custom SDL Button class for creating buttons for handles
 
