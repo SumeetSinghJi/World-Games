@@ -666,8 +666,8 @@ void draw_text_for_HUD_scene_1() // Main menu
 {
     if (clickedNewGame && !displaySavefileExistsPopup)
     {
-        render_text(story_mode_txt, (windowWidth * 0.45), (windowHeight * 0.25), 255, 0);
         render_text(casual_mode_txt, (windowWidth * 0.45), (windowHeight * 0.35), 255, 0);
+        render_text(story_mode_txt, (windowWidth * 0.45), (windowHeight * 0.45), 255, 0);
     }
     else if (displaySavefileExistsPopup)
     {

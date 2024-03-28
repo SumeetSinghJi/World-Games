@@ -189,17 +189,19 @@ SDL_Event event;                          // event loop object initialise
 // Buttons
 // Scene 1
 Custom_SDL_Button scene1LoadGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene1overwriteGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene1continueButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene1overwriteGameReturnMenuButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1newGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1CasualGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1StoryGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
+Custom_SDL_Button scene1NewGameReturnTitleButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1settingsButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1AchievementsButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1HelpButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1multiplayerButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1QuitButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 Custom_SDL_Button scene1DeveloperLogoLinkButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
-Custom_SDL_Button scene1overwriteGameButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
-Custom_SDL_Button scene1continueButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
 
 // scene 2
 Custom_SDL_Button fontButton(0, 0, 0, 0, "Button", 0, 0, 0, 0, "", false);
@@ -338,13 +340,13 @@ std::string email = "";    // Multiplayer - Multiplayer players email address
 std::string password = ""; // Multiplayer - Multiplayer players account password
 
 // SETTINGS VARIABLES
-bool isMusicPlaying = NULL;                                           // for music
-std::string currentSong;                                         // for music
-std::string songTitle; // for music
-std::string language = "English";                                     // for changing language
-std::string osVersion = "";                                           // Custom Multiplatform social media link
-int lastScene = 1;                                                    // Settings - return to last game scene
-bool isNight = NULL;                                                  // for background cosmetics
+bool isMusicPlaying = NULL;       // for music
+std::string currentSong;          // for music
+std::string songTitle;            // for music
+std::string language = "English"; // for changing language
+std::string osVersion = "";       // Custom Multiplatform social media link
+int lastScene = 1;                // Settings - return to last game scene
+bool isNight = NULL;              // for background cosmetics
 bool fpsRendering = false;
 
 // README MOUSE SCROLL VARIABLES
@@ -372,9 +374,9 @@ int menuTotalOptions = 6;                     // For Keyboard arrow key or Gamep
 int SettingsTotalOptions = 10;                // For Keyboard arrow key or Gamepad d-pad selection
 int GameTotalOptions = 10;                    // For Keyboard arrow key or Gamepad d-pad selection
 bool clickedNewGame = false;                  // Toggle to show Select gameMode buttons below
-std::string gameMode = "";                    
+std::string gameMode = "";
 /*
-    For different game play based on mode 
+    For different game play based on mode
     "Story" = Campaign gameplay (locked gameplay settings, narrative driven story with voice acting, cutscenes, and interactivity)
     "Casual" = Classic gameplay (everything is unlocked and player free to choose any lives/timer/game settings)
     "Multiplayer" = Online gameplay (everything is unlocked and player free to choose any lives/timer/game settings AND set to RPC mode)
@@ -868,21 +870,25 @@ void load_buttons_to_scene_vectors()
 {
     // scene 1
     scene1buttons.push_back(&scene1LoadGameButton);
+    scene1buttons.push_back(&scene1overwriteGameButton);
+    scene1buttons.push_back(&scene1continueButton);
+    scene1buttons.push_back(&scene1overwriteGameReturnMenuButton);
     scene1buttons.push_back(&scene1newGameButton);
     scene1buttons.push_back(&scene1CasualGameButton);
     scene1buttons.push_back(&scene1StoryGameButton);
+    scene1buttons.push_back(&scene1NewGameReturnTitleButton);
     scene1buttons.push_back(&scene1settingsButton);
     scene1buttons.push_back(&scene1AchievementsButton);
     scene1buttons.push_back(&scene1HelpButton);
     scene1buttons.push_back(&scene1multiplayerButton);
     scene1buttons.push_back(&scene1QuitButton);
     scene1buttons.push_back(&scene1DeveloperLogoLinkButton);
+
     // scene 2
     scene2buttons.push_back(&fontButton);
     scene2buttons.push_back(&soundButton);
     scene2buttons.push_back(&languageButton);
     scene2buttons.push_back(&fpsButton);
-
     scene2buttons.push_back(&resolution800x600Button);
     scene2buttons.push_back(&resolution1366x768Button);
     scene2buttons.push_back(&resolutionFullScreenButton);
@@ -983,16 +989,30 @@ void load_buttons_1()
     scene1LoadGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.15),
                                              rectWidth, rectHeight,
                                              "", 144, 238, 144, 255, "assets/graphics/buttons/settings/load-button.png", false); // RGB: Light green
+
+    scene1overwriteGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.3), static_cast<int>(windowHeight * 0.6),
+                                                  (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
+                                                  "OVERWRITE", 144, 238, 144, 255, "", false);
+    scene1continueButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.6),
+                                             (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
+                                             "LOAD GAME", 144, 238, 144, 255, "", false);
+    scene1overwriteGameReturnMenuButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.75), static_cast<int>(windowHeight * 0.2),
+                                                            rectWidth, rectHeight,
+                                                            "", 144, 238, 144, 255, "assets/graphics/buttons/settings/return-button.png", false);
+
     scene1newGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
                                             rectWidth, rectHeight,
                                             "", 144, 238, 144, 255, "assets/graphics/buttons/settings/newgame-button.png", false); // RGB: Light green
 
-    scene1CasualGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.25),
-                                            rectWidth, rectHeight,
-                                            "", 144, 238, 144, 255, "assets/graphics/backgrounds/world-map.jpg", false); // RGB: Light green
-    scene1StoryGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35),
-                                            rectWidth, rectHeight,
-                                            "", 144, 238, 144, 255, "assets/graphics/buttons/settings/book-button.png", false); // RGB: Light green
+    scene1CasualGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35),
+                                               rectWidth, rectHeight,
+                                               "", 144, 238, 144, 255, "assets/graphics/backgrounds/world-map.jpg", false); // RGB: Light green
+    scene1StoryGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.45),
+                                              rectWidth, rectHeight,
+                                              "", 144, 238, 144, 255, "assets/graphics/buttons/settings/book-button.png", false); // RGB: Light green
+    scene1NewGameReturnTitleButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.55),
+                                                       rectWidth, rectHeight,
+                                                       "", 144, 238, 144, 255, "assets/graphics/buttons/settings/return-button.png", false); // RGB: Light green
 
     scene1settingsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.35), static_cast<int>(windowHeight * 0.35),
                                              rectWidth, rectHeight,
@@ -1012,19 +1032,17 @@ void load_buttons_1()
     scene1DeveloperLogoLinkButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.73), static_cast<int>(windowHeight * 0.73),
                                                       (windowWidth) / 6, (windowHeight) / 6,
                                                       "", 144, 238, 144, 255, "assets/graphics/developer_images/AgniSamooh-4k-logo.png", false);
-    scene1overwriteGameButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.3), static_cast<int>(windowHeight * 0.6),
-                                                  (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
-                                                  "OVERWRITE", 144, 238, 144, 255, "", false);
-    scene1continueButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.6),
-                                             (static_cast<int>(windowWidth * 0.2)), (static_cast<int>(windowHeight * 0.1)),
-                                             "LOAD GAME", 144, 238, 144, 255, "", false);
 
+    scene1LoadGameButton.set_button_texture(renderer, "");
     scene1overwriteGameButton.set_button_texture(renderer, "");
     scene1continueButton.set_button_texture(renderer, "");
-    scene1LoadGameButton.set_button_texture(renderer, "");
+    scene1overwriteGameReturnMenuButton.set_button_texture(renderer, "");
+
     scene1newGameButton.set_button_texture(renderer, "");
     scene1CasualGameButton.set_button_texture(renderer, "");
     scene1StoryGameButton.set_button_texture(renderer, "");
+    scene1NewGameReturnTitleButton.set_button_texture(renderer, "");
+    
     scene1settingsButton.set_button_texture(renderer, "");
     scene1AchievementsButton.set_button_texture(renderer, "");
     scene1HelpButton.set_button_texture(renderer, "");
@@ -1156,11 +1174,11 @@ void load_buttons_11()
                                               static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.1),
                                               "REGISTER", 144, 238, 144, 255, "", false); // RGB: Light green
     scene11acceptPrivacyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.6),
-                                            static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
-                                            "ACCEPT", 144, 238, 144, 255, "", false); // RGB: Light green
+                                                   static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                                   "ACCEPT", 144, 238, 144, 255, "", false); // RGB: Light green
     scene11acceptTermsButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.2), static_cast<int>(windowHeight * 0.6),
-                                            static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
-                                            "ACCEPT", 144, 238, 144, 255, "", false); // RGB: Light green
+                                                 static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
+                                                 "ACCEPT", 144, 238, 144, 255, "", false); // RGB: Light green
     scene11denyButton = Custom_SDL_Button(static_cast<int>(windowWidth * 0.6), static_cast<int>(windowHeight * 0.6),
                                           static_cast<int>(windowWidth * 0.1), static_cast<int>(windowHeight * 0.1),
                                           "DENY", 144, 238, 144, 255, "", false); // RGB: Light green

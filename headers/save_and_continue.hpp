@@ -193,15 +193,16 @@ void does_save_file_exist()
     if (overwriteGame)
     {
       std::remove(saveFileName.c_str());
-      new_game();
-      scene = 25;
       overwriteGame = false;
       save_game();
       displaySavefileExistsPopup = false;
+      new_game();
+      scene = 30; // Tutorial scene = Play cutscene/cinematic then special Tic Tac Toe game, TTT blends into Terni
     }
   }
   else {
     new_game();
-    scene = 25;
+    displaySavefileExistsPopup = false;
+    scene = 30; // Tutorial scene = Play cutscene/cinematic then special Tic Tac Toe game, TTT blends into Terni
   }
 }

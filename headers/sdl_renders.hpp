@@ -32,6 +32,7 @@ void draw_does_save_file_exist()
 
     scene1overwriteGameButton.render_button_rect(renderer);
     scene1continueButton.render_button_rect(renderer);
+    scene1overwriteGameReturnMenuButton.render_button_rect(renderer);
 }
 
 void draw_username_textbox()
@@ -118,6 +119,8 @@ void draw_buttons_scene_1()
     } else {
         scene1CasualGameButton.render_button_rect(renderer);
         scene1StoryGameButton.render_button_rect(renderer);
+        scene1NewGameReturnTitleButton.render_button_rect(renderer);
+        
     }
 }
 

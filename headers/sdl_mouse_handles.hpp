@@ -15,23 +15,8 @@ void handle_click_scene_1(int mouseX, int mouseY) // Main menu
 {
     SDL_Point mousePosition = {mouseX, mouseY};
 
-    if (displaySavefileExistsPopup)
-    {
-        if (scene1continueButton.isClicked(mousePosition))
-        {
-            std::cout << "You clicked: Load Game" << std::endl;
-            displaySavefileExistsPopup = false;
-            load_game();
-            scene = 25;
-        }
-        else if (scene1overwriteGameButton.isClicked(mousePosition))
-        {
-            std::cout << "You clicked: Overwrite Game" << std::endl;
-            overwriteGame = true;
-            does_save_file_exist();
-        }
-    }
-    else
+    
+    if (!clickedNewGame)
     {
         if (scene1LoadGameButton.isClicked(mousePosition))
         {
@@ -43,19 +28,6 @@ void handle_click_scene_1(int mouseX, int mouseY) // Main menu
         {
             std::cout << "You clicked New Game" << std::endl;
             clickedNewGame = true;
-            if (scene1CasualGameButton.isClicked(mousePosition))
-            {
-                gameMode = "Casual";
-                clickedNewGame = false;
-                new_game();
-                scene = 25;
-            }
-            else if (scene1StoryGameButton.isClicked(mousePosition))
-            {
-                gameMode = "Story";
-                clickedNewGame = false;
-                does_save_file_exist();
-            }
         }
         else if (scene1settingsButton.isClicked(mousePosition))
         {
@@ -114,6 +86,51 @@ void handle_click_scene_1(int mouseX, int mouseY) // Main menu
             }
             find_os();
         }
+    }
+    else if(clickedNewGame)
+    {
+        if (scene1CasualGameButton.isClicked(mousePosition))
+        {
+            gameMode = "Casual";
+            clickedNewGame = false;
+            new_game();
+            scene = 25;
+        }
+        else if (scene1StoryGameButton.isClicked(mousePosition))
+        {
+            gameMode = "Story";
+            does_save_file_exist(); // To scene 30 = Tutorial/Cinematic Story mode
+        }
+        else if (scene1NewGameReturnTitleButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked Return to title toggle" << std::endl;
+            clickedNewGame = false;
+        }
+    }
+    else if (clickedNewGame && displaySavefileExistsPopup)
+    {
+        if (scene1continueButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked: Load Game" << std::endl;
+            displaySavefileExistsPopup = false;
+            clickedNewGame = false;
+            load_game();
+            scene = 25;
+        }
+        else if (scene1overwriteGameButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked: Overwrite Game" << std::endl;
+            overwriteGame = true;
+            clickedNewGame = false;
+            displaySavefileExistsPopup = false;
+            does_save_file_exist();
+        }
+        else if (scene1overwriteGameReturnMenuButton.isClicked(mousePosition))
+        {
+            std::cout << "You clicked Return to title toggle" << std::endl;
+            clickedNewGame = false;
+            displaySavefileExistsPopup = false;
+        }    
     }
 }
 void handle_click_scene_2(int mouseX, int mouseY) // Settings

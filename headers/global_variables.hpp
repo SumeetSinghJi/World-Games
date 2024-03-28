@@ -286,9 +286,13 @@ extern SDL_Event event;                // event loop object initialise
 // and member variables populated in load_buttons_xx(), then loaded on game startup during start_SDL()
 // Scene 1 - Main menu
 extern Custom_SDL_Button scene1LoadGameButton;
+    extern Custom_SDL_Button scene1overwriteGameButton;
+    extern Custom_SDL_Button scene1continueButton;
+    extern Custom_SDL_Button scene1overwriteGameReturnMenuButton;
 extern Custom_SDL_Button scene1newGameButton;
-extern Custom_SDL_Button scene1CasualGameButton;
-extern Custom_SDL_Button scene1StoryGameButton;
+    extern Custom_SDL_Button scene1CasualGameButton;
+    extern Custom_SDL_Button scene1StoryGameButton;
+    extern Custom_SDL_Button scene1NewGameReturnTitleButton;
 extern Custom_SDL_Button scene1settingsButton;
 extern Custom_SDL_Button scene1AchievementsButton;
 extern Custom_SDL_Button scene1HelpButton;
