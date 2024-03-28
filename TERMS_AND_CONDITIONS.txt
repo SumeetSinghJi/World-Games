@@ -2,9 +2,31 @@ Terms and Conditions
 
 Effective Date: 10th January 2024
 
+1. ENGLISH (English)
+
+
 _________________________________________________________________________________________________________________
 
-                                                1. Introduction
+                                            A. TABLE OF CONTENTS
+
+_________________________________________________________________________________________________________________
+
+1. ENGLISH (English)
+    a. Table of Contents
+    b. Introduction
+    c. Acceptance of Terms
+    d. Account Registration
+    e. User Conduct
+    f. Intellectual Property
+    g. Limitation of Liability
+    h. Governing Law
+    i. Changes to Terms
+    j. Contact Us
+
+
+_________________________________________________________________________________________________________________
+
+                                                B. Introduction
 
 _________________________________________________________________________________________________________________
 
@@ -14,26 +36,10 @@ Privacy Policy, and any additional terms and conditions that may apply to specif
 (collectively, the "Terms").
 
 
-_________________________________________________________________________________________________________________
-
-                                            TABLE OF CONTENTS
 
 _________________________________________________________________________________________________________________
 
-1. Introduction
-2. Acceptance of Terms
-3. Account Registration
-4. User Conduct
-5. Intellectual Property
-6. Limitation of Liability
-7. Governing Law
-8. Changes to Terms
-9. Contact Us
-
-
-_________________________________________________________________________________________________________________
-
-                                            2. ACCEPTANCE OF TERMS
+                                            C. ACCEPTANCE OF TERMS
 
 _________________________________________________________________________________________________________________
 
@@ -45,7 +51,7 @@ modified Terms.
 
 _________________________________________________________________________________________________________________
 
-                                            3. ACCOUNT REGISTRATION
+                                            D. ACCOUNT REGISTRATION
 
 _________________________________________________________________________________________________________________
 
@@ -58,7 +64,7 @@ current, and complete.
 
 _________________________________________________________________________________________________________________
 
-                                                4. USER CONDUCT
+                                                E. USER CONDUCT
 
 _________________________________________________________________________________________________________________
 
@@ -84,7 +90,7 @@ or is otherwise objectionable.
 
 _________________________________________________________________________________________________________________
 
-                                        5. INTELLECTUAL PROPERTY
+                                        F. INTELLECTUAL PROPERTY
 
 _________________________________________________________________________________________________________________
 
@@ -96,7 +102,7 @@ property laws.
 
 _________________________________________________________________________________________________________________
 
-                                        6. LIMITATION OF LIABILITY
+                                        G. LIMITATION OF LIABILITY
 
 _________________________________________________________________________________________________________________
 
@@ -108,7 +114,7 @@ other intangible losses.
 
 _________________________________________________________________________________________________________________
 
-                                            7. GOVERNING LAW
+                                            H. GOVERNING LAW
 
 _________________________________________________________________________________________________________________
 
@@ -119,7 +125,7 @@ law principles.
 
 _________________________________________________________________________________________________________________
 
-                                            8. CHANGES TO TERMS
+                                            I. CHANGES TO TERMS
 
 _________________________________________________________________________________________________________________
 
@@ -130,11 +136,11 @@ after any changes indicates your acceptance of the modified Terms.
 
 _________________________________________________________________________________________________________________
 
-                                                9. CONTACT US
+                                                J. CONTACT US
 
 _________________________________________________________________________________________________________________
 
 If you have any questions, concerns, or requests regarding these Terms or your use of World Games and 
 AgniSamooh.com, please contact us at support@agnisamooh.com.
 
-You can view this Terns abd Conditions again at AgniSamooh.com/games/world-games/terms_and_conditions.txt.
+You can view this Terms abd Conditions policy again at AgniSamooh.com/games/world-games/terms_and_conditions.txt

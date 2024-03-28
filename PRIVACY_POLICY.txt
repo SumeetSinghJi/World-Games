@@ -2,9 +2,31 @@ Privacy Policy
 
 Effective Date: 10th January 2024
 
+
+
+
 _________________________________________________________________________________________________________________
 
-                                               1. Introduction
+                                            A. TABLE OF CONTENTS
+
+_________________________________________________________________________________________________________________
+
+1. ENGLISH (English)
+    a. Table of Contents
+    b. Introduction
+    c. Information We Collect
+    d. How We Use Your Information
+    e. Information Sharing
+    f. Data Security
+    g. Your Choices
+    h. Parental Controls and Choices
+    i. Children’s Privacy
+    j. Changes to This Policy
+    k. Contact Us
+
+_________________________________________________________________________________________________________________
+
+                                               B. Introduction
 
 _________________________________________________________________________________________________________________
 
@@ -15,26 +37,10 @@ are required to create an account on AgniSamooh.com, and this Privacy Policy gov
 and protection of your information in relation to both the game and the website.
 
 
-_________________________________________________________________________________________________________________
-
-                                                TABLE OF CONTENTS
 
 _________________________________________________________________________________________________________________
 
-1. Introduction
-2. Information We Collect
-3. How We Use Your Information
-4. Information Sharing
-5. Data Security
-6. Your Choices
-7. Parental Controls and Choices
-8. Children’s Privacy
-9. Changes to This Policy
-10. Contact Us
-
-_________________________________________________________________________________________________________________
-
-                                            2. Information We Collect
+                                            C. Information We Collect
 
 _________________________________________________________________________________________________________________
 
@@ -50,7 +56,7 @@ gameplay data associated with your username on AgniSamooh.com.
 
 _________________________________________________________________________________________________________________
 
-                                        3. How We Use Your Information
+                                        D. How We Use Your Information
 
 _________________________________________________________________________________________________________________
 
@@ -75,7 +81,7 @@ and preferences.
 
 _________________________________________________________________________________________________________________
 
-                                            4. Information Sharing
+                                            E. Information Sharing
 
 _________________________________________________________________________________________________________________
 
@@ -98,7 +104,7 @@ page, such as your name) may be shared publicly for promotional and website-rela
 
 _________________________________________________________________________________________________________________
 
-                                                5. Data Security
+                                                F. Data Security
 
 _________________________________________________________________________________________________________________
 
@@ -108,7 +114,7 @@ or destruction.
 
 _________________________________________________________________________________________________________________
 
-                                                6. Your Choices
+                                                G. Your Choices
 
 _________________________________________________________________________________________________________________
 
@@ -121,7 +127,7 @@ to specific game features. To do so simply choose not to sign up in game.
 
 _________________________________________________________________________________________________________________
 
-                                        7. Parental Controls and Choices
+                                        H. Parental Controls and Choices
 
 _________________________________________________________________________________________________________________
 
@@ -133,7 +139,7 @@ b. Opt-Out: Users can choose not to display certain information, ensuring a safe
 
 _________________________________________________________________________________________________________________
 
-                                            8. Children’s Privacy
+                                            I. Children’s Privacy
 
 _________________________________________________________________________________________________________________
 
@@ -146,7 +152,7 @@ under 13, with clear instructions provided within the game.
 
 _________________________________________________________________________________________________________________
 
-                                            9. Changes to This Policy
+                                            J. Changes to This Policy
 
 _________________________________________________________________________________________________________________
 
@@ -156,7 +162,7 @@ periodically for any changes.
 
 _________________________________________________________________________________________________________________
 
-                                                10. Contact Us
+                                                K. Contact Us
 
 _________________________________________________________________________________________________________________
 
@@ -165,4 +171,4 @@ If you have any questions, concerns, or requests regarding this Privacy Policy, 
 AgniSamooh.com, please contact us at support@agnisamooh.com. By using our game and creating an account on 
 AgniSamooh.com, you agree to the terms outlined in this Privacy Policy.
 
-You can view this Privacy Policy again at AgniSamooh.com/games/world-games/privacy_policy.txt.
+You can view this Privacy Policy again at AgniSamooh.com/games/world-games/privacy_policy.txt

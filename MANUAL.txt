@@ -360,7 +360,6 @@ The below files are contained in the downloaded game directory
 ./tests - Tests directory, contains various game development tests using Google Tests library
 .gitignore - Used in development file
 Ancient Games.lnk - Windows shortcut used in update_app.hpp update function to copy to desktop
-ancient-games_save.txt - in game save file
 ancient-games.code-workspace - vscode configuration file
 CMAKEllists.txt - Used in development file
 LICENSE - Hosts a full copy of license same as within manual. Seperated for Github metadata
@@ -368,6 +367,7 @@ main.cpp - Implementation file
 main.exe - Game executable
 MANUAL.txt - Contains information about game
 README.md - Github source repository introduction document
+savefile.txt - in game save file
 TASKS.txt - Issue and Bug tracker
 Various DLL's for third party libraries in ./src {
     libcurl-x64.dll - libcurl
