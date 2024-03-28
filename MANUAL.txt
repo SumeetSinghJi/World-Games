@@ -266,16 +266,18 @@ ________________________________________________________________________________
 
 GAME ENGINE
 
-* The Game Engine is called Māyāyantra 
-(A Compound word Translated in Sanskrit as मायायन्त्र and English as IllusionInstrument) is the UI source code 
-logic which includes all files within this project with the exception of the files specific to this game below;
+* The Game Engine is called Māyāyantra a compound word Translated in Sanskrit as मायायन्त्र and English as 
+IllusionInstrument is the UI source code logic written on top of the SDL Framework. 
+Māyāyantra uses SDL functions and conventions for low level input interaction 
+with hardware which includes all files within this project with the exception of the 
+files specific to this game below;
 * ./headers/games/*.hpp
 * ./documents
 * ./assets/graphics/backgrounds/title_background.jpg
 * MANUAL.txt
 * README.md
 * ancient-games* (files starting with Ancient Games)
-* Any mention of scene 25 = the Starting point of the interaction between the Game Engine and the Game.
+* Any mention of variable "scene == 25" = the Starting point of the interaction between the Game Engine and the Game.
 So if your game is a simple Car/Ship racing game, change all scene 25 logic to interact with you're
 specific game as outlined in ./headers/games (see below MODDING section)
 * Game Engine written in C++ C++17 minimum standard, due to inclusion of modern headers such as 
@@ -284,7 +286,7 @@ std::filesystem header #include <filesystem>
 * Includes IDE development files for Visual Studio Code within .vscode folder which includes;
    4 tasks.json tasks for Compilers; g++ and clang and Static Analysers; cppcheck and clang tidy
 * Includes CMAKElists.txt compile file with associated ./build folder for building locally
-
+* Theoretically Multiplatform as it inherits SDL convention
 
 
 MODDING
