@@ -76,10 +76,11 @@ ________________________________________________________________________________
 
 1. Introduction
 2. License
-3. Setup
-4. Program logic
-5. Games and Rules
-6. Credits
+3. Story
+4. Setup
+5. Game Engine
+6. Rules
+7. Credits
 
 
 _________________________________________________________________________________________________________________
@@ -117,40 +118,15 @@ Note: This project includes components licensed under different terms:
 - SDL2 Mixer: See `./src/SDL2_Mixer/LICENSE.txt` for details.
 - SDL2 TTF: See `./src/SDL2_TTF/LICENSE.txt` for details.
 
+_________________________________________________________________________________________________________________
+
+                                                3. STORY
 
 _________________________________________________________________________________________________________________
 
-                                                3. SETUP
-
-_________________________________________________________________________________________________________________
 
 
-GAME DETAILS
-
-Game Name: Ancient Games
-Project name: Games of the Ancients
-Creation: 26/09/2023
-Version: 0.1
-Author: Sumeet Singh @ www.sumeet-singh.com
-Publisher: AgniSamooh @ www.agniSamooh.com
-License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) 
-License.
-
-
-
-GAME DESCRIPTION
-
-Ancient Games is a C++ programming language developed game in which players can play different traditional 
-board and hand games from different ancient cultures around the world.
-There are achievements that can be unlocked through completing specific objectives in the game such as winning your
-first game, or winning all games against a computer (AI) opponent at least once.
-You can locate games by starting a new game then clicking on any location on the world map marked by a landmark.
-Before the game starts you can configure game settings such as rounds (lives), timer, who starts first and position.
-You may view the rules for each game in the help (book icon) section.
-You may also join or create online multiplayer games with others and friends to compete.
-
-
-CAMPAIGN / STORY MODE
+STORY
 
 As a university professor specializing in teleportation research, I had always been fascinated by the 
 possibilities of time travel. But when a mishap in my lab sent me hurtling back in time, I found myself in a 
@@ -185,6 +161,47 @@ excitement and apprehension as I prepared to return to my own time.
 As the familiar hum of the teleportation process enveloped me, I closed my eyes, grateful for the unexpected journey 
 that had led me to this moment. And with a leap of faith, I stepped forward into the unknown, eager to resume my 
 life but forever changed by the experiences that had shaped my journey home.
+
+
+
+GAMEPLAY
+
+Ancient Games is a C++ programming language-developed game in which players can play different 
+traditional board and hand games from various ancient cultures around the world. There are 
+three different game modes:
+
+In Story Mode, there is a narrative-driven interactive campaign in which players must complete tasks 
+to win. Achievements can be unlocked by completing specific objectives in the game, such as winning 
+your first game or completing the entire campaign.
+
+In Casual Mode, all board games can be played anytime with local leaderboards. You can access games by 
+starting a new game and clicking on any location on the world map marked by a landmark. Before 
+starting the game, you can configure settings such as rounds (lives), timer, starting player, and 
+position. Rules for each game can be viewed in the help (book icon) section.
+
+Multiplayer Mode inherits all rules from Casual Mode with the addition of the ability to join or 
+create online multiplayer games with others and friends to compete. There is an online leaderboard 
+for score tracking and competitive play.
+
+
+_________________________________________________________________________________________________________________
+
+                                                4. SETUP
+
+_________________________________________________________________________________________________________________
+
+
+GAME DETAILS
+
+Game Name: Ancient Games
+Project name: Games of the Ancients
+Creation: 26/09/2023
+Version: 0.1
+Author: Sumeet Singh @ www.sumeet-singh.com
+Publisher: AgniSamooh @ www.agniSamooh.com
+License: Source Code License: MIT License. Graphical Assets License: Creative Commons Attribution (CC-BY) 
+License.
+
 
 
 HELP
@@ -241,7 +258,7 @@ For MacOS: copy over this file main.bin to applications folder and accept defaul
 
 _________________________________________________________________________________________________________________
 
-                                        4. PROGRAM LOGIC
+                                        5. GAME ENGINE
 
 _________________________________________________________________________________________________________________
 
@@ -249,12 +266,6 @@ ________________________________________________________________________________
 
 GAME ENGINE
 
-* Game written in C++ C++17 minimum standard, due to inclusion of modern headers such as 
-std::filesystem header #include <filesystem>
-* Currently compiles with g++ (part of MinGW/GNU), untested with clang and msvc
-* Includes IDE development files for Visual Studio Code within .vscode folder which includes;
-   4 tasks.json tasks for Compilers; g++ and clang and Static Analysers; cppcheck and clang tidy
-* Includes CMAKElists.txt compile file with associated ./build folder for building locally
 * The Game Engine is called Māyāyantra 
 (A Compound word Translated in Sanskrit as मायायन्त्र and English as IllusionInstrument) is the UI source code 
 logic which includes all files within this project with the exception of the files specific to this game below;
@@ -267,6 +278,12 @@ logic which includes all files within this project with the exception of the fil
 * Any mention of scene 25 = the Starting point of the interaction between the Game Engine and the Game.
 So if your game is a simple Car/Ship racing game, change all scene 25 logic to interact with you're
 specific game as outlined in ./headers/games (see below MODDING section)
+* Game Engine written in C++ C++17 minimum standard, due to inclusion of modern headers such as 
+std::filesystem header #include <filesystem>
+* Currently compiles with g++ (part of MinGW/GNU), untested with clang and msvc
+* Includes IDE development files for Visual Studio Code within .vscode folder which includes;
+   4 tasks.json tasks for Compilers; g++ and clang and Static Analysers; cppcheck and clang tidy
+* Includes CMAKElists.txt compile file with associated ./build folder for building locally
 
 
 
@@ -505,7 +522,7 @@ The list of all achievements that can be unlocked while completing objectives pl
 
 _________________________________________________________________________________________________________________
 
-                                            5. GAMES AND RULES
+                                            6. RULES
                                     
 _________________________________________________________________________________________________________________
 
@@ -570,7 +587,7 @@ across the globe, proving that even the simplest of games can carry profound sig
 
 _________________________________________________________________________________________________________________
 
-                                            6. CREDITS
+                                            7. CREDITS
                                     
 _________________________________________________________________________________________________________________
 
